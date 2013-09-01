@@ -1,0 +1,20 @@
+{
+	"name": "projecttemplate",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-watch": "*",
+		"grunt-contrib-coffee": "*",
+		"grunt-contrib-clean" : "*",
+		"grunt-contrib-copy" : "*",
+		"grunt-contrib-compass" : "*",
+		"passport" : "*",
+		"passport-local" : "*",
+		"eco": "*",
+		"grunt-eco-amd": "https://github.com/justmatt/grunt-eco-amd/tarball/master",
+		"express": "3.x",
+		"mongoose": "*",
+		"grunt-shell": "*"
+	}
+}

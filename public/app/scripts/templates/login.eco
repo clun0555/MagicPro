@@ -1,0 +1,13 @@
+<div class="login-view">
+		
+	<h2 class="form-signin-heading">Please Log in</h2>
+	<div class="alert alert-danger" style="display: none"></div>
+	<input type="text" class="form-control" placeholder="Email address" autofocus="" name="username">
+	<input type="password" class="form-control" placeholder="Password" name="password">
+	<div class="login-buttons">
+		<a class="btn btn-lg btn-link" href="#register" >Register</a>
+		<button class="btn btn-lg btn-primary login-button"  >Log in</button>
+	</div>
+</div>
+
+      

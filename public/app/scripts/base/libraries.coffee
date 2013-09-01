@@ -1,0 +1,29 @@
+require.config
+
+	paths:
+		"jquery": "base/lib/jquery" # cross browser Dom manipulation & Ajax calls
+		"underscore": "base/lib/underscore" # utility belt
+		
+		"backbone": "base/lib/backbone" # MVC Framework
+		"marionette": "base/lib/backbone.marionette" # Reusable Large Scale Application Design Patterns
+		
+		"bootstrap": "base/lib/bootstrap" # widgets, ui guidelines
+		"moment": "base/lib/moment" # date formating
+		
+		"spin": "base/lib/spin"
+	
+	shim:
+
+		"underscore":
+			exports: "_"
+
+		"backbone":
+			deps: ["jquery", "underscore"]
+			exports: "Backbone"
+
+		"bootstrap":
+			deps: ["jquery"]
+
+		"marionette":
+			exports: "Backbone.Marionette"
+			deps: ["backbone"]
