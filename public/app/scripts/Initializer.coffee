@@ -10,19 +10,22 @@ define [
 	"utils/DataHandler"
 	"views/MenuView"
 	"utils/Router"
+  "views/LogoView"
 	"bootstrap"	
 
-], (App, DataHandler, MenuView, Router) ->
+], (App, DataHandler, MenuView, Router, LogoView) ->
 
 	App.addRegions
-		"menuRegion": "#menu-region"
-		"mainRegion": "#main-region"
+    "menuRegion": "#menu-region"
+    "mainRegion": "#main-region"
+    "logoRegion": "#logo-region"
 
 	App.addInitializer ->
-		App.router = new Router()
-		App.menuRegion.show new MenuView()
-						
-	App.on "initialize:after", ->
+    App.router = new Router()
+    App.logoRegion.show new LogoView()
+    App.menuRegion.show new MenuView()
+
+  App.on "initialize:after", ->
 		Backbone.history?.start()
 	
 	App.bootstrap = ->
