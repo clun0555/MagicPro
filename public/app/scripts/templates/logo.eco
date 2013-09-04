@@ -1,0 +1,12 @@
+<div class="ribbon1-img img-container">
+    <img src="../../app/styles/img/ribbon2.png" alt="MagicPro Logo">
+</div>
+<div class="logo-container">
+    <div class="logo-img img-container">
+        <img src="../../app/styles/img/magic_logo.png" alt="MagicPro Logo">
+    </div>
+
+</div>
+<div class="ribbon2-img img-container flip-vertical">
+    <img src="../../app/styles/img/ribbon2.png" alt="MagicPro Logo">
+</div>

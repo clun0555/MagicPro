@@ -1,21 +1,38 @@
-.logo-region
+#logo-region
   background: url(../../app/styles/img/ribbon.png)
-  background-size: 100% 150px
-  background-repeat: repeat-y
+  background-repeat: repeat-x
+  background-position: center
 
 .logo-view
   max-width: 330px
   width: 70%
-  float:  right
+  float:  left
 
   .logo-container
-    height: 250px
+    height: 150px
     width:  250px
     margin: 25px 25px 25px 25px
+    display: table
     background-color: #FFFFFF
 
-    img
-      margin: 0 auto
-      min-height: 10px
+    .img-container
+      text-align: center
       vertical-align: middle
-      display: block
+      display: table-cell
+
+      .img
+        margin: 0 auto
+        min-height: 10px
+        text-align: center
+        vertical-align: middle
+        display: table-cell
+
+.ribbon1-img
+  margin-left: 25px
+  height: 20px
+  position: fixed
+
+.ribbon2-img
+  margin-left: 25px
+  height: 1px
+  position: fixed
