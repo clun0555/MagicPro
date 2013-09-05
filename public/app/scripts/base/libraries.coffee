@@ -11,6 +11,12 @@ require.config
 		"moment": "base/lib/moment" # date formating
 		
 		"spin": "base/lib/spin"
+
+		"i18next": "base/lib/i18next" #i18n
+
+		"text": "base/lib/require/text" # requirejs plugin to load a text resource
+
+		"resources": "/dist/resources" # path to access resources
 	
 	shim:
 

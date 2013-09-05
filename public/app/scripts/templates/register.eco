@@ -5,37 +5,37 @@
 	<div class="form-group">
 		<label class="col-lg-3 control-label"></label>
 		<div class="col-lg-9">
-			<h2>Register</h2>
+			<h2><%= @t "register.title" %></h2>
 			<div class="alert alert-danger" style="display: none"></div>
 		</div>
 	</div>
 
 	<div class="form-group name-group">
-		<label for="inputEmail1" class="col-lg-3 control-label">Name</label>
+		<label for="inputEmail1" class="col-lg-3 control-label"><%= @t "register.name" %></label>
 		<div class="col-lg-9">
-			<input type="email" class="form-control" name="firstname" placeholder="First name">
-			<input type="email" class="form-control" name="lastname" placeholder="Last name">
+			<input type="email" class="form-control" name="firstname" placeholder="<%= @t "register.firstname" %>">
+			<input type="email" class="form-control" name="lastname" placeholder="<%= @t "register.lastname" %>">
 		</div>
 	</div>
 
 	<div class="form-group email-group">
-		<label for="inputEmail1" class="col-lg-3 control-label">Email</label>
+		<label for="inputEmail1" class="col-lg-3 control-label"><%= @t "register.email" %></label>
 		<div class="col-lg-9">
-			<input type="email" class="form-control" name="email" placeholder="Email">
+			<input type="email" class="form-control" name="email" placeholder="<%= @t "register.email" %>">
 		</div>
 	</div>
 
 	<div class="form-group password-group">
-		<label for="inputPassword1" class="col-lg-3 control-label">Password</label>
+		<label for="inputPassword1" class="col-lg-3 control-label"><%= @t "register.password" %></label>
 		<div class="col-lg-9">
-			<input type="password" class="form-control" name="password" placeholder="Password">
-			<input type="password" class="form-control" name="password2" placeholder="Repeat password">
+			<input type="password" class="form-control" name="password" placeholder="<%= @t "register.password" %>">
+			<input type="password" class="form-control" name="password2" placeholder="<%= @t "register.password-repeat" %>">
 		</div>
 	</div>
 
 	<div class="form-group buttons-group">
 		<div class="col-lg-offset-3 col-lg-9">
-			<button class="btn btn-lg btn-primary register-button pull-right">Register</button>
+			<button class="btn btn-lg btn-primary register-button pull-right"><%= @t "register.register" %></button>
 		</div>
 	</div>
-</div>	
+</div>

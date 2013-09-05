@@ -83,6 +83,10 @@ module.exports = (grunt) ->
 				files: "public/app/**/*.eco"
 				tasks: "eco_amd"
 
+    resources:
+      files: ["public/app/resources/**/*.*", ["public/app/**/*.css"]]
+      tasks: "copy:dist"
+
 		shell: 
 			deploy: 
 				command: 'git push heroku.com:projecttemplate.git master'

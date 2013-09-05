@@ -29,7 +29,7 @@ define [
 			App.request("user:login", @model.attributes)
 				.fail =>
 					@enableButtons()
-					@showErrorMessage("Incorect email or password")
+					@showErrorMessage("login.password-mail-incorrect")
 
 		showErrorMessage: (message) ->
 			@$(".alert").html(message).slideDown()
@@ -45,8 +45,8 @@ define [
 
 		errorMessage: ->
 			switch 
-				when @model.get("username") is "" then "Email is empty"
-				when @model.get("password") is "" then "Password is empty"
+				when @model.get("username") is "" then "login.email-isempty"
+				when @model.get("password") is "" then "login.password-isempty"
 							
 
 					

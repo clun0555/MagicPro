@@ -1,0 +1,27 @@
+<hr>
+<footer>
+	<small><%= @t "application.copyright" %> - 
+	<div class="btn-group dropup btn-group-xs">
+		<a href="" data-toggle="dropdown"><%= @currentLocal.label %> </a>
+	
+	  <ul class="dropdown-menu">
+	  	<% for locale in @locales : %>
+	   		<li class="<%="active" if locale.code is @currentLocal.code %>">
+			
+	   			<a data-locale="<%=locale.code%>">
+					<% if locale.code is @currentLocal.code : %>
+						<i class="icon-ok"></i>
+					<% end %>
+		   			<%= locale.label %>
+	   			</a>
+	   		</li>
+	   	<% end %>
+	    	
+	  </ul>
+	</div>
+
+	</small>
+
+	
+
+</footer>

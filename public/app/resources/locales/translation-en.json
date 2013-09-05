@@ -1,0 +1,40 @@
+{
+	"login": {
+		"title": "Please Log in",
+		"email": "Email address",
+		"password": "Password",
+		"email-isempty": "Email is empty",
+		"password-isempty": "Password is empty",
+		"password-email-incorect": "Incorect email or password",
+		"register": "Register",
+		"login": "Login"
+	},
+
+	"register": {
+		"title": "Register",
+		"name": "Name",
+		"firstname": "First Name",
+		"lastname": "Last Name",
+		"email": "Email",
+		"password": "Password",
+		"password-repeat": "Repeat password",
+		"register": "Register",
+		"wrong-data": "Oops! Wrong data"
+
+	},
+	
+	"menu": {
+		"title": "Project Starter",
+		"about": "About",
+		"home": "Home",
+		"contact": "Contact",
+		"loggedin": "Logged in as ${name}",
+		"account": "Account",
+		"logout": "Log out"
+		
+	},
+
+	"productnavigator": {
+		"buy": "Buy"
+	}
+}

@@ -1,11 +1,11 @@
 define [
-
+  "jquery"
 	"Base"
 	"App"
 	"models/User"
 
-], (Base, App, User) ->
-	
+], ($, Base, App, User) ->
+
 	# returns a collection of products
 	App.reqres.setHandler "products:all", ->
 		unless App.collection?
@@ -21,9 +21,11 @@ define [
 	# checks on server if user if loggedin, if yes populates App.user
 	# performed once before application starts
 	App.reqres.setHandler "user:loggedin", ->
+		job = $.Deferred()
 		user = new User()
 		user.url = "/api/currentuser"
-		user.fetch().done -> App.user = user
+		user.fetch().done(-> App.user = user).always(-> job.resolve())
+		job
 
 	# performs login with username/password in userdata
 	App.reqres.setHandler "user:login", (userData) ->
@@ -31,7 +33,7 @@ define [
 		user = new User userData
 		user.url = "/api/login"
 
-		user.save().done -> 
+		user.save().done ->
 			App.user = user
 			App.vent.trigger "user:loggedin"
 
@@ -41,7 +43,7 @@ define [
 		user = new User()
 		user.url = "/api/logout"
 
-		user.fetch().fail -> 
+		user.fetch().fail ->
 			# /api/logout currently returns a 401
 			App.vent.trigger "user:loggedout"
 
@@ -51,13 +53,13 @@ define [
 		user = new User userData
 		user.url = "/api/register"
 
-		user.save().done -> 
+		user.save().done ->
 			App.user = user
 			App.vent.trigger "user:loggedin"
 
 
 
-		
-	
+
+
 
 

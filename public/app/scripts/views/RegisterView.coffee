@@ -27,7 +27,7 @@ define [
 				.done ->
 					App.vent.trigger "user:loggedin"
 				.fail =>
-					@showErrorMessage "Oops... Wrong data"
+					@showErrorMessage "register.wrong-data"
 
 		showErrorMessage: (message) ->
 			@$(".alert").html(message).slideDown()

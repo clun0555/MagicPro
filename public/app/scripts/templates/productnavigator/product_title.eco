@@ -7,7 +7,7 @@
     	<img src="http://placehold.it/200x200" alt="ALT NAME" style="width: 100%">
     	
     	<p class="product-buttons">
-        	<a class="btn btn-primary buy-button" href="#">Buy</a>
+        	<a class="btn btn-primary buy-button" href="#"><%= @t "productnavigator.buy" %></a>
     	</p>
     </div>
    
