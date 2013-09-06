@@ -2,11 +2,14 @@ passport = require('passport')
 mongoose = require("mongoose")
 
 exports.setup = (app) ->
-	
+
 	Product = new mongoose.Schema
+		item_id: {type: String, required: true }
+		color_id: {type: String, required: true }
+		color: {type: String, required: true }
 		title: { type: String, required: true }
-		description: { type: String, required: true }
-		style: { type: String, unique: true }
+		description: { type: String, required: false }
+		inner: { type: Number, unique: false}
 		modified: { type: Date, default: Date.now }
 	
 	ProductModel = mongoose.model("Product", Product)
@@ -21,9 +24,14 @@ exports.setup = (app) ->
 	app.post "/api/products", (req, res) ->
 		
 		product = new ProductModel
+			item_id: req.body.item_id
+			color_id: req.body.color_id
+			color: req.body.color
 			title: req.body.title
 			description: req.body.description
-			style: req.body.style
+			inner: req.body.inner
+
+
 		
 		product.save()
 
@@ -39,11 +47,14 @@ exports.setup = (app) ->
 
 	app.put "/api/products/:id", (req, res) ->
 		ProductModel.findById req.params.id, (err, product) ->
-			
+
+			product.item_id = req.body.item_id
+			product.color_id = req.body.color_id
+			product.color = req.body.color
 			product.title = req.body.title
 			product.description = req.body.description
-			product.style = req.body.style
-			
+			product.inner = req.body.inner
+
 			product.save (err) ->
 				unless err
 					console.log "updated"
