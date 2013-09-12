@@ -1,0 +1,11 @@
+
+
+<div class="thumbnail">
+    <div class="caption">
+        <h4><%=@title%></h4>
+
+    	<img src="http://placehold.it/200x200" alt="ALT NAME" style="width: 100%">
+
+    </div>
+
+  </div>

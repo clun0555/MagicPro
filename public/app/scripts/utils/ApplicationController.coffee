@@ -2,8 +2,8 @@ define [
 	"App"
 	"views/LoginView"
 	"views/RegisterView"
-	"views/ProductNavigator"
-], (App, LoginView, RegisterView, ProductNavigator) ->
+	"views/OrderLayout"
+], (App, LoginView, RegisterView, OrderLayout) ->
 
 	root: ->
 		return unless @loggedIn()
@@ -20,7 +20,8 @@ define [
 
 	products: ->
 		return unless @loggedIn()
-		App.mainRegion.show new ProductNavigator()
+		return if App.mainRegion.currentView instanceof OrderLayout
+		App.mainRegion.show new OrderLayout()
 
 	loggedIn: ->
 		logged = App.request("user")?

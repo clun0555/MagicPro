@@ -10,7 +10,7 @@ define [
 		
 		itemView: ProductTitleView
 		tagName: 'div'
-		className: 'product-navigator thumnails'
+		className: 'product-navigator thumnails container'
 
 		initialize: ->
 			@collection = App.request "products:all"

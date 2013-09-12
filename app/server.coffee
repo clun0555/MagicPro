@@ -2,6 +2,8 @@ express = require("express")
 path = require("path")
 mongoose = require("mongoose")
 product = require("./models/product")
+type = require("./models/type")
+category = require("./models/category")
 userControler = require("./controllers/userController")
 app = express()
 passport = require('passport')
@@ -40,6 +42,11 @@ app.all "*", (req, res, next) ->
 		
 # create rest endpoint for product model
 product.setup app
+# create rest endpoint for category model
+category.setup app
+# create rest endpoint for type model
+type.setup app
+# create rest endpoint for user model
 userControler.setup app
 
 # Launch server

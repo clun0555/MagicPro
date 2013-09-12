@@ -36,5 +36,11 @@
 
 	"productnavigator": {
 		"buy": "Buy"
-	}
+	},
+
+    "order": {
+        "category": "Category",
+        "type": "Type",
+        "product": "Product"
+    }
 }

@@ -31,5 +31,10 @@
 	},
 	"productnavigator": {
 		"buy": "下單"
+	},
+	"order": {
+		"category": "總類",
+		"type": "類別",
+		"product": "產品"
 	}
 }

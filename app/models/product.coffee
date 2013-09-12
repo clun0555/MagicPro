@@ -6,8 +6,8 @@ exports.setup = (app) ->
 	Product = new mongoose.Schema
 		item_id: {type: String, required: true }
 		color_id: {type: String, required: true }
-		color: {type: String, required: true }
-		title: { type: String, required: true }
+		color: {type: String, required: false }
+		title: { type: String, required: false }
 		description: { type: String, required: false }
 		inner: { type: Number, unique: false}
 		modified: { type: Date, default: Date.now }

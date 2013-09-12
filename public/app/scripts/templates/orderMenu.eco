@@ -1,0 +1,13 @@
+<div class="navbar navbar-inverse navbar-static-top">
+
+	<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li class = "category-menu"><a href="#"><%= @t "order.category" %></a></li>
+			<li class = "type-menu"><a href="#"><%= @t "order.type" %></a></li>
+			<li class = "product-menu"><a href="#"><%= @t "order.product" %></a></li>
+		</ul>
+	</div>
+
+
+
+</div>

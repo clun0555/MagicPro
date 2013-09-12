@@ -8,10 +8,25 @@ define [
 
 	# returns a collection of products
 	App.reqres.setHandler "products:all", ->
-		unless App.collection?
-			App.collection = new Base.Collection()
-			App.collection.url = "/api/products"
-			App.collection.fetch reset: true
+		App.collection = new Base.Collection()
+		App.collection.url = "/api/products"
+		App.collection.fetch reset: true
+
+		App.collection
+
+	# returns a collection of category
+	App.reqres.setHandler "categories:all", ->
+		App.collection = new Base.Collection()
+		App.collection.url = "/api/categories"
+		App.collection.fetch reset: true
+
+		App.collection
+
+	# returns a collection of category
+	App.reqres.setHandler "types:all", ->
+		App.collection = new Base.Collection()
+		App.collection.url = "/api/types"
+		App.collection.fetch reset: true
 
 		App.collection
 

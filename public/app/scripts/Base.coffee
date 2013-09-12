@@ -4,9 +4,10 @@ define [
 	"base/entities/Collection"
 	"base/views/ItemView"
 	"base/views/CollectionView"
+	"base/views/Layout"
 	"base/config"
 
-], (Model, Collection, ItemView, CollectionView) ->
+], (Model, Collection, ItemView, CollectionView, Layout) ->
 
 	#entities
 	Model: Model
@@ -15,3 +16,4 @@ define [
 	#views
 	ItemView: ItemView
 	CollectionView: CollectionView
+	Layout: Layout

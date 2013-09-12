@@ -8,26 +8,29 @@ define [
 	
 	"App"
 	"utils/DataHandler"
-  "utils/Translator"
+	"utils/Translator"
 	"views/MenuView"
-  "views/FooterView"
+	"views/FooterView"
 	"utils/Router"
-  "views/LogoView"
+	"views/LogoView"
+	"views/CartView"
 	"bootstrap"	
 
-], (App, DataHandler, Translator, MenuView, FooterView, Router, LogoView) ->
+], (App, DataHandler, Translator, MenuView, FooterView, Router, LogoView, CartView) ->
 
 	App.addRegions
-    "menuRegion": "#menu-region"
-    "mainRegion": "#main-region"
-    "logoRegion": "#logo-region"
-    "footerRegion": "#footer-region"
+		"menuRegion": "#menu-region"
+		"mainRegion": "#main-region"
+		"logoRegion": "#logo-region"
+		"footerRegion": "#footer-region"
+		"cartRegion": "#cart-region"
 
 	App.addInitializer ->
-    App.router = new Router()
-    App.logoRegion.show new LogoView()
-    App.menuRegion.show new MenuView()
-    App.footerRegion.show new FooterView()
+		App.router = new Router()
+		App.logoRegion.show new LogoView()
+		App.menuRegion.show new MenuView()
+		App.footerRegion.show new FooterView()
+		App.cartRegion.show new CartView()
 
   App.on "initialize:after", ->
     Backbone.history?.start()
