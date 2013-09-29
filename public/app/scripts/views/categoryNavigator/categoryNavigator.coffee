@@ -1,9 +1,7 @@
 define [
-
 	"Base"
 	"App"
 	"views/categoryNavigator/CategoryView"
-
 ], (Base, App, CategoryView) ->
 
 	class CategoryNavigator extends Base.CollectionView
