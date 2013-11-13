@@ -5,7 +5,7 @@ exports.setup = (app) ->
 
 	Product = new mongoose.Schema
 		item_id: {type: String, required: true }
-		color_id: {type: String, required: true }
+		color_id: {type: String, required: false }
 		color: {type: String, required: false }
 		title: { type: String, required: false }
 		description: { type: String, required: false }
