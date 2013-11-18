@@ -1,0 +1,67 @@
+{
+	"login": {
+		"title": "Please Log in",
+		"email": "Email address",
+		"password": "Password",
+		"email-isempty": "Email is empty",
+		"password-isempty": "Password is empty",
+		"password-email-incorect": "Incorect email or password",
+		"register": "Register",
+		"login": "Login"
+	},
+
+	"register": {
+		"title": "Register",
+		"name": "Name",
+		"firstname": "First Name",
+		"lastname": "Last Name",
+		"email": "Email",
+		"password": "Password",
+		"password-repeat": "Repeat password",
+		"register": "Register",
+		"wrong-data": "Oops! Wrong data"
+
+	},
+	
+	"menu": {
+		"title": "MagicPro",
+		"home": "Home",		
+		"loggedin": "Logged in as ${name}",
+		"account": "Account",
+		"logout": "Log out",
+		"admin": "Admin"
+		
+	},
+
+	"productnavigator": {
+		"buy": "Buy"
+	},
+
+	"adminsidebar": {
+		"users": "Users",
+		"categories": "Categories"
+	},
+
+	"useredit": {
+		"firstname": "First name",
+		"lastname": "Last name",
+		"email": "Email",
+		"role": "Role",
+		"save": "Save",
+		"return": "Return"
+		
+	},
+
+	"errorpage": {
+		"oops": "Oops",
+		"notfound": "Page not found",
+		"unauthorized": "You are not allowed to access this content",
+		"goback": "Go back home"
+	},
+
+	"order": {
+		"category": "Category",
+		"type": "Type",
+		"product": "Product"
+	}
+}

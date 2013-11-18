@@ -1,0 +1,1 @@
+<a class=<%= @id %>><%= @t @label %></a>

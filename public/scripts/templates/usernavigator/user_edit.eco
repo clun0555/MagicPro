@@ -1,0 +1,66 @@
+
+
+<div class="form-horizontal" role="form">
+ 
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label"><%= @t "useredit.profile" %></label>
+    <div class="col-lg-10">
+       <span class="btn btn-success fileinput-button">
+          <% if @imageId? : %>
+            <img src="<%= @imagePath @imageId, "s=150" %>" >
+          <% else : %>
+            <span>Select file</span>
+          <% end %>
+          
+
+          <!-- The file input field used as target for the file upload widget -->
+          <input id="fileupload" type="file" name="files[]" multiple="">
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label"><%= @t "useredit.firstname" %></label>
+    <div class="col-lg-10">
+      <input type="text" class="form-control firstname" placeholder="<%= @t "useredit.firstname" %>" value="<%=@firstname%>" >
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label"><%= @t "useredit.lastname" %></label>
+    <div class="col-lg-10">
+      <input type="text" class="form-control lastname" placeholder="<%= @t "useredit.lastname" %>" value="<%=@lastname%>" >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label"><%= @t "useredit.email" %></label>
+    <div class="col-lg-10">
+      <input type="email" class="form-control email" placeholder="<%= @t "useredit.email" %>" value="<%=@email%>" >
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label"><%= @t "useredit.role" %></label>
+    <div class="col-lg-10">
+      <div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	    <%=@role%> <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu" role="menu">
+	  	<% for role in ["admin", "user"]: %>
+			<li data-role="<%=role%>"><a><%=role%></a></li>	
+	  	<% end %>	      
+	  </ul>
+	</div>
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="button" class="btn return-button"><%= @t "useredit.return" %></button>
+		<button type="button" class="btn btn-primary save-button"><%= @t "useredit.save" %></button>
+    </div>
+  </div>
+</div>
+

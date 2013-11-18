@@ -1,0 +1,22 @@
+
+
+<div class="thumbnail">
+    <div class="caption">
+        <h4 class="title"><%=@title%></h4>
+        
+
+        <% if @imageId?: %>
+        <img src="<%= @imagePath @imageId, "s=247" %>" >
+        	<!-- <img src="http://placehold.it/200x200" alt="ALT NAME" style="width: 100%"> -->
+    	<% else :%>
+    		<img src="http://placehold.it/200x200" alt="ALT NAME" style="width: 100%">
+    	
+    	<% end %>
+
+
+    	<p class="product-buttons">
+        	<a class="btn btn-primary buy-button" href="#"><%= @t "productnavigator.buy" %></a>
+    	</p>
+    </div>
+   
+  </div>
