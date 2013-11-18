@@ -2,7 +2,7 @@
 	This is a sample file for running localy.
 	
 	to set environement variables when deployed, use environement variables.
-	heroku config:set S3_KEY="AKIAIHAIMDM6LGXYHWUA" --app projecttemplate
+	heroku config:set S3_KEY="<myS3Key>" S3_SECRET="<myS3Secret>" S3_BUCKET="<myS3Bucket>" IMAGE_SERVER_PATH="<pathToImageServer>"  --app <appName>
 ###
 
 
