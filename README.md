@@ -1,7 +1,7 @@
 MagicPro Online Order System
 ===============
 
-Default data installation
+Default data installation for mongoDB
 ======
 
 Use `mongorestore <database name>` to create database with sample data.
