@@ -1,7 +1,7 @@
 define [
 	"App"
 	"Base"
-	"templates/categoryNavigator/category"
+	"templates/categorynavigator/category"
 ], (App, Base, template) ->
 
 	class CategoryView extends Base.ItemView

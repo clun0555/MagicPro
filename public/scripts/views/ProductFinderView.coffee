@@ -2,9 +2,9 @@ define [
 
 	"Base"
 	"App"
-	"views/ProductNavigatorView"
-	"views/categoryNavigator/CategoryNavigator"
-	"views/typeNavigator/TypeNavigator"
+	"views/productnavigator/ProductNavigatorView"
+	"views/categorynavigator/CategoryNavigator"
+	"views/typenavigator/TypeNavigator"
 	"views/BreadCrumbView"
 	"templates/product_finder"
 
