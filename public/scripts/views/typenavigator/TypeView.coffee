@@ -1,7 +1,7 @@
 define [
 	"Base"
 	"App"
-	"templates/typeNavigator/type"
+	"templates/typenavigator/type"
 ], (Base, App, template) ->
 
 	class TypeView extends Base.ItemView

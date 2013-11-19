@@ -2,7 +2,7 @@ define [
 
 	"Base"
 	"App"
-	"views/typeNavigator/TypeView"
+	"views/typenavigator/TypeView"
 
 ], (Base, App, TypeView) ->
 
