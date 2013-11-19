@@ -8,7 +8,7 @@ define [
 		template: template
 		tagName: "ol"
 
-		className: 'breadcrumb'
+		className: 'breadcrumb bread-crumb-view'
 
 		modelEvents:
 			"change": "render"

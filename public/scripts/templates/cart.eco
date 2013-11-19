@@ -1,9 +1,0 @@
-<div id="cart-view">
-<h2 style="display:inline">Your Order</h2>&nbsp;&nbsp;&nbsp;<a href="myCart.html">View Full Order Summary</a>
-
-<div class="simpleCart_items"><div class="cartHeaders"><div class="itemImage">Image</div><div class="itemName">Name</div><div class="itemPrice">Price</div><div class="itemOptions">Options</div><div class="itemQuantity">Quantity</div><div class="itemTotal">Total</div></div></div>
-
-
-<!--Here's the Links to Checkout and Empty Cart-->
-<a href="#" class="simpleCart_empty">empty cart</a>
-<a href="#" class="simpleCart_checkout">Checkout</a>

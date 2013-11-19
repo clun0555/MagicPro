@@ -12,15 +12,14 @@ define [
 	"utils/Authentification"
 	"views/MenuView"
 	"views/FooterView"	
-	"views/LogoView"	
-	"views/CartView"	
+	"views/LogoView"
 	"controllers/ApplicationController"
 	"controllers/AdminController"
 	"controllers/ProductFinderController"
 	"backbone.named.routes"
 	"bootstrap"
 
-], (Base, App, DataHandler, Translator, Authentification, MenuView, FooterView, LogoView, CartView, ApplicationController, AdminController, ProductFinderController) ->
+], (Base, App, DataHandler, Translator, Authentification, MenuView, FooterView, LogoView, ApplicationController, AdminController, ProductFinderController) ->
 
 	App.addRegions
 		"menuRegion": "#menu-region"
@@ -28,7 +27,6 @@ define [
 		"footerRegion": "#footer-region"
 		"modalRegion": "#modal-region"
 		"logoRegion": "#logo-region"
-		"cartRegion": "#cart-region"
 
 	App.addInitializer ->
 		
@@ -39,7 +37,6 @@ define [
 		App.showMenu()
 		App.showFooter()
 		App.showLogo()
-		# App.showCart() # Until we fix https://trello.com/c/e1yBqHIK
 
 	App.state = new Base.Model()
 
@@ -48,9 +45,6 @@ define [
 
 	App.showLogo = ->
 		App.logoRegion.show new LogoView()	
-
-	App.showCart = ->
-		App.cartRegion.show new CartView()
 
 	App.showFooter = ->
 		App.footerRegion.show new FooterView()

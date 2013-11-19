@@ -16,16 +16,18 @@ define [
 			"products/:categoryId": "navigate"
 			"products/:categoryId/:typeId": "navigate"
 
+		constructor: ->
+			super
+			App.state.productFinder = new Base.Model()
+			App.state.cart = new Base.Collection()
+
 		authorize: (action) -> 
 			
 			# navigate action is restricted to logged in users
 			return @isLoggedIn() if action is "navigate" 				
 
 			return true
-		
-		constructor: ->
-			super
-			App.state.productFinder = new Base.Model()
+				
 
 		navigate: (categoryPath, typePath) ->
 			@show new ProductFinderView model: App.state.productFinder

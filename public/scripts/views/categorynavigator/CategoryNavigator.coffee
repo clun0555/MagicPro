@@ -8,7 +8,7 @@ define [
 
 		itemView: CategoryView
 		tagName: 'div'
-		className: 'category-navigator thumnails container'
+		className: 'category-navigator thumnails'
 
 		initialize: ->
 			@collection = App.request "categories:all"

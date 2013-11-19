@@ -1,5 +1,11 @@
-<div id="order-menu"></div>
-<div class="breadcrumb-region"></div>
-<div id="order-content"></div>
+<div class="row">
+	<div class="col-md-12">		
+		<div class="breadcrumb-region"></div>
+	</div>
+</div>
+<div class="row">
+	<div class="navigator-region col-md-9"></div>
+	<div class="cart-region col-md-3"></div>
+</div>
 
 

@@ -14,9 +14,9 @@
     	<% end %>
 
 
-    	<p class="product-buttons">
-        	<a class="btn btn-primary buy-button" href="#"><%= @t "productnavigator.buy" %></a>
-    	</p>
+    	<div class="product-buttons">
+        	<a class="btn btn-primary buy-button" ><%= @t "productnavigator.buy" %></a>
+    	</div>
     </div>
    
   </div>

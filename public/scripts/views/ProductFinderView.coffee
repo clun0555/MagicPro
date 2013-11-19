@@ -6,9 +6,10 @@ define [
 	"views/categorynavigator/CategoryNavigator"
 	"views/typenavigator/TypeNavigator"
 	"views/BreadCrumbView"
+	"views/cartview/CartView"
 	"templates/product_finder"
 
-], (Base, App, ProductNavigator, CategoryNavigator, TypeNavigator, BreadCrumbView, template) ->
+], (Base, App, ProductNavigator, CategoryNavigator, TypeNavigator, BreadCrumbView, CartView, template) ->
 
 	class ProductFinderView extends Base.Layout
 
@@ -16,9 +17,9 @@ define [
 		template: template
 
 		regions: 
-			menu: "#order-menu", 
-			breadcrumb: ".breadcrumb-region", 
-			content: "#order-content"		
+			breadcrumb: ".breadcrumb-region"
+			content: ".navigator-region"	
+			cart: ".cart-region"	
 
 		events:
 			"click .category-menu .category": "showCategory"
@@ -26,21 +27,26 @@ define [
 			"click .category-menu .product": "showProduct"
 
 		initialize: ->
-			@listenTo @model, "change", @showCurrentView
+			@listenTo @model, "change", @showNavigator
 
+			@listenTo App.state.cart, "all", console.log arguments
 
 		onShow: ->
 			@showBreadCrumb()
-			@showCurrentView()			
+			@showNavigator()			
+			@showCart()			
 
 		showBreadCrumb: ->
 			@breadcrumb.show new BreadCrumbView()
 
-		showCurrentView: ->
-			@content.show @getCurrentView()
+		showCart: ->
+			@cart.show new CartView collection: App.state.cart
 
-		getCurrentView: ->
-			if @model.get("type")?
+		showNavigator: ->
+			@content.show @getNavigator()
+
+		getNavigator: ->
+			if @model.get("type")?				
 				new ProductNavigator()
 			else if @model.get("category")?
 				new TypeNavigator()
