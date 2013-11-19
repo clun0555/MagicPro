@@ -3,8 +3,10 @@ define [
 	"Base"
 	"App"
 	"models/User"
+	"models/Category"
+	"models/Type"
 
-], ($, Base, App, User) ->
+], ($, Base, App, User, Category, Type) ->
 	
 	# returns a collection of products
 	App.reqres.setHandler "products:all", ->
@@ -17,20 +19,24 @@ define [
 
 	# returns a collection of category
 	App.reqres.setHandler "categories:all", ->
-		App.collection = new Base.Collection()
-		App.collection.url = "/api/categories"
-		App.collection.fetch reset: true
+		App.categories = new Base.Collection()
+		App.categories.model = Category
+		App.categories.url = "/api/categories"
+		App.categories.fetch reset: true
 
-		App.collection
+		App.categories
 
 	# returns a collection of category
 	App.reqres.setHandler "types:all", ->
-		App.collection = new Base.Collection()
-		App.collection.url = "/api/types"
-		App.collection.fetch reset: true
+		App.types = new Base.Collection()
+		App.categories.model = Type
+		App.types.url = "/api/types"
+		App.types.fetch reset: true
 
-		App.collection
+		App.types
 
+	App.reqres.setHandler "types:byId", (id) ->
+		return new Type(id: id).fetch()
 
 
 	# returns a collection of users

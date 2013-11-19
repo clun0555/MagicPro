@@ -16,3 +16,4 @@ define [
 			@collection = App.request "types:all"
 			@listenTo @collection, "reset", @render, this
 
+

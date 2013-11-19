@@ -16,10 +16,11 @@ define [
 	"views/CartView"	
 	"controllers/ApplicationController"
 	"controllers/AdminController"
+	"controllers/ProductFinderController"
 	"backbone.named.routes"
 	"bootstrap"
 
-], (Base, App, DataHandler, Translator, Authentification, MenuView, FooterView, LogoView, CartView, ApplicationController, AdminController) ->
+], (Base, App, DataHandler, Translator, Authentification, MenuView, FooterView, LogoView, CartView, ApplicationController, AdminController, ProductFinderController) ->
 
 	App.addRegions
 		"menuRegion": "#menu-region"
@@ -33,6 +34,7 @@ define [
 		
 		new ApplicationController region: App.mainRegion
 		new AdminController region: App.mainRegion
+		new ProductFinderController region: App.mainRegion
 
 		App.showMenu()
 		App.showFooter()

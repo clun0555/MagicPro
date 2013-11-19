@@ -1,0 +1,14 @@
+
+<li><a data-link="#products" class="breadcrumb-home">Home</a></li>
+
+<% if @category? :%>
+
+	<li><a data-link="#products/<%=@category.id%>" class="breadcrumb-category" ><%=@category.title%></a></li>
+<% end %>
+
+<% if @type? : %>
+	<li><a data-link="#products/<%=@category.id%>/<%=@type.id%>" class="breadcrumb-type"><%=@type.title%></a></li>
+<% end %>
+
+
+

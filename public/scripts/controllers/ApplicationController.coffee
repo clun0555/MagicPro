@@ -4,11 +4,10 @@ define [
 	"utils/Authorization"
 	"views/LoginView"
 	"views/RegisterView"
-	"views/OrderLayout"
 	"views/ErrorPageView"
 	"views/AdminView"
 
-], (Base, App, Authorization, LoginView, RegisterView, OrderLayout, ErrorPageView, AdminView) ->
+], (Base, App, Authorization, LoginView, RegisterView, ErrorPageView, AdminView) ->
 
 	class ApplicationController extends Base.Controller
 		
@@ -16,17 +15,9 @@ define [
 			"" : "root"
 			"login": "login" 
 			"register": "register" 
-			"products": "products"			
 			"*path" : "show404ErrorPage"
 
-		authorize: (action) -> 
-			
-			# products action is restricted to logged in users
-			return @isLoggedIn() if action is "products" 				
-
-			return true
-
-		root: -> @run "products"
+		root: -> App.execute "product:finder:controller", "navigate"
 
 		login: (forward) ->
 			console.log "login"
@@ -35,9 +26,6 @@ define [
 
 		register: ->
 			@show new RegisterView()
-
-		products: ->
-			@show new OrderLayout()	
 
 		show404ErrorPage: ->
 			@showErrorPage 404

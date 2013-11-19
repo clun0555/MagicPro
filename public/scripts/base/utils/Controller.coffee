@@ -73,7 +73,7 @@ define [
 
 		run: (action, arg1, arg2, arg3, arg4, arg5) ->
 
-			console.log action
+			console.log action, arguments
 
 			# trigger event
 			@trigger @camelToEvent(action), arg1, arg2, arg3, arg4, arg5
