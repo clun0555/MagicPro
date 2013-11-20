@@ -24,7 +24,7 @@ define [
 		showUser: (event) ->
 
 			id = $(event.currentTarget).data("user")
-			App.execute "admin:controller", "edit:user", id
+			App.execute "admin:controller", "edit:user", [ id ]
 
 
 			# App.vent.trigger "usernavigator:user:clicked", email

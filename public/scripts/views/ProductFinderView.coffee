@@ -27,9 +27,7 @@ define [
 			"click .category-menu .product": "showProduct"
 
 		initialize: ->
-			@listenTo @model, "change", @showNavigator
-
-			@listenTo App.state.cart, "all", console.log arguments
+			@listenTo @model, "change", @showNavigator			
 
 		onShow: ->
 			@showBreadCrumb()
@@ -37,7 +35,7 @@ define [
 			@showCart()			
 
 		showBreadCrumb: ->
-			@breadcrumb.show new BreadCrumbView()
+			@breadcrumb.show new BreadCrumbView(model: @model)
 
 		showCart: ->
 			@cart.show new CartView collection: App.state.cart

@@ -29,14 +29,35 @@ define [
 	# returns a collection of category
 	App.reqres.setHandler "types:all", ->
 		App.types = new Base.Collection()
-		App.categories.model = Type
+		App.types.model = Type
 		App.types.url = "/api/types"
 		App.types.fetch reset: true
 
 		App.types
 
-	App.reqres.setHandler "types:byId", (id) ->
-		return new Type(id: id).fetch()
+	App.reqres.setHandler "types:byid", (id) ->
+		
+		job = $.Deferred()
+
+		# return null directly if id is null
+		return job.resolve(null) unless id?
+		
+		type =  new Type("_id": id)
+		type.fetch().done -> job.resolve type
+
+		job
+
+	App.reqres.setHandler "categories:byid", (id) ->
+		
+		job = $.Deferred()
+		
+		# return null directly if id is null
+		return job.resolve(null) unless id?
+
+		category = new Category("_id": id)
+		category.fetch().done -> job.resolve category
+		
+		job
 
 
 	# returns a collection of users

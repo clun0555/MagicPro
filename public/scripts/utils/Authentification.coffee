@@ -28,7 +28,8 @@ define [
 			App.vent.trigger "user:loggedin"
 			
 			if forward
-				App.execute forward[0], forward[1], forward[2], forward[3], forward[4]
+				# TODO can generate problems later
+				App.execute forward[0], forward[1], [forward[2], forward[3], forward[4]]
 			else
 				App.execute "application:controller", "root"
 

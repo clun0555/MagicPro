@@ -18,13 +18,8 @@ define [
 			'click .breadcrumb-category': "navigateCategory"
 			# 'click .breadcrumb-type': "navigateType"
 
-
-		initialize: ->
-			@model = App.state.productFinder
-						
 		navigateHome: ->
-			App.state.productFinder.set "category": null, "type": null
-			# App.state.productFinder.unset 
+			App.execute "product:finder:controller", "navigate:home"			
 
 		navigateCategory: ->
-			App.state.productFinder.unset "type"
+			App.execute "product:finder:controller", "navigate:category"

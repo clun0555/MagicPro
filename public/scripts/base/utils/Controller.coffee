@@ -14,12 +14,14 @@ define [
 
 			@createRoute()
 
-			# Handler to App.execute "<controllerName>", <actionName>, params...
-			App.commands.setHandler @camelToEvent(@controllerName()) , (action, arg1, arg2, arg3, arg4, arg5) =>
-				console.log "execute" + action
-				@run @eventToCamel(action), arg1, arg2, arg3, arg4, arg5
+			# Handler to App.execute "<controllerName>", <actionName>, args...
+			App.commands.setHandler @camelToEvent(@controllerName()) , (action, args, options) =>
+				@run @eventToCamel(action), args, options
 
-		controllerName: -> @constructor.name		
+		controllerName: -> 
+			# uglifyjs can mess with class name causing this to break. C
+			# currently option is set to mangle:false to avoid this problem
+			@constructor.name		
 
 		createRoute: ->
 			
@@ -35,14 +37,24 @@ define [
 
 				do (route, method) =>
 
-					@router.on "route:#{method}", (arg1, arg2, arg3, arg4, arg5) =>
-						# call controller 
-						@run method, arg1, arg2, arg3, arg4, arg5
+					# handler when route is entered from URL
+					@router.on "route:#{method}", =>
+						@run method, _.chain(arguments).compact().value()
 
 					if route isnt "*path"
-						# keep router up to date
-						@on @camelToEvent(method), (arg1, arg2, arg3, arg4, arg5) =>
-							@router.navigate @router.path(method, arg1, arg2, arg3, arg4, arg5), {trigger:false}
+						
+						# This handler keeps the url up to date if controller is called manualy. Has no effect otherwise
+						@on @camelToEvent(method), (args, options) =>
+							
+							# retrieve path from controller, action and arguments
+							path = @router.path(method, args)
+							
+							# translate options to router options
+							routerOptions = { trigger: false, update: false }
+							routerOptions.replace = true if options?.history is false
+
+							# navigate silently to path
+							@router.navigate path, routerOptions
 
 		# converts camelCase to event name. ex: showUsers -> show:users
 		camelToEvent: (str) ->
@@ -69,54 +81,37 @@ define [
 		authorize: (action) -> true
 
 		# overide for any action to perform before controler
-		before: (action, arg1, arg2, arg3, arg4, arg5) -> true
+		before: (action, args) -> true
 
-		run: (action, arg1, arg2, arg3, arg4, arg5) ->
+		run: (action, args, options) ->
 
-			console.log action, arguments
+			console.debug "running action #{action}:", arguments
 
 			# trigger event
-			@trigger @camelToEvent(action), arg1, arg2, arg3, arg4, arg5
+			@trigger @camelToEvent(action), args, options
 
-			return false if @enforceAuthorization(action, arg1, arg2, arg3, arg4, arg5) is false
+			return false if @enforceAuthorization(action, args) is false
 
-			return false if @before?(action, arg1, arg2, arg3, arg4, arg5) is false
+			return false if @before?(action, args) is false
 
 			# execute action
-			this[action]?(arg1, arg2, arg3, arg4, arg5) 
+			this[action].apply this, args			
 
 		
-		enforceAuthorization: (action, arg1, arg2, arg3, arg4, arg5) ->
+		enforceAuthorization: (action, args) ->
 			
 			return true if @authorize(action)
 
 			# user is not authorized
+
 			if App.user?
-				# user is logged in. Show a 403 Forbiden page
-				App.execute "application:controller", "show:error:page", 403 
+				# user is logged in. Use is not allowed to see page. Show a 403 Forbiden page
+				App.execute "application:controller", "show:error:page", [ 403 ], history: false
 			else
-				console.log "not logged"
-				console.log [ @camelToEvent(@controllerName()), @camelToEvent(action),  arg1, arg2, arg3, arg4, arg5]
-				# user isnt logged in. Request a login and forward back
-				App.execute "application:controller", "login", [ @camelToEvent(@controllerName()), @camelToEvent(action),  arg1, arg2, arg3, arg4, arg5]
+				# user isnt logged in. Might be allowed but needs to login first. Request a login and forward back
+				App.execute "application:controller", "login", [ [ @camelToEvent(@controllerName()), @camelToEvent(action),  args] ], history: false
 
-			return false
-
-		# keeps routes up do date when controllers are called directly
-		hookControllerRoutes: ->
-			
-			for route, method of @routes when route isnt "*path"
-
-				do (route, method) =>
-					
-					@controller[method] = _.wrap @controller[method], (func, arg1, arg2, arg3, arg4, arg5) =>
-						@navigate @path(method, arg1, arg2, arg3, arg4, arg5), {trigger:false}
-						func.call @controller, arg1, arg2, arg3, arg4, arg5
-
-					@on "route:#{method}", (arg1, arg2, arg3, arg4, arg5) =>
-						# call controller 
-						@controller.run method, arg1, arg2, arg3, arg4, arg5
-
+			return false		
 
 	# mixin authorization methods
 	_.extend Controller.prototype, Authorization

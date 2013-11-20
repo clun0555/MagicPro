@@ -17,10 +17,10 @@ define [
 			"register": "register" 
 			"*path" : "show404ErrorPage"
 
-		root: -> App.execute "product:finder:controller", "navigate"
+		root: -> 
+			App.execute "product:finder:controller", "show:navigator", [], { history: false }
 
 		login: (forward) ->
-			console.log "login"
 			options = if forward then { forward: forward } else {}
 			@show new LoginView options
 

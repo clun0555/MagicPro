@@ -12,4 +12,4 @@ define [
 			'click': "selectCategory"
 
 		selectCategory: ->
-			App.state.productFinder.set "category", @model.toJSON()
+			App.execute "product:finder:controller", "show:navigator", [ @model.get("_id") ]

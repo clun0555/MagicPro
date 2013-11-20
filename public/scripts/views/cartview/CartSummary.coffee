@@ -14,7 +14,3 @@ define [
 		collectionEvents: 
 			"add": "render"		
 			"remove": "render"		
-
-
-		initialize: ->
-			console.log "col" , @collection

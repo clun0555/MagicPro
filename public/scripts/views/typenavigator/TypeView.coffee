@@ -12,5 +12,6 @@ define [
 			"click": "selectType"
 
 		selectType: ->
-			App.state.productFinder.set "type", @model.toJSON()
+			App.execute "product:finder:controller", "navigate:type", [ @model.id ]
+			
 

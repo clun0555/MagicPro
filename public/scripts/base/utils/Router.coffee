@@ -14,10 +14,10 @@ define [
 
 
 		# return the path for a route and arguments. 
-		path: (route) ->
+		path: (route, args) ->
 			
-			# remove first arg and all object literals or arrays.
-			args = _.chain(arguments).compact().filter( (value) -> not (_.isObject(value) or _.isArray(value)) ).value()[1..]
+			# remove all object literals or arrays.
+			args = _.chain(args).compact().filter( (value) -> not (_.isObject(value) or _.isArray(value)) ).value()
 			
 			# call router helper to get route path using backbone.named.routes
 			try

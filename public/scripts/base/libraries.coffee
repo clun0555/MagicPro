@@ -22,7 +22,7 @@ require.config
 
 		"resources": "../resources" # path to access resources
 	
-	urlArgs: "bust=" + (new Date()).getTime() # prevent caching in developement
+	# urlArgs: "bust=" + (new Date()).getTime() # prevent caching in developement but also prevent debuging :(
 
 	shim:
 
