@@ -14,12 +14,15 @@ define [
 			"change": "render"
 
 		events: ->
-			'click .breadcrumb-home': "navigateHome"
-			'click .breadcrumb-category': "navigateCategory"
-			# 'click .breadcrumb-type': "navigateType"
+			'click .breadcrumb-home': "showHome"
+			'click .breadcrumb-category': "showCategory"
+			'click .breadcrumb-type': "showType"
 
-		navigateHome: ->
-			App.execute "product:finder:controller", "navigate:home"			
+		showHome: ->
+			App.execute "product:finder:controller", "show:home"			
 
-		navigateCategory: ->
-			App.execute "product:finder:controller", "navigate:category"
+		showCategory: ->
+			App.execute "product:finder:controller", "show:category"
+
+		showType: ->
+			App.execute "product:finder:controller", "show:type"

@@ -10,12 +10,12 @@ define [
 
 	class CartView extends Base.Layout
 
-		className: "cart-view"
+		className: "cart-view container"
 		template: template	
 		regions: 
 			"summary": ".summary-region"
 			"items": ".items-region"
 
 		onShow: ->
-			@summary.show new CartSummary collection: @collection
-			@items.show new CartItems collection: @collection
+			@summary.show new CartSummary model: @model
+			@items.show new CartItems collection: @model.items

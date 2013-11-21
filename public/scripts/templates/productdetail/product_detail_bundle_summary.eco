@@ -1,0 +1,6 @@
+
+
+
+<% if @totalQuantity : %>
+	<span class="total-quantity"> <%=@totalQuantity%> |</span>  <span class="total-price"><%= @formatCurrency "$", @totalPrice %></span>	
+<% end %>

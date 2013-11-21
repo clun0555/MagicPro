@@ -5,13 +5,15 @@ define [
 	"models/User"
 	"models/Category"
 	"models/Type"
+	"models/Product"
 
-], ($, Base, App, User, Category, Type) ->
+], ($, Base, App, User, Category, Type, Product) ->
 	
 	# returns a collection of products
 	App.reqres.setHandler "products:all", ->
 		unless App.products?
 			App.products = new Base.Collection()
+			App.products.model = Product
 			App.products.url = "/api/products"
 			App.products.fetch reset: true
 
@@ -35,26 +37,39 @@ define [
 
 		App.types
 
-	App.reqres.setHandler "types:byid", (id) ->
+	App.reqres.setHandler "types:by:identifier", (id) ->
 		
 		job = $.Deferred()
 
 		# return null directly if id is null
 		return job.resolve(null) unless id?
 		
-		type =  new Type("_id": id)
+		type =  new Type("identifier": id)
 		type.fetch().done -> job.resolve type
 
 		job
 
-	App.reqres.setHandler "categories:byid", (id) ->
+	App.reqres.setHandler "categories:by:identifier", (id) ->
 		
 		job = $.Deferred()
 		
 		# return null directly if id is null
 		return job.resolve(null) unless id?
 
-		category = new Category("_id": id)
+		category = new Category("identifier": id)
+		category.fetch().done -> job.resolve category
+		
+		job
+
+
+	App.reqres.setHandler "products:by:identifier", (id) ->
+		
+		job = $.Deferred()
+		
+		# return null directly if id is null
+		return job.resolve(null) unless id?
+
+		category = new Product("identifier": id)
 		category.fetch().done -> job.resolve category
 		
 		job

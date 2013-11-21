@@ -11,3 +11,13 @@ define [
 		className: "cart-item"
 		template: template	
 		tagName: "li"	
+
+		modelEvents: 
+			"change": "render"
+
+		events: 
+			"click": "openProduct"
+
+
+		openProduct: ->
+			App.execute "product:finder:controller", "show:product", [ @model.get("productIdentifier") ]

@@ -8,7 +8,8 @@ define [
 	"utils/Translator"
 	"utils/Authorization"
 	"utils/ImageProxy"
-], (_, Translator, Authorization, ImageProxy) ->
+	"utils/Formater"
+], (_, Translator, Authorization, ImageProxy, Formater) ->
 	
 	TemplateHelpers = {}
 
@@ -16,6 +17,7 @@ define [
 	_.extend TemplateHelpers, Translator
 	_.extend TemplateHelpers, Authorization
 	_.extend TemplateHelpers, ImageProxy
+	_.extend TemplateHelpers, Formater
 
 	TemplateHelpers
 

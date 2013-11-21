@@ -10,8 +10,11 @@ define [
 
 
 		events:
-			"click .buy-button": "addToCart"
+			"click": "showProductDetail"
 
-		addToCart:  ->
-			App.state.cart.add @model
+		showProductDetail: ->
+			App.execute "product:finder:controller", "show:product", [ @model.id ]
+
+		# addToCart:  ->
+		# 	App.state.cart.add @model
 

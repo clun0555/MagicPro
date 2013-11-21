@@ -2,9 +2,9 @@ define [
 	"Base"
 ], (Base) ->
 	
-	class Category extends Base.Model
+	class Product extends Base.Model
 
-		urlRoot: "/api/types"
+		urlRoot: "/api/products"
 		idAttribute: "identifier"
 
 		

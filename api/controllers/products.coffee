@@ -11,7 +11,7 @@ module.exports =
 		res.send Product.find()
 
 	show: (req, res) ->
-		res.send Product.findById req.params.product
+		res.send Product.findOne identifier: req.params.product
 
 	create: (req, res) ->
 

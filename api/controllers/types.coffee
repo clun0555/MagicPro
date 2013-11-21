@@ -11,7 +11,7 @@ module.exports =
 		res.send Type.find()
 
 	show: (req, res) ->
-		res.send Type.findById req.params.type
+		res.send Type.findOne identifier: req.params.type
 
 	create: (req, res) ->
 

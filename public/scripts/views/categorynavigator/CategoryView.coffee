@@ -12,4 +12,4 @@ define [
 			'click': "selectCategory"
 
 		selectCategory: ->
-			App.execute "product:finder:controller", "show:navigator", [ @model.get("_id") ]
+			App.execute "product:finder:controller", "show:category", [ @model.id ]

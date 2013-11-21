@@ -10,6 +10,10 @@ Product = new mongoose.Schema
 	inner: { type: Number, unique: false}
 	modified: { type: Date, default: Date.now }
 	imageId: { type: String }
+	identifier: {type: String, require: true, unique: true}
+	designs: [
+		{ label: String, designId: String, imageId: String }
+	]
 
 module.exports = mongoose.model("Product", Product)
 

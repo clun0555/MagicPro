@@ -7,18 +7,19 @@ define [
 	"views/typenavigator/TypeNavigator"
 	"views/BreadCrumbView"
 	"views/cartview/CartView"
+	"views/productdetail/ProductDetailView"
 	"templates/product_finder"
 
-], (Base, App, ProductNavigator, CategoryNavigator, TypeNavigator, BreadCrumbView, CartView, template) ->
+], (Base, App, ProductNavigator, CategoryNavigator, TypeNavigator, BreadCrumbView, CartView, ProductDetailView, template) ->
 
 	class ProductFinderView extends Base.Layout
 
-		className: "order-layout container"
+		className: "product-finder container"
 		template: template
 
 		regions: 
 			breadcrumb: ".breadcrumb-region"
-			content: ".navigator-region"	
+			content: ".content-region"
 			cart: ".cart-region"	
 
 		events:
@@ -38,13 +39,16 @@ define [
 			@breadcrumb.show new BreadCrumbView(model: @model)
 
 		showCart: ->
-			@cart.show new CartView collection: App.state.cart
+			@cart.show new CartView model: App.state.cart
 
 		showNavigator: ->
 			@content.show @getNavigator()
 
 		getNavigator: ->
-			if @model.get("type")?				
+			if @model.get("product")?
+				# TODO refactor to not have to re-create model from json
+				new ProductDetailView model: new Base.Model(@model.get("product"))
+			else if @model.get("type")?				
 				new ProductNavigator()
 			else if @model.get("category")?
 				new TypeNavigator()

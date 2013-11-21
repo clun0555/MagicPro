@@ -1,9 +1,10 @@
 define [
 	"App"
+	"jquery"
 	"marionette"
 	"base/utils/Router"
 	"utils/Authorization"
-], (App, Marionette, Router, Authorization) ->
+], (App, $, Marionette, Router, Authorization) ->
 	
 	class Controller extends Marionette.Controller
 
@@ -95,7 +96,9 @@ define [
 			return false if @before?(action, args) is false
 
 			# execute action
-			this[action].apply this, args			
+			this[action].apply this, args
+
+			@after?(action, args)
 
 		
 		enforceAuthorization: (action, args) ->
@@ -111,7 +114,12 @@ define [
 				# user isnt logged in. Might be allowed but needs to login first. Request a login and forward back
 				App.execute "application:controller", "login", [ [ @camelToEvent(@controllerName()), @camelToEvent(action),  args] ], history: false
 
-			return false		
+			return false	
+
+		# helper method to update document's title
+		title: (title) ->
+			$(document).attr 'title', title
+
 
 	# mixin authorization methods
 	_.extend Controller.prototype, Authorization

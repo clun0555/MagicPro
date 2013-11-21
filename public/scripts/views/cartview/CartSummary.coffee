@@ -11,6 +11,6 @@ define [
 		className: "cart-summary"
 		template: template
 
-		collectionEvents: 
-			"add": "render"		
-			"remove": "render"		
+		modelEvents: 
+			"change": "render"	
+

@@ -3,6 +3,8 @@
   "css_prefix_text": "icon-",
   "css_use_suffix": false,
   "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
   "glyphs": [
     {
       "uid": "8b80d36d4ef43889db10bc1f0dc9a862",
@@ -15,6 +17,18 @@
       "css": "ok",
       "code": 59392,
       "src": "fontawesome"
+    },
+    {
+      "uid": "d7271d490b71df4311e32cdacae8b331",
+      "css": "home",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e0d15ef5945000f5f264acc35494002f",
+      "css": "cart",
+      "code": 59395,
+      "src": "typicons"
     }
   ]
 }

@@ -3,6 +3,7 @@ require.config
 	paths:
 		"jquery": "base/lib/jquery" # cross browser Dom manipulation & Ajax calls
 		"underscore": "base/lib/underscore" # utility belt
+		"underscore.string": "base/lib/underscore.string" # utility belt
 		
 		"backbone": "base/lib/backbone" # MVC Framework
 		"marionette": "base/lib/backbone.marionette" # Reusable Large Scale Application Design Patterns

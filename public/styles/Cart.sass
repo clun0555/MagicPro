@@ -1,11 +1,67 @@
-#cart-region
-	min-height: 500px
-	position: fixed
-	top: 5%
-	left: 80%
-	.cart-view
-		background-color: #ffffff
-		border-radius: 4px
+.cart-view
+
+	padding-left: 0
+
+	.cart-icon
+		font-size: 30px
+		font-weight: 200
+
+	.cart-title
+		font-size: 30px
+		font-weight: 200		
+
+	.summary-region
 		float: right
-		height: 810px
+
+		.cart-price
+			font-size: 20px		
+			font-weight: 200
+			// width: 70px
+
+		div
+			text-align: right
+
+
+	.items-region
+		ul
+			padding-left: 0
+
+			li
+				list-style: none
+				font-size: 15px
+				font-weight: 200
+				padding: 0px
+				overflow-y: auto
+
+				&:hover
+					cursor: pointer
+					.bundle-title
+						font-weight: 400
+
+				
+				.bundle-title
+					display: inline-block
+					padding-top: 5px
+					font-size: 14px
+					width: 120px
+				
+				.bundle-numbers
+					float: right
+					.bundle-quantity
+						// width: 30px
+						font-weight: 100
+						display: inline-block
+						text-align: right
+						padding-right: 5px
+						font-size: 14px
+
+					.bundle-price
+						width: 90px
+						display: inline-block
+						border-left: 1px solid lightgray
+						padding-left: 10px
+						padding-top: 5px
+						padding-bottom: 5px
+						text-align: right
+						font-size: 14px
 
