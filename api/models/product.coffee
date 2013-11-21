@@ -3,6 +3,7 @@ mongoose = require("mongoose")
 Product = new mongoose.Schema
 	item_id: {type: String, required: true }
 	color_id: {type: String, required: false }
+	price: {type: float, required: true}
 	size: {type: String, required: false }
 	color: {type: String, required: false }
 	title: { type: String, required: false }
