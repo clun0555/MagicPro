@@ -1,5 +1,5 @@
 _ = require("underscore")
-environment = require("./api/config/environment")
+environment = require("./dist/api/config/environment")
 
 module.exports = (grunt) ->
 	
