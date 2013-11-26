@@ -6,7 +6,7 @@ config =
 	PORT: process.env.PORT
 	
 	S3_KEY: process.env.S3_KEY
-	S3_SECRET: process.env.S3_KEY
+	S3_SECRET: process.env.S3_SECRET
 	S3_BUCKET: process.env.S3_BUCKET
 
 	MONGO_URL: process.env.MONGO_URL or process.env.MONGOHQ_URL
