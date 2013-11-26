@@ -8,13 +8,9 @@ define [
 		template: template		
 		className: 'product-title col-md-3'
 
-
 		events:
 			"click": "showProductDetail"
 
 		showProductDetail: ->
-			App.execute "product:finder:controller", "show:product", [ @model.id ]
-
-		# addToCart:  ->
-		# 	App.state.cart.add @model
-
+			
+			App.navigate "product:show:product", [  @model.get("categoryIdentifier"), @model.get("typeIdentifier"), @model.id ]

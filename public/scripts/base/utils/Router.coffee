@@ -23,8 +23,11 @@ define [
 			try
 				return @helper[route + "Path"].apply @helper, args
 			catch
-				# fallback to route without params if no routes has matched
-				return @helper[route + "Path"].apply @helper
+				return false
+				# # fallback to route without params if no routes has matched
+				# try
+				# 	return @helper[route + "Path"].apply @helper
+				# catch 
 
 
 		

@@ -13,6 +13,8 @@ define [
 
 		events: 
 			"click .logout-menu": "logout"
+			"click .home-link": "navigateHome"
+			"click .admin-link": "navigateAdmin"
 
 		initialize: ->
 			@listenTo App.vent, "user:loggedin", @render
@@ -23,3 +25,9 @@ define [
 
 		logout: ->
 			App.request "user:logout"
+
+		navigateHome: ->
+			App.navigate "product:show:categories"
+
+		navigateAdmin: ->
+			App.navigate "admin:home"

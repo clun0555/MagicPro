@@ -15,21 +15,24 @@ define [
 		regions: 
 			"summary": ".bundle-summary-region"
 
-
 		events: 
 			"keyup .design-count input": "updateCart"
+
+		initialize: (options) ->
+			super options
+			{ @cart } = options
 
 
 		updateCart: ->
 			vals = _.chain(@$(".design-count input")).map((e) -> count: parseInt($(e).val(), 10), designId: $(e).data("design")).compact().value()
-			App.state.cart.updateBundle @model, vals
+			@cart.updateBundle @model, vals
 
 
 		onRender: ->
-			@summary.show new ProductDetailBundleSummary product: @model
+			@summary.show new ProductDetailBundleSummary product: @model, cart: @cart
 
 		serializeData: ->
 			data = super()
 			data.quantity = (designId) =>
-				App.state.cart.quantity @model, designId
+				@cart.quantity @model, designId
 			data

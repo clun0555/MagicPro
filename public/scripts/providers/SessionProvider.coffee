@@ -1,3 +1,7 @@
+###
+	TODO: enforce standart session provider
+###
+
 define [
 	"jquery"
 	"Base"
@@ -27,12 +31,11 @@ define [
 			App.user = user
 			App.vent.trigger "user:loggedin"
 			
-			if forward
-				# TODO can generate problems later
-				App.execute forward[0], forward[1], [forward[2], forward[3], forward[4]]
-			else
-				App.execute "application:controller", "root"
+			# if forward
+				# App.navigate forward[0], forward[1], [forward[2], forward[3], forward[4]]
+			# else
 
+			App.navigate "app:root"
 
 	# performs logout
 	App.reqres.setHandler "user:logout", (userData) ->
@@ -43,7 +46,7 @@ define [
 		user.fetch().fail -> 
 			# /api/authentification/logout currently returns a 401
 			App.vent.trigger "user:loggedout"
-			App.execute "application:controller", "root"
+			App.navigate "app:root"			
 
 	# register a user
 	App.reqres.setHandler "user:register", (userData) ->
@@ -54,12 +57,4 @@ define [
 		user.save().done -> 
 			App.user = user
 			App.vent.trigger "user:loggedin"
-
-
-
-
-
-		
-	
-
 

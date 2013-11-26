@@ -12,7 +12,3 @@ define [
 		tagName: 'div'
 		className: 'product-navigator thumnails'
 
-		initialize: ->
-			@collection = App.request "products:all"
-			@listenTo @collection, "reset", @render, this
-

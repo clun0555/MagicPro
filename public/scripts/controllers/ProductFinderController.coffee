@@ -1,8 +1,3 @@
-###
-
-	TODO: Handle navigate properly. Should retrieve type/category by id. Populate App.state,  and show the proper views in the region. Breadcrumb, (Type/Category/Product)Navigator
-
-###
 define [
 	"Base"
 	"App"
@@ -59,6 +54,7 @@ define [
 				App.request("products:by:identifier", productIdentifier)
 			).done ( category, type, product ) =>
 				App.state.productFinder.set "category": category?.toJSON(), "type": type?.toJSON(), "product": product?.toJSON() 				
+				
 				@show new ProductFinderView model: App.state.productFinder
 
 		showHome: ->

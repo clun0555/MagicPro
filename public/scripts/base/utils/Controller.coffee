@@ -20,7 +20,7 @@ define [
 				@run @eventToCamel(action), args, options
 
 		controllerName: -> 
-			# uglifyjs can mess with class name causing this to break. C
+			# uglifyjs can mess with class name causing this to break.
 			# currently option is set to mangle:false to avoid this problem
 			@constructor.name		
 

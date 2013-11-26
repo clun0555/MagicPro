@@ -53,7 +53,6 @@ authentification.setup app
 app.resource('products')
 app.resource('users')
 app.resource('categories')
-app.resource('types')
 
 app.post "/file/create", require("./controllers/files").create
 

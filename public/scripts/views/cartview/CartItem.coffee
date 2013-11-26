@@ -20,4 +20,4 @@ define [
 
 
 		openProduct: ->
-			App.execute "product:finder:controller", "show:product", [ @model.get("productIdentifier") ]
+			App.navigate "product:show:product", [ @model.get("categoryIdentifier"), @model.get("typeIdentifier"), @model.get("productIdentifier") ]

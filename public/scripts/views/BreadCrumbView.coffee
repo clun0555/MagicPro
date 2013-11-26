@@ -15,14 +15,14 @@ define [
 
 		events: ->
 			'click .breadcrumb-home': "showHome"
-			'click .breadcrumb-category': "showCategory"
-			'click .breadcrumb-type': "showType"
+			'click .breadcrumb-category': "showTypes"
+			'click .breadcrumb-type': "showProducts"
 
 		showHome: ->
-			App.execute "product:finder:controller", "show:home"			
+			App.navigate "product:show:categories"			
 
-		showCategory: ->
-			App.execute "product:finder:controller", "show:category"
+		showTypes: ->
+			App.navigate "product:show:types", [ @model.get("category").identifier ]			
 
-		showType: ->
-			App.execute "product:finder:controller", "show:type"
+		showProducts: ->
+			App.navigate "product:show:products", [ @model.get("category").identifier, @model.get("type").identifier ]			
