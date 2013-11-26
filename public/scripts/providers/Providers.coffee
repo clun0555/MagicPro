@@ -4,5 +4,6 @@ define [
 	"providers/CategoryProvider"
 	"providers/TypeProvider"
 	"providers/CartProvider"
+	"providers/UserProvider"
 ], () ->
 	# providers loaded

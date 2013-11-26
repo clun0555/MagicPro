@@ -13,23 +13,5 @@ define [
 		tagName: 'div'
 		className: 'user-navigator'
 
-		events: 
-			"click [data-user]": "showUser"
-
-		initialize: ->
-			@collection = App.request "users:all"
-			@listenTo @collection, "reset", @render, this
-
-
-		showUser: (event) ->
-
-			id = $(event.currentTarget).data("user")
-			App.execute "admin:controller", "edit:user", [ id ]
-
-
-			# App.vent.trigger "usernavigator:user:clicked", email
-			# App.showModal new UserEditView(model: user)
-			# alert user.get("username")
-
 
 

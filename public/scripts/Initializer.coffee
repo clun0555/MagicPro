@@ -8,7 +8,6 @@ define [
 	"Base"
 	"App"
 	"AppRouter"
-	"utils/DataHandler"
 	"utils/Translator"
 	"views/MenuView"
 	"views/FooterView"	
@@ -20,7 +19,7 @@ define [
 	"backbone.named.routes"
 	"bootstrap"
 
-], (Base, App, AppRouter, DataHandler, Translator, MenuView, FooterView, LogoView, ApplicationController, AdminController, ShopController, Providers) ->
+], (Base, App, AppRouter, Translator, MenuView, FooterView, LogoView, ApplicationController, AdminController, ShopController, Providers) ->
 
 	App.addRegions
 		"menuRegion": "#menu-region"

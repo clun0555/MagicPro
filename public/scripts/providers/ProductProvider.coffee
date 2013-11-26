@@ -29,8 +29,6 @@ define [
 
 		job = $.Deferred()
 
-		# job.resolve App.products if App.products?
-
 		products = new Base.Collection()
 		products.model = Product
 		products.url = "/api/products?" + $.param(query) 

@@ -11,23 +11,28 @@ define [
 	
 	# returns a collection of users
 	App.reqres.setHandler "users:all", ->
-		
+		job = $.Deferred()
+
 		users = new Base.Collection()
 		users.model = User
 		users.url = "/api/users"
-		users.fetch reset: true
+		
+		users.fetch success: =>
+			job.resolve users
 
-		users
+		job
 
 	# returns a specific user
 	App.reqres.setHandler "users:get", (id) ->
-		
+		job = $.Deferred()
+
 		user = new User()
 		user.id = id
 		
-		user.fetch()
+		user.fetch success: =>
+			job.resolve user
 
-		user
+		job
 
 
 

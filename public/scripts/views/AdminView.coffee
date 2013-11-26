@@ -18,18 +18,17 @@ define [
 			"sidebarRegion": ".sidebar-region"
 			"mainRegion": ".main-region"
 
-		showUser: (id) ->
-			App.state.user = App.request "users:get", id
-			@mainRegion.show new UserEditView(model: App.state.user)
+		onRender: ->
+			@sidebarRegion.show new AdminSidebarView()
+
+		showUser: (user) ->
+			@mainRegion.show new UserEditView model: user
 
 		createUser: ->
 			@mainRegion.show new UserEditView(model: new User(role: "user"))
 
-		showUserNavigator: ->
-			App.state.user = null
-			@mainRegion.show new UserNavigatorView()
-
-		onRender: ->
-			@sidebarRegion.show new AdminSidebarView()
-			@showUserNavigator()
+		showUserNavigator: (users) ->
+			@mainRegion.show new UserNavigatorView collection: users
+			
+		
 
