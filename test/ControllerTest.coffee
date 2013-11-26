@@ -27,7 +27,7 @@ describe "addOne Exemplary Tests2", ->
 	so that no test can (permanently) mess with / mutate it.
 	###
 	beforeEach (done) ->
-		require ["base/utils/Controller2"], (_Controller) ->
+		require ["base/utils/Controller"], (_Controller) ->
 			Controller = clone(_Controller)
 			done()
 

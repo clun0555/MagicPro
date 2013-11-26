@@ -30,4 +30,4 @@ define [
 			App.navigate "product:show:categories"
 
 		navigateAdmin: ->
-			App.navigate "admin:home"
+			App.navigate "admin:show"

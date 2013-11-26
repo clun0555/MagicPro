@@ -8,7 +8,7 @@ define [
 	"models/Cart"
 ], (Base, App, CategoryNavigator, TypeNavigator, ProductNavigatorView, ProductDetailView, Cart) ->
 
-	class ProductController extends Base.Controller2
+	class ProductController extends Base.Controller
 
 		states: 
 			"product:show:categories": "showCategories"

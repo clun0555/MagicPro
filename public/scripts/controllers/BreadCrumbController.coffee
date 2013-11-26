@@ -4,7 +4,7 @@ define [
 	"views/BreadCrumbView"	
 ], (Base, App, BreadCrumbView) ->
 
-	class BreadCrumbController extends Base.Controller2
+	class BreadCrumbController extends Base.Controller
 
 		states: 
 			"product:show:categories": "showCategories"
@@ -15,12 +15,14 @@ define [
 		authorize: (action, args) -> @isLoggedIn()
 
 		showCategories: ->
+			@title "Home" # TODO use translation
 			@show new BreadCrumbView model: new Base.Model()
 
 		showTypes: (categoryIdentifier) ->
 			@do [
 				App.request "category:by:identifier", categoryIdentifier
 			], (category) ->
+				@title category.get("title")
 				@show new BreadCrumbView model: new Base.Model(category: category.toJSON())
 
 		showProducts: (categoryIdentifier, typeIdentifier) ->
@@ -28,6 +30,7 @@ define [
 				App.request "category:by:identifier", categoryIdentifier
 				App.request "type:by:identifier", typeIdentifier
 			], (category, type) ->
+				@title type.get("title")
 				@show new BreadCrumbView model: new Base.Model(category: category.toJSON(), type: type.toJSON())
 
 
@@ -37,6 +40,7 @@ define [
 				App.request "type:by:identifier", typeIdentifier
 				App.request "product:by:identifier", productIdentifier
 			], (category, type, product) ->
+				@title product.get("title")
 				@show new BreadCrumbView model: new Base.Model(category: category.toJSON(), type: type.toJSON(), product: product.toJSON())
 
 

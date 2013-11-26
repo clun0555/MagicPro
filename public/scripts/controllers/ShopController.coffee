@@ -6,7 +6,7 @@ define [
 	"views/ShopView"
 ], (Base, App, ProductController, BreadCrumbController, ShopView) ->
 
-	class ShopController extends Base.Controller2
+	class ShopController extends Base.Controller
 
 		states: 
 			"product:show:categories": "showShop"

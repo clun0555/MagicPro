@@ -50,7 +50,7 @@ define [
 			@model.set "email", $(event.currentTarget).val()
 
 		goBack: ->
-			App.execute "admin:controller", "show:users"
+			App.navigate "admin:user:index"
 
 
 		save: ->			

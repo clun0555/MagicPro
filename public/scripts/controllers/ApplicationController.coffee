@@ -9,7 +9,7 @@ define [
 
 ], (Base, App, Authorization, LoginView, RegisterView, ErrorPageView, AdminView) ->
 
-	class ApplicationController extends Base.Controller2
+	class ApplicationController extends Base.Controller
 		
 		states:
 			"app:root": "root"

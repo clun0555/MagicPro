@@ -37,14 +37,8 @@ define [
 		
 		new ApplicationController region: App.mainRegion
 		new ShopController region: App.mainRegion
-
-		# new ApplicationController region: App.mainRegion
-		# new AdminController region: App.mainRegion
-		# new ProductFinderController region: App.mainRegion
-		# new ProductController region: App.mainRegion
-		# new BreadCrumbController region: App.mainRegion
-		# new ProductController region: App.mainRegion		
-
+		new AdminController region: App.mainRegion
+		
 		App.showMenu()
 		App.showFooter()
 		App.showLogo()

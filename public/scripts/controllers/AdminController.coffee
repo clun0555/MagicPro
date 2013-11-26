@@ -7,16 +7,16 @@ define [
 
 	class AdminController extends Base.Controller
 		
-		routes: 
-			"admin": "showAdmin"
-			"admin/users": "showUsers"
-			"admin/users/new": "createUser"
-			"admin/users/:id": "editUser"
+		states: 
+			"admin:show": "showAdminView"
+			"admin:user:index": "showUsers"
+			"admin:user:create": "createUser"
+			"admin:user:edit": "editUser"
 
 		authorize: (action) -> 	@isAdmin()
 
 		showAdminView: ->			
-			@show new AdminView() unless App.mainRegion instanceof AdminView				
+			@show new AdminView() unless App.mainRegion instanceof AdminView
 
 		showUsers: -> @showAdminView()
 
