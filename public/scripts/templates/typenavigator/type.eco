@@ -4,7 +4,7 @@
     <div class="caption">
         <h4><%=@title%></h4>
 
-    	<img src="http://placehold.it/200x200" alt="ALT NAME" style="width: 100%">
+    	<img src="<%= @imagePath @imageId, "s=158" %>" style="width: 100%" >
 
     </div>
 
