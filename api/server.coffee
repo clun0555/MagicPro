@@ -29,7 +29,7 @@ app.configure ->
 	app.use express.session
 		secret: "test"
 		collection: "sessions"
-		cookie: { maxAge: 2 * 60 * 60 * 1000 } # 2 days	
+		cookie: { maxAge: 2 * 24 * 60 * 60 * 1000 } # 2 days
 		store: sessionStore	
 	
 	#authentification

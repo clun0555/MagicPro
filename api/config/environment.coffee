@@ -25,19 +25,16 @@ config =
 	IMAGE_SERVER_PATH: process.env.IMAGE_SERVER_PATH 
 
 	SESSION_STORE: process.env.SESSION_STORE
-
-defaults = 
-	PORT: 3000
-	SESSION_STORE: "MONGO"
-
 	
 # overide with local config if exists in config/local.coffee
 try
 	local = require("../../config/environment")
 	config = _.extend config, local
-	config = _.defaults config, defaults
-	
 
+# add default values
+config = _.defaults config,
+	PORT: 3000
+	SESSION_STORE: "MONGO"
 
 ## Process REDIS URL
 path = url.process protocol: "redis", href: config.REDIS_URL, login: config.REDIS_DATABASE, password: config.REDIS_PASSWORD, hostname: config.REDIS_HOSTNAME, port: config.REDIS_PORT, slashes: true
