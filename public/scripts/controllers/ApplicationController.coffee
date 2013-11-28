@@ -11,14 +11,14 @@ define [
 
 	class ApplicationController extends Base.Controller
 		
-		routes: 
-			"" : "root"
-			"login": "login" 
-			"register": "register" 
-			"*path" : "show404ErrorPage"
+		states:
+			"app:root": "root"
+			"app:show:error:page": "showErrorPage"
+			"app:login": "login"
+			"app:register": "register"
 
 		root: -> 
-			App.execute "product:finder:controller", "show:navigator", [], { history: false }
+			App.navigate "product:show:categories", [], { history: false }
 
 		login: (forward) ->
 			options = if forward then { forward: forward } else {}
@@ -31,7 +31,8 @@ define [
 			@showErrorPage 404
 
 		showErrorPage: (code) ->
-			@show new ErrorPageView(model: new Base.Model(code: code))
+			@show new ErrorPageView(model: new Base.Model(code: code))		
+
 
 
 				

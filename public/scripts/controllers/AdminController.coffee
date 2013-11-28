@@ -7,25 +7,34 @@ define [
 
 	class AdminController extends Base.Controller
 		
-		routes: 
-			"admin": "showAdmin"
-			"admin/users": "showUsers"
-			"admin/users/new": "createUser"
-			"admin/users/:id": "editUser"
+		states: 
+			"admin:show": "showAdmin"
+			"admin:user:index": "showUsers"
+			"admin:user:create": "createUser"
+			"admin:user:edit": "editUser"
 
 		authorize: (action) -> 	@isAdmin()
 
 		showAdminView: ->			
-			@show new AdminView() unless App.mainRegion instanceof AdminView				
+			@show new AdminView() unless App.mainRegion instanceof AdminView			
 
-		showUsers: -> @showAdminView()
+		showAdmin: ->
+			App.navigate "admin:user:index", [], { history: false }
 
-		showAdmin: -> @showUsers()
+		showUsers: -> 
+			@do [
+				App.request("users:all")
+			], (users) =>
+				@showAdminView()
+				@region.currentView.showUserNavigator users
 
 		createUser: ->
 			@showAdminView()
 			@region.currentView.createUser()
 
 		editUser: (id) ->
-			@showAdminView()
-			@region.currentView.showUser id
+			@do [
+				App.request("users:get", id)
+			], (user) =>
+				@showAdminView()
+				@region.currentView.showUser user

@@ -8,7 +8,10 @@ module.exports =
 		id: 'product'
 	
 	index: (req, res) ->
-		res.send Product.find()
+		if req.query.type?
+			res.send Product.find {type: req.query.type}
+		else
+			res.send Product.find()
 
 	show: (req, res) ->
 		res.send Product.findOne identifier: req.params.product

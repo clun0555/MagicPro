@@ -1,5 +1,4 @@
 _ = require("underscore")
-environment = require("./api/config/environment")
 
 module.exports = (grunt) ->
 	
@@ -117,7 +116,7 @@ module.exports = (grunt) ->
 
 		shell: 
 			deploy: 
-				command: 'git push heroku.com:' +  environment.HEROKU_APP  + '.git master'
+				command: 'git push heroku.com:' +  require("./api/config/environment").HEROKU_APP  + '.git master'
 				options: 
 					stdout: true
 					stderr: true
@@ -216,11 +215,13 @@ module.exports = (grunt) ->
 	# Creates a js modules containing environment variables
 	grunt.registerTask 'expose_environment_variables', 'Expose Enviroement Variables to front end', ->
 		
+		environment = require("./dist/api/config/environment")
+
 		exposedVariables = _.pick environment, "IMAGE_SERVER_PATH"
 
 		fileContent = "define(function(){ return " + JSON.stringify(exposedVariables) + "; });"
 		
-		grunt.file.write "dist/public/scripts/utils/Environment.js", fileContent
+		grunt.file.write "./dist/public/scripts/utils/Environment.js", fileContent
 
 
 	# runs and watchs application. Uses nodemon to keep process alive with latests code changes

@@ -8,9 +8,10 @@ define [
 	"base/views/CompositeView"
 	"base/utils/Router"
 	"base/utils/Controller"
+	"base/utils/State"
 	"base/config"
 
-], (Model, Collection, ItemView, CollectionView, Layout, CompositeView,  Router, Controller) ->
+], (Model, Collection, ItemView, CollectionView, Layout, CompositeView,  Router, Controller, State) ->
 
 	#entities
 	Model: Model
@@ -24,3 +25,4 @@ define [
 
 	Router: Router
 	Controller: Controller
+	State: State

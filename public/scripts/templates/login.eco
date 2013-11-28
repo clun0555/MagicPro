@@ -5,7 +5,7 @@
 	<input type="text" class="form-control" placeholder="<%= @t "login.email" %>" autofocus="" name="username">
 	<input type="password" class="form-control" placeholder="<%= @t "login.password" %>" name="password">
 	<div class="login-buttons">
-		<a class="btn btn-lg btn-link" href="#register" ><%= @t "login.register" %></a>
+		<a class="btn btn-lg btn-link register-button" data-sate="app:register" ><%= @t "login.register" %></a>
 		<button class="btn btn-lg btn-primary login-button" ><%= @t "login.login" %></button>
 	</div>
 </div>

@@ -11,9 +11,5 @@ define [
 		itemView: TypeView
 		tagName: 'div'
 		className: 'type-navigator thumnails'
-
-		initialize: ->
-			@collection = App.request "types:all"
-			@listenTo @collection, "reset", @render, this
-
+		
 

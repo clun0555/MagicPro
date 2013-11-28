@@ -14,7 +14,7 @@ module.exports =
 	# S3 credentials 
 	S3_KEY: "AKIAIHAIMDM6LGXYHWUA"
 	S3_SECRET: "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"
-	S3_BUCKET: "projecttemplate2"
+	S3_BUCKET: "magicpro"
 
 	##### MongoDB
 	## path to mongo database
@@ -35,7 +35,7 @@ module.exports =
 	# REDIS_PASSWORD: ""
 
 	##### image server
-	IMAGE_SERVER_PATH: "http://image-resizer-server.herokuapp.com"
+	IMAGE_SERVER_PATH: "http://image-resizer-magicpro.herokuapp.com"
 
 	##### session store MONGO|REDIS|MEMORY. Defaults to "MONGO"
 	# SESSION_STORE: "MONGO"

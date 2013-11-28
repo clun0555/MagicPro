@@ -7,19 +7,19 @@
 define [
 	"Base"
 	"App"
-	"utils/DataHandler"
+	"AppRouter"
 	"utils/Translator"
-	"utils/Authentification"
 	"views/MenuView"
 	"views/FooterView"	
 	"views/LogoView"
 	"controllers/ApplicationController"
 	"controllers/AdminController"
-	"controllers/ProductFinderController"
+	"controllers/ShopController"	
+	"providers/Providers"	
 	"backbone.named.routes"
 	"bootstrap"
 
-], (Base, App, DataHandler, Translator, Authentification, MenuView, FooterView, LogoView, ApplicationController, AdminController, ProductFinderController) ->
+], (Base, App, AppRouter, Translator, MenuView, FooterView, LogoView, ApplicationController, AdminController, ShopController, Providers) ->
 
 	App.addRegions
 		"menuRegion": "#menu-region"
@@ -28,17 +28,21 @@ define [
 		"modalRegion": "#modal-region"
 		"logoRegion": "#logo-region"
 
+	App.navigate = (action, args, options) ->
+		App.state.trigger "navigate", action, args, options
+
 	App.addInitializer ->
+		App.router = new AppRouter()
 		
 		new ApplicationController region: App.mainRegion
+		new ShopController region: App.mainRegion
 		new AdminController region: App.mainRegion
-		new ProductFinderController region: App.mainRegion
-
+		
 		App.showMenu()
 		App.showFooter()
 		App.showLogo()
 
-	App.state = new Base.Model()
+	App.state = new Base.State()
 
 	App.showMenu = ->
 		App.menuRegion.show new MenuView()

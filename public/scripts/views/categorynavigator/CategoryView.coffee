@@ -11,5 +11,5 @@ define [
 		events: 
 			'click': "selectCategory"
 
-		selectCategory: ->
-			App.execute "product:finder:controller", "show:category", [ @model.id ]
+		selectCategory: ->			
+			App.navigate "product:show:types", [ @model.id ]

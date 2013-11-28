@@ -1,11 +1,13 @@
 define [
 	"Base"
-], (Base) ->
+	"App"
+], (Base, App) ->
 	
 	class Product extends Base.Model
 
 		urlRoot: "/api/products"
-		idAttribute: "identifier"
+		idAttribute: "identifier"			
+
 
 		
 

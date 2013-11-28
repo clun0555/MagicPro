@@ -15,13 +15,13 @@ define [
 			"change": "render"
 
 		initialize: (options) ->
+			{ @product, @cart } = options
 			@model = new Base.Model()
-			@listenTo App.state.cart, "updated", @updateSummary
-			{ @product } = options
+			@listenTo @cart, "updated", @updateSummary
 			@updateSummary()
 
 		updateSummary: ->
-			bundle = App.state.cart.getBundle(@product)	
+			bundle = @cart.getBundle(@product)	
 			price = if bundle? then bundle.get("price") else 0
 			quantity = if bundle? then bundle.get("quantity") else 0
 			@model.set "totalPrice": price, "totalQuantity": quantity 

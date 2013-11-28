@@ -1,7 +1,8 @@
 define [
+	"App"
 	"underscore"
 	"backbone"
-], (_, Backbone) ->
+], (App, _, Backbone) ->
 	
 	class Router extends Backbone.Router
 
@@ -11,6 +12,24 @@ define [
 			# add routes to backbone.named.routes
 			for route, method of @routes when route isnt "*path"
 				@helper.addRoute method, route
+
+			# when route changes, change state
+			@on "route", (route, args) =>
+				App.navigate route, args
+
+			# when state changes, keep url up-to-date
+			App.state.on "navigate", (action, args, options) =>				
+										
+				# retrieve path from action and arguments
+				path = @path action, args
+				
+				if path
+					# translate options to router options
+					routerOptions = { trigger: false, update: false }
+					routerOptions.replace = true if options?.history is false
+
+					# navigate silently to path
+					@navigate path, routerOptions
 
 
 		# return the path for a route and arguments. 
@@ -23,8 +42,11 @@ define [
 			try
 				return @helper[route + "Path"].apply @helper, args
 			catch
-				# fallback to route without params if no routes has matched
-				return @helper[route + "Path"].apply @helper
+				return false
+				# # fallback to route without params if no routes has matched
+				# try
+				# 	return @helper[route + "Path"].apply @helper
+				# catch 
 
 
 		

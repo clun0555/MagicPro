@@ -5,7 +5,7 @@
 			<span class="product-ref" ><%=@item_id%> | </span> 
 			<span class="product-price" ><%= @formatCurrency "$" , @price %></span> 
 		</p>
-		<img class="item-thumbnail" src="http://placehold.it/250x250" >
+		<img class="item-thumbnail" src="<%= @imagePath @imageId, "w=250" # "c=515,515,0,0" %>" >
 		<p class="product-description"><%=@description%></p>
 	</div>
 	<div class="col-md-7 row bundle-container">
@@ -19,7 +19,7 @@
 			<tbody>
 				<% for design in @designs : %>
 					<tr>
-						<td class="design-thumbnail"><img src="http://placehold.it/50x50" ></td>
+						<td class="design-thumbnail"><img src="<%= @imagePath design.imageId, "s=50" %>" ></td>
 						<td class="design-info">
 							<span class="design-label"><%= design.label %></span>
 							<span class="design-id">(<%= design.designId %>)</span> 

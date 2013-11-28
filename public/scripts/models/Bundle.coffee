@@ -8,9 +8,13 @@ define [
 		initialize: (options) ->
 			@composition = new Base.Collection()
 			{ @product } = options
-			@set "itemId", @product.id
-			@set "title", @product.get("title")
-			@set "productIdentifier", @product.get("identifier")
+			
+			@set 
+				"itemId": @product.get("_id")
+				"title": @product.get("title")
+				"productIdentifier": @product.get("identifier")
+				"categoryIdentifier": @product.get("categoryIdentifier")
+				"typeIdentifier": @product.get("typeIdentifier")
 
 
 		updateComposition: (newComposition) ->

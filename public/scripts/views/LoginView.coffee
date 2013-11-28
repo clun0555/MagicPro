@@ -11,6 +11,7 @@ define [
 		className: "login-view"
 		events:
 			'click .login-button': "login"
+			'click .register-button': "register"
 
 		initialize: ->
 			@model = new Base.Model()			
@@ -48,5 +49,8 @@ define [
 				when @model.get("username") is "" then @t("login.email-isempty")
 				when @model.get("password") is "" then @t("login.password-isempty")
 							
+
+		register: ->
+			App.navigate "app:register"
 
 					

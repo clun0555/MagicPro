@@ -12,6 +12,7 @@ Product = new mongoose.Schema
 	modified: { type: Date, default: Date.now }
 	imageId: { type: String }
 	identifier: {type: String, require: true, unique: true}
+	type: {type: mongoose.Schema.ObjectId, ref: 'Type'}
 	designs: [
 		{ label: String, designId: String, imageId: String }
 	]

@@ -8,6 +8,7 @@ require.config
 		"backbone": "base/lib/backbone" # MVC Framework
 		"marionette": "base/lib/backbone.marionette" # Reusable Large Scale Application Design Patterns
 		"backbone.named.routes": "base/lib/backbone.named.routes" # plugin to extract routes url 
+		"backbone.relational": "base/lib/backbone.relational" # plugin to extract routes url 
 		
 		"bootstrap": "base/lib/bootstrap" # widgets, ui guidelines
 		"moment": "base/lib/moment" # date formating
@@ -40,5 +41,7 @@ require.config
 		"marionette":
 			exports: "Backbone.Marionette"
 			deps: ["backbone"]
+
+		"backbone.relational": ["backbone"]
 
 		"backbone.named.routes": ["backbone"]
