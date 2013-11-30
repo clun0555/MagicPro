@@ -12,6 +12,6 @@ define [
 			"click": "selectType"
 
 		selectType: ->
-			App.navigate "product:show:products", [ @model.get("categoryIdentifier"), @model.id ]
+			App.navigate "product:show:products", [ @model.get("category").get("slug"), @model.get("slug") ]
 			
 

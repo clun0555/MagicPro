@@ -18,4 +18,4 @@ define [
 
 		onShow: ->
 			@summary.show new CartSummary model: @model
-			@items.show new CartItems collection: @model.items
+			@items.show new CartItems collection: @model.get("bundles")

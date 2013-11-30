@@ -13,4 +13,4 @@ define [
 
 		showProductDetail: ->
 			
-			App.navigate "product:show:product", [  @model.get("categoryIdentifier"), @model.get("typeIdentifier"), @model.id ]
+			App.navigate "product:show:product", [  @model.get("type").get("category").get("slug"), @model.get("type").get("slug"), @model.get("slug") ]

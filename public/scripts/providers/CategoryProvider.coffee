@@ -19,10 +19,7 @@ define [
 		categories.url = "/api/categories"
 		categories.fetch()
 			.done => 
-				for category in categories.models
-					for type in category.get("types")
-						type.categoryIdentifier = category.get("identifier")						
-
+				
 				App.categories = categories
 				job.resolve App.categories
 			.fail =>
@@ -31,18 +28,18 @@ define [
 		job
 
 	# uses cached category list to retrieve a specific category
-	App.reqres.setHandler "category:by:identifier", (id) ->
+	App.reqres.setHandler "category:by:slug", (slug) ->
 		
 		job = $.Deferred()
 
 		# fail if id is null
-		return job.reject() unless id?
+		return job.reject() unless slug?
 
 		App.request("category:all")
 			.done (categories) ->
-				category = categories.findWhere { identifier: id }
-				if category? then job.resolve category else job.reject [ 404, "Category #{id} not found" ]
+				category = categories.findWhere { slug: slug }
+				if category? then job.resolve category else job.reject [ 404, "Category #{slug} not found" ]
 			.fail ->
-				job.reject [ 404, "Category #{id} not found" ]
+				job.reject [ 404, "Category #{slug} not found" ]
 		
 		job	

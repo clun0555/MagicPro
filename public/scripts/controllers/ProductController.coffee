@@ -24,22 +24,22 @@ define [
 			], (categories) =>
 				@region.show new CategoryNavigator collection: categories
 
-		showTypes: (categoryIdentifier) ->
+		showTypes: (categorySlug) ->
 			@do [
-				App.request "type:by:category", categoryIdentifier
+				App.request "type:by:category", categorySlug
 			], (types) =>
 				@region.show new TypeNavigator collection: types 
 
-		showProducts: (categoryIdentifier, typeIdentifier) ->
+		showProducts: (categorySlug, typeSlug) ->
 			@do [
-				App.request "product:by:type", typeIdentifier
+				App.request "product:by:type", typeSlug
 			], (products) ->
 				@region.show new ProductNavigatorView collection: products 
 
 
-		showProduct:  (categoryIdentifier, typeIdentifier, productIdentifier) ->
+		showProduct:  (categorySlug, typeSlug, productSlug) ->
 			@do [
-				App.request "product:by:identifier", productIdentifier
+				App.request "product:by:slug", productSlug
 				App.request "cart:current"
 			], (product, cart) ->
 				@region.show new ProductDetailView model: product, cart: cart

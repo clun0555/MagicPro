@@ -16,10 +16,11 @@ define [
 	"controllers/AdminController"
 	"controllers/ShopController"	
 	"providers/Providers"	
+	"models/Models"
 	"backbone.named.routes"
 	"bootstrap"
 
-], (Base, App, AppRouter, Translator, MenuView, FooterView, LogoView, ApplicationController, AdminController, ShopController, Providers) ->
+], (Base, App, AppRouter, Translator, MenuView, FooterView, LogoView, ApplicationController, AdminController, ShopController, Providers, Models) ->
 
 	App.addRegions
 		"menuRegion": "#menu-region"

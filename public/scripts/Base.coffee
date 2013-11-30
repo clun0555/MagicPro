@@ -26,3 +26,5 @@ define [
 	Router: Router
 	Controller: Controller
 	State: State
+
+	Models: {}

@@ -1,4 +1,4 @@
-<span class="bundle-title"><%=@title%></span> 
+<span class="bundle-title"><%=@product.title%></span> 
 <div class="bundle-numbers">
 <span class="bundle-quantity"><%=@quantity%></span> 
 <span class="bundle-price"><%= @formatCurrency "$", @price %></span> 

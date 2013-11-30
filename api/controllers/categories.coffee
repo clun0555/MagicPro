@@ -11,7 +11,7 @@ module.exports =
 		res.send Category.find()
 
 	show: (req, res) ->
-		res.send Category.findOne identifier: req.params.category
+		res.send Category.findById req.params.category
 
 	create: (req, res) ->
 

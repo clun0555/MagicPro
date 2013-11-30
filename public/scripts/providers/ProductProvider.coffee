@@ -11,12 +11,15 @@ define [
 
 	@cache = new Base.Collection()
 	@cache.model = Product
+	@jobs = {}
 
-	# returns a collection of products by typeIdentifier
-	App.reqres.setHandler "product:by:type", (typeIdentifier) ->
+	# returns a collection of products by typeSlug
+
+	App.reqres.setHandler "product:by:type", (typeSlug) ->
+		
 		job = $.Deferred()
 
-		App.request("type:by:identifier", typeIdentifier).done (type) ->
+		App.request("type:by:slug", typeSlug).done (type) ->
 			App.request("product:all", type: type.get("_id")).done (products) ->
 				job.resolve products
 
@@ -38,32 +41,24 @@ define [
 			App.request("type:all")
 		).done (xhr, types) => 
 			
-			for product in products.models
-				type = types.findWhere _id: product.get("type")
-				product.set "typeIdentifier": type.get("identifier"), "categoryIdentifier": type.get("categoryIdentifier")
-			
 			@cache.add products.models
-
-			# App.products = products
+			
 			job.resolve products
 		.fail =>
 			job.reject()
 
 		job
 
-	App.reqres.setHandler "product:by:identifier", (identifier) =>
+	App.reqres.setHandler "product:by:slug", (slug) =>
+		return @jobs[slug] if @jobs[slug]?
 
-		job = $.Deferred()
+		@jobs[slug] = $.Deferred() 
 
-		$.when(
-			@cache.lookup(identifier)
-			App.request("type:all")
-		).done (product, types) -> 
-			type = types.findWhere _id: product.get("type")
-			product.set "typeIdentifier": type.get("identifier"), "categoryIdentifier": type.get("categoryIdentifier")
-			job.resolve product
+		@cache.lookup(slug: slug).done (product) =>
+			
+			@jobs[slug].resolve product
 		
-		job
+		@jobs[slug]
 
 
 

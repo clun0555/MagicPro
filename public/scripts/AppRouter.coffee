@@ -12,9 +12,9 @@ define [
 			"register": "app:register"
 			
 			"products": "product:show:categories"
-			"products/:categorieIdentifier": "product:show:types"
-			"products/:categorieIdentifier/:typeIdentifier": "product:show:products"
-			"products/:categorieIdentifier/:typeIdentifier/:productIdentifier": "product:show:product"
+			"products/:categorySlug": "product:show:types"
+			"products/:categorySlug/:typeSlug": "product:show:products"
+			"products/:categorySlug/:typeSlug/:productSlug": "product:show:product"
 
 			"admin": "admin:show"
 			"admin/users": "admin:user:index"

@@ -26,6 +26,9 @@ define [
 	App.reqres.setHandler "users:get", (id) ->
 		job = $.Deferred()
 
+		user = User.find id
+		return job.resolve user if user?
+
 		user = new User()
 		user.id = id
 		

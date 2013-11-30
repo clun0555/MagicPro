@@ -20,4 +20,7 @@ define [
 
 
 		openProduct: ->
-			App.navigate "product:show:product", [ @model.get("categoryIdentifier"), @model.get("typeIdentifier"), @model.get("productIdentifier") ]
+			categorySlug = @model.get("product").get("type").get("category").get("slug")
+			typeSlug = @model.get("product").get("type").get("slug")
+			productSlug = @model.get("product").get("slug")
+			App.navigate "product:show:product", [ categorySlug, typeSlug, productSlug ]

@@ -16,7 +16,7 @@ define [
 
 		App.request("category:all")
 			.done (categories) ->
-				types = _.chain(categories.pluck("types")).flatten().value()
+				types = _.chain(categories.pluck("types")).pluck("models").flatten().value()
 				job.resolve new Base.Collection(types)
 			.fail ->
 				job.reject [ 404, "Type #{id} not found" ]
@@ -24,21 +24,17 @@ define [
 		job	
 
 	# uses cached category list to retrieve a specific category
-	App.reqres.setHandler "type:by:category", (identifier) ->
+	App.reqres.setHandler "type:by:category", (slug) ->
 		
 		job = $.Deferred()
 
 		# fail if id is null
-		return job.reject() unless identifier?
+		return job.reject() unless slug?
 
-		App.request("category:by:identifier", identifier)
+		App.request("category:by:slug", slug)
 			.done ( category ) ->
 				if category? 
-					collection = new Base.Collection()
-					collection.model = Type
-					collection.add category.get("types")
-					model.set "categoryIdentifier", category.id for model in collection.models
-					job.resolve collection
+					job.resolve category.get("types")
 				else 
 					job.reject [ 404, "Category #{id} not found" ]
 			.fail ->
@@ -63,18 +59,18 @@ define [
 		
 		job
 
-	App.reqres.setHandler "type:by:identifier", (identifier) ->
+	App.reqres.setHandler "type:by:slug", (slug) ->
 
 		job = $.Deferred()
 
-		# fail if identifier is null
-		return job.reject() unless identifier?
+		# fail if slug is null
+		return job.reject() unless slug?
 
 		App.request("type:all")
 			.done (types) ->
-				type = types.findWhere { identifier: identifier }
-				if type? then job.resolve type else job.reject [ 404, "Type #{identifier} not found" ]
+				type = types.findWhere { slug: slug }
+				if type? then job.resolve type else job.reject [ 404, "Type #{slug} not found" ]
 			.fail ->
-				job.reject [ 404, "Type #{identifier} not found" ]
+				job.reject [ 404, "Type #{slug} not found" ]
 		
 		job	

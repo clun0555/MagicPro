@@ -12,4 +12,4 @@ define [
 			'click': "selectCategory"
 
 		selectCategory: ->			
-			App.navigate "product:show:types", [ @model.id ]
+			App.navigate "product:show:types", [ @model.get("slug") ]

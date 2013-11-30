@@ -24,7 +24,11 @@ define [
 
 
 		updateCart: ->
-			vals = _.chain(@$(".design-count input")).map((e) -> count: parseInt($(e).val(), 10), designId: $(e).data("design")).compact().value()
+			vals = _.chain(@$(".design-count input")).map((e) -> 
+				quantity: parseInt($(e).val(), 10)
+				designId: $(e).data("design")
+			).compact().value()
+
 			@cart.updateBundle @model, vals
 
 

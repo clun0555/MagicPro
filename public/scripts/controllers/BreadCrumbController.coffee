@@ -18,27 +18,27 @@ define [
 			@title "Home" # TODO use translation
 			@show new BreadCrumbView model: new Base.Model()
 
-		showTypes: (categoryIdentifier) ->
+		showTypes: (categorySlug) ->
 			@do [
-				App.request "category:by:identifier", categoryIdentifier
+				App.request "category:by:slug", categorySlug
 			], (category) ->
 				@title category.get("title")
 				@show new BreadCrumbView model: new Base.Model(category: category.toJSON())
 
-		showProducts: (categoryIdentifier, typeIdentifier) ->
+		showProducts: (categorySlug, typeSlug) ->
 			@do [
-				App.request "category:by:identifier", categoryIdentifier
-				App.request "type:by:identifier", typeIdentifier
+				App.request "category:by:slug", categorySlug
+				App.request "type:by:slug", typeSlug
 			], (category, type) ->
 				@title type.get("title")
 				@show new BreadCrumbView model: new Base.Model(category: category.toJSON(), type: type.toJSON())
 
 
-		showProduct: (categoryIdentifier, typeIdentifier, productIdentifier) ->
+		showProduct: (categorySlug, typeSlug, productSlug) ->
 			@do [
-				App.request "category:by:identifier", categoryIdentifier
-				App.request "type:by:identifier", typeIdentifier
-				App.request "product:by:identifier", productIdentifier
+				App.request "category:by:slug", categorySlug
+				App.request "type:by:slug", typeSlug
+				App.request "product:by:slug", productSlug
 			], (category, type, product) ->
 				@title product.get("title")
 				@show new BreadCrumbView model: new Base.Model(category: category.toJSON(), type: type.toJSON(), product: product.toJSON())

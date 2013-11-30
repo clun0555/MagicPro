@@ -12,5 +12,11 @@ define [
 		template: template
 
 		modelEvents: 
-			"change": "render"	
+			"change": "render"
 
+		events: 
+			'click .submit': "submitCart"
+
+
+		submitCart: ->
+			@model.save()

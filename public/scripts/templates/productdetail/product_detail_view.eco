@@ -2,7 +2,7 @@
 	<div class="col-md-5">
 		<h1><%=@title%></h1>
 		<p class="product-ref-price">
-			<span class="product-ref" ><%=@item_id%> | </span> 
+			<span class="product-ref" ><%=@identifier%> | </span> 
 			<span class="product-price" ><%= @formatCurrency "$" , @price %></span> 
 		</p>
 		<img class="item-thumbnail" src="<%= @imagePath @imageId, "w=250" # "c=515,515,0,0" %>" >
@@ -22,11 +22,11 @@
 						<td class="design-thumbnail"><img src="<%= @imagePath design.imageId, "s=50" %>" ></td>
 						<td class="design-info">
 							<span class="design-label"><%= design.label %></span>
-							<span class="design-id">(<%= design.designId %>)</span> 
+							<span class="design-id">(<%= design.identifier %>)</span> 
 							
 						</td>
 						<td class="design-count">
-							<input data-design="<%= design.designId %>" type="text" placeholder="0" value="<%= @quantity(design.designId) %>" >
+							<input data-design="<%= design._id %>" type="text" placeholder="0" value="<%= @quantity(design._id) %>" >
 						</td>
 					</tr>
 				<% end %>

@@ -22,7 +22,7 @@ define [
 			App.navigate "product:show:categories"			
 
 		showTypes: ->
-			App.navigate "product:show:types", [ @model.get("category").identifier ]			
+			App.navigate "product:show:types", [ @model.get("category").slug ]			
 
 		showProducts: ->
-			App.navigate "product:show:products", [ @model.get("category").identifier, @model.get("type").identifier ]			
+			App.navigate "product:show:products", [ @model.get("category").slug, @model.get("type").slug ]			

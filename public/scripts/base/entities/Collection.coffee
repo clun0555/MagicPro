@@ -7,15 +7,15 @@ define [
 
 	class Collection extends Backbone.Collection
 
-		lookup: (id) ->
+		lookup: (attributes) ->
 			job =  $.Deferred()
 			
-			if model = @get(id)
+			if model = @findWhere(attributes)
 				job.resolve model
 			else
-				model = new @model identifier: id
+				model = new @model attributes
 				# model.set 
-				model.fetch success: =>
+				model.fetchWhere attributes, success: =>
 					@add model
 					job.resolve model
 

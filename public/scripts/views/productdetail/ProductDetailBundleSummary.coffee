@@ -21,7 +21,7 @@ define [
 			@updateSummary()
 
 		updateSummary: ->
-			bundle = @cart.getBundle(@product)	
+			bundle = @cart.getBundle(@product.id)	
 			price = if bundle? then bundle.get("price") else 0
 			quantity = if bundle? then bundle.get("quantity") else 0
 			@model.set "totalPrice": price, "totalQuantity": quantity 

@@ -1,21 +1,17 @@
 mongoose = require("mongoose")
+Design = require("./design")
 
 Product = new mongoose.Schema
-	item_id: {type: String, required: true }
-	color_id: {type: String, required: false }
-	price: {type: Number, required: true}
-	size: {type: String, required: false }
-	color: {type: String, required: false }
-	title: { type: String, required: false }
-	description: { type: String, required: false }
-	inner: { type: Number, unique: false}
-	modified: { type: Date, default: Date.now }
+	identifier: {type: String, required: true }
+	slug: {type: String, require: true, unique: true}
+	title: { type: String, required: true }
+	description: { type: String }
 	imageId: { type: String }
-	identifier: {type: String, require: true, unique: true}
 	type: {type: mongoose.Schema.ObjectId, ref: 'Type'}
-	designs: [
-		{ label: String, designId: String, imageId: String }
-	]
+	designs: [ Design.schema ]
+	size: {type: String }
+	inner: { type: Number }
+	modified: { type: Date, default: Date.now }
 
 module.exports = mongoose.model("Product", Product)
 
