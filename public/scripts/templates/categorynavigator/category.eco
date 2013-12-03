@@ -1,6 +1,6 @@
 
 
-<div class="thumbnail">
+<div class="thumbnail thumbnails thumbnail-style">
     <div class="caption">
         <h4><%=@title%></h4>
 
