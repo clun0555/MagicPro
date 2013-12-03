@@ -2,10 +2,10 @@ define [
 
 	"Base"
 	"App"
-	"views/cartview/CartView"
+	# "views/cartview/CartView"
 	"templates/shop"
 
-], (Base, App, CartView, template) ->
+], (Base, App, template) ->
 
 	class ShopView extends Base.Layout
 
@@ -21,8 +21,8 @@ define [
 		initialize: (options) ->
 			{ @cart } = options
 
-		onRender: ->
-			@cartRegion.show new CartView model: @cart
+		# onRender: ->
+		# 	@cartRegion.show new CartView model: @cart
 
 		
 		

@@ -15,6 +15,7 @@ define [
 			"products/:categorySlug": "product:show:types"
 			"products/:categorySlug/:typeSlug": "product:show:products"
 			"products/:categorySlug/:typeSlug/:productSlug": "product:show:product"
+			"cart": "product:show:cart"
 
 			"admin": "admin:show"
 			"admin/users": "admin:user:index"

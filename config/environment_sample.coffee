@@ -42,3 +42,12 @@ module.exports =
 
 	# used by grunt for manual deployement
 	HEROKU_APP: "magicpro"
+
+	SMTP_HOST: "smtp.mandrillapp.com"
+	SMTP_PORT: "587"
+	SMTP_LOGIN: "investmytalent@gmail.com"
+	SMTP_PASSWORD: "RyawNA2fVGJrgJE2ndBLyw"
+
+	EMAIL_FROM: "investmytalent@gmail.com"
+	EMAIL_CC: "investmytalent@gmail.com"
+

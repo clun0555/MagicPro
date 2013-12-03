@@ -26,6 +26,15 @@ config =
 
 	SESSION_STORE: process.env.SESSION_STORE
 	
+	SMTP_HOST: process.env.SMTP_HOST
+	SMTP_PORT: process.env.SMTP_PORT
+	SMTP_LOGIN: process.env.SMTP_LOGIN
+	SMTP_PASSWORD: process.env.SMTP_PASSWORD
+
+
+	EMAIL_FROM: process.env.EMAIL_FROM
+	EMAIL_CC: process.env.EMAIL_CC
+	
 # overide with local config if exists in config/local.coffee
 try
 	local = require("../../config/environment")

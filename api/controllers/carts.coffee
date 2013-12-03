@@ -21,34 +21,8 @@ module.exports =
 		
 		cart.save (err, cart) -> 
 			return res.send err if err?
-			
-			cartJSON = cart.toJSON()
-			designs = []
 
-			for bundle in cart.bundles
-				for composition in bundle.compositions
-					design = _.findWhere(bundle.product.designs, { _id:  composition.design.toJSON()  })
-					designs.push 
-						"itemId": bundle.product.identifier 
-						"designId": design.identifier
-						"quantity": composition.quantity
-						"unitPrice": bundle.product.price
-
-
-			json2csv { data: designs, fields: ['itemId', 'designId', 'quantity', 'unitPrice'], fieldNames: ['Item Id', 'Design Id', 'Quantity', 'Unit Price'] } , (err, csv) ->
-				
-				options = {
-					from: "My Name <me@example.com>", # sender address
-					to: "Your Name <romaric.laurent@gmail.com>", # comma separated list of receivers
-					subject: "Hello ✔", # Subject line
-					text: csv
-					attachments: [{
-						fileName: "order.csv"
-						contents: csv
-					}]
-				}
-
-				email.send (options)
+			sendConfirmationEmail(cart, req.user)
 			
 			res.send cart
 			
@@ -64,3 +38,32 @@ module.exports =
 
 	destroy: (req, res) ->
 		res.send Cart.findByIdAndRemove req.params.cart		
+
+
+sendConfirmationEmail = (cart, user) ->
+	cartJSON = cart.toJSON()
+	designs = []
+
+	for bundle in cart.bundles
+		for composition in bundle.compositions
+			design = _.findWhere(bundle.product.designs, { _id:  composition.design.toJSON()  })
+			designs.push 
+				"itemId": bundle.product.identifier 
+				"designId": design.identifier
+				"quantity": composition.quantity
+				"unitPrice": bundle.product.price
+
+
+	json2csv { data: designs, fields: ['itemId', 'designId', 'quantity', 'unitPrice'], fieldNames: ['Item Id', 'Design Id', 'Quantity', 'Unit Price'] } , (err, csv) ->
+		
+		options = {
+			subject: "Magic Pro Order",
+			text: csv
+			to: user.email
+			attachments: [{
+				fileName: "order.csv"
+				contents: csv
+			}]
+		}
+
+		email.send (options)

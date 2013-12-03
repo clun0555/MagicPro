@@ -11,6 +11,7 @@ define [
 			"product:show:types": "showTypes"
 			"product:show:products": "showProducts"
 			"product:show:product": "showProduct"
+			"product:show:cart": "showOrderPreview"
 
 		authorize: (action, args) -> @isLoggedIn()
 
@@ -43,6 +44,9 @@ define [
 				@title product.get("title")
 				@show new BreadCrumbView model: new Base.Model(category: category.toJSON(), type: type.toJSON(), product: product.toJSON())
 
+		showOrderPreview: ->
+			@title "Home" # TODO use translation
+			@show new BreadCrumbView model: new Base.Model(cart: "hello")
 
 
 

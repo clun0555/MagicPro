@@ -12,3 +12,8 @@ define [
 		@cart = new Cart() unless @cart?
 		job.resolve @cart
 		job
+
+	App.reqres.setHandler "cart:save", (cb) =>
+		@cart.save {}, success: ->
+			@cart.clear()
+			cb()

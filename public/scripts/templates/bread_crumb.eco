@@ -3,6 +3,10 @@
  Home
 </a></li>
 
+<% if @cart? : %>
+	<li><a class="breadcrumb-category" >Order Preview</li>
+<% end %>
+
 <% if @category? :%>
 
 	<li><a class="breadcrumb-category" ><%=@category.title%></a></li>

@@ -11,7 +11,9 @@ define [
 	class CartView extends Base.Layout
 
 		className: "cart-view container"
+		
 		template: template	
+		
 		regions: 
 			"summary": ".summary-region"
 			"items": ".items-region"

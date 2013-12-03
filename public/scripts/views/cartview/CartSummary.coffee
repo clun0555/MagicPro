@@ -19,4 +19,5 @@ define [
 
 
 		submitCart: ->
-			@model.save()
+			App.navigate "product:show:cart"
+			# @model.save()

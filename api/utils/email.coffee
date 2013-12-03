@@ -1,14 +1,22 @@
 
 nodemailer = require("nodemailer")
+_ = require("underscore")
+environment = require("../config/environment")
 
 smtpTransport = nodemailer.createTransport "SMTP",
-	service: "Mandrill"
+	host: environment.SMTP_HOST
+	port: environment.SMTP_PORT
 	auth:
-		user: "investmytalent@gmail.com"
-		pass: "RyawNA2fVGJrgJE2ndBLyw"
+		user: environment.SMTP_LOGIN
+		pass: environment.SMTP_PASSWORD
 
 
 exports.send = (options) ->
+
+	options = _.defaults options, 
+		from: environment.EMAIL_FROM
+		cc: environment.EMAIL_CC
+
 
 	smtpTransport.sendMail options, (error, response) ->
 		if(error)
