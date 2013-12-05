@@ -3,7 +3,6 @@ node_modules
 .idea
 *sublime-workspace
 .sass-cache
-public/dist
 dist
 npm-debug.log
 environment.coffee
