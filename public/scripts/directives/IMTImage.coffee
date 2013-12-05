@@ -5,10 +5,12 @@ define [
 	directives.directive "imtImage", () ->
 		{
 			restrict: "E"
-			template: '<img class="{{class}}" src="http://image-resizer-magicpro.herokuapp.com/{{src}}?{{size}}" >'
+			template: "<img  ng-src=\"http://image-resizer-magicpro.herokuapp.com/{{ src || 'placeholder2.jpg'}}?{{size}}\" />"
+			require: '^ngSrc'
 			scope:
 				src: '@'
 				size: '@'
 				class: '@'
+			# replace: true			
 						
 		}
