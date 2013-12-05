@@ -31,6 +31,12 @@ module.exports = (grunt) ->
 					src: ["**"]
 					dest: "dist/config"
 				,
+
+					expand: true
+					cwd: "public/views"
+					src: ["**"]
+					dest: "dist/public/views"
+				,
 					expand: true
 					cwd: "public/"
 					src: ["*"]
@@ -78,12 +84,12 @@ module.exports = (grunt) ->
 
 			coffee:
 				files: "**/*.coffee"
-				tasks: [ "newer:coffee:all", "test" ]
+				tasks: [ "newer:coffee:all" ] #, "test"
 				options: event: ['added', 'changed']
 
 			copy:
 				files: ["api/**/*.js", "api/**/*.json", "**/*.html"]
-				tasks: [ "copy:dist", "test" ]
+				tasks: [ "copy:dist"]
 				options: event: ['added', 'changed']
 
 			compass:

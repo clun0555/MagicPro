@@ -1,0 +1,26 @@
+<li>
+	<a href="#/products" class="breadcrumb-home"> 
+	 Home
+	</a>
+</li>
+ 
+<li ng-if="state.category">
+	<a ui-sref="shop.types({ category: state.category.slug })" > 
+	 {{state.category.title}}
+	</a>
+</li>
+
+<li ng-if="state.type">
+	<a ui-sref="shop.products({ category: state.category.slug, type: state.type.slug})" > 
+	 {{state.type.title}}
+	</a>
+</li>
+
+
+<li ng-if="state.product">
+	<a  ui-sref="shop.product({ category: state.category.slug, type: state.type.slug, product: state.product.slug})" > 
+	 {{state.product.title}}
+	</a>
+</li>
+
+

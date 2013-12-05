@@ -1,0 +1,51 @@
+
+<div class="cart-detail">
+
+	<div class="thanks" ng-show="saved">
+		<h1>Thank you</h1>
+		<p>Your order has been sent to our team.</p>
+		<a class="btn btn-primary home btn-lg " >Home</a>			
+	</div>
+
+	<ul ng-show="!saved && !cart.isEmpty()">
+		
+		<h1>Your Order</h1>
+		
+		<li class="bundle-info" ng-repeat="bundle in cart.bundles">
+			<ul class="product-info">
+				<h1 class="product-title">{{ bundle.product.title }}</h1>	
+				<span class="product-ref" >{{bundle.product.identifier}} | </span> 
+				<span class="product-price" >{{ bundle.product.price | currency:"$" }}</span> 				
+			</ul>
+			
+			<ul class="composition-list">
+				
+				<li class="composition-info" ng-repeat="composition in bundle.compositions"  > 
+
+					<span class="design-image"> <imt-image src="{{composition.design.imageId}}" size="s=75" ></imt-image> </span>
+					<span class="design-label">{{ composition.design.label }} <br /><span class="design-identifier">({{ composition.design.identifier }})</span></span>
+					
+					<span class="composition-quantity"><input type="number" ng-model="composition.quantity"> </span>
+					  
+				</li>
+				
+			</ul>
+						
+		</li>
+
+		
+
+		<li class="cart-summary">
+			<div>
+				{{ cart.price | currency:"$" }} 		
+				<br>
+				<a class="btn btn-primary submit-cart btn-lg " ng-click="submit()" >Submit</a>	
+			</div>
+			
+		</li>
+		
+	</ul>
+
+</div>
+
+

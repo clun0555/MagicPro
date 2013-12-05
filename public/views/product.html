@@ -1,0 +1,60 @@
+<div class="product-detail-view container">
+	
+	<div class="row">
+		<div class="col-md-5">
+			<h1>{{ product.title}}</h1>
+			<p class="product-ref-price">
+				<span class="product-ref" >{{ product.identifier }} | </span> 
+				<span class="product-price" >{{  product.price | currency:"$" }}</span> 
+			</p>
+			
+			<imt-image class="item-thumbnail" src="{{product.imageId}}" size="w=250" ></imt-image>
+
+			<p class="product-description">{{ product.description}}</p>
+		</div>
+		<div class="col-md-7 row bundle-container">
+		<table>
+				<thead>
+					<tr>
+						<th colspan="2"></th>
+						<th class="design-count">HOW MANY?</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr ng-repeat="design in product.designs">
+						<td class="design-thumbnail">
+							<imt-image src="{{design.imageId}}" size="s=75" ></imt-image>
+						</td>
+						<td class="design-info">
+							<span class="design-label">{{  design.label }}</span>
+							<span class="design-id">({{  design.identifier }})</span> 
+							
+						</td>
+						<td class="design-count">
+							<input type="text" placeholder="0" ng-change="updateQuantity(design)" ng-model="quantities[design._id]" >	
+						</td>
+					</tr>
+					
+				</tbody>	
+				<tfoot>
+						<tr>
+							<td colspan="2"></td>
+							<td class="bundle-summary-region" >
+								<div class="product-detail-bundle-summary" ng-show="cart.quantity(product) > 0">
+									<span class="total-quantity"> {{ cart.quantity(product) }} |</span>  <span class="total-price">{{cart.price(product) | currency:"$" }}</span>	
+									
+								</div>
+							
+
+
+							</td>
+						</tr>
+				</tfoot>
+			</table>
+			
+		</div>
+	</div>
+</div>
+
+

@@ -1,62 +1,50 @@
 define [
-	"Base"
-	"App"
-	"controllers/ProductController"
-	"controllers/BreadCrumbController"
-	"controllers/CartController"
-	"views/cartview/CartView"
-	"views/ShopView"
-], (Base, App, ProductController, BreadCrumbController, CartController, CartView, ShopView) ->
+	"./module"
+], (controllers) ->
+	
+	controllers
+		
+		.controller "ShopCategoriesController", ($scope, data, ShopService, StateService) ->
+						
+			$scope.categories = data.categories
+			StateService.category = data.category
+			StateService.type = data.type
+			StateService.product = data.product
 
-	class ShopController extends Base.Controller
+		.controller "ShopTypesController", ($scope, data, StateService) ->
+					
+			StateService.category = data.category
+			StateService.type = data.type
+			StateService.product = data.product
+			$scope.category = data.category
 
-		states: 
-			"product:show:categories": "showShop"
-			"product:show:types": "showShop"
-			"product:show:products": "showShop"
-			"product:show:product": "showShop"
-			"product:show:cart": "showShop"
-				
-		authorize: (action, args) -> @isLoggedIn()
+		.controller "ShopProductsController", ($scope, data, StateService) ->
 
-		showShop: -> 
-			@do [
-				App.request("cart:current")
-			], (cart) ->
+			StateService.category = data.category
+			StateService.type = data.type
+			StateService.product = data.product
+			$scope.products = data.products
+		
+		.controller "ShopProductController", ($scope, data, CartService, StateService) ->
 			
-				# do nothing if view is alredy rendered. Sub controllers will do their job
-				return if @region.currentView instanceof ShopView
-				
-				shopView = new ShopView cart: cart
-				
-				# instanciate sub controllers
-				@listenTo shopView, "render", =>
-					@sub new ProductController region: shopView.contentRegion
-					@sub new BreadCrumbController region: shopView.breadcrumbRegion
-					@sub new CartController region: shopView.contentRegion
+			$scope.quantities = CartService.quantities(data.product)
+			$scope.product = data.product		
+			StateService.category = data.category
+			StateService.type = data.type
+			StateService.product = data.product
+			$scope.cart = CartService.get()
 
-					# close controllers when view is closed
-					@listenTo shopView, "close", @closeSubControllers
-
-					@listenTo shopView.contentRegion, "show", ->
-						# when view changes toggle cart
-						showCart = App.state.get("state") in [
-							"product:show:categories"
-							"product:show:types"
-							"product:show:products"
-							"product:show:product"
-						]
-
-						if showCart
-							shopView.cartRegion.show new CartView model: cart
-						else
-							shopView.cartRegion.close()
-
-				@show shopView
-			
-
+			$scope.updateQuantity = (design) ->
+				quantity = $scope.quantities[design._id]
+				CartService.update $scope.product, design, quantity
 
 				
+		.controller "BreadCrumbController", ($scope, CartService, StateService) ->
+			$scope.state = StateService	
+		
+		.controller "CartController", ($scope, CartService) ->
+			$scope.cart = CartService.get()
+		
 
 
 

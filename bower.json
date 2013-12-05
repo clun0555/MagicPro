@@ -1,0 +1,19 @@
+{
+	"name": "MagicPro",
+	"version": "0.2",
+	"main": "index.html",
+	"ignore": [
+		"**/.*",
+		"libs"
+	],
+	"dependencies": {
+		"angular": "latest",
+		"angular-route": "latest",
+		"angular-resource": "latest",
+		"angular-ui-router": "latest",
+		"requirejs": "latest",
+		"requirejs-domready": "latest",
+		"underscore": "latest",
+		"underscore.string": "latest"
+	}
+}

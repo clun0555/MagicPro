@@ -1,5 +1,5 @@
 {
-  "name": "magicpro",
+  "name": "magicpro-angular",
   "version": "0.3.4",
   "private": true,
   "main": "dist/api/server.js",

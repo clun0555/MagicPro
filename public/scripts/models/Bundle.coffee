@@ -1,76 +1,50 @@
 define [
 	"underscore"
-	"Base"
 	"models/Composition"
-], (_, Base, Composition) ->
-	
-	class Bundle extends Base.Model	
+], (_, Composition) ->
 
-		relations: [
-			{
-				type: "HasMany"
-				key: 'compositions'
-				relatedModel: 'Composition'
-				includeInJSON: true
-				collectionType: "BaseCollection"
-			},{
-				type: "HasOne"
-				key: 'product'
-				relatedModel: 'Product'
-				includeInJSON: true	
-			}
-		]
+	class Bundle
 
-		initialize: ( options ) ->
-			super 
-			
-			@set 
-				"product": options.product							
+		constructor: (options) ->
+			{ @product } = options
+			@compositions = []
 
-		updateComposition: (newComposition) ->
-
-			for design in @get("product").get("designs").models
+		updateComposition: (design, quantity) ->
+			composition = @getOrCreateComposition(design)
+					
+			if quantity
+				composition.quantity = parseInt(quantity, 10)
+				@compositions.push composition unless _.contains @compositions, composition
+			else
+				@removeComposition(composition)
 				
-				newDesignComposition = _.findWhere newComposition, "designId": design.id
-				designComposition = @getDesignComposition design.id
-				quantity = newDesignComposition?.quantity
-				
-				if quantity
-					unless designComposition?
-						designComposition = new Composition design: design
-						@get("compositions").add designComposition
 
-					designComposition.set quantity: quantity 
+		getOrCreateComposition: (design) ->
+			@getComposition(design._id) ? new Composition(design: design)
 
-				else if designComposition?
-					@get("compositions").remove designComposition
+		getComposition: (designId) ->
+			_.find @compositions, (composition) -> composition.design._id is designId
 
-				@set "quantity", @quantity()
-				@set "price", @price()
+		removeComposition: (composition) ->
+			if _.contains @compositions, composition
+				index = @compositions.indexOf(composition)
+				@compositions.splice index, 1
 
-		getDesignComposition: (designId) ->
-			@get("compositions").find (composition) -> composition.get("design").id is designId
+		isEmpty: ->
+			@compositions.length is 0
 
 		# retrieves/calculate bundle quantity. If designId is specified will only return quantity for that design
 		quantity: (designId) ->
 			if designId?
-				designComposition = @getDesignComposition designId
-				designComposition?.get("quantity") ? 0
+				composition = @getComposition designId
+				composition?.quantity ? 0
 			else
-				@get("compositions").reduce  ((memo, model) -> memo + model.get("quantity")), 0
+				_.reduce(@compositions,  ((memo, model) -> memo + model.quantity), 0)
 
 		# retrieves/calculate bundle price. If designId is specified will only return price for that design
 		price: (designId) ->
-			@quantity(designId) * @get("product").get("price")
+			@quantity(designId) * @product.price
 
-
-
-		
-			
-
-
-
-
-
-		
-
+		toJSON: ->
+			compositions: @compositions
+			product: @product._id
