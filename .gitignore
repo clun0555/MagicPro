@@ -1,0 +1,9 @@
+node_modules
+*.iml
+.idea
+*sublime-workspace
+.sass-cache
+public/dist
+dist
+npm-debug.log
+environment.coffee
