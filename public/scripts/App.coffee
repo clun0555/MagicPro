@@ -7,10 +7,21 @@ define [
 	"angular-route"
 	"angular-resource"
 	"angular-ui-router"
+	"angular-translate"
 	"controllers/index"
 	"directives/index"
 	"filters/index"
 	"services/index"
+	"bootstrap-dropdown"
 ], (angular) ->
 	
-	angular.module "app", ["app.controllers", "app.directives", "app.filters", "app.services", "ngRoute", "ngResource", "ui.router"]
+	angular.module "app", [
+		"app.controllers"
+		"app.directives"
+		"app.filters"
+		"app.services"
+		"ngRoute"
+		"ngResource"
+		"ui.router"
+		'pascalprecht.translate'
+	]

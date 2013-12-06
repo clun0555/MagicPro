@@ -9,7 +9,8 @@ define [
 			$scope.categories = data.categories
 			StateService.category = data.category
 			StateService.type = data.type
-			StateService.product = data.product
+			StateService.product = data.product			
+			
 
 		.controller "ShopTypesController", ($scope, data, StateService) ->
 					

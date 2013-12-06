@@ -1,0 +1,61 @@
+define ->
+	
+	### Metadata ###
+	"locale.code": "en"
+	"locale.label": "English"
+	
+	### login ###
+	"login.title": "Please Log in"
+	"login.email": "Email address"
+	"login.password": "Password"
+	"login.email-isempty": "Email is empty"
+	"login.password-isempty": "Password is empty"
+	"login.password-email-incorect": "Incorect email or password"
+	"login.register": "Register"
+	"login.login": "Login"
+
+	### register ###
+	"register.title": "Register"
+	"register.name": "Name"
+	"register.firstname": "First Name"
+	"register.lastname": "Last Name"
+	"register.email": "Email"
+	"register.password": "Password"
+	"register.password-repeat": "Repeat password"
+	"register.register": "Register"
+	"register.wrong-data": "Oops! Wrong data"
+
+	### menu ###
+	"menu.title": "MagicPro"
+	"menu.home": "Home"		
+	"menu.loggedin": "Logged in as ${name}"
+	"menu.account": "Account"
+	"menu.logout": "Log out"
+	"menu.admin": "Admin"
+	
+	### productnavigator ###
+	"productnavigator.buy": "Buy"
+
+	### adminsidebar ###
+	"adminsidebar.users": "Users"
+	"adminsidebar.categories": "Categories"
+
+	### useredit ###
+	"useredit.firstname": "First name"
+	"useredit.lastname": "Last name"
+	"useredit.email": "Email"
+	"useredit.role": "Role"
+	"useredit.save": "Save"
+	"useredit.return": "Return"
+	
+	### errorpage ###
+	"errorpage.error": "Error"
+	"errorpage.notfound": "Page not found"
+	"errorpage.unauthorized": "You are not allowed to access this content"
+	"errorpage.goback": "Go back home"
+
+	### order ###
+	"order.category": "Category"
+	"order.type": "Type"
+	"order.product": "Product"
+	
