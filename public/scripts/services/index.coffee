@@ -9,5 +9,5 @@ define [
 	"./ShopService"
 	"./CartService"
 	"./StateService"
-	"./version"
+	"./SessionService"
 ], ->

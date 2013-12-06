@@ -14,14 +14,14 @@ define [
 	
 	"controllers/index"
 	"directives/index"
-	"filters/index"
+	# "filters/index"
 	"services/index"
 ], (angular) ->
 	
 	angular.module "app", [
 		"app.controllers"
 		"app.directives"
-		"app.filters"
+		# "app.filters"
 		"app.services"
 		"ngRoute"
 		"ngResource"

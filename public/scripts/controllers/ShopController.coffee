@@ -2,6 +2,8 @@ define [
 	"./module"
 ], (controllers) ->
 	
+	# TODO Clean all this. Properly use ui-route states. Maybe remove StateService
+
 	controllers
 		
 		.controller "ShopCategoriesController", ($scope, data, ShopService, StateService) ->

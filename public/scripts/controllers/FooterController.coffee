@@ -10,8 +10,6 @@ define [
 				for locale in translations
 					label: locale["locale.label"], code: locale["locale.code"]
 
-			# $scope.currentLocal = 
-
 			$scope.translate = (locale) ->
 				$translate.uses(locale.code)		
 	

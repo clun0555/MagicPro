@@ -1,13 +1,14 @@
-<!-- <div class="login-view">
+<div class="login-view">
 		
-	<h2 class="form-signin-heading"><%= @t "login.title" %></h2>
+	<h2 class="form-signin-heading" translate >login.title</h2>
 	<div class="alert alert-danger" style="display: none"></div>
-	<input type="text" class="form-control" placeholder="<%= @t "login.email" %>" autofocus="" name="username">
-	<input type="password" class="form-control" placeholder="<%= @t "login.password" %>" name="password">
+	<input type="text" class="form-control" placeholder="{{ 'login.email' | translate }}" autofocus="" name="username" ng-model="email" >
+	<input type="password" class="form-control" placeholder="{{ 'login.password' | translate }} " name="password" ng-model="password">
 	<div class="login-buttons">
-		<a class="btn btn-lg btn-link register-button" data-sate="app:register" ><%= @t "login.register" %></a>
-		<button class="btn btn-lg btn-primary login-button" ><%= @t "login.login" %></button>
+		<a class="btn btn-lg btn-link register-button"  >{{ "login.register" | translate }} </a>
+		<button class="btn btn-lg btn-primary login-button"  ng-click="login()" >{{ "login.login" | translate }} </button>
 	</div>
+
 </div>
 
-       -->
+      

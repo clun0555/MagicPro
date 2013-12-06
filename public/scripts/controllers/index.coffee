@@ -9,4 +9,5 @@ define [
 	"./ShopController"
 	"./CartPreviewController"
 	"./FooterController"
+	"./LoginController"
 ], ->

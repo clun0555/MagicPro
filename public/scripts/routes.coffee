@@ -71,6 +71,7 @@ define [
 				.state "login",
 					url: "/login"
 					templateUrl: "views/login.html" 
+					controller: "LoginController" 
 
 
 	app.run ($rootScope, $state) ->
