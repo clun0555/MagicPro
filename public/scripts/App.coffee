@@ -6,13 +6,16 @@ define [
 	"angular"
 	"angular-route"
 	"angular-resource"
+	"angular-cookies"
 	"angular-ui-router"
 	"angular-translate"
+	"angular-translate-storage-cookie"
+	"bootstrap-dropdown"
+	
 	"controllers/index"
 	"directives/index"
 	"filters/index"
 	"services/index"
-	"bootstrap-dropdown"
 ], (angular) ->
 	
 	angular.module "app", [
@@ -22,6 +25,7 @@ define [
 		"app.services"
 		"ngRoute"
 		"ngResource"
+		"ngCookies"
 		"ui.router"
-		'pascalprecht.translate'
+		'pascalprecht.translate'		
 	]

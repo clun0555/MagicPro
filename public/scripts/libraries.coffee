@@ -6,11 +6,13 @@ require.config
 		"underscore.string": "base/lib/underscore.string/lib/underscore.string" # utility belt		
 
 		# angular modules
-		"angular": "base/lib/angular/angular"
-		"angular-route": "base/lib/angular-route/angular-route"
-		"angular-resource": "base/lib/angular-resource/angular-resource"
-		"angular-ui-router": "base/lib/angular-ui-router/release/angular-ui-router"
-		"angular-translate": "base/lib/angular-translate/angular-translate"
+		"angular": "base/lib/angular/angular" # main angular
+		"angular-route": "base/lib/angular-route/angular-route" # basic routing
+		"angular-ui-router": "base/lib/angular-ui-router/release/angular-ui-router" # angular-ui rich states/routing
+		"angular-resource": "base/lib/angular-resource/angular-resource" # sync models with http rest 
+		"angular-cookies": "base/lib/angular-cookies/angular-cookies" # sync models with http rest 
+		"angular-translate": "base/lib/angular-translate/angular-translate" # translation
+		"angular-translate-storage-cookie": "base/lib/angular-translate-storage-cookie/angular-translate-storage-cookie" # persiting translations
 		
 		"domReady": "base/lib/requirejs-domready/domReady"
 		
@@ -38,7 +40,9 @@ require.config
 		"angular-route": ["angular"]
 		"angular-resource": ["angular"]
 		"angular-ui-router": ["angular"]
+		"angular-cookies": ["angular"]
 		"angular-translate": ["angular"]
+		"angular-translate-storage-cookie": ["angular-translate", "angular-cookies"]
 
 		"bootstrap-dropdown": ["jquery"]
 

@@ -16,6 +16,10 @@
     "underscore": "latest",
     "underscore.string": "latest",
     "angular-translate": "~1.1.1",
-    "sass-bootstrap": "~3.0.2"
+    "sass-bootstrap": "~3.0.2",
+    "angular-translate-storage-cookie": "~0.1.6"
+  },
+  "resolutions": {
+    "angular": "1.2.3"
   }
 }

@@ -13,7 +13,11 @@ define [
 		for tranlation in translations
 			$translateProvider.translations tranlation['locale.code'], tranlation
 
+		# persist current language in session
+		$translateProvider.useCookieStorage()
+		
 		$translateProvider.preferredLanguage 'en'
+
 
 		
 
