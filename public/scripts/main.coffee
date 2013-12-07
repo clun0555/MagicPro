@@ -1,4 +1,12 @@
+define [
+	"require"
+	"angular"
+	"app"
+	"states"
+	"config"
+], (require, ng) ->
 
-define ["require", "angular", "app", "routes", "config"], (require, ng) ->
+	require ["domReady!"], (document) -> 
 
-	require ["domReady!"], (document) -> ng.bootstrap document, ["app"]
+		# Bootstrap Angular when the dom is ready
+		ng.bootstrap document, ["app"]
