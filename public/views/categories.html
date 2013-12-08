@@ -3,7 +3,7 @@
 	<div class="category-view col-md-3" ng-repeat="category in categories" >
 		<a ui-sref="shop.categories.types({ category: category.slug })" >
 			<div class="thumbnail thumbnails thumbnail-style" >
-				<div class="caption" data-ng-click="testFunction($stateProvider)" >
+				<div class="caption" >
 					<h4>{{category.title}}</h4>
 					<imt-image src="{{category.imageId}}" size="s=158" ></imt-image>
 				</div>
