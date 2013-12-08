@@ -2,14 +2,16 @@
 <div class="type-navigator thumnails">
 	
 	<div class="type-view col-md-3" ng-repeat="type in category.types" >
-		<div class="thumbnail">
+		<a ui-sref="shop.products({ type: type.slug, category: category.slug })" >
+			<div class="thumbnail">
 
-			<div class="caption">
-				<h4><a ui-sref="shop.products({ type: type.slug, category: category.slug })" >{{type.title}}</a></h4>
-				<imt-image src="{{type.imageId}}" size="s=158" ></imt-image>	    	
+				<div class="caption">
+					<h4>{{type.title}}</h4>
+					<imt-image src="{{type.imageId}}" size="s=158" ></imt-image>
+				</div>
+
 			</div>
-
-	    </div>
+		</a>
 
 	</div>
 
