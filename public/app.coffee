@@ -1,0 +1,32 @@
+###
+loads sub modules and wraps them up into the main module
+this should be used for top-level module definitions only
+###
+define [
+	"angular"
+	"angular-route"
+	"angular-resource"
+	"angular-cookies"
+	"angular-ui-router"
+	"angular-translate"
+	"angular-translate-storage-cookie"
+	"bootstrap-dropdown"
+	
+	"common/controllers/index"
+	"common/directives/index"
+	"common/services/index"
+	"app/shop/index"
+], (angular) ->
+	
+	angular.module "app", [
+		"ngRoute"
+		"ngResource"
+		"ngCookies"
+		"ui.router"
+		'pascalprecht.translate'
+
+		"app.controllers"
+		"app.directives"		
+		"app.services"
+		"app.shop"
+	]

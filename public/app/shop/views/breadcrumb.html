@@ -1,0 +1,29 @@
+<ul class="breadcrumb">
+	<li>
+		<i class="icon-home home-icon"></i>
+		<a href="#/products" class="breadcrumb-home">
+		 Home
+		</a>
+	</li>
+
+	<li ng-if="data.category">
+		<a ui-sref="shop.types({ category: data.category.slug })" >
+		 {{data.category.title}}
+		</a>
+	</li>
+
+	<li ng-if="data.type">
+		<a ui-sref="shop.products({ category: data.category.slug, type: data.type.slug})" >
+		 {{data.type.title}}
+		</a>
+	</li>
+
+
+	<li ng-if="data.product">
+		<a  ui-sref="shop.product({ category: data.category.slug, type: data.type.slug, product: data.product.slug})" >
+		 {{data.product.title}}
+		</a>
+	</li>
+</ul>
+
+

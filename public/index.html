@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Home</title>
 		<link rel="stylesheet" type="text/css" href="/styles/main.css?rel=@@timestamp" />
-		<script data-main="/scripts/libraries.js?rel=@@timestamp" src="/scripts/base/lib/requirejs/require.js?rel=@@timestamp" ></script>
+		<script data-main="/common/libraries.js?rel=@@timestamp" src="/vendor/requirejs/require.js?rel=@@timestamp" ></script>
 	</head>
 	
 	<body>
@@ -32,7 +32,7 @@
 
 	
 		<div id="footer-region" class="container"> 		
-			<div ng-include="'views/footer.html'" ng-controller="FooterController" class="footer-view"  ></div>			
+			<div ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-view"  ></div>			
 		</div>		
 		<div id="modal-region" class="container"> </div>		
 

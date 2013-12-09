@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="breadcrumb-region">			
+			<ol class="breadcrumbs" ng-include="'app/shop/views/breadcrumb.html'" ng-controller="BreadCrumbController" ></ol>
+		</div>
+	</div>
+</div>
+
+<div class="row">	
+	<div ui-view class="content-region col-md-9" ></div>
+	<div class="cart-region col-md-3" ng-include="'app/shop/views/cart.html'" ng-controller="CartController" ></div>
+</div>

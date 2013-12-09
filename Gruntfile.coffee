@@ -11,9 +11,9 @@ module.exports = (grunt) ->
 			dist:
 				files: [					
 					expand: true
-					cwd: "public/scripts/base/lib"
+					cwd: "public/vendor"
 					src: ["**"]
-					dest: "dist/public/scripts/base/lib"
+					dest: "dist/public/vendor"
 				,
 					expand: true
 					cwd: "public/resources/"
@@ -33,9 +33,9 @@ module.exports = (grunt) ->
 				,
 
 					expand: true
-					cwd: "public/views"
-					src: ["**"]
-					dest: "dist/public/views"
+					cwd: "public"
+					src: ["**/*.html"]
+					dest: "dist/public/"
 				,
 					expand: true
 					cwd: "public/"
@@ -68,17 +68,6 @@ module.exports = (grunt) ->
 					specify: [ "public/styles/main.sass"]
 					# environment: 'production'
 
-		# Compile eco templates and add a AMD wrapper
-		eco_amd:
-			compile:
-				files: [
-					expand: true
-					cwd: "."
-					src: ["**/*.eco"]
-					dest: "dist/"
-					ext: ".js"
-				]
-		
 		# default watch configuration
 		watch:
 
@@ -88,18 +77,13 @@ module.exports = (grunt) ->
 				options: event: ['added', 'changed']
 
 			copy:
-				files: ["api/**/*.js", "api/**/*.json", "**/*.html"]
+				files: ["api/**/*.js", "api/**/*.json", "public/index.html", "public/app/**/*.html", "public/common/**/*.html"]
 				tasks: [ "copy:dist"]
 				options: event: ['added', 'changed']
 
 			compass:
 				files: "**/*.sass"
 				tasks: "compass:dist"
-				options: event: ['added', 'changed']
-
-			eco_amd:
-				files: "./public/**/*.eco"
-				tasks: [ "eco_amd", "test" ]
 				options: event: ['added', 'changed']
 
 			resources:
@@ -112,11 +96,11 @@ module.exports = (grunt) ->
 				tasks: "expose_environment_variables"
 				options: event: ['added', 'changed']
 
-			remove:
-				# reset when any file is removed
-				files: ["./public/**/*.*"]
-				tasks: [ "reset", "test" ]
-				options: event: ['deleted']
+			# remove:
+			# 	# reset when any file is removed
+			# 	files: ["./public/**/*.*"]
+			# 	tasks: [ "reset", "test" ]
+			# 	options: event: ['deleted']
 
 			
 
@@ -179,19 +163,16 @@ module.exports = (grunt) ->
 					logConcurrentOutput: true
 			
 
-	###### NPM TASKS #####
-		 
+	###### NPM TASKS #####		 
 	grunt.loadNpmTasks "grunt-contrib-watch"
 	grunt.loadNpmTasks "grunt-contrib-coffee"
 	grunt.loadNpmTasks "grunt-contrib-clean"
 	grunt.loadNpmTasks "grunt-contrib-copy"
 	grunt.loadNpmTasks "grunt-contrib-compass"
-	grunt.loadNpmTasks "grunt-eco-amd"
 	grunt.loadNpmTasks "grunt-shell"
 	grunt.loadNpmTasks "grunt-contrib-requirejs"
 	grunt.loadNpmTasks "grunt-replace"
-	grunt.loadNpmTasks "grunt-mocha"
-	grunt.loadNpmTasks "grunt-notify"
+	grunt.loadNpmTasks "grunt-mocha"	
 	grunt.loadNpmTasks "grunt-newer"
 	grunt.loadNpmTasks "grunt-concurrent"
 	grunt.loadNpmTasks "grunt-nodemon"
@@ -200,7 +181,7 @@ module.exports = (grunt) ->
 	###### CUSTOM TASKS #####
 
 	# bootstrap / clean project
-	grunt.registerTask "reset", ["clean", "coffee:all", "eco_amd", "copy:dist", "compass:dist", "replace:dist", "expose_environment_variables"]
+	grunt.registerTask "reset", ["clean", "coffee:all", "copy:dist", "compass:dist", "replace:dist", "expose_environment_variables"]
 
 	# default task when deploying to heroku
 	grunt.registerTask 'heroku', 'build'
