@@ -9,7 +9,7 @@
 module.exports =
 	
 	# running port. Defaults to 3000
-	PORT: "5000"
+	PORT: "3000"
 
 	# S3 credentials 
 	S3_KEY: "AKIAIHAIMDM6LGXYHWUA"
