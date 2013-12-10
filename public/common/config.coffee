@@ -27,8 +27,7 @@ define [
 	# Handle states authentification / authorization
 	app.run ($rootScope, $state, $injector, SessionService) ->
 
-		$rootScope.hello = "world"
-
+		
 		$rootScope.$state = $state		
 
 		# Enforce security when state changes

@@ -25,12 +25,6 @@ define [
 					templateUrl: "common/views/login.html" 
 					controller: "LoginController" 
 
-				.state "admin",
-					url: "/admin"
-					data: security: "admin"
-					templateUrl: "common/views/admin.html"
-
-
 				.state "otherwise",
 					url: "*path"
 					controller: ($scope, $stateParams, $state) ->

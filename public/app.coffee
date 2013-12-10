@@ -14,9 +14,12 @@ define [
 	
 	"common/controllers/index"
 	"common/directives/index"
-	"common/services/index"
-	"app/shop/index"
+	"common/services/index"	
 	"views/views"
+
+
+	"app/shop/index"
+	"app/admin/index"
 ], (angular) ->
 	
 	angular.module("app", [
@@ -30,6 +33,7 @@ define [
 		"app.directives"		
 		"app.services"
 		"app.shop"
+		"app.admin"
 
 		"templates.app"
 
