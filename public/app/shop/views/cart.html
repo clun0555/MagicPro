@@ -15,7 +15,7 @@
 					</a>
 					<div class="bundle-numbers">
 						<span class="bundle-quantity">{{ bundle.quantity() }}</span> 
-						<span class="bundle-price">{{  bundle.price()  }}</span> 
+						<span class="bundle-price">{{  bundle.price() | currency:'$' }}</span> 
 					</div>
 			</li>
 		</ul>
