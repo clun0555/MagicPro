@@ -1,5 +1,6 @@
 
 define [
 	"./FooterController"
+	"./MenuController"
 	"./LoginController"
 ], ->
