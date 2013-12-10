@@ -27,7 +27,7 @@ require.config
 		# "jquery.ui.widget": "vendor/jquery.ui.widget" 
 		# "text": "vendor/require/text" # requirejs plugin to load a text resource
 
-		"resources": "/resources" # path to access resources
+		# "resources": "/resources" # path to access resources
 
 	
 	# urlArgs: "bust=" + (new Date()).getTime() # prevent caching in developement but also prevent debuging :(
@@ -49,7 +49,4 @@ require.config
 
 		"bootstrap-dropdown": ["jquery"]
 
-
-	deps: [
-		'./common/main'
-	]
+		

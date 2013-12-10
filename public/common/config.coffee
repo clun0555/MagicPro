@@ -3,12 +3,17 @@ Defines the main routes in the application.
 The routes you see here will be anchors '#/' unless specifically configured otherwise.
 ###
 define [
+	"angular"
 	"app"
 	"resources/translations/translations"
 	
-], (app, translations) ->
+], (angular, app, translations) ->
 
 	app.config ($translateProvider) ->
+
+		# $anchorScrollProvider.disableAutoScrolling()
+
+		
 
 		for tranlation in translations
 			$translateProvider.translations tranlation['locale.code'], tranlation
@@ -22,7 +27,9 @@ define [
 	# Handle states authentification / authorization
 	app.run ($rootScope, $state, $injector, SessionService) ->
 
-		$rootScope.$state = $state
+		$rootScope.hello = "world"
+
+		$rootScope.$state = $state		
 
 		# Enforce security when state changes
 		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->

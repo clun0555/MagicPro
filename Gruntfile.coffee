@@ -34,7 +34,7 @@ module.exports = (grunt) ->
 
 					expand: true
 					cwd: "public"
-					src: ["**/*.html"]
+					src: ["index.html"]
 					dest: "dist/public/"
 				,
 					expand: true
@@ -77,7 +77,7 @@ module.exports = (grunt) ->
 				options: event: ['added', 'changed']
 
 			copy:
-				files: ["api/**/*.js", "api/**/*.json", "public/index.html", "public/app/**/*.html", "public/common/**/*.html"]
+				files: ["api/**/*.js", "api/**/*.json", "public/index.html"]
 				tasks: [ "copy:dist"]
 				options: event: ['added', 'changed']
 
@@ -95,6 +95,12 @@ module.exports = (grunt) ->
 				files: ["./config/local.coffee"]
 				tasks: "expose_environment_variables"
 				options: event: ['added', 'changed']
+
+			html2js:
+				files: ["public/app/**/*.html", "public/common/**/*.html"]
+				tasks: "html2js:app"
+				options: event: ['added', 'changed']
+
 
 			# remove:
 			# 	# reset when any file is removed
@@ -115,11 +121,11 @@ module.exports = (grunt) ->
 			
 			build:
 				options:
-					mainConfigFile: "./dist/public/scripts/base/libraries.js"
+					mainConfigFile: "./dist/public/common/libraries.js"
 					findNestedDependencies: true
 					include: ["main"]
-					baseUrl: "./dist/public/scripts/"
-					out: "./dist/public/scripts/main.js"
+					baseUrl: "./dist/public/"
+					out: "./dist/public/main.js"
 					optimize: 'uglify2'
 					uglify2: 	
 						mangle: false # needs to be false to allow @constructor.class
@@ -161,6 +167,21 @@ module.exports = (grunt) ->
 				tasks: ["nodemon", "watch", "node-inspector"]
 				options: 
 					logConcurrentOutput: true
+
+		html2js: 
+			app: 
+				options: 
+					base: 'public'
+					fileHeaderString: "define( ['angular'], function(angular){"
+					fileFooterString: "; });"
+
+				src: ['public/app/**/*.html', 'public/common/**/*.html'],
+				dest: 'dist/public/views/views.js',
+				module: 'templates.app'
+		
+			
+		
+		
 			
 
 	###### NPM TASKS #####		 
@@ -177,11 +198,12 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-concurrent"
 	grunt.loadNpmTasks "grunt-nodemon"
 	grunt.loadNpmTasks "grunt-node-inspector"
+	grunt.loadNpmTasks "grunt-html2js"
 
 	###### CUSTOM TASKS #####
 
 	# bootstrap / clean project
-	grunt.registerTask "reset", ["clean", "coffee:all", "copy:dist", "compass:dist", "replace:dist", "expose_environment_variables"]
+	grunt.registerTask "reset", ["clean", "coffee:all", "copy:dist", "compass:dist", "replace:dist", "expose_environment_variables", "html2js:app"]
 
 	# default task when deploying to heroku
 	grunt.registerTask 'heroku', 'build'

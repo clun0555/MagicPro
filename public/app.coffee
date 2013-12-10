@@ -16,9 +16,10 @@ define [
 	"common/directives/index"
 	"common/services/index"
 	"app/shop/index"
+	"views/views"
 ], (angular) ->
 	
-	angular.module "app", [
+	angular.module("app", [
 		"ngRoute"
 		"ngResource"
 		"ngCookies"
@@ -29,4 +30,7 @@ define [
 		"app.directives"		
 		"app.services"
 		"app.shop"
-	]
+
+		"templates.app"
+
+	]).value('$anchorScroll', angular.noop) # prevents routes to scroll at the top

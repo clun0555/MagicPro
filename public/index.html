@@ -4,10 +4,12 @@
 		<meta charset="utf-8">
 		<title>Home</title>
 		<link rel="stylesheet" type="text/css" href="/styles/main.css?rel=@@timestamp" />
-		<script data-main="/common/libraries.js?rel=@@timestamp" src="/vendor/requirejs/require.js?rel=@@timestamp" ></script>
+		<script data-main="/main.js?rel=@@timestamp" src="/vendor/requirejs/require.js?rel=@@timestamp" ></script>
 	</head>
 	
 	<body>
+
+		
 
 		<div id="ribbon-background"></div>
 		<div id="logo-region">
@@ -26,13 +28,14 @@
 				</div>
 			</div>
 		</div>
-		<div id="menu-region" class=" navbar-wrapper "></div>
+
+		<div class="menu-region container" ng-include="'common/views/menu.html'" ></div>
 	
 		<div id="main-region" class="container" ui-view ></div>
 
 	
 		<div id="footer-region" class="container"> 		
-			<div ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-view"  ></div>			
+			<div ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-view"  ></div>
 		</div>		
 		<div id="modal-region" class="container"> </div>		
 

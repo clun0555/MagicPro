@@ -9,7 +9,9 @@ define [
 		admin: (session) ->
 			session.role is "admin"
 	
-	services.service "SessionService", ($resource, $q, $http) ->
+	services.service "SessionService", ($resource, $q, $http, $rootScope) ->
+
+		$rootScope.hello = "world"
 
 		login: (email, password) ->
 			
@@ -19,6 +21,7 @@ define [
 			
 			@session = Session.save {},  { username: email, password: password }, 
 				=>	
+					$rootScope.user = @session
 					deferred.resolve()
 				=> 
 					@session = null
@@ -28,6 +31,22 @@ define [
 
 		get: ->
 			@session
+
+		logout: ->
+			deferred = $q.defer()
+
+			$http(method: 'GET', url: '/api/authentification/logout' )
+				.success (data) =>
+					@session = null
+					$rootScope.user = @session
+					deferred.resolve()
+				.error (data) =>
+					@session = null
+					$rootScope.user = @session
+					deferred.resolve()
+					# deferred.reject code: 500
+
+			deferred.promise
 		
 		
 		fetchSession: ->
@@ -39,7 +58,8 @@ define [
 			else
 				$http(method: 'GET', url: '/api/authentification/currentuser' )
 					.success (data) =>
-						@session = data					
+						@session = data
+						$rootScope.user = @session					
 						deferred.resolve()
 					.error (data) =>
 						@session = null
