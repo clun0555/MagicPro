@@ -1,7 +1,7 @@
 
 <div class="type-navigator thumnails">
 	
-	<div class="type-view col-md-3" ng-repeat="type in category.types" >
+	<div class="slide type-view col-md-3" ng-repeat="type in category.types | filter:search" >
 		<a ui-sref="shop.products({ type: type.slug, category: category.slug })" >
 			<div class="thumbnail">
 

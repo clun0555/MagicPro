@@ -1,7 +1,7 @@
 
 <div class="product-navigator thumnails">
 	
-	<div class="product-title col-md-3" ng-repeat="product in products" >
+	<div class="slide product-title col-md-3" ng-repeat="product in products | filter:search" >
 		<a  ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >
 			<div class="thumbnail">
 

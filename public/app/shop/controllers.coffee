@@ -6,12 +6,15 @@ define [
 		
 		.controller "ShopCategoriesController", ($scope, data, ShopService) ->						
 			$scope.categories = data.categories
+			$scope.search = ShopService.search
 
-		.controller "ShopTypesController", ($scope, data) ->
+		.controller "ShopTypesController", ($scope, data, ShopService) ->
 			$scope.category = data.category
+			$scope.search = ShopService.search
 
-		.controller "ShopProductsController", ($scope, data) ->
+		.controller "ShopProductsController", ($scope, data, ShopService) ->
 			$scope.products = data.products
+			$scope.search = ShopService.search
 		
 		.controller "ShopProductController", ($scope, data, CartService) ->
 			
@@ -23,10 +26,11 @@ define [
 				quantity = $scope.quantities[design._id]
 				CartService.update $scope.product, design, quantity
 				
-		.controller "BreadCrumbController", ($scope, CartService, $rootScope, $state) ->
+		.controller "BreadCrumbController", ($scope, CartService, $rootScope, ShopService, $state) ->
 						
 			$scope.$watch '$state.$current.locals.globals.data', (data) ->
 				$scope.data = data
+				$scope.search = ShopService.search
 			
 		.controller "CartController", ($scope, CartService) ->
 			$scope.cart = CartService.get()

@@ -1,6 +1,6 @@
 <div class="category-navigator thumnails">
 
-	<div class="category-view col-md-3" ng-repeat="category in categories" >
+	<div class="slide category-view col-md-3" ng-repeat="category in categories | filter:search">
 		<a ui-sref="shop.types({ category: category.slug })" >
 			<div class="thumbnail thumbnails thumbnail-style" >
 				<div class="caption" >

@@ -21,6 +21,7 @@ define [
 					controller: "ShopCategoriesController"										
 					resolve: 
 						data: ($stateParams, ShopService) ->
+							ShopService.flushState()
 							ShopService.getCategories()
 
 						
@@ -31,6 +32,7 @@ define [
 					
 					resolve: 
 						data: ($state, $stateParams, ShopService) ->
+							ShopService.flushState()
 							ShopService.getCategoryBySlug($stateParams.category)							
 			
 
@@ -38,6 +40,7 @@ define [
 					url: "/:category/:type"
 					resolve: 
 						data: ($stateParams, ShopService) ->
+							ShopService.flushState()
 							ShopService.getProductsByCategoryTypeSlug($stateParams.category, $stateParams.type)
 					
 					templateUrl: "app/shop/views/products.html"

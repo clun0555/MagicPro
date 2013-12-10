@@ -10,6 +10,7 @@ require.config
 		# angular modules
 		"angular": "vendor/angular/angular" # main angular
 		"angular-route": "vendor/angular-route/angular-route" # basic routing
+		"angular-animate": "vendor/angular-animate/angular-animate" # persiting translations
 		"angular-ui-router": "vendor/angular-ui-router/release/angular-ui-router" # angular-ui rich states/routing
 		"angular-resource": "vendor/angular-resource/angular-resource" # sync models with http rest 
 		"angular-cookies": "vendor/angular-cookies/angular-cookies" # sync models with http rest 
@@ -41,6 +42,7 @@ require.config
 			exports: 'angular'
 
 		"angular-route": ["angular"]
+		"angular-animate": ["angular"]
 		"angular-resource": ["angular"]
 		"angular-ui-router": ["angular"]
 		"angular-cookies": ["angular"]

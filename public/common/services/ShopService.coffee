@@ -4,6 +4,12 @@ define [
 ], (services, _) ->	
 
 	services.service "ShopService", ($resource, $q) ->
+
+		search:
+			title: ""
+
+		flushState: ->
+			@search.title = ""
 		
 		getCategories: ->
 			deferred = $q.defer()

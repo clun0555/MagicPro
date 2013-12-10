@@ -4,6 +4,7 @@ this should be used for top-level module definitions only
 ###
 define [
 	"angular"
+	"angular-animate"
 	"angular-route"
 	"angular-resource"
 	"angular-cookies"
@@ -21,6 +22,7 @@ define [
 	
 	angular.module("app", [
 		"ngRoute"
+		'ngAnimate'
 		"ngResource"
 		"ngCookies"
 		"ui.router"
