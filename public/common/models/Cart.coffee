@@ -27,7 +27,8 @@ define [
 			_.find @bundles, (bundle) -> bundle.product._id is productId
 
 		removeBundle: (bundle) ->
-			if (index = @bundles.indexOf(bundle))
+			if _.contains @bundles, bundle
+				index = @bundles.indexOf bundle
 				@bundles.splice index, 1
 
 		price: (product, designId) ->

@@ -9,6 +9,7 @@ define ->
 	"login.email": "Email address"
 	"login.password": "Password"
 	"login.email-isempty": "Email is empty"
+	"login.email-invalid": "Email is invalid"
 	"login.password-isempty": "Password is empty"
 	"login.password-email-incorect": "Incorect email or password"
 	"login.register": "Register"

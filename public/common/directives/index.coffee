@@ -1,4 +1,5 @@
 
 define [
 	"./IMTImage"	
+	"./IMTServerError"	
 ], ->

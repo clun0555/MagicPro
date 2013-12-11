@@ -12,7 +12,7 @@ define [
 		updateComposition: (design, quantity) ->
 			composition = @getOrCreateComposition(design)
 					
-			if quantity
+			if quantity and quantity > 0
 				composition.quantity = parseInt(quantity, 10)
 				@compositions.push composition unless _.contains @compositions, composition
 			else
