@@ -18,6 +18,8 @@
 					<tr>
 						<th colspan="2"></th>
 						<th class="design-count">HOW MANY?</th>
+						<th colspan="1"></th>
+						<th class="design-count">INNER</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,17 +34,31 @@
 							
 						</td>
 						<td class="design-count">
-							<input type="text" placeholder="0" ng-change="updateQuantity(design)" ng-model="quantities[design._id]" >	
+							<input
+								type="number"
+								min="0"
+								max="9999"
+								ng-maxlength="4"
+								placeholder="0" ng-change="updateQuantity(design)" ng-model="quantities[design._id]" >
+						</td>
+						<td class="design-count">
+							<span class="design-label">X</span>
+						</td>
+						<td class="design-count">
+							<span class="design-label">{{  product.inner }}</span>
 						</td>
 					</tr>
 					
-				</tbody>	
+				</tbody>
 				<tfoot>
 						<tr>
-							<td colspan="2"></td>
+							<td colspan="4"></td>
 							<td class="bundle-summary-region" >
 								<div class="product-detail-bundle-summary" ng-show="cart.quantity(product) > 0">
-									<span class="total-quantity"> {{ cart.quantity(product) }} |</span>  <span class="total-price">{{cart.price(product) | currency:"$" }}</span>	
+									<span class="total-quantity"> {{ cart.quantity(product)*product.inner }}
+										<span class="piece-unit"> (pieces)</span>|
+									</span>
+									<span class="total-price">{{cart.price(product) | currency:"$" }}</span>
 									
 								</div>
 							

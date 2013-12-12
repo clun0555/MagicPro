@@ -25,7 +25,15 @@
 					<span class="design-image"> <imt-image src="{{composition.design.imageId}}" size="s=75" ></imt-image> </span>
 					<span class="design-label">{{ composition.design.label }} <br /><span class="design-identifier">({{ composition.design.identifier }})</span></span>
 					
-					<span class="composition-quantity"><input type="number" ng-model="composition.quantity" ng-change="updateQuantity(composition.design, bundle.product, composition.quantity)" > </span>
+					<span class="composition-quantity">
+							<input type="number"
+								min="0"
+								max="9999"
+								ng-maxlength="4"
+								ng-model="composition.quantity"
+								ng-change="updateQuantity(composition.design, bundle.product, composition.quantity)"
+							>
+					</span>
 					  
 				</li>
 				
