@@ -32,15 +32,15 @@ define [
 				@bundles.splice index, 1
 
 		price: (product, designId) ->
-			if product? and designId? 
-				bundle = @getBundle(product.id)
+			if product?
+				bundle = @getBundle(product._id)
 				return if bundle? then bundle.price(designId) else 0
 			else
 				_.reduce @bundles,   ((memo, bundle) -> memo + bundle.price()), 0
 
 		quantity: (product, designId) ->
-			if product? and designId? 
-				bundle = @getBundle(product.id)
+			if product?
+				bundle = @getBundle(product._id)
 				return if bundle? then bundle.quantity(designId) else 0
 			else
 				_.reduce @bundles,   ((memo, bundle) -> memo + bundle.quantity()), 0
