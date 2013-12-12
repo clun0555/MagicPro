@@ -52,6 +52,21 @@ define [
 		reset: ->
 			@bundles = []
 
+		quantities: (product) ->
+			quantities  = {}
+			
+			if (bundle = @getBundle(product._id))?
+				for composition in bundle.compositions
+					quantities[composition.design._id] = composition.quantity
+
+			quantities
+
 
 		toJSON: ->
 			bundles: @bundles
+
+		fromJSON: (json) ->
+			for jsonBundle in json.bundles ? []
+				@bundles.push new Bundle(jsonBundle).fromJSON(jsonBundle)
+
+			this

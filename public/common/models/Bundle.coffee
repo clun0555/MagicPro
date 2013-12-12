@@ -5,7 +5,7 @@ define [
 
 	class Bundle
 
-		constructor: (options) ->
+		constructor: (options = {}) ->
 			{ @product } = options
 			@compositions = []
 
@@ -48,3 +48,10 @@ define [
 		toJSON: ->
 			compositions: @compositions
 			product: @product._id
+
+
+		fromJSON: (json) ->			
+			for jsonComposition in json.compositions
+				@compositions.push new Composition().fromJSON(jsonComposition)
+
+			this

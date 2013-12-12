@@ -13,7 +13,7 @@ define [
 					url: "/products"
 					abstract: true					
 					templateUrl: "app/shop/views/shop.html"
-					data: security: "loggedIn"				
+					data: security: "loggedIn"
 									
 				.state "shop.categories",
 					url: ""
@@ -41,7 +41,7 @@ define [
 					resolve: 
 						data: ($stateParams, ShopService) ->
 							ShopService.flushState()
-							ShopService.getProductsByCategoryTypeSlug($stateParams.category, $stateParams.type)
+							ShopService.getProductsByCategoryTypeSlug($stateParams.category, $stateParams.type)											
 					
 					templateUrl: "app/shop/views/products.html"
 					controller: "ShopProductsController"
@@ -53,6 +53,7 @@ define [
 					resolve: 
 						data: ($stateParams, ShopService) ->
 							ShopService.getProductBySlug($stateParams.category, $stateParams.type, $stateParams.product)
+						cart: (CartService) ->	CartService.get()
 					
 					templateUrl: "app/shop/views/product.html"
 					controller: "ShopProductController"
@@ -60,4 +61,7 @@ define [
 				.state "cart",
 					url: "/cart"
 					templateUrl: "app/shop/views/cart_preview.html" 
-					controller: "CartPreviewController"		
+					controller: "CartPreviewController"
+					data: security: "loggedIn"		
+					resolve: 
+						cart: (CartService) ->	CartService.get()

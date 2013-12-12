@@ -16,31 +16,37 @@ define [
 			$scope.products = data.products
 			$scope.search = ShopService.search
 		
-		.controller "ShopProductController", ($scope, data, CartService) ->
+		.controller "ShopProductController", ($scope, data, cart, CartService) ->
 			
-			$scope.quantities = CartService.quantities(data.product)
 			$scope.product = data.product					
-			$scope.cart = CartService.get()
+			$scope.cart = cart
+			$scope.quantities = cart.quantities(data.product)
 
-			$scope.updateQuantity = (design) ->
+			$scope.updateQuantity = (design, product, quantity) ->
 				quantity = $scope.quantities[design._id]
 				CartService.update $scope.product, design, quantity
 				
-		.controller "BreadCrumbController", ($scope, CartService, $rootScope, ShopService, $state) ->
+		.controller "BreadCrumbController", ($scope, $rootScope, ShopService, $state) ->
 						
 			$scope.$watch '$state.$current.locals.globals.data', (data) ->
 				$scope.data = data
 				$scope.search = ShopService.search
 			
 		.controller "CartController", ($scope, CartService) ->
-			$scope.cart = CartService.get()
+			
+			CartService.get().then (cart) -> $scope.cart = cart
+				
 
-		.controller "CartPreviewController", ($scope, CartService) ->
-			$scope.cart = CartService.get()
+		.controller "CartPreviewController", ($scope, cart, CartService) ->
+			
+			$scope.cart = cart
 			
 			$scope.submit = ->
 				CartService.save().then ->
-					$scope.saved = true		
+					$scope.saved = true	
+
+			$scope.updateQuantity = (design, product, quantity) ->
+				CartService.update product, design, quantity
 		
 
 

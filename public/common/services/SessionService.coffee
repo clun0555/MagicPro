@@ -3,15 +3,13 @@ define [
 ], (services) ->	
 
 	rules = 
-		loggedIn: (session) ->
-			session?
+		loggedIn: (user) ->
+			user?
 
-		admin: (session) ->
-			session.role is "admin"
+		admin: (user) ->
+			user.role is "admin"
 	
 	services.service "SessionService", ($resource, $q, $http, $rootScope) ->
-
-		$rootScope.hello = "world"
 
 		login: (email, password) ->
 			
@@ -19,9 +17,10 @@ define [
 
 			Session = $resource("/api/authentification/login")
 			
-			@session = Session.save {},  { username: email, password: password }, 
+			user = Session.save {},  { username: email, password: password }, 
 				=>	
-					$rootScope.user = @session
+					@session = { user: user }
+					$rootScope.user = @user()
 					deferred.resolve()
 				=> 
 					@session = null
@@ -29,8 +28,9 @@ define [
 
 			deferred.promise
 
-		get: ->
-			@session
+		get: -> @session
+
+		user: -> @session?.user
 
 		logout: ->
 			deferred = $q.defer()
@@ -38,13 +38,12 @@ define [
 			$http(method: 'GET', url: '/api/authentification/logout' )
 				.success (data) =>
 					@session = null
-					$rootScope.user = @session
+					$rootScope.user = @user()
 					deferred.resolve()
 				.error (data) =>
 					@session = null
-					$rootScope.user = @session
-					deferred.resolve()
-					# deferred.reject code: 500
+					$rootScope.user = @user()
+					deferred.resolve()					
 
 			deferred.promise
 		
@@ -58,8 +57,8 @@ define [
 			else
 				$http(method: 'GET', url: '/api/authentification/currentuser' )
 					.success (data) =>
-						@session = data
-						$rootScope.user = @session					
+						@session = user: data
+						$rootScope.user = @user()
 						deferred.resolve()
 					.error (data) =>
 						@session = null
@@ -68,7 +67,31 @@ define [
 			deferred.promise
 
 		security: (rule) ->
-			rules[rule](@session)
+			rules[rule](@user())
+
+		getUserKey: ->
+			@user()._id ? "guest"
+
+		getStoreKey: (dataKey) ->
+			@getUserKey() + "-" + dataKey
+
+		# keeps in browser memory some data for a specific user. Data will not survive logout
+		keep: (key, data) ->
+			@get()[key] = data
+
+		# store data in localstorage for that user
+		storeLocal: (dataKey, data) ->
+			localStorage.setItem(@getStoreKey(dataKey), JSON.stringify(data))
+			
+		# retrieve data from local storage for the current user
+		retrieveLocal: (dataKey) ->
+			jsonData = localStorage.getItem(@getStoreKey(dataKey))
+			JSON.parse(jsonData)
+
+		# checks if some data was stored for that user in localstorage
+		hasLocal: (dataKey) ->
+			retrieveLocal(dataKey)?
+			
 
 
 

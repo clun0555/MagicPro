@@ -4,7 +4,7 @@
 	<div class="thanks" ng-show="saved">
 		<h1>Thank you</h1>
 		<p>Your order has been sent to our team.</p>
-		<a class="btn btn-primary home btn-lg " >Home</a>			
+		<a class="btn btn-primary home btn-lg " href="#" >Home</a>			
 	</div>
 
 	<ul ng-show="!saved && !cart.isEmpty()">
@@ -25,7 +25,7 @@
 					<span class="design-image"> <imt-image src="{{composition.design.imageId}}" size="s=75" ></imt-image> </span>
 					<span class="design-label">{{ composition.design.label }} <br /><span class="design-identifier">({{ composition.design.identifier }})</span></span>
 					
-					<span class="composition-quantity"><input type="number" ng-model="composition.quantity"> </span>
+					<span class="composition-quantity"><input type="number" ng-model="composition.quantity" ng-change="updateQuantity(composition.design, bundle.product, composition.quantity)" > </span>
 					  
 				</li>
 				
