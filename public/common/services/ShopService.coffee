@@ -98,6 +98,8 @@ define [
 
 				product = products[0]
 
+				product.inner = 1 if !product.inner
+
 				@getTypeBySlug(categorySlug, typeSlug, productSlug).then (data) ->
 					product.type = data.type
 					deferred.resolve product: product, type: product.type, category: product.type.category
