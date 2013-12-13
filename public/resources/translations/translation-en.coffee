@@ -33,6 +33,7 @@ define ->
 	### menu ###
 	"menu.title": "MagicPro"
 	"menu.home": "Home"		
+	"menu.order": "Order"		
 	"menu.loggedin": "Logged in as ${name}"
 	"menu.account": "Account"
 	"menu.logout": "Log out"
