@@ -46,6 +46,14 @@ define [
 				CartService.save().then ->
 					$scope.saved = true	
 
+			$scope.remove = (bundle, composition) ->
+				# remove in master cart
+				CartService.update bundle.product, composition.design, 0
+
+				# remove in cart preview
+				$scope.cart.updateBundle bundle.product, composition.design, 0
+
+
 			$scope.updateQuantity = (design, product, quantity) ->
 				CartService.update product, design, quantity
 		

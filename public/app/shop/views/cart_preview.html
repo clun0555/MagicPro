@@ -20,10 +20,18 @@
 			
 			<ul class="composition-list">
 				
-				<li class="composition-info" ng-repeat="composition in bundle.compositions" ng-class="{ inactive: !(composition.quantity > 0) }"  > 
+				<li class="slide composition-info" ng-repeat="composition in bundle.compositions" ng-class="{ inactive: !(composition.quantity > 0) }"  > 
 
 					<span class="design-image"> <imt-image src="{{composition.design.imageId}}" size="s=75" ></imt-image> </span>
-					<span class="design-label">{{ composition.design.label }} <br /><span class="design-identifier">({{ composition.design.identifier }})</span></span>
+					<span class="design-label">
+						{{ composition.design.label }} <span class="design-identifier">({{ composition.design.identifier }})</span>
+						<br>
+						<span class="design-delete" ng-click="remove(bundle, composition)" > 
+							<!-- <i class="fa fa-times-circle-o"></i>  -->
+							<i class="fa fa-trash-o"></i> {{ 'preview.delete' | translate }}
+							
+						</span>
+					</span>
 					
 					<span class="composition-quantity">
 							<input type="number"

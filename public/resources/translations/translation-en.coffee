@@ -78,6 +78,7 @@ define ->
 	"preview.message":"Your order has been sent to our team."
 	"preview.back": "Back"
 	"preview.submit": "Submit"
+	"preview.delete": "delete"
 
 	### product ###
 	"product.many": "HOW MANY?"
