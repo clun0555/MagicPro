@@ -9,16 +9,21 @@ define [
 				
 			$stateProvider
 
+				.state "order",
+					template: '<ui-view/>'
+					abstract: true
+					data: security: "loggedIn"
+
 				.state "shop", 
 					url: "/products"
 					abstract: true					
 					templateUrl: "app/shop/views/shop.html"
-					data: security: "loggedIn"
+					parent: "order"
 									
 				.state "shop.categories",
 					url: ""
 					templateUrl: "app/shop/views/categories.html"
-					controller: "ShopCategoriesController"										
+					controller: "ShopCategoriesController"												
 					resolve: 
 						data: ($stateParams, ShopService) ->
 							ShopService.flushState()
@@ -62,6 +67,6 @@ define [
 					url: "/cart"
 					templateUrl: "app/shop/views/cart_preview.html" 
 					controller: "CartPreviewController"
-					data: security: "loggedIn"		
+					parent: "order"
 					resolve: 
 						cart: (CartService) ->	CartService.get()
