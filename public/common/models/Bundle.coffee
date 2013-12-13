@@ -41,6 +41,13 @@ define [
 			else
 				_.reduce(@compositions,  ((memo, model) -> memo + model.quantity), 0)
 
+		pieces: (designId) ->
+			if designId?
+				composition = @getComposition designId
+				composition?.pieces(@product) ? 0
+			else
+				_.reduce(@compositions,  ((memo, model) => memo + model.pieces(@product)), 0)
+
 		# retrieves/calculate bundle price. If designId is specified will only return price for that design
 		price: (designId) ->
 			@quantity(designId) * @product.price

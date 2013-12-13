@@ -6,6 +6,9 @@ define [
 		
 		constructor: (options = {}) ->
 			{ @design }	= options
+
+		pieces: (product) ->
+			@quantity * ( product.inner ? 1 )
 			
 
 		toJSON: ->

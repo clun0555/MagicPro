@@ -16,6 +16,9 @@ require.config
 		"angular-cookies": "vendor/angular-cookies/angular-cookies" # sync models with http rest 
 		"angular-translate": "vendor/angular-translate/angular-translate" # translation
 		"angular-translate-storage-cookie": "vendor/angular-translate-storage-cookie/angular-translate-storage-cookie" # persiting translations
+		"angular-translate-interpolation-messageformat": "vendor/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat" # persiting translations
+		"messageformat": "vendor/messageformat/messageformat" # pluralization / genders
+		# "messageformat-en": "vendor/messageformat/locale/en" # persiting translations		
 		
 		"domReady": "vendor/requirejs-domready/domReady"
 		
@@ -39,7 +42,12 @@ require.config
 			exports: "_"
 
 		'angular':
+			deps: ["messageformat"]			
 			exports: 'angular'
+			init: (MessageFormat) ->
+				# not very clean... setting messageformat in deps doesn't work for some reasom
+				window.MessageFormat = MessageFormat
+				this.angular
 
 		"angular-route": ["angular"]
 		"angular-animate": ["angular"]
@@ -48,7 +56,11 @@ require.config
 		"angular-cookies": ["angular"]
 		"angular-translate": ["angular"]
 		"angular-translate-storage-cookie": ["angular-translate", "angular-cookies"]
+		"angular-translate-interpolation-messageformat": ["angular-translate"]		
+		
+		# "messageformat-en": ["messageformat"]
 
+			
 		"bootstrap-dropdown": ["jquery"]
 
 		

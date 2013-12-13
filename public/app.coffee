@@ -11,6 +11,7 @@ define [
 	"angular-ui-router"
 	"angular-translate"
 	"angular-translate-storage-cookie"
+	"angular-translate-interpolation-messageformat"
 	"bootstrap-dropdown"
 	
 	"common/controllers/index"

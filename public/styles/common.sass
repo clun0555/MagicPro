@@ -70,3 +70,19 @@ body:before
 	background-color: #dfe0e2
 	width: 158px
 	height: 158px
+
+
+input.hide-placeholder-onblur
+	&:focus::-webkit-input-placeholder
+		opacity: 0
+	&:focus::-moz-placeholder
+		opacity: 0
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button 
+	-webkit-appearance: none
+	margin: 0
+
+
+

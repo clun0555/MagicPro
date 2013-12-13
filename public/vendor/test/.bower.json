@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "_cacheHeaders": {
+    "ETag": "\"7b691b728d1ba5bfd9cd86e93915832a\"",
+    "Content-Length": "14922",
+    "Content-Type": "text/plain; charset=utf-8",
+    "Content-Disposition": "inline"
+  },
+  "_release": "e-tag:7b691b728",
+  "main": "index.js",
+  "_source": "https://raw.github.com/asciidisco/require-messageformat-plugin/master/msg.js",
+  "_target": "*",
+  "_originalSource": "https://raw.github.com/asciidisco/require-messageformat-plugin/master/msg.js"
+}

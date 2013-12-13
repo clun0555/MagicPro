@@ -3,6 +3,10 @@ define ->
 	### Metadata ###
 	"locale.code": "en"
 	"locale.label": "English"
+
+
+	## general ##
+	"general.unit.pieces": "{amount, plural, one{piece} other{pieces}}"
 	
 	### login ###
 	"login.title": "Please Log in"
@@ -59,4 +63,5 @@ define ->
 	"order.category": "Category"
 	"order.type": "Type"
 	"order.product": "Product"
+	
 	

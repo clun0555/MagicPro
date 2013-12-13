@@ -20,8 +20,9 @@ define [
 
 		# persist current language in session
 		$translateProvider.useCookieStorage()
-		
+		$translateProvider.useMessageFormatInterpolation()
 		$translateProvider.preferredLanguage 'en'
+
 
 
 	# Handle states authentification / authorization

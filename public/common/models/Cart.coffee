@@ -45,6 +45,13 @@ define [
 			else
 				_.reduce @bundles,   ((memo, bundle) -> memo + bundle.quantity()), 0
 
+		pieces: (product, designId) ->
+			if product?
+				bundle = @getBundle(product._id)
+				return if bundle? then bundle.pieces(designId) else 0
+			else
+				_.reduce @bundles,   ((memo, bundle) -> memo + bundle.pieces()), 0			
+
 
 		isEmpty: ->
 			@bundles.lenght == 0
