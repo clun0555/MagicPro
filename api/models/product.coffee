@@ -10,7 +10,7 @@ Product = new mongoose.Schema
 	type: {type: mongoose.Schema.ObjectId, ref: 'Type'}
 	designs: [ Design.schema ]
 	size: {type: String }
-	inner: { type: Number }
+	inner: { type: Number, require: true }
 	modified: { type: Date, default: Date.now }
 
 module.exports = mongoose.model("Product", Product)
