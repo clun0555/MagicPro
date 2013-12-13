@@ -4,7 +4,7 @@ define [
 
 	# reference all translations here
 	"./translation-en"
-	"./translation-cn"
+	"./translation-zh"
 
 ], (_, common) ->
 

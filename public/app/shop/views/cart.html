@@ -4,8 +4,8 @@
 	<ul class="cart-items">
 		<li ng-show=" cart.quantity() > 0 ">
 			<div class="bundle-numbers">
-				<h2>Quantity</h2>
-				<h2 class="bundle-price">Price</h2>
+				<h2 translate>cart.quantity</h2>
+				<h2 class="bundle-price" translate>cart.price</h2>
 			</div>
 		</li>
 		<li class="cart-item slide" ng-repeat="bundle in cart.bundles">
@@ -24,7 +24,7 @@
 	<div class="cart-summary">
 		<i class="cart-icon icon-cart icon-large" ></i> <span class="cart-price"> {{ cart.price() | currency:"$" }}</span>
 		<div ng-show=" cart.quantity() > 0 ">
-			<a class="btn btn-primary  submit" ui-sref="cart" >Preview	</a>
+			<a class="btn btn-primary  submit" ui-sref="cart" translate>cart.preview</a>
 		</div>
 	</div>
 	

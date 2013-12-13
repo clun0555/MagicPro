@@ -18,6 +18,7 @@ require.config
 		"angular-translate-storage-cookie": "vendor/angular-translate-storage-cookie/angular-translate-storage-cookie" # persiting translations
 		"angular-translate-interpolation-messageformat": "vendor/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat" # persiting translations
 		"messageformat": "vendor/messageformat/messageformat" # pluralization / genders
+		"messageformat-zh": "vendor/messageformat/locale/zh" # pluralization / genders
 		# "messageformat-en": "vendor/messageformat/locale/en" # persiting translations		
 		
 		"domReady": "vendor/requirejs-domready/domReady"
@@ -42,11 +43,12 @@ require.config
 			exports: "_"
 
 		'angular':
-			deps: ["messageformat"]			
+			deps: ["messageformat"]
 			exports: 'angular'
 			init: (MessageFormat) ->
 				# not very clean... setting messageformat in deps doesn't work for some reasom
 				window.MessageFormat = MessageFormat
+				window.MessageFormat.locale.zh = ( n ) ->  "other"
 				this.angular
 
 		"angular-route": ["angular"]

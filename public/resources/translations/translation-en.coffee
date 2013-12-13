@@ -64,5 +64,24 @@ define ->
 	"order.category": "Category"
 	"order.type": "Type"
 	"order.product": "Product"
-	
-	
+
+	### breadcrumb ###
+	"breadcrumb.home": "Home"
+
+	### cart ###
+	"cart.quantity": "Quantity"
+	"cart.price": "Price"
+	"cart.preview": "Preview"
+
+	### preview ###
+	"preview.thank": "Thank you"
+	"preview.message":"Your order has been sent to our team."
+	"preview.back": "Back"
+	"preview.submit": "Submit"
+
+	### product ###
+	"product.many": "HOW MANY?"
+	"product.inner": "INNER"
+
+	### menu ###
+	"menu.welcome": "Welcome,"
