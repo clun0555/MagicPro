@@ -50,7 +50,7 @@ define [
 
 		# retrieves/calculate bundle price. If designId is specified will only return price for that design
 		price: (designId) ->
-			@quantity(designId) * @product.price
+			@quantity(designId) * @product.price * @product.inner
 
 		toJSON: ->
 			compositions: @compositions

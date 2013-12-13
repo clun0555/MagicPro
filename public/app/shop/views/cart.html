@@ -13,8 +13,8 @@
 					<span class="bundle-title">{{ bundle.product.title }}</span>
 				</a>
 				<div class="bundle-numbers">
-					<span class="bundle-quantity">{{ bundle.quantity() }} <span  ng-show="bundle.product.inner > 1" > &times; {{bundle.product.inner}} </span> </span>
-					<span class="bundle-price">{{  bundle.price() | currency:'$' }}</span> 
+					<span class="bundle-quantity">{{ bundle.quantity() }} <span> &times; {{bundle.product.inner}} </span> </span>
+					<span class="bundle-price">{{  bundle.price() | currency:'$' }}</span>
 				</div>
 		</li>
 	</ul>
