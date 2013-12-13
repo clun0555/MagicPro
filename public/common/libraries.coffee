@@ -47,6 +47,8 @@ require.config
 			init: (MessageFormat) ->
 				# not very clean... setting messageformat in deps doesn't work for some reasom
 				window.MessageFormat = MessageFormat
+				window.MessageFormat.locale.zh = ( n ) ->  "other"
+
 				this.angular
 
 		"angular-route": ["angular"]
