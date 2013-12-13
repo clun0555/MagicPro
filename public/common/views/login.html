@@ -1,0 +1,26 @@
+<div class="login-view">
+	<h2 class="form-signin-heading" translate >login.title</h2>
+		
+		<div class="alert alert-danger" ng-show="submited && credentials.$invalid">
+			<div ng-show="credentials.email.$error.server" translate> login.password-email-incorect </div>
+			<div ng-show="credentials.email.$error.required" translate> login.email-isempty </div>
+			<div ng-show="credentials.email.$error.email" translate> login.email-invalid </div>
+			<div ng-show="credentials.password.$error.required" translate> login.password-isempty </div>					
+		</div>
+
+		<form novalidate name="credentials">
+			<input type="email" class="form-control" placeholder="{{ 'login.email' | translate }}" autofocus="" ng-model="email" name="email" required imt-server-error >
+			<input type="password" class="form-control" placeholder="{{ 'login.password' | translate }} " ng-model="password" name="password" required >
+			
+			<div class="login-buttons">
+				<a class="btn btn-lg btn-link register-button"  >{{ "login.register" | translate }} </a>
+				<button class="btn btn-lg btn-primary login-button"  ng-click="login()" >{{ "login.login" | translate }} </button>
+			</div>	
+
+		</form>
+
+		
+
+</div>
+
+      

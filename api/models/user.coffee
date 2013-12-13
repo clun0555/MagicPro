@@ -4,12 +4,14 @@ crypto = require("crypto")
 LocalStrategy = require("passport-local").Strategy
 BadRequestError = require("passport-local").BadRequestError
 options = saltlen: 32, iterations: 25000, keylen: 512, usernameField: "email"	
+Cart = require("./cart")
 
 User = new mongoose.Schema
 	firstname: { type: String, required: true }
 	lastname: { type: String, required: true }
 	email: { type: String, required: true }
 	role: { type: String, required: true, default: "user" }
+	cart: { type: mongoose.Schema.Types.Mixed }
 	imageId: { type: String }
 	hash: String
 	salt: String

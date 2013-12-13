@@ -1,5 +1,5 @@
 {
-  "name": "magicpro",
+  "name": "magicpro-angular",
   "version": "0.3.4",
   "private": true,
   "main": "dist/api/server.js",
@@ -29,15 +29,14 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-compass": "~0.6.0",
     "grunt-contrib-requirejs": "~0.4.1",
-    "eco": "~1.1.0-rc-3",
-    "grunt-eco-amd": "https://github.com/justmatt/grunt-eco-amd/tarball/master",
     "grunt-shell": "~0.5.0",
     "grunt-replace": "~0.5.1",
     "mongoose-migrate": "~0.1.4",
     "connect-mongo": "~0.4.0",
     "connect-redis": "~1.4.6",
     "nodemailer": "~0.5.10",
-    "json2csv": "~2.2.1"
+    "json2csv": "~2.2.1",
+    "grunt-html2js": "~0.2.3"
   },
   "devDependencies": {
     "grunt-mocha": "~0.4.1",

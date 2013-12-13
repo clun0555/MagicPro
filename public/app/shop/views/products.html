@@ -1,0 +1,22 @@
+
+<div class="product-navigator thumnails">
+	
+	<div class="slide product-title col-md-3" ng-repeat="product in products | filter:search" >
+		<a  ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >
+			<div class="thumbnail">
+
+				<div class="caption">
+					<h4>{{product.title}}</h4>
+					<div class="nav-background">
+						<imt-image src="{{product.imageId}}" size="s=158" ></imt-image>
+					</div>
+				</div>
+
+			</div>
+		</a>
+
+	</div>
+
+</div>
+
+

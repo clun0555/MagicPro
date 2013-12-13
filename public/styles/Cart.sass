@@ -1,5 +1,6 @@
 .cart-view
 	color: #555555
+	padding-top: 20px
 	padding-left: 0
 
 	.cart-icon
@@ -11,7 +12,7 @@
 		font-size: 30px
 		font-weight: 200		
 
-	.summary-region
+	.cart-summary
 		float: right
 
 		.cart-price
@@ -23,49 +24,77 @@
 			text-align: right
 
 
-	.items-region
-		ul
-			padding-left: 0
+	
+	.cart-items
+		margin: 0
+		margin-bottom: 20px
+		padding-left: 0
 
-			li
-				list-style: none
-				font-size: 15px
-				font-weight: 200
-				padding: 0px
-				overflow-y: auto
+		li
+			list-style: none
+			font-size: 15px
+			font-weight: 200
+			padding: 0px
+			overflow-y: auto
 
+			// &:hover
+			// 	.bundle-title
+			// 		font-weight: 400
+
+			h2
+				display: inline
+				font-weight: bold
+				margin-top: 0px
+				padding-top: 0px
+				font-size: 14px
+				width: 120px
+
+			.bundle-title
+				display: inline-block
+				padding-top: 5px
+				font-size: 14px
+				color: #045e9f
+				width: 120px
 				&:hover
-					cursor: pointer
-					.bundle-title
-						font-weight: 400
-
-				
-				.bundle-title
-					display: inline-block
-					padding-top: 5px
+					text-decoration: underline
+			
+			.bundle-numbers
+				float: right
+				h2
+					font-weight: 100
+					display: inline
+					text-align: right
+					padding-right: 5px
 					font-size: 14px
-					width: 120px
-				
-				.bundle-numbers
-					float: right
-					.bundle-quantity
-						// width: 30px
-						font-weight: 100
-						display: inline-block
-						text-align: right
-						padding-right: 5px
-						font-size: 14px
+				h2 .bundle-price
+					width: 90px
+					display: inline-block
+					border-left: 1px solid lightgray
+					padding-left: 10px
+					padding-top: 5px
+					padding-bottom: 5px
+					text-align: right
+					font-size: 14px
 
-					.bundle-price
-						width: 90px
-						display: inline-block
-						border-left: 1px solid lightgray
-						padding-left: 10px
-						padding-top: 5px
-						padding-bottom: 5px
-						text-align: right
-						font-size: 14px
+				.bundle-quantity
+					// width: 30px
+					font-weight: 100
+					display: inline-block
+					text-align: right
+					padding-right: 5px
+					font-size: 14px
+
+				.bundle-price
+					width: 90px
+					display: inline-block
+					border-left: 1px solid lightgray
+					padding-left: 10px
+					padding-top: 5px
+					padding-bottom: 5px
+					text-align: right
+					font-size: 14px
 
 	.submit
 		margin-top: 10px
+
 

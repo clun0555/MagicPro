@@ -1,7 +1,0 @@
-<% if @price: %>
-<i class="cart-icon icon-cart icon-large" ></i> <span class="cart-price"> <%= @formatCurrency "$", @price %></span>
-<div>
-<a class="btn btn-primary  submit" >Preview	</a>
-</div>
-
-<% end %>

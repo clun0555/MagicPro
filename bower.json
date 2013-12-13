@@ -1,0 +1,28 @@
+{
+  "name": "MagicPro",
+  "version": "0.2",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "libs"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-resource": "latest",
+    "angular-ui-router": "latest",
+    "angular-animate": "latest",
+    "requirejs": "latest",
+    "requirejs-domready": "latest",
+    "underscore": "latest",
+    "underscore.string": "latest",
+    "angular-translate": "~1.1.1",
+    "sass-bootstrap": "~3.0.2",
+    "angular-translate-storage-cookie": "~0.1.6",
+    "angular-translate-interpolation-messageformat": "~0.1.5",
+    "test": "https://raw.github.com/asciidisco/require-messageformat-plugin/master/msg.js"
+  },
+  "resolutions": {
+    "angular": "1.2.3"
+  }
+}

@@ -1,4 +1,5 @@
 Cart = require("../models/cart")
+User = require("../models/user")
 _ = require("underscore")
 email = require("../utils/email")
 json2csv = require('json2csv')
@@ -37,33 +38,39 @@ module.exports =
 				cart.save (err, cart) -> res.send err or cart
 
 	destroy: (req, res) ->
-		res.send Cart.findByIdAndRemove req.params.cart		
+		res.send Cart.findByIdAndRemove req.params.cart			
+
 
 
 sendConfirmationEmail = (cart, user) ->
 	cartJSON = cart.toJSON()
 	designs = []
 
-	for bundle in cart.bundles
-		for composition in bundle.compositions
-			design = _.findWhere(bundle.product.designs, { _id:  composition.design.toJSON()  })
-			designs.push 
-				"itemId": bundle.product.identifier 
-				"designId": design.identifier
-				"quantity": composition.quantity
-				"unitPrice": bundle.product.price
+
+	cart.populate "bundles.product", =>
+
+		for bundle in cart.bundles
+			for composition in bundle.compositions
+				# bundle.populate("product")
+				design = _.findWhere(bundle.product.designs, { id:  composition.design.toJSON()  })
+				designs.push 
+					"itemId": bundle.product.identifier 
+					"designId": design.identifier
+					"quantity": composition.quantity
+					"unitPrice": bundle.product.price
 
 
-	json2csv { data: designs, fields: ['itemId', 'designId', 'quantity', 'unitPrice'], fieldNames: ['Item Id', 'Design Id', 'Quantity', 'Unit Price'] } , (err, csv) ->
-		
-		options = {
-			subject: "Magic Pro Order",
-			text: csv
-			to: user.email
-			attachments: [{
-				fileName: "order.csv"
-				contents: csv
-			}]
-		}
+		json2csv { data: designs, fields: ['itemId', 'designId', 'quantity', 'unitPrice'], fieldNames: ['Item Id', 'Design Id', 'Quantity', 'Unit Price'] } , (err, csv) ->
+			
+			options = {
+				subject: "Magic Pro Order",
+				text: csv
+				to: user.email
+				attachments: [{
+					fileName: "order.csv"
+					contents: csv
+				}]
+			}
 
-		email.send (options)
+			email.send (options)
+			

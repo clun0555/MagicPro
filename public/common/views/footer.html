@@ -1,0 +1,21 @@
+<hr>
+<footer>
+	<small > <span translate>application.copyright</span>  - 
+		<div class="btn-group dropup btn-group-xs">
+			<a href="" data-toggle="dropdown">{{ 'locale.label' | translate}} </a>
+		
+		  <ul class="dropdown-menu">
+		  		<li ng-repeat="translation in translations" >
+				
+		   			<a ng-click="translate(translation)" >						
+						<i class="icon-ok" ng-show="translation.code == ('locale.code' | translate)"></i>						
+			   			{{ translation.label }}
+		   			</a>
+		   		</li>		    	
+		  </ul>
+		</div>
+		<a ng-click="logout()" translate>menu.logout</a>
+
+	</small>
+</footer>
+

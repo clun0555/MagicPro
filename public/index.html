@@ -4,22 +4,39 @@
 		<meta charset="utf-8">
 		<title>Home</title>
 		<link rel="stylesheet" type="text/css" href="/styles/main.css?rel=@@timestamp" />
-		<script data-main="/scripts/main.js?rel=@@timestamp" src="/scripts/base/lib/require/require.js?rel=@@timestamp" ></script>
+		<script data-main="/main.js?rel=@@timestamp" src="/vendor/requirejs/require.js?rel=@@timestamp" ></script>
 	</head>
 	
 	<body>
-		
-		<div id="ribbon-background"></div>
-        <div id="logo-region"></div>
-		<div id="menu-region" class=" navbar-wrapper "></div>
 
-		<div id="main-region" class="container">
-			<div class="starter-template">
-				<h1>Loading...</h1>
+		
+
+		<div id="ribbon-background"></div>
+		<div id="logo-region">
+			<div class="logo-view container">
+				<div class="ribbon1-img img-container">
+					<img src="/resources/img/ribbon2.png" alt="MagicPro Ribbon Image Top">
+				</div>
+				<div class="logo-container">
+					<div class="logo-img img-container">
+						<img src="/resources/img/magic_logo.png" alt="MagicPro Logo">
+					</div>
+
+				</div>
+				<div class="ribbon2-img img-container flip-vertical">
+					<img src="/resources/img/ribbon2.png" alt="MagicPro Ribbon Image Bottom">
+				</div>
 			</div>
 		</div>
+
+		<div class="menu-region container" ng-include="'common/views/menu.html'" ng-controller="MenuController" ></div>
 	
-		<div id="footer-region" class="container"> </div>		
+		<div id="main-region" class="container" ui-view ></div>
+
+	
+		<div id="footer-region" class="container"> 		
+			<div ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-view"  ></div>
+		</div>		
 		<div id="modal-region" class="container"> </div>		
 
 	</body>

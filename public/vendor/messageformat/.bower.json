@@ -1,0 +1,14 @@
+{
+  "name": "messageformat",
+  "homepage": "https://github.com/SlexAxton/messageformat.js",
+  "version": "0.1.6",
+  "_release": "0.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.6",
+    "commit": "41491aa46b50fdbc5373973376a13390d5309def"
+  },
+  "_source": "git://github.com/SlexAxton/messageformat.js.git",
+  "_target": "~0.1.6",
+  "_originalSource": "messageformat"
+}

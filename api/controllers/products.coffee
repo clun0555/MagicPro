@@ -9,7 +9,10 @@ module.exports =
 	
 	index: (req, res) ->
 		if req.query?
-			res.send Product.find req.query		
+			if req.query.advanced?
+				res.send Product.find JSON.parse(req.query.advanced)
+			else
+				res.send Product.find req.query
 		else
 			res.send Product.find()
 

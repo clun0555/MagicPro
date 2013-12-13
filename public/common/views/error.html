@@ -1,0 +1,19 @@
+<div class="error-page">
+	
+	<div class="jumbotron">
+		<h1>{{ 'errorpage.error' | translate}} {{code}}</h1>
+		
+		<p ng-switch="{{code}}">
+			<span ng-switch-when="404" translate >errorpage.notfound</span>
+			<span ng-switch-when="403" translate >errorpage.unauthorized</span>
+			<span ng-switch-default translate >errorpage.unknown</span>
+		</p>
+			
+		</p>
+		<p>
+			<a class="btn btn-link" href="#" translate> errorpage.goback</a>
+		</p>
+			
+	</div>
+
+</div>

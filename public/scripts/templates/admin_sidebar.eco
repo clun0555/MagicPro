@@ -1,2 +1,0 @@
-<a class="list-group-item user-menu active"><%= @t "adminsidebar.users" %></a>
-<!-- <a class="list-group-item"><%= @t "adminsidebar.categories" %></a> -->

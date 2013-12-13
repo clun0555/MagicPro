@@ -1,0 +1,45 @@
+<div class="navbar navbar-default">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#" translate>menu.title</a>
+	</div>
+	<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav navbar-left ace-nav" ng-if="user">
+			<li ng-class="{ active: $state.includes('shop') }"   ><a href="#" translate >menu.home</a></li>
+			<li ng-class="{ active: $state.includes('admin') }" ng-if="user.role == 'admin'" ><a ui-sref="admin"  translate >menu.admin</a></li>
+		</ul>
+		
+
+		<ul class="nav navbar-nav navbar-right ace-nav"  ng-if="user">
+			<li class="light-blue">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-user"></i>										
+						<span class="user-info">
+							<small>Welcome,</small>
+							{{user.firstname}}
+						</span>
+
+						<i class="fa fa-caret-down"></i>											
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#" translate>menu.account</a></li>
+					<li class="divider"></li>
+					<li class="dropdown-header"></li>
+					<li><a class="logout-menu" translate ng-click="logout()" >menu.logout</a></li>
+					
+				</ul>
+			</li>		
+		</ul>
+
+	</div>
+</div>
+	
+	
+
+
+
+

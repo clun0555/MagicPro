@@ -1,0 +1,75 @@
+<div class="product-detail-view container">
+	
+	<div class="row">
+		<div class="col-md-4">
+			<h1>{{ product.title}}</h1>
+			<p class="product-ref-price">
+				<span class="product-ref" >{{ product.identifier }} | </span> 
+				<span class="product-price" >{{  product.price | currency:"$" }}</span> 
+			</p>
+			
+			<imt-image class="item-thumbnail" src="{{product.imageId}}" size="w=250" ></imt-image>
+
+			<p class="product-description">{{ product.description}}</p>
+		</div>
+		<div class="col-md-8 row bundle-container">
+		<table>
+				<thead>
+					<tr>
+						<th colspan="2"></th>
+						<th class="design-count">HOW MANY?</th>
+						<th ></th>		
+					</tr>
+				</thead>
+				<tbody>
+					
+					<tr ng-repeat="design in product.designs">
+						<td class="design-thumbnail">
+							<imt-image src="{{design.imageId}}" size="s=75" ></imt-image>
+						</td>
+						<td class="design-info">
+							<span class="design-label">{{  design.label }}</span>
+							<span class="design-id">({{  design.identifier }})</span> 
+							
+						</td>
+						<td class="design-count">
+							<input
+								type="number"
+								min="0"
+								max="9999"
+								ng-maxlength="4"
+								class="hide-placeholder-onblur"
+								placeholder="0" ng-change="updateQuantity(design)" ng-model="quantities[design._id]" >
+						</td>
+						<td class="inner" >
+							<span  ng-show="product.inner > 1" >&times; {{  product.inner }}</span>							
+						</td>
+					</tr>
+					
+				</tbody>
+				<tfoot>
+						<tr>
+							<td colspan="2"></td>
+							<td class="bundle-summary-region" colspan="2" >
+								<div class="slide product-detail-bundle-summary" ng-show="cart.quantity(product) > 0">
+									<span class="total-quantity" > {{ cart.pieces(product) }}
+										<span class="piece-unit" translate translate-values="{ amount: {{cart.pieces(product)}} }" > 
+											general.unit.pieces
+										</span> |
+									</span>
+									<span class="total-price">{{cart.price(product) | currency:"$" }}</span>
+									
+								</div>
+							
+
+
+							</td>
+						</tr>
+				</tfoot>
+			</table>
+			
+		</div>
+	</div>
+</div>
+
+

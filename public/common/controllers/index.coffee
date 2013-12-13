@@ -1,0 +1,6 @@
+
+define [
+	"./FooterController"
+	"./MenuController"
+	"./LoginController"
+], ->
