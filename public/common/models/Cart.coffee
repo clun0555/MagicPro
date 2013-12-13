@@ -72,8 +72,21 @@ define [
 		toJSON: ->
 			bundles: @bundles
 
+		toObject: ->
+			obj = 
+				bundles: []
+				
+			for bundle in @bundles
+				obj.bundles.push bundle.toObject()
+
+			obj
+
+
 		fromJSON: (json) ->
 			for jsonBundle in json.bundles ? []
 				@bundles.push new Bundle(jsonBundle).fromJSON(jsonBundle)
 
 			this
+
+		clone: ->
+			new Cart().fromJSON(@toObject())

@@ -56,6 +56,16 @@ define [
 			compositions: @compositions
 			product: @product._id
 
+		toObject: ->
+			obj = 
+				product: @product
+				compositions: []
+
+			for composition in @compositions
+				obj.compositions.push composition.toObject()
+
+			obj
+
 
 		fromJSON: (json) ->			
 			for jsonComposition in json.compositions

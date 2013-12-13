@@ -15,6 +15,10 @@ define [
 			quantity: @quantity
 			design: @design._id	
 
+		toObject: ->
+			quantity: @quantity
+			design: @design			
+
 		fromJSON: (json) ->
 			@quantity = json.quantity
 			@design = json.design

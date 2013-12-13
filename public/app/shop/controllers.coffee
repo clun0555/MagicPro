@@ -1,6 +1,7 @@
 define [
 	"./shop"
-], (shop) ->
+	"common/models/Cart"
+], (shop, Cart) ->
 	
 	shop
 		
@@ -39,7 +40,7 @@ define [
 
 		.controller "CartPreviewController", ($scope, cart, CartService) ->
 			
-			$scope.cart = cart
+			$scope.cart = cart.clone()			
 			
 			$scope.submit = ->
 				CartService.save().then ->

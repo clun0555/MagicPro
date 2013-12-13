@@ -13,14 +13,14 @@
 		
 		<li class="bundle-info" ng-repeat="bundle in cart.bundles">
 			<ul class="product-info">
-				<h1 class="product-title">{{ bundle.product.title }}</h1>	
+				<a ui-sref="shop.product({ category: bundle.product.type.category.slug, type: bundle.product.type.slug, product: bundle.product.slug})" ><h1 class="product-title">{{ bundle.product.title }}</h1>	</a>
 				<span class="product-ref" >{{bundle.product.identifier}} | </span> 
 				<span class="product-price" >{{ bundle.product.price | currency:"$" }}</span> 				
 			</ul>
 			
 			<ul class="composition-list">
 				
-				<li class="composition-info" ng-repeat="composition in bundle.compositions"  > 
+				<li class="composition-info" ng-repeat="composition in bundle.compositions" ng-class="{ inactive: !(composition.quantity > 0) }"  > 
 
 					<span class="design-image"> <imt-image src="{{composition.design.imageId}}" size="s=75" ></imt-image> </span>
 					<span class="design-label">{{ composition.design.label }} <br /><span class="design-identifier">({{ composition.design.identifier }})</span></span>
@@ -32,6 +32,7 @@
 								ng-maxlength="4"
 								ng-model="composition.quantity"
 								ng-change="updateQuantity(composition.design, bundle.product, composition.quantity)"
+								class="hide-placeholder-onblur"	placeholder="0"
 							>
 					</span>
 
@@ -50,10 +51,10 @@
 			<ul class="composition-list">				
 				<li class="composition-info ">
 					<div class="cart-summary">
-						{{ cart.price() | currency:"$" }} 		
+					{{ cart.price() | currency:'$' }} 		
 					<br>
 					<a href="#/products" class="btn btn-link submit-cart btn-lg "><i class="fa fa-caret-left"></i>&nbsp; Back</a>
-					<a class="btn btn-primary submit-cart btn-lg " ng-click="submit()" >Submit</a>
+					<button class="btn btn-primary submit-cart btn-lg " ng-click="submit()" ng-disabled="cart.quantity() == 0" >Submit</button>
 	
 					</div>
 					
