@@ -30,6 +30,10 @@ define ->
 	"register.register": "Register"
 	"register.wrong-data": "Oops! Wrong data"
 
+	### validating ###
+	"validating.title": "Thank you"
+	"validating.message": "We are processing your request. We will come back to you shorlty"
+
 	### menu ###
 	"menu.title": "MagicPro"
 	"menu.home": "Home"		

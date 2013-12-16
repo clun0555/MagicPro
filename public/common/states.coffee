@@ -10,9 +10,24 @@ define [
 		.config ( $stateProvider, $urlRouterProvider) ->	
 
 			# root state
-			$urlRouterProvider.when "", "/products"
+			# $urlRouterProvider.when "", "/products"
 
 			$stateProvider
+
+				.state "index", 
+					url: ""
+					template: '<ui-view/>'
+					controller: ($state, SessionService) ->
+						user = SessionService.user()
+
+						if not SessionService.isSessionFetched()
+							$state.go "login"
+						else if user.role in ["admin", "buyer"]
+							$state.go "shop.categories"
+						else
+							$state.transitionTo "validating"							
+
+						
 
 				.state "error",
 					url: "/error/:code"
@@ -24,6 +39,10 @@ define [
 					url: "/login"
 					templateUrl: "common/views/login.html" 
 					controller: "LoginController" 
+
+				.state "validating",
+					url: "/validating"
+					templateUrl: "common/views/validating.html" 								
 
 				.state "otherwise",
 					url: "*path"

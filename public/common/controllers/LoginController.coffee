@@ -20,7 +20,7 @@ define [
 					SessionService.login($scope.email, $scope.password).then(
 						
 						->
-							$state.go "shop.categories"
+							$state.go "index"
 						->
 							$scope.serverError = true
 													

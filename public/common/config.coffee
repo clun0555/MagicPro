@@ -33,31 +33,39 @@ define [
 
 		# Enforce security when state changes
 		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
+			
+
+			unless SessionService.isSessionFetched()
+				# user state is unknown, ask server if there is an active user				
+				event.preventDefault()
+				SessionService.fetchSession().then(
+					->
+						# server has an active session. It is now stored on the client
+						# re-play state to check security
+						$state.go toState.name, toParams							
+					->	
+						$state.go toState.name, toParams
+												
+				)
+
+
 			security = toState.data?.security
 			
 			if security?
 				# if state has security parameters
 
-				if SessionService.get()?
-					# if there is an active session	
-					
-					unless SessionService.security(security)
-						# if session doesn't meet security, redirect to error page
-						event.preventDefault()
-						$state.go "error", { code: 403 }, { location: false }
-
-				else
-					# no active session yet, ask server				
+				unless SessionService.security(security)
+					# if session doesn't meet security
 					event.preventDefault()
-					SessionService.fetchSession().then(
-						->
-							# server has an active session. It is now stored on the client
-							# re-play state to check security
-							$state.go toState.name, toParams							
-						->	
-							# server has no active session. Ask user to login					
-							$state.transitionTo "login"
-					)
+
+					if SessionService.user()?
+						# if user is known, redirect to error page
+						$state.go "error", { code: 403 }, { location: false }
+					else
+						# server has no active session. Ask user to login					
+						$state.transitionTo "login"
+
+
 			
 		# Hanlle state change errors. ex: Resolver got rejected.  		
 		$rootScope.$on "$stateChangeError", (event, toState, toParams, fromState, fromParams, error) ->

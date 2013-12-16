@@ -8,6 +8,9 @@ define [
 
 		admin: (user) ->
 			user.role is "admin"
+
+		buyer: (user) ->
+			user.role in [ "buyer", "admin" ]
 	
 	services.service "SessionService", ($resource, $q, $http, $rootScope) ->
 
@@ -37,11 +40,11 @@ define [
 
 			$http(method: 'GET', url: '/api/authentification/logout' )
 				.success (data) =>
-					@session = null
+					@session = false
 					$rootScope.user = @user()
 					deferred.resolve()
 				.error (data) =>
-					@session = null
+					@session = false
 					$rootScope.user = @user()
 					deferred.resolve()					
 
@@ -55,13 +58,13 @@ define [
 				# session is alredy active on client return.				
 				deferred.resolve() # TODO check expire date
 			else
-				$http(method: 'GET', url: '/api/authentification/currentuser' )
+				$http( method: 'GET', url: '/api/authentification/currentuser' )
 					.success (data) =>
 						@session = user: data
 						$rootScope.user = @user()
 						deferred.resolve()
 					.error (data) =>
-						@session = null
+						@session = false
 						deferred.reject code: 403				
 
 			deferred.promise
@@ -91,6 +94,11 @@ define [
 		# checks if some data was stored for that user in localstorage
 		hasLocal: (dataKey) ->
 			retrieveLocal(dataKey)?
+
+		
+		isSessionFetched: ->
+			# session isnt null/undefined or explicitily false
+			@session?
 			
 
 

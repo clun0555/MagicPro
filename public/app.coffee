@@ -25,6 +25,8 @@ define [
 ], (angular) ->
 	
 	angular.module("app", [
+		
+		# vendor dependencies
 		"ngRoute"
 		'ngAnimate'
 		"ngResource"
@@ -32,12 +34,16 @@ define [
 		"ui.router"
 		'pascalprecht.translate'
 
+		# common dependencies
 		"app.controllers"
 		"app.directives"		
 		"app.services"
+		
+		# featues dependencies
 		"app.shop"
 		"app.admin"
 
+		# all templates
 		"templates.app"
 
 	]).value('$anchorScroll', angular.noop) # prevents routes to scroll at the top

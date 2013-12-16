@@ -12,7 +12,7 @@ define [
 				.state "order",
 					template: '<ui-view/>'
 					abstract: true
-					data: security: "loggedIn"
+					data: security: "buyer"
 
 				.state "shop", 
 					url: "/products"

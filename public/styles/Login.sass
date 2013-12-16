@@ -1,29 +1,40 @@
 .login-view
+
+	form
+
+		overflow: auto
+		
+		border: 1px solid #eee
 	
-	max-width: 330px
-	padding: 15px
-	padding-top: 80px
-	margin: 0 auto
+		max-width: 430px
+		padding: 30px 50px
+		// padding-top: 80px
+		margin: 100px auto
+		+box-shadow(0 0 3px #eee)
 
-	input[type="email"]
-		margin-bottom: -1px
-		border-bottom-left-radius: 0
-		border-bottom-right-radius: 0
+		h2
+			font-weight: 300
+			margin-bottom: 20px
 
-	input[type="password"]
-		margin-bottom: 10px
-		border-top-left-radius: 0
-		border-top-right-radius: 0
-	
-	.form-control
-		position: relative
-		font-size: 16px
-		height: auto
-		padding: 10px
-		+box-sizing(border-box)
+		input[type="email"]
+			margin-bottom: -1px
+			border-bottom-left-radius: 0
+			border-bottom-right-radius: 0
 
-	.login-buttons
-		float: right
+		input[type="password"]
+			margin-bottom: 10px
+			border-top-left-radius: 0
+			border-top-right-radius: 0
+		
+		.form-control
+			position: relative
+			font-size: 16px
+			height: auto
+			padding: 10px
+			+box-sizing(border-box)
 
-	.form-control:focus
-		z-index: 2
+		.login-buttons
+			float: right
+
+		.form-control:focus
+			z-index: 2

@@ -1,14 +1,18 @@
 <div class="login-view">
-	<h2 class="form-signin-heading" translate >login.title</h2>
-		
-		<div class="slide alert alert-danger" ng-show="submited && ( credentials.$invalid || serverError)" >
-			<div ng-show="serverError" translate> login.password-email-incorect </div>
-			<div ng-show="credentials.email.$error.required" translate> login.email-isempty </div>
-			<div ng-show="credentials.email.$error.email" translate> login.email-invalid </div>
-			<div ng-show="credentials.password.$error.required" translate> login.password-isempty </div>					
-		</div>
-
+	
 		<form novalidate name="credentials">
+			
+			<h2  translate >login.title</h2>
+			
+
+			<div class="slide alert alert-danger" ng-show="submited && ( credentials.$invalid || serverError)" >
+				<div ng-show="serverError" translate> login.password-email-incorect </div>
+				<div ng-show="credentials.email.$error.required" translate> login.email-isempty </div>
+				<div ng-show="credentials.email.$error.email" translate> login.email-invalid </div>
+				<div ng-show="credentials.password.$error.required" translate> login.password-isempty </div>					
+			</div>	
+			
+
 			<input type="email" class="form-control" placeholder="{{ 'login.email' | translate }}" autofocus="" ng-model="email" name="email" required ng-change="resetServerError()" >
 			<input type="password" class="form-control" placeholder="{{ 'login.password' | translate }} " ng-model="password" name="password" required ng-change="resetServerError()">
 			
