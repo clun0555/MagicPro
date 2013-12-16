@@ -5,6 +5,7 @@ this should be used for top-level module definitions only
 define [
 	"angular"
 	"angular-animate"
+	"angular-bootstrap"
 	"angular-route"
 	"angular-resource"
 	"angular-cookies"
@@ -13,10 +14,10 @@ define [
 	"angular-translate-storage-cookie"
 	"angular-translate-interpolation-messageformat"
 	"bootstrap-dropdown"
-	
+
 	"common/controllers/index"
 	"common/directives/index"
-	"common/services/index"	
+	"common/services/index"
 	"views/views"
 
 
@@ -29,6 +30,7 @@ define [
 		# vendor dependencies
 		"ngRoute"
 		'ngAnimate'
+		'ui.bootstrap'
 		"ngResource"
 		"ngCookies"
 		"ui.router"
@@ -36,9 +38,9 @@ define [
 
 		# common dependencies
 		"app.controllers"
-		"app.directives"		
+		"app.directives"
 		"app.services"
-		
+
 		# featues dependencies
 		"app.shop"
 		"app.admin"

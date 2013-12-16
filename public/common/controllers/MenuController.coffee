@@ -5,7 +5,9 @@ define [
 	
 	controllers
 		.controller "MenuController", ($scope, $translate, SessionService, $state) ->
-			
+
+			$scope.isCollapsed = true
+
 			$scope.logout = ->
 				SessionService.logout().then -> $state.go "login"
 					

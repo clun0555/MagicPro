@@ -12,6 +12,7 @@
     "angular-resource": "latest",
     "angular-ui-router": "latest",
     "angular-animate": "latest",
+    "angular-bootstrap": "0.7.0",
     "requirejs": "latest",
     "requirejs-domready": "latest",
     "underscore": "latest",
