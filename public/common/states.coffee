@@ -22,7 +22,7 @@ define [
 
 						if not SessionService.isSessionFetched()
 							$state.go "login"
-						else if user.role in ["admin", "buyer"]
+						else if user.role? and user.role in ["admin", "buyer"]
 							$state.go "shop.categories"
 						else
 							$state.transitionTo "validating"							

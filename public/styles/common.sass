@@ -51,6 +51,8 @@ body:before
 	color: rgb(144, 144, 144)
 	font-size: 16px
 
+.nav
+	background-color: #438eb9
 .navbar 
 	border-radius: 0px
 
@@ -74,6 +76,14 @@ body:before
 	width: 158px
 	height: 158px
 
+@media (min-width: 768px)
+	.nav-collapse
+		display: block
+
+@media (max-width: 768px)
+	.navbar-nav
+		margin: -1px -15px
+		border: 1px solid #DDD
 
 // remove input placeholde when focused
 input.hide-placeholder-onblur

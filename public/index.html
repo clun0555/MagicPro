@@ -1,5 +1,5 @@
 <html lang="en">
-	
+
 	<head>
 		<meta charset="utf-8">
 		<title>Home</title>
@@ -7,10 +7,10 @@
 		<script data-main="/main.js?rel=@@timestamp" src="/vendor/requirejs/require.js?rel=@@timestamp" ></script>
 		<meta name="viewport" content="width=device-width, initial-scale=0.70, user-scalable=no">
 	</head>
-	
+
 	<body>
 
-		
+
 
 		<div id="ribbon-background"></div>
 		<div id="logo-region">
@@ -31,14 +31,14 @@
 		</div>
 
 		<div class="menu-region container" ng-include="'common/views/menu.html'" ng-controller="MenuController" ></div>
-	
+
 		<div id="main-region" class="container" ui-view ></div>
 
-	
-		
+
+
 		<footer ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-region container"  ></footer>
-		
-		<div id="modal-region" class="container"> </div>		
+
+		<div id="modal-region" class="container"> </div>
 
 	</body>
 </html>

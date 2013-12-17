@@ -10,7 +10,7 @@ define [
 			user.role is "admin"
 
 		buyer: (user) ->
-			user.role in [ "buyer", "admin" ]
+			user?.role? and user.role in [ "buyer", "admin" ]
 	
 	services.service "SessionService", ($resource, $q, $http, $rootScope) ->
 
@@ -98,7 +98,7 @@ define [
 		
 		isSessionFetched: ->
 			# session isnt null/undefined or explicitily false
-			@session?
+			@session? or @session==false
 			
 
 

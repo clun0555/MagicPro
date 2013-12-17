@@ -7,7 +7,7 @@
 		</button>
 		<a class="navbar-brand" href="#" translate>menu.title</a>
 	</div>
-	<div class="nav-collapse collapse navbar-responsive-collapse" collapse="isCollapsed">
+	<div class="nav-collapse" collapse="isCollapsed">
 		<ul class="nav navbar-nav navbar-left" ng-if="user">
 			<li ng-class="{ active: $state.includes('order') }"   ><a href="#" translate >menu.order</a></li>
 			<li ng-class="{ active: $state.includes('admin') }" ng-if="user.role == 'admin'" ><a ui-sref="admin"  translate >menu.admin</a></li>
@@ -26,10 +26,10 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="#" translate>menu.account</a></li>
+					<li><a class="dropdown" href="#" translate>menu.account</a></li>
 					<li class="divider"></li>
 					<li class="dropdown-header"></li>
-					<li><a class="logout-menu" translate ng-click="logout()" >menu.logout</a></li>
+					<li><a class="dropdown" translate ng-click="logout()" >menu.logout</a></li>
 
 				</ul>
 			</li>
