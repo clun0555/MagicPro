@@ -20,9 +20,9 @@ define [
 					controller: ($state, SessionService) ->
 						user = SessionService.user()
 
-						if not SessionService.isSessionFetched() or not user?
+						if not SessionService.isAuthentificated()
 							$state.go "login"
-						else if user?.role? and user.role in ["admin", "buyer"]
+						else if user.role? and user.role in ["admin", "buyer"]
 							$state.go "shop.categories"
 						else
 							$state.transitionTo "validating"							

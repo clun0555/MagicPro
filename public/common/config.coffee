@@ -31,6 +31,9 @@ define [
 		
 		$rootScope.$state = $state		
 
+		$rootScope.isRole = (roles...) ->
+			SessionService.user()?.role in roles
+
 		# Enforce security when state changes
 		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
 			
@@ -47,6 +50,7 @@ define [
 						$state.go toState.name, toParams
 												
 				)
+				return
 
 
 			security = toState.data?.security

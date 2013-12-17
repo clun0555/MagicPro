@@ -95,10 +95,13 @@ define [
 		hasLocal: (dataKey) ->
 			retrieveLocal(dataKey)?
 
-		
+		isAuthentificated: ->
+			@session? and @session isnt false
+
 		isSessionFetched: ->
 			# session isnt null/undefined or explicitily false
-			@session?
+			@session? or @session is false
+
 			
 
 
