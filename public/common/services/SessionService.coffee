@@ -98,7 +98,7 @@ define [
 		
 		isSessionFetched: ->
 			# session isnt null/undefined or explicitily false
-			@session? or @session==false
+			@session?
 			
 
 
