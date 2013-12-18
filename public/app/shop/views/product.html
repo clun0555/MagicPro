@@ -1,4 +1,4 @@
-<div class="product-detail-view container">
+<div class="product-detail-view container" ng-class="{'single-design':  product.designs.length == 1 }"  >
 	
 	<div class="row">
 		<div class="col-md-4">
@@ -13,7 +13,7 @@
 			<p class="product-description">{{ product.description}}</p>
 		</div>
 		<div class="col-md-8 row bundle-container">
-		<table>
+		<table >
 				<thead>
 					<tr>
 						<th colspan="2"></th>
@@ -21,15 +21,15 @@
 						<th class="design-count" translate>product.inner</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody  >
 					
 					<tr ng-repeat="design in product.designs">
 						<td class="design-thumbnail">
-							<imt-image src="{{design.imageId}}" size="s=75" ></imt-image>
+							<imt-image src="{{design.imageId || product.imageId}}" size="s=75"  ></imt-image>
 						</td>
 						<td class="design-info">
-							<span class="design-label">{{  design.label }}</span>
-							<span class="design-id">({{  design.identifier }})</span> 
+							<span class="design-label">{{  design.label || product.title }}</span>
+							<span class="design-id" >({{  design.identifier || product.identifier }})</span> 
 							
 						</td>
 						<td class="design-count">

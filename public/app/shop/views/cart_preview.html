@@ -22,9 +22,9 @@
 				
 				<li class="slide composition-info" ng-repeat="composition in bundle.compositions" ng-class="{ inactive: !(composition.quantity > 0) }"  > 
 
-					<span class="design-image"> <imt-image src="{{composition.design.imageId}}" size="s=75" ></imt-image> </span>
+					<span class="design-image"> <imt-image src="{{composition.design.imageId || bundle.product.imageId}}" size="s=75" ></imt-image> </span>
 					<span class="design-label">
-						{{ composition.design.label }} <span class="design-identifier">({{ composition.design.identifier }})</span>
+						{{ composition.design.label || bundle.product.title }} <span class="design-identifier">({{ composition.design.identifier || bundle.product.identifier }})</span>
 						<br>
 						<span class="design-delete" ng-click="remove(bundle, composition)" > 
 							<!-- <i class="fa fa-times-circle-o"></i>  -->
