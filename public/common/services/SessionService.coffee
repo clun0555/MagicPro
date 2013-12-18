@@ -31,6 +31,23 @@ define [
 
 			deferred.promise
 
+		register: (user) ->
+
+			deferred = $q.defer()
+
+			Session = $resource("/api/authentification/register")
+			
+			user = Session.save {},  user,  
+				=>	
+					@session = { user: user }
+					$rootScope.user = @user()
+					deferred.resolve()
+				=> 
+					@session = null
+					deferred.reject()					
+
+			deferred.promise
+
 		get: -> @session
 
 		user: -> @session?.user

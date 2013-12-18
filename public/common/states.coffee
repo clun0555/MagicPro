@@ -9,23 +9,22 @@ define [
 	app
 		.config ( $stateProvider, $urlRouterProvider) ->	
 
-			# root state
-			# $urlRouterProvider.when "", "/products"
-
 			$stateProvider
 
 				.state "index", 
 					url: ""
 					template: '<ui-view/>'
 					controller: ($state, SessionService) ->
-						user = SessionService.user()
 
-						if not SessionService.isAuthentificated()
-							$state.go "login"
-						else if user.role? and user.role in ["admin", "buyer"]
-							$state.go "shop.categories"
-						else
-							$state.transitionTo "validating"							
+						homeState = 
+							if not SessionService.isAuthentificated()
+								"login"
+							else if SessionService.user()?.role in ["admin", "buyer"]
+								"shop.categories"
+							else
+								"validating"
+
+						$state.go homeState			
 
 						
 
@@ -39,6 +38,11 @@ define [
 					url: "/login"
 					templateUrl: "common/views/login.html" 
 					controller: "LoginController" 
+
+				.state "register",
+					url: "/register"
+					templateUrl: "common/views/register.html" 
+					controller: "RegisterController" 
 
 				.state "validating",
 					url: "/validating"

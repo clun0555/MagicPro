@@ -9,7 +9,7 @@ define [
 			$scope.isCollapsed = true
 
 			$scope.logout = ->
-				SessionService.logout().then -> $state.go "login"
+				SessionService.logout().then -> $state.go "index"
 					
 	
 

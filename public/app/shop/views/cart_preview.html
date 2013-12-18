@@ -61,7 +61,7 @@
 					<div class="cart-summary">
 					{{ cart.price() | currency:'$' }} 		
 					<br>
-					<a href="#/products" class="btn btn-link submit-cart btn-lg "><i class="fa fa-caret-left"></i>&nbsp;{{ 'preview.back' | translate}}</a>
+					<a ui-sref="shop.categories" class="btn btn-link submit-cart btn-lg "><i class="fa fa-caret-left"></i>&nbsp;{{ 'preview.back' | translate}}</a>
 					<button class="btn btn-primary submit-cart btn-lg " ng-click="submit()" ng-disabled="cart.quantity() == 0" translate>preview.submit</button>
 	
 					</div>

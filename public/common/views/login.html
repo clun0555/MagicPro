@@ -1,25 +1,54 @@
 <div class="login-view">
 	
-		<form novalidate name="credentials">
+		<form novalidate name="credentials" class="form-horizontal">
 			
-			<h2  translate >login.title</h2>
+			<div class="form-group">
+				<div class="col-lg-12">
+					<h1 translate >login.title</h1>
+				</div>
+			</div>
 			
+			<div class="slide alert alert-danger" ng-show="submited && serverError" >
+				<div ng-show="serverError" translate> login.password-email-incorect </div>								
+			</div>
+			
+			<div 
+				class="form-group email-group " 
+			    ng-class="{ 'has-error': (submited &&  credentials.email.$invalid) }" >
+				
+				<div class="form-item col-lg-12">
+					<input type="email" class="form-control" placeholder="{{ 'login.email' | translate }}" autofocus="" ng-model="email" name="email" required ng-change="resetServerError()" >
+				
+					<div class="error-tip" >						
+						<span ng-show="credentials.email.$error.required" translate> login.email-isempty </span>
+						<span ng-show="credentials.email.$error.email" translate> login.email-invalid </span>					
+					</div>	
+				</div>
+				
 
-			<div class="slide alert alert-danger" ng-show="submited && ( credentials.$invalid || serverError)" >
-				<div ng-show="serverError" translate> login.password-email-incorect </div>
-				<div ng-show="credentials.email.$error.required" translate> login.email-isempty </div>
-				<div ng-show="credentials.email.$error.email" translate> login.email-invalid </div>
-				<div ng-show="credentials.password.$error.required" translate> login.password-isempty </div>					
-			</div>	
+			</div>
 			
+			<div 
+				class="form-group password-group " 
+				ng-class="{ 'has-error': (submited &&  credentials.password.$invalid) }" >
+			
+				<div class="form-item col-lg-12">
+					<input type="password" class="form-control" placeholder="{{ 'login.password' | translate }} " ng-model="password" name="password" required ng-change="resetServerError()">
+					
+					<div class="error-tip" >						
+						<span ng-show="credentials.password.$error.required" translate> login.password-isempty </span>				
+					</div>
+				</div>
 
-			<input type="email" class="form-control" placeholder="{{ 'login.email' | translate }}" autofocus="" ng-model="email" name="email" required ng-change="resetServerError()" >
-			<input type="password" class="form-control" placeholder="{{ 'login.password' | translate }} " ng-model="password" name="password" required ng-change="resetServerError()">
-			
-			<div class="login-buttons">
-				<a class="btn btn-lg btn-link register-button"  >{{ "login.register" | translate }} </a>
-				<button class="btn btn-lg btn-primary login-button"  ng-click="login()" >{{ "login.login" | translate }} </button>
-			</div>	
+			</div>
+			<div class="form-group buttons-group ">
+				<div class="col-lg-12">
+					<div class="login-buttons pull-right">
+						<a class="btn btn-lg btn-link register-button" ui-sref="register" >{{ "login.register" | translate }} </a>
+						<button class="btn btn-lg btn-primary login-button"  ng-click="login()" >{{ "login.login" | translate }} </button>
+					</div>						
+				</div>
+			</div>
 
 		</form>
 
