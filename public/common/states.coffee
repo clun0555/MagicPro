@@ -39,6 +39,19 @@ define [
 					templateUrl: "common/views/login.html" 
 					controller: "LoginController" 
 
+				.state "forgot",
+					url: "/forgot"
+					templateUrl: "common/views/forgot.html" 
+					controller: "ForgotController" 
+
+				.state "reset",
+					url: "/reset/:forgotKey"
+					templateUrl: "common/views/reset.html" 
+					controller: "ResetController"
+					resolve: 
+						user: (UserService, $stateParams) ->
+							UserService.findByForgotKey $stateParams.forgotKey
+
 				.state "register",
 					url: "/register"
 					templateUrl: "common/views/register.html" 

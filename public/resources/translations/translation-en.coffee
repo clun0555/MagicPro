@@ -19,6 +19,25 @@ define ->
 	"login.register": "Sign Up"
 	"login.login": "Login"
 
+	### forgot ###
+	"forgot.title": "Forgot your password ?"
+	"forgot.email": "Email address"	
+	"forgot.email-isempty": "Please enter your email address"
+	"forgot.email-invalid": "Email is invalid"	
+	"forgot.email-notfound": "No account associated to this email address"
+	"forgot.email.instructions": "Enter your email address."
+	"forgot.back": "Back"
+	"forgot.submit": "Submit"
+	"forgot.done.title": "We've sent password reset instructions to your email address."
+	"forgot.done.description": "If you don't receive instructions within a few minutes, check your email's spam and junk filters."
+
+	### reset ###
+	"reset.title": "Pick a new password"
+	"reset.password": "Password"
+	"reset.password-isempty": "Please enter a new password"
+	"reset.submit": "Submit"
+
+
 	### register ###
 	"register.title": "Sign Up"
 	"register.name": "Name"

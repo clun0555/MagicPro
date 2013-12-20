@@ -15,6 +15,7 @@ User = new mongoose.Schema
 	imageId: { type: String }
 	hash: String
 	salt: String
+	forgot: String
 
 User.methods.setPassword = (password, cb) ->
 	return cb(new BadRequestError("user.password.required"))  unless password
@@ -38,7 +39,11 @@ User.methods.authenticate = (password, cb) ->
 		else
 			cb null, false, message: "user.password.incorect"
 
-
+User.methods.generateForgotKey = (cb) ->
+	crypto.randomBytes 32, (ex, buf)  =>
+		key = buf.toString('hex')
+		@set "forgot", key
+		cb(key)
 
 User.methods.toJSON = ->
 	# remove salt and hash from object

@@ -1,5 +1,6 @@
 Category = require("../models/category")
 _ = require("underscore")
+user = require("connect-roles")
 
 module.exports = 
 
@@ -7,6 +8,9 @@ module.exports =
 		name: 'api/categories'
 		id: 'category'
 	
+	all: (req, res, next) ->
+		user.is("registered")(req, res, next)
+
 	index: (req, res) ->
 		res.send Category.find()
 

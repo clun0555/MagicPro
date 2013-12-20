@@ -1,11 +1,15 @@
 Product = require("../models/product")
 _ = require("underscore")
+user = require("connect-roles")
 
 module.exports = 
 
 	options: 
 		name: 'api/products'
 		id: 'product'
+
+	all: (req, res, next) ->
+		user.is("registered")(req, res, next)
 	
 	index: (req, res) ->
 		if req.query?

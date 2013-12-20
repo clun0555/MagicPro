@@ -12,16 +12,17 @@ exports.setup = (app) ->
 		req.user.role is "admin"
 
 	# list here all routes alowed for anonymous users
-	publicRoutes = [
-		"/", 
-		"/api/authentification/login", 
-		"/api/authentification/register"
-	]
+	# publicRoutes = [
+	# 	"/"
+	# 	"/api/authentification/login"
+	# 	"/api/authentification/register"
+	# 	"/api/users/:email/forgot"
+	# ]
 
 	isRegistered = user.is("registered")
 
-	app.all "*", (req, res, next) ->
-		if req.url in publicRoutes then next() else isRegistered(req, res, next)
+	# app.all "*", (req, res, next) ->
+	# 	if req.url in publicRoutes then next() else isRegistered(req, res, next)
 
 
 

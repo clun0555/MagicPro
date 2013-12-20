@@ -3,12 +3,16 @@ User = require("../models/user")
 _ = require("underscore")
 email = require("../utils/email")
 json2csv = require('json2csv')
+user = require("connect-roles")
 
 module.exports = 
 
 	options: 
 		name: 'api/carts'
 		id: 'cart'
+
+	all: (req, res, next) ->
+		user.is("registered")(req, res, next)
 	
 	index: (req, res) ->
 		res.send Cart.find()

@@ -1,6 +1,7 @@
 passport = require('passport')
 LocalStrategy = require('passport-local').Strategy
 User = require('../models/user')
+user = require("connect-roles")
 
 passport.use new LocalStrategy(User.authenticate())
 passport.serializeUser User.serializeUser()
@@ -25,9 +26,9 @@ exports.setup = (app) ->
 		res.redirect "/api/authentification/currentuser"
 		
 
-	app.get "/api/authentification/currentuser", (req, res) ->
+	app.get "/api/authentification/currentuser", user.is("registered"), (req, res) ->
 		res.send req.user
 
-	app.get "/api/authentification/logout", (req, res) ->
+	app.get "/api/authentification/logout", user.is("registered"), (req, res) ->
 		req.logout()
 		res.redirect "/api/authentification/currentuser"

@@ -4,4 +4,6 @@ define [
 	"./MenuController"
 	"./LoginController"
 	"./RegisterController"
+	"./ForgotController"
+	"./ResetController"
 ], ->
