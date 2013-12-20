@@ -11,6 +11,9 @@ module.exports =
 	# running port. Defaults to 3000
 	PORT: "4000"
 
+	# DOMAIN  -  used to generate absolute links in emails / social media ... (defaults to 'http://localhost:<PORT>' is not set)
+	# DOMAIN: "http://magicpro.herokuapp.com" 
+
 	# S3 credentials 
 	S3_KEY: "AKIAIHAIMDM6LGXYHWUA"
 	S3_SECRET: "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"

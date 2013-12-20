@@ -4,6 +4,7 @@ User = require("../models/user")
 _ = require("underscore")
 user = require("connect-roles")
 email = require("../utils/email")
+environment = require("../config/environment")
 
 
 isOwner = (req, res, next) ->
@@ -61,9 +62,9 @@ module.exports =
 						res.send err or "ok"
 						email.send 
 							to: user2.email
-							# cc: null
+							cc: null
 							subject: "password reset"
-							text: "http://localhost:5000/#/reset/" +  user2.forgot
+							text: environment.DOMAIN + "/#/reset/" + user2.forgot
 
 
 	userByForgotKey: (req, res) ->

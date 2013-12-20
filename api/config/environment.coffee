@@ -4,6 +4,7 @@ url = require("../utils/url")
 config =
 
 	PORT: process.env.PORT
+	DOMAIN: process.env.DOMAIN
 	
 	S3_KEY: process.env.S3_KEY
 	S3_SECRET: process.env.S3_SECRET
@@ -44,6 +45,7 @@ try
 config = _.defaults config,
 	PORT: 3000
 	SESSION_STORE: "MONGO"
+	DOMAIN: "http://localhost:" + config.PORT
 
 ## Process REDIS URL
 path = url.process protocol: "redis", href: config.REDIS_URL, login: config.REDIS_DATABASE, password: config.REDIS_PASSWORD, hostname: config.REDIS_HOSTNAME, port: config.REDIS_PORT, slashes: true
