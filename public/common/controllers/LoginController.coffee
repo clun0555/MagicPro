@@ -13,7 +13,7 @@ define [
 			
 			$scope.login = ->
 				$scope.errors = {}
-				$scope.submited = true
+				$scope.submited = true				
 				
 				$scope.resetServerError = -> 
 					$scope.serverError = false
@@ -22,12 +22,16 @@ define [
 
 				if $scope.credentials.$valid
 
+					$scope.submiting = true
+
 					SessionService.login($scope.email, $scope.password).then(
 						
 						->
 							$state.go "index"
-						( err )->
+						
+						(err) ->
 							
+							$scope.submiting = false
 							$scope.serverError = msgs[err.message]
 																			
 					)

@@ -5,11 +5,11 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#" translate>menu.title</a>
+		<a class="navbar-brand" ui-sref="index" translate>menu.title</a>
 	</div>
 	<div class="nav-collapse" collapse="isCollapsed">
 		<ul class="nav navbar-nav navbar-left" ng-if="user">
-			<li ng-class="{ active: $state.includes('order') }" ng-if="isRole('admin', 'buyer')"   ><a href="#" translate >menu.order</a></li>
+			<li ng-class="{ active: $state.includes('order') }" ng-if="isRole('admin', 'buyer')"   ><a ui-sref="shop.categories" translate >menu.order</a></li>
 			<li ng-class="{ active: $state.includes('admin') }" ng-if="isRole('admin')" ><a ui-sref="admin"  translate >menu.admin</a></li>
 		</ul>
 

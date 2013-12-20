@@ -7,12 +7,14 @@ define [
 ], (app) ->
 	
 	app
-		.config ( $stateProvider, $urlRouterProvider) ->	
+		.config ( $stateProvider, $urlRouterProvider, $locationProvider) ->	
+
+			$locationProvider.html5Mode(true)
 
 			$stateProvider
 
 				.state "index", 
-					url: ""
+					url: "/"
 					template: '<ui-view/>'
 					controller: ($state, SessionService) ->
 

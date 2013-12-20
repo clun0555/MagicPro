@@ -18,12 +18,15 @@ define [
 				$scope.resetServerError()
 
 				if $scope.credentials.$valid
+					$scope.submiting = true
 
 					UserService.generateForgotKey($scope.email).then(
 						
 						->
+							$scope.submiting = false
 							$scope.done = true
 						->
+							$scope.submiting = false
 							$scope.serverError = true
 													
 					)

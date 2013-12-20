@@ -19,12 +19,14 @@ define [
 				$scope.resetServerError()
 
 				if $scope.credentials.$valid
+					$scope.submiting = true
 
 					SessionService.register($scope.user).then(
 						
 						->
 							$state.go "index"
 						->
+							$scope.submiting = false
 							$scope.serverError = true
 													
 					)

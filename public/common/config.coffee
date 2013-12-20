@@ -11,12 +11,8 @@ define [
 
 	app.config ($translateProvider) ->
 
-		# $anchorScrollProvider.disableAutoScrolling()
-
-		
-
-		for tranlation in translations
-			$translateProvider.translations tranlation['locale.code'], tranlation
+		for translation in translations
+			$translateProvider.translations translation['locale.code'], translation
 
 		# persist current language in session
 		$translateProvider.useCookieStorage()

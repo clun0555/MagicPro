@@ -18,6 +18,7 @@ define [
 				$scope.resetServerError()
 
 				if $scope.credentials.$valid
+					$scope.submiting = true
 
 					UserService.reset( { forgotKey: $stateParams.forgotKey, password: $scope.lostUser.password } ).then(						
 						(user) ->
@@ -26,6 +27,7 @@ define [
 								$state.go "index"
 							
 						->
+							$scope.submiting = false
 							$scope.serverError = true
 													
 					)
