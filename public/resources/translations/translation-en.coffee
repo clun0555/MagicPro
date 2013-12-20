@@ -15,9 +15,12 @@ define ->
 	"login.email-isempty": "Please enter your email address"
 	"login.email-invalid": "Email is invalid"
 	"login.password-isempty": "Please enter your password"
-	"login.password-email-incorect": "Incorect email or password"
+	"login.password.incorect": "Incorect password"	
+	"login.email.notfound": "Email not found"
+	"login.email.notfound.signup": "Would you like to sign up?"
 	"login.register": "Sign Up"
 	"login.login": "Login"
+	"login.password.forgot": "forgot your password ?"
 
 	### forgot ###
 	"forgot.title": "Forgot your password ?"
@@ -53,6 +56,7 @@ define ->
 	"register.firstname.required": "Please enter your first name"
 	"register.lastname.required": "Please enter your last name"
 	"register.password.required": "Please enter a password"
+	"register.password.forgot": "forgot your password ?"
 	"register.register": "Sign Up"
 	"register.back": "Back"
 

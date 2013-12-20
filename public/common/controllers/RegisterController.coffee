@@ -4,9 +4,10 @@ define [
 ], (controllers, translations) ->
 	
 	controllers
-		.controller "RegisterController", ($scope, $state, SessionService, $parse) ->
+		.controller "RegisterController", ($scope, $state, SessionService, $stateParams, $parse) ->
 			
-			$scope.toto = "helo"
+			$scope.user = 
+				email: $stateParams.email
 
 			$scope.register = ->
 				$scope.errors = {}

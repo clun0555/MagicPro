@@ -22,9 +22,18 @@ exports.setup = (app) ->
 
 		)
 
-	app.post "/api/authentification/login", passport.authenticate("local"), (req, res) ->
-		res.redirect "/api/authentification/currentuser"
+	app.post "/api/authentification/login", (req, res, next) ->		
+		passport.authenticate("local", (err, user, info) ->		
+			
+			return res.status(401).send(err.message) if err 
+
+			return res.status(401).send(info?.message) unless user
+
+			req.logIn user, (err) ->
+				return next(err) if err
+				res.redirect "/api/authentification/currentuser"
 		
+		)(req, res, next)
 
 	app.get "/api/authentification/currentuser", user.is("registered"), (req, res) ->
 		res.send req.user

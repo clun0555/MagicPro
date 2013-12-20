@@ -40,7 +40,7 @@ define [
 					controller: "LoginController" 
 
 				.state "forgot",
-					url: "/forgot"
+					url: "/forgot?email"
 					templateUrl: "common/views/forgot.html" 
 					controller: "ForgotController" 
 
@@ -53,7 +53,7 @@ define [
 							UserService.findByForgotKey $stateParams.forgotKey
 
 				.state "register",
-					url: "/register"
+					url: "/register?email"
 					templateUrl: "common/views/register.html" 
 					controller: "RegisterController" 
 

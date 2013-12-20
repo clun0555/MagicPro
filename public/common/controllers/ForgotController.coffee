@@ -4,8 +4,10 @@ define [
 ], (controllers, translations) ->
 	
 	controllers
-		.controller "ForgotController", ($scope, $state, UserService, $parse) ->
+		.controller "ForgotController", ($scope, $state, $stateParams, UserService, $parse) ->
 			
+			$scope.email = $stateParams.email
+
 			$scope.forgot = ->
 				$scope.errors = {}
 				$scope.submited = true

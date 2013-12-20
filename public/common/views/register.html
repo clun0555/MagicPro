@@ -82,7 +82,10 @@
 					<div class="error-tip" >						
 							<span ng-show="credentials.email.$error.email" translate > register.email.invalid</span>
 							<span ng-show="credentials.email.$error.required" translate > register.email.required</span>
-							<span ng-show="serverError" translate> register.email.duplicate </span>					
+							<span ng-show="serverError"> 
+								{{ 'register.email.duplicate' | translate }} <br>
+								<a ui-sref="forgot({ 'email': user.email })" translate>register.password.forgot</a>
+							</span>					
 					</div>
 
 				</div>

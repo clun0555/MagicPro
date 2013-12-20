@@ -3,6 +3,11 @@ define [
 	"resources/translations/translations"
 ], (controllers, translations) ->
 	
+	# map server error to client error description
+	msgs = 
+		'user.username.incorrect' : "login.email.notfound"
+		'user.password.incorect' : "login.password.incorect"
+
 	controllers
 		.controller "LoginController", ($scope, $state, SessionService, $parse) ->
 			
@@ -21,9 +26,10 @@ define [
 						
 						->
 							$state.go "index"
-						->
-							$scope.serverError = true
-													
+						( err )->
+							
+							$scope.serverError = msgs[err.message]
+																			
 					)
 				
 	

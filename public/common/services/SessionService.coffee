@@ -25,9 +25,9 @@ define [
 					@session = { user: user }
 					$rootScope.user = @user()
 					deferred.resolve()
-				=> 
+				(xhr) => 
 					@session = null
-					deferred.reject()					
+					deferred.reject { code: xhr.status, message: xhr.data }
 
 			deferred.promise
 
