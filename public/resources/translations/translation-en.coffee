@@ -38,7 +38,7 @@ define ->
 	"reset.title": "Pick a new password"
 	"reset.password": "Password"
 	"reset.password-isempty": "Please enter a new password"
-	"reset.submit": "Submit"
+	"reset.submit": "Reset"
 
 
 	### register ###
