@@ -1,0 +1,16 @@
+<div class="admin-users">
+	<div class="panel panel-info">	
+		<div class="panel-heading">
+			<h3 class="panel-title" translate>  admin.users.title </h3>
+		</div>
+		
+		<table class="table">
+			<tr ng-repeat="user in users">
+				<td><a ui-sref="admin.user({ 'userId': user._id })">{{user.firstname}} {{user.lastname}}</a></td>
+			</tr>
+		</table>
+		
+	</div>	
+
+</div>
+

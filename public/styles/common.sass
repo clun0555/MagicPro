@@ -112,6 +112,7 @@ input[type=number]::-webkit-outer-spin-button
 		top: 0px			
 		vertical-align: middle
 
+// Validation tip styles
 .error-tip
 	$error-tip-border-color: rgb(240, 151, 132)
 	$error-tip-background-color: rgba(242,222,222, 1)
@@ -168,12 +169,34 @@ input[type=number]::-webkit-outer-spin-button
 			border-bottom: 1px lighten($error-tip-color, 10%) solid
 
 
+// change background color of disabled elements
 .form-group input[disabled], .form-group input:disabled
 	background: #fcfcfc !important
 	opacity: .8
 
+// remove gray backgound on disabled link buttnons
 fieldset[disabled] .btn-link
 	background: transparent !important
+
+// make all links show a pointer cursor... even when no href
+a
+	cursor: pointer
+
+
+// custom drop down with a left tick
+ul.dropdown-menu.ticked
+	margin-bottom: 10px
+	// left: inherit
+	// right: 0
+	// text-align: left
+	
+	a
+		padding-left: 30px
+
+	i.icon-ok
+		margin-left: -22px
+
+
 
 
 

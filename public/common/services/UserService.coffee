@@ -6,6 +6,18 @@ define [
 	
 	services.service "UserService", ($resource, $q, $http, $rootScope) ->
 
+		Users = $resource "/api/users/:id", { "_id": "@id"}, { 'update': {method:'PUT'} }
+
+		save: (user) ->
+			Users.update( { id: user._id }, user).$promise
+
+
+		find: (userId) ->
+			$resource("api/users/:id").get({ id: userId }).$promise
+
+		findAll: ->
+			$resource("api/users").query().$promise
+
 		generateForgotKey: (email) ->
 			deferred = $q.defer()
 			$resource("api/users/#{email}/forgot").get({}).$promise.then( 

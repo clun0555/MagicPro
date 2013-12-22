@@ -1,41 +1,77 @@
-.user-edit
-	h1 span
-		display: inline-block
-		font-weight: 100
-		border: 1px solid transparent
+.user-view
 
-		+transition-property(border)
-		+transition-duration(.4s)
-		margin-right: 10px
-		min-height: 50px
-		min-width: 50px
-		padding: 0px 10px
+	border: 1px solid #eee
+	+box-shadow(0 0 3px #eee)
 
-		&:hover, &:focus, &:Empty
-			border: 1px solid lightgray
+	max-width: 700px	
+	padding: 30px 100px 50px 50px		
+	margin: 100px auto
 	
-		&:focus
-			outline: 0
+	h1
+		font-weight: 300
 
-
-	input
-		max-width: 300px
-
-	.fileinput-button
+	.form-control
 		position: relative
-		overflow: hidden
-		input[type=file]
-			position: absolute
-			top: 0
-			right: 0
-			left: 0
-			bottom: 0
-			margin: 0
-			opacity: 0
-			-ms-filter: 'alpha(opacity=0)'
-			font-size: 200px
-			direction: ltr
-			cursor: pointer
+		font-size: 16px
+		height: auto
+		padding: 10px
+		+box-sizing(border-box)
+
+	.form-control:focus
+		z-index: 2
+
+	.firstname-group
+		margin-bottom: 0px
+
+	.lastname-group input
+		margin-top: -1px			
+
+	.back-button
+		margin-right: 10px
+			
+
+
+	
+
+
+// .user-edit
+// 	h1 span
+// 		display: inline-block
+// 		font-weight: 100
+// 		border: 1px solid transparent
+
+// 		+transition-property(border)
+// 		+transition-duration(.4s)
+// 		margin-right: 10px
+// 		min-height: 50px
+// 		min-width: 50px
+// 		padding: 0px 10px
+
+// 		&:hover, &:focus, &:Empty
+// 			border: 1px solid lightgray
+	
+// 		&:focus
+// 			outline: 0
+
+
+// 	input
+// 		max-width: 300px
+
+// 	.fileinput-button
+// 		position: relative
+// 		overflow: hidden
+// 		input[type=file]
+// 			position: absolute
+// 			top: 0
+// 			right: 0
+// 			left: 0
+// 			bottom: 0
+// 			margin: 0
+// 			opacity: 0
+// 			-ms-filter: 'alpha(opacity=0)'
+// 			font-size: 200px
+// 			direction: ltr
+// 			cursor: pointer
 
 
 		

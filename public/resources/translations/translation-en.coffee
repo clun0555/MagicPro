@@ -76,18 +76,28 @@ define ->
 	### productnavigator ###
 	"productnavigator.buy": "Buy"
 
-	### adminsidebar ###
-	"adminsidebar.users": "Users"
-	"adminsidebar.categories": "Categories"
+	### users ###
+	"admin.users.title": "Users"
 
-	### useredit ###
-	"useredit.firstname": "First name"
-	"useredit.lastname": "Last name"
-	"useredit.email": "Email"
-	"useredit.role": "Role"
-	"useredit.save": "Save"
-	"useredit.return": "Return"
-	
+	### user ###
+	"admin.user.name": "Name"
+	"admin.user.firstname": "First Name"
+	"admin.user.lastname": "Last Name"
+	"admin.user.email": "Email"
+	"admin.user.role": "Role"
+	"admin.user.password": "Password"
+	"admin.user.password-repeat": "Repeat password"
+	"admin.user.wrong-data": "Oops! Wrong data"
+	"admin.user.email.invalid": "Email is invalid"
+	"admin.user.email.required": "Please enter an email address"
+	"admin.user.email.duplicate": "This email address is already used for a different account"
+	"admin.user.firstname.required": "Please enter a first name"
+	"admin.user.lastname.required": "Please enter a last name"
+	"admin.user.password.required": "Please enter a password"
+	"admin.user.password.forgot": "forgot your password ?"
+	"admin.user.save": "Save"
+	"admin.user.back": "Back"
+
 	### errorpage ###
 	"errorpage.error": "Error"
 	"errorpage.notfound": "Page not found"
