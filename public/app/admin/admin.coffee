@@ -17,11 +17,22 @@ define [
 					templateUrl: "app/admin/views/admin.html"
 
 				.state "admin.users",
-					url: "/users"
+					url: "/users?role"
 					templateUrl: "app/admin/views/users.html"
 					controller: "UsersController"
 					resolve: 
-						users: (UserService) -> UserService.findAll()
+						users: (UserService, $stateParams) -> 
+							
+							query = role: $stateParams.role if $stateParams.role? 
+							
+							UserService.findAll query
+							
+				.state "admin.new",
+					url: "/users/new"
+					templateUrl: "app/admin/views/user.html"
+					controller: "UserController"
+					resolve: 
+						user: -> { role: "buyer" }
 
 				.state "admin.user",
 					url: "/users/:userId"
@@ -29,3 +40,4 @@ define [
 					controller: "UserController"
 					resolve: 
 						user: (UserService, $stateParams) -> UserService.find $stateParams.userId
+

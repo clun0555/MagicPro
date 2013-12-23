@@ -4,15 +4,22 @@ define [
 	
 	admin
 		
-		.controller "UsersController", ($scope, users) ->						
+		.controller "UsersController", ($scope, users, UserService) ->						
 			$scope.users = users
 
+			$scope.removeUser = (user) ->
+				UserService.remove(user).then ->
+					index = $scope.users.indexOf user
+					$scope.users.splice index, 1
+
+		# .controller "UserCreateController", ($scope, UserService) ->
+		# 	$scope.user = {}
+
 		.controller "UserController", ($scope, user, UserService) ->						
-			$scope.user = user		
+			$scope.user = user
 
 			$scope.changeRole = (role) ->
 				$scope.user.role = role
-
 
 			$scope.save = ->
 				$scope.errors = {}

@@ -78,6 +78,12 @@ define ->
 
 	### users ###
 	"admin.users.title": "Users"
+	"admin.users.pending": "pending"
+	"admin.users.name": "Name"
+	"admin.users.company": "Company"
+	"admin.users.add": "Add new user"
+	"admin.users.filter.all": "All"
+	"admin.users.filter.pending": "Pending"
 
 	### user ###
 	"admin.user.name": "Name"
@@ -111,6 +117,8 @@ define ->
 
 	### breadcrumb ###
 	"breadcrumb.home": "Home"
+	"breadcrumb.admin": "Admin"
+	"breadcrumb.admin.users": "Users"
 
 	### cart ###
 	"cart.quantity": "Quantity"

@@ -4,19 +4,31 @@ define [
 
 	
 	
-	services.service "UserService", ($resource, $q, $http, $rootScope) ->
+	services.service "UserService", ($resource, $q, $http, $rootScope, SessionService) ->
 
 		Users = $resource "/api/users/:id", { "_id": "@id"}, { 'update': {method:'PUT'} }
 
 		save: (user) ->
-			Users.update( { id: user._id }, user).$promise
+			if user._id?
+				Users.update( { id: user._id }, user).$promise
+			else
+				Users.save( { }, user).$promise
 
 
 		find: (userId) ->
 			$resource("api/users/:id").get({ id: userId }).$promise
 
-		findAll: ->
-			$resource("api/users").query().$promise
+		remove: (user) ->
+			if SessionService.user()._id is user
+				$q.defer().reject() 
+			else
+				Users.remove({ id: user._id }, user).$promise
+
+		findAll: (query) ->
+			if query?
+				$resource("api/users?advanced=#{JSON.stringify(query)}").query().$promise
+			else
+				$resource("api/users").query().$promise
 
 		generateForgotKey: (email) ->
 			deferred = $q.defer()

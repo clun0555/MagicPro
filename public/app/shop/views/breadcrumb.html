@@ -1,7 +1,9 @@
 <ul class="breadcrumb">
-	<li>
+		
+	<!-- Shop -->
+	<li ng-if="$state.includes('shop')" >
 		<i class="icon-home home-icon"></i>
-		<a href="#/products" class="breadcrumb-home" translate>
+		<a ui-sref="shop.categories" class="breadcrumb-home" translate>
 		 breadcrumb.home
 		</a>
 	</li>
@@ -24,8 +26,32 @@
 		 {{data.product.title}}
 		</a>
 	</li>
+
+
+
+	<!-- Admin -->
+	<li ng-if="$state.includes('admin')" >
+		<i class="icon-home home-icon"></i>
+		<a ui-sref="admin" class="breadcrumb-home" translate>
+		 	breadcrumb.admin
+		</a>
+	</li>
+
+	<li ng-if="$state.includes('admin.users') || $state.includes('admin.user')" >
+		<a ui-sref="admin.users" translate>
+		 	breadcrumb.admin.users
+		</a>
+	</li>
+
+	<li ng-if="$state.includes('admin.user')" >
+		<a ui-sref="admin.users" >
+		 	 {{user.firstname}} {{ 'breadcrumb.admin.user' | translate }}
+		</a>
+	</li>
+
+
 </ul>
-<div class="nav-search" id="nav-search">
+<div class="nav-search" id="nav-search" ng-show="$state.includes('shop')">
 	<form class="form-search">
 		<span class="input-icon">
 			<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" ng-model="search.title">

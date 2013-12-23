@@ -22,10 +22,11 @@ define [
 
 
 	# Handle states authentification / authorization
-	app.run ($rootScope, $state, $injector, SessionService) ->
+	app.run ($rootScope, $state,  $stateParams, $injector, SessionService) ->
 
 		
 		$rootScope.$state = $state		
+		$rootScope.$stateParams = $stateParams		
 
 		$rootScope.isRole = (roles...) ->
 			SessionService.user()?.role in roles
@@ -79,6 +80,13 @@ define [
 			else
 				# Any other types of errors redirects to error page
 				$state.go "error", { code: code }, { location: false }
+
+
+		$rootScope.$on '$stateChangeSuccess', (ev, to, toParams, from, fromParams) ->
+			$rootScope.fromState = from
+			$rootScope.fromStateParams = fromParams
+			console.log $rootScope.fromState
+			console.log $rootScope.fromStateParams
 
 
 		

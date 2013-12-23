@@ -26,7 +26,13 @@ module.exports =
 			update: isOwner
 	
 	index: (req, res) ->
-		res.send User.find()
+		if req.query?
+			if req.query.advanced?
+				res.send User.find JSON.parse(req.query.advanced)
+			else
+				res.send User.find req.query
+		else
+			res.send User.find()
 
 	show: (req, res) ->
 		res.send User.findById req.params.user
