@@ -1,139 +1,178 @@
 
 <div class="user-view">
 
-		<div ng-show="flash" class="alert alert-success">{{flash}}</div>
-	
-		<form novalidate name="credentials" class="form-horizontal">
-			<fieldset ng-disabled="submiting">
-				
-				<div class="form-group">
-					<label class="col-lg-3 control-label"></label>
-					<div class="col-lg-9">
-						<h1 >{{user.firstname}} {{user.lastname}}</h1>					
-					</div>
+	<div ng-show="flash" class="alert alert-success">{{flash}}</div>
+
+	<form novalidate name="credentials" class="form-horizontal">
+		<fieldset ng-disabled="submiting">
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label"></label>
+				<div class="col-lg-9">
+					<h1 >{{user.firstname}} {{user.lastname}}
+					<span class="label label-default arrowed arrowed-righ" ng-show="user.status == 'pending'" translate>admin.user.pending
+					</span>
+
+					<span class="label label-default label-danger arrowed-in" ng-show="user.status == 'rejected'" translate>admin.user.rejected
+					</span>
+
+					<span class="label label-info arrowed-in-right arrowed" ng-show="user.role == 'admin'" translate>admin.user.admin</span>					
+
+					</h1>
+
 				</div>
-				
-						
-				<!-- First name  -->
-				<div 
-					class="form-group name-group firstname-group "
-					ng-class="{ 'has-error': (submited &&  credentials.firstname.$error.required) }" >
+			</div>
+			
+					
+			<!-- First name  -->
+			<div 
+				class="form-group name-group firstname-group "
+				ng-class="{ 'has-error': (submited &&  credentials.firstname.$error.required) }" >
 
-					<label class="col-lg-3 control-label" translate >admin.user.name</label>
-					<div class="col-lg-9 form-item">
-						
-							<input 
-								type="text" 
-								class="form-control" 
-								name="firstname" 
-								name="firstname" 
-								placeholder="{{ 'admin.user.firstname' | translate }}" 
-								autofocus="" 
-								ng-model="user.firstname"
-								required 									
-							>
-
-							<div 
-								class="error-tip" 
-								translate >
-								admin.user.firstname.required							
-							</div>
-
-					</div>
-				</div>
-
-
-				<div 
-					class="form-group name-group lastname-group"
-					ng-class="{ 'has-error': (submited &&   credentials.lastname.$error.required) }" >
-
-					<label class="col-lg-3 control-label"  ></label>
-					<div class="col-lg-9 form-item">
-						
-							
-							<!-- First name  -->
-							<input 
-								type="text" 
-								class="form-control" 
-								name="lastname" 
-								name="lastname" 
-								placeholder="{{ 'admin.user.lastname' | translate }}"
-								ng-model="user.lastname"
-								required 									
-							>
-							<div class="error-tip" translate >
-									admin.user.lastname.required							
-							</div>
-
-
-					</div>
-				</div>
-
-				<div 
-					class="form-group email-group" 
-					ng-class="{ 'has-error': (submited  && ( credentials.email.$invalid) || serverError) }" >
-
-					<label class="col-lg-3 control-label" translate >admin.user.email</label>
-					<div class="col-lg-9 form-item">
+				<label class="col-lg-3 control-label" translate >admin.user.name</label>
+				<div class="col-lg-9 form-item">
+					
 						<input 
-							type="email" 
+							type="text" 
 							class="form-control" 
-							name="email" 
-							placeholder="{{ 'admin.user.email' | translate }}"
-		 					ng-model="user.email"
-		 					required >
+							name="firstname" 
+							name="firstname" 
+							placeholder="{{ 'admin.user.firstname' | translate }}" 
+							autofocus="" 
+							ng-model="user.firstname"
+							required 									
+						>
 
-						<div class="error-tip" >						
-								<span ng-show="credentials.email.$error.email" translate > admin.user.email.invalid</span>
-								<span ng-show="credentials.email.$error.required" translate > admin.user.email.required</span>
-								<span ng-show="serverError"> 
-									{{ 'admin.user.email.duplicate' | translate }} <br>
-									<a ui-sref="forgot({ 'email': user.email })" translate>admin.user.password.forgot</a>
-								</span>					
+						<div 
+							class="error-tip" 
+							translate >
+							admin.user.firstname.required							
 						</div>
 
-					</div>
-
-				</div>				
-				
-				<div 
-					class="form-group email-group" 
-					ng-class="{ 'has-error': (submited  && ( credentials.email.$invalid) || serverError) }" >
-
-					<label class="col-lg-3 control-label" translate >admin.user.role</label>
-					<div class="col-lg-9 form-item">
-						<div class="btn-group " >
-							  <a class="btn" data-toggle="dropdown">{{ user.role }} <i class="fa fa-caret-down"></i> </a>
-
-							  <ul class="dropdown-menu ticked">
-							  		<li ng-repeat="role in ['user', 'buyer', 'admin']" >
-									
-							   			<a ng-click="changeRole(role)" >						
-											<i class="icon-ok" ng-show="user.role == role"></i>						
-								   			{{ role }}
-							   			</a>
-							   		</li>		    	
-							  </ul>
-						</div>
-
-					</div>
-
-				</div>				
-
-				<div class="form-group buttons-group">
-					<div class="col-lg-offset-3 col-lg-9">
-						<div class="pull-right">
-							<a ui-sref="admin.users" class="btn btn-link btn-lg back-button"><i class="fa fa-caret-left"></i>&nbsp;{{ 'admin.user.back' | translate}}</a>
-							<button class="btn btn-lg btn-primary register-button " translate ng-click="save()" >admin.user.save</button>
-							
-						</div>
-					</div>
 				</div>
-			</fieldset>
+			</div>
 
-		</form>
 
-		
+			<div 
+				class="form-group name-group lastname-group"
+				ng-class="{ 'has-error': (submited &&   credentials.lastname.$error.required) }" >
+
+				<label class="col-lg-3 control-label"  ></label>
+				<div class="col-lg-9 form-item">
+					
+						
+						<!-- First name  -->
+						<input 
+							type="text" 
+							class="form-control" 
+							name="lastname" 
+							name="lastname" 
+							placeholder="{{ 'admin.user.lastname' | translate }}"
+							ng-model="user.lastname"
+							required 									
+						>
+						<div class="error-tip" translate >
+								admin.user.lastname.required							
+						</div>
+
+
+				</div>
+			</div>
+
+			<div 
+				class="form-group email-group" 
+				ng-class="{ 'has-error': (submited  && ( credentials.email.$invalid) || serverError) }" >
+
+				<label class="col-lg-3 control-label" translate >admin.user.email</label>
+				<div class="col-lg-9 form-item">
+					<input 
+						type="email" 
+						class="form-control" 
+						name="email" 
+						placeholder="{{ 'admin.user.email' | translate }}"
+	 					ng-model="user.email"
+	 					required >
+
+					<div class="error-tip" >						
+							<span ng-show="credentials.email.$error.email" translate > admin.user.email.invalid</span>
+							<span ng-show="credentials.email.$error.required" translate > admin.user.email.required</span>
+							<span ng-show="serverError"> 
+								{{ 'admin.user.email.duplicate' | translate }} <br>
+								<a ui-sref="forgot({ 'email': user.email })" translate>admin.user.password.forgot</a>
+							</span>					
+					</div>
+
+				</div>
+
+			</div>	
+
+			<div class="form-group" > 
+
+						
+				<div class="pull-right ">
+
+
+				<a ui-sref="admin.users" class="btn btn-link btn-lg back-button"><i class="fa fa-caret-left"></i>&nbsp;{{ 'admin.user.back' | translate}}</a>
+					
+					
+					<button class="btn btn-lg btn-danger register-button " translate ng-click="reject()" ng-show="user.status == 'pending'" >
+					admin.user.reject
+					</button>
+
+					<button class="btn btn-lg btn-primary register-button " translate ng-click="validate()" ng-show="user.status == 'pending'" >
+					admin.user.validate
+					</button>
+
+					
+					<div class="btn-group" ng-show="user.status != 'pending'">
+						<button class="btn btn-lg btn-info" ng-click="save()" translate>admin.user.save</button>
+
+						<button data-toggle="dropdown" class="btn btn-lg btn-info dropdown-toggle">
+							&nbsp;<i class="fa fa-caret-down"></i>&nbsp;
+						</button>
+
+						<ul class="dropdown-menu dropdown-info pull-right">
+							
+							<li ng-show="user.status == 'validated' && user.role != 'admin' " >
+								<a ng-click="makeAdmin()" translate>admin.user.make.admin</a>
+							</li>
+
+							<li ng-show="user.role == 'admin'" >
+								<a ng-click="unAdmin()" translate>admin.user.unadmin</a>
+							</li>
+							
+
+							<li ng-show="user.status == 'validated'">
+								<a ng-click="reject()" translate>admin.user.reject</a>
+							</li>
+
+							<li ng-show="user.status == 'rejected'">
+								<a ng-click="validate()" translate>admin.user.validate</a>
+							</li>
+
+							<li class="divider"></li>
+
+							<li >
+								<a ng-click="remove()" translate>admin.user.remove</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>		
+
+			</div>							
+
+		</fieldset>
+
+	</form>			
 
 </div>
+
+      
+			
+						
+					
+
+
 

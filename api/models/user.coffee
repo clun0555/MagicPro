@@ -11,6 +11,7 @@ User = new mongoose.Schema
 	lastname: { type: String, required: true }
 	email: { type: String, required: true }
 	role: { type: String, required: true, default: "user" }
+	status: { type: String, required: true, default: "pending" }
 	cart: { type: mongoose.Schema.Types.Mixed }
 	imageId: { type: String }
 	hash: String

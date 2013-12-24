@@ -7,10 +7,10 @@ define [
 			user?
 
 		admin: (user) ->
-			user.role is "admin"
+			user.role is "admin" and user.status is "validated"
 
-		buyer: (user) ->
-			user?.role? and user.role in [ "buyer", "admin" ]
+		validated: (user) ->
+			user?.status is "validated"
 	
 	services.service "SessionService", ($resource, $q, $http, $rootScope) ->
 

@@ -6,11 +6,11 @@
 	<a ui-sref="admin.new" > <i class="fa fa-plus"></i> &nbsp; {{ 'admin.users.add' | translate }}</a>
 	
 	<ul class="nav nav-tabs pull-right">
-	  <li ng-class="{'active': $stateParams.role == null }" >
-	  	<a ui-sref="admin.users({role: null})" translate >admin.users.filter.all</a>
+	  <li ng-class="{'active': $stateParams.status == null }" >
+	  	<a ui-sref="admin.users({status: null})" translate >admin.users.filter.all</a>
 	  </li>
-	  <li ng-class="{'active': $stateParams.role == 'user' }"> 
-		<a ui-sref="admin.users({role: 'user'})" translate >
+	  <li ng-class="{'active': $stateParams.status == 'pending' }" > 
+		<a ui-sref="admin.users({status: 'pending'})" translate >
 			admin.users.filter.pending 
 			<!-- &nbsp;<span class="badge pull-right">42</span> -->
 		</a>
@@ -31,12 +31,17 @@
 		<tbody>
 			<tr ng-repeat="user in users">
 				<td>
-					<a ui-sref="admin.user({ 'userId': user._id })">{{user.firstname}} {{user.lastname}}
-						<span class="label label-default arrowed arrowed-righ" ng-show="user.role == 'user'" translate>admin.users.pending</span>
+					<a ui-sref="admin.user({ 'userId': user._id })">
+						{{user.firstname}} {{user.lastname}}
+						<span class="label label-default arrowed arrowed-righ" ng-show="user.status == 'pending'" translate>admin.users.pending</span>
+						<span class="label label-default label-danger arrowed-in" ng-show="user.status == 'rejected'" translate>admin.users.rejected</span>	
+
+						<span class="label label-info arrowed-in-right arrowed" ng-show="user.role == 'admin'" translate>admin.users.admin</span>								
 					</a>
 				</td>
 				<td>
-					<a ui-sref="admin.user({ 'userId': user._id })">{{user.lastname}} 						
+					<a ui-sref="admin.user({ 'userId': user._id })">
+						{{user.lastname}} 						
 					</a>
 				</td>
 				<td class="icons-col">

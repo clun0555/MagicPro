@@ -79,11 +79,14 @@ define ->
 	### users ###
 	"admin.users.title": "Users"
 	"admin.users.pending": "pending"
+	"admin.users.rejected": "rejected"
+	"admin.users.admin": "admin"
 	"admin.users.name": "Name"
 	"admin.users.company": "Company"
 	"admin.users.add": "Add new user"
 	"admin.users.filter.all": "All"
 	"admin.users.filter.pending": "Pending"
+	"admin.users.filter.rejected": "Rejected"
 
 	### user ###
 	"admin.user.name": "Name"
@@ -102,6 +105,14 @@ define ->
 	"admin.user.password.required": "Please enter a password"
 	"admin.user.password.forgot": "forgot your password ?"
 	"admin.user.save": "Save"
+	"admin.user.remove": "Remove"
+	"admin.user.validate": "Validate"
+	"admin.user.reject": "Reject"
+	"admin.user.pending": "pending"
+	"admin.user.admin": "admin"
+	"admin.user.rejected": "rejected"
+	"admin.user.make.admin": "Make Admin"
+	"admin.user.unadmin": "Remove admin rights"
 	"admin.user.back": "Back"
 
 	### errorpage ###

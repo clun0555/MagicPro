@@ -9,7 +9,7 @@ define [
 	app
 		.config ( $stateProvider, $urlRouterProvider, $locationProvider) ->	
 
-			$locationProvider.html5Mode(true)
+			$locationProvider.html5Mode true
 
 			$stateProvider
 
@@ -21,7 +21,7 @@ define [
 						homeState = 
 							if not SessionService.isAuthentificated()
 								"login"
-							else if SessionService.user()?.role in ["admin", "buyer"]
+							else if SessionService.user()?.status is "validated"
 								"shop.categories"
 							else
 								"validating"

@@ -31,6 +31,9 @@ define [
 		$rootScope.isRole = (roles...) ->
 			SessionService.user()?.role in roles
 
+		$rootScope.isUserValidated = ->
+			SessionService.user().status is "validated"
+
 		# Enforce security when state changes
 		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
 			
