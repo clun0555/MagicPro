@@ -28,6 +28,10 @@ body
 	background-size: 900px 100%
 	background-repeat: repeat
 
+@media (max-width: 768px)
+	body
+		padding-top: 0px
+
 body:before
 	position: relative
 
@@ -48,8 +52,9 @@ body:before
 	color: rgb(144, 144, 144)
 	font-size: 16px
 
-// .nav
-// 	background-color: #438eb9
+@media (max-width: 768px)
+	.nav
+		background-color: #438eb9
 	
 .navbar 
 	border-radius: 0px
@@ -192,13 +197,5 @@ ul.dropdown-menu.ticked
 
 	i.icon-ok
 		margin-left: -22px
-
-
-// get ui-bootstrap work with bootstrap 3
-.modal 
-	display: block
-
-
-
 
 
