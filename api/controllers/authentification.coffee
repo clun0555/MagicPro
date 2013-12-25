@@ -2,6 +2,8 @@ passport = require('passport')
 LocalStrategy = require('passport-local').Strategy
 User = require('../models/user')
 user = require("connect-roles")
+_ = require("underscore")
+
 
 passport.use new LocalStrategy(User.authenticate())
 passport.serializeUser User.serializeUser()
@@ -11,8 +13,13 @@ exports.setup = (app) ->
 
 	app.post "/api/authentification/register", (req, res) ->
 		req.logout()
+		userData = req.body
+
+		# force role to user and status to pending for security
+		userData = _.extend userData, role: "user", status: "pending"
+		
 		User.register(
-			new User(email: req.body.email, firstname: req.body.firstname, lastname: req.body.lastname)
+			new User(userData)
 			req.body.password
 			(err, user) -> 
 				unless err

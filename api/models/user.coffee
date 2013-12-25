@@ -14,6 +14,12 @@ User = new mongoose.Schema
 	status: { type: String, required: true, default: "pending" }
 	cart: { type: mongoose.Schema.Types.Mixed }
 	imageId: { type: String }
+	company: { type: String }
+	abn: { type: String }
+	street: { type: String }
+	suburb: { type: String }
+	state: { type: String }
+	postalcode: { type: String }
 	hash: String
 	salt: String
 	forgot: String

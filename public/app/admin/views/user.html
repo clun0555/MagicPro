@@ -79,6 +79,113 @@
 				</div>
 			</div>
 
+			<!-- Company  -->
+			<div 
+				class="form-group company-group"
+				ng-class="{ 'has-error': (submited &&  credentials.firstname.$error.required) }" >
+
+				<label class="col-lg-3 control-label" translate >admin.user.company</label>
+				<div class="col-lg-9 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="company" 
+							name="company" 
+							placeholder="{{ 'admin.user.company.name' | translate }}" 
+							ng-model="user.company"															
+						>
+
+						
+
+				</div>
+			</div>
+
+			<div class="form-group abn-group" >
+
+				<label class="col-lg-3 control-label" ></label>
+				<div class="col-lg-9 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="abn" 
+							name="abn" 
+							placeholder="{{ 'admin.user.abn' | translate }}" 
+							ng-model="user.abn"															
+						>
+
+						
+
+				</div>
+			</div>
+
+			<!-- Street  -->
+			<div class="form-group street-group" >
+
+				<label class="col-lg-3 control-label" translate>admin.user.address</label>
+				<div class="col-lg-9 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="street" 
+							name="street" 
+							placeholder="{{ 'admin.user.street' | translate }}" 
+							ng-model="user.street"															
+						>
+
+						
+
+				</div>
+			</div>
+
+			<!-- Suburb / state / Postal Code  -->
+			<div class="form-group adress2-group " >
+
+				<label class="col-lg-3 control-label"></label>
+				<div class="col-lg-9 form-item">
+						<!-- <div class="container"> -->
+							<div class="suburb">
+								<input 
+									type="text" 
+									class="form-control  " 
+									name="suburb" 
+									name="suburb" 
+									placeholder="{{ 'admin.user.suburb' | translate }}" 
+									ng-model="user.suburb"															
+								>
+							</div>
+							
+							<div class="state">
+								<input 
+									type="text" 
+									class="form-control  " 
+									name="state" 
+									name="state" 
+									placeholder="{{ 'admin.user.state' | translate }}" 
+									ng-model="user.state"															
+								>
+							</div>
+
+							<div class="postalcode">
+								<input 
+									type="text" 
+									class="form-control  " 
+									name="postalcode" 
+									name="postalcode" 
+									placeholder="{{ 'admin.user.postalcode' | translate }}" 
+									ng-model="user.postalcode"															
+								>
+							</div>
+
+						<!-- </div> -->
+
+						
+
+				</div>
+			</div>
+
 			<div 
 				class="form-group email-group" 
 				ng-class="{ 'has-error': (submited  && ( credentials.email.$invalid) || serverError) }" >
@@ -106,59 +213,63 @@
 
 			</div>	
 
-			<div class="form-group" > 
+			<div class="form-group " > 
 
+				<div class="col-lg-12">
+					
+				
+
+					<div class="pull-right">
+
+						<a ui-sref="admin.users" class="btn btn-link btn-lg back-button">
+							<i class="fa fa-caret-left"></i>&nbsp;{{ 'admin.user.back' | translate}}
+						</a>
 						
-				<div class="pull-right ">
-
-
-				<a ui-sref="admin.users" class="btn btn-link btn-lg back-button"><i class="fa fa-caret-left"></i>&nbsp;{{ 'admin.user.back' | translate}}</a>
-					
-					
-					<button class="btn btn-lg btn-danger register-button " translate ng-click="reject()" ng-show="user.status == 'pending'" >
-					admin.user.reject
-					</button>
-
-					<button class="btn btn-lg btn-primary register-button " translate ng-click="validate()" ng-show="user.status == 'pending'" >
-					admin.user.validate
-					</button>
-
-					
-					<div class="btn-group" ng-show="user.status != 'pending'">
-						<button class="btn btn-lg btn-info" ng-click="save()" translate>admin.user.save</button>
-
-						<button data-toggle="dropdown" class="btn btn-lg btn-info dropdown-toggle">
-							&nbsp;<i class="fa fa-caret-down"></i>&nbsp;
+						<button class="btn btn-lg btn-danger register-button " translate ng-click="reject()" ng-show="user.status == 'pending'" >
+						admin.user.reject
 						</button>
 
-						<ul class="dropdown-menu dropdown-info pull-right">
-							
-							<li ng-show="user.status == 'validated' && user.role != 'admin' " >
-								<a ng-click="makeAdmin()" translate>admin.user.make.admin</a>
-							</li>
+						<button class="btn btn-lg btn-primary register-button " translate ng-click="validate()" ng-show="user.status == 'pending'" >
+						admin.user.validate
+						</button>
 
-							<li ng-show="user.role == 'admin'" >
-								<a ng-click="unAdmin()" translate>admin.user.unadmin</a>
-							</li>
-							
+						
+						<div class="btn-group" ng-show="user.status != 'pending'">
+							<button class="btn btn-lg btn-info" ng-click="save()" translate>admin.user.save</button>
 
-							<li ng-show="user.status == 'validated'">
-								<a ng-click="reject()" translate>admin.user.reject</a>
-							</li>
+							<button data-toggle="dropdown" class="btn btn-lg btn-info dropdown-toggle">
+								&nbsp;<i class="fa fa-caret-down"></i>&nbsp;
+							</button>
 
-							<li ng-show="user.status == 'rejected'">
-								<a ng-click="validate()" translate>admin.user.validate</a>
-							</li>
+							<ul class="dropdown-menu dropdown-info pull-right">
+								
+								<li ng-show="user.status == 'validated' && user.role != 'admin' " >
+									<a ng-click="makeAdmin()" translate>admin.user.make.admin</a>
+								</li>
 
-							<li class="divider"></li>
+								<li ng-show="user.role == 'admin'" >
+									<a ng-click="unAdmin()" translate>admin.user.unadmin</a>
+								</li>
+								
 
-							<li >
-								<a ng-click="remove()" translate>admin.user.remove</a>
-							</li>
+								<li ng-show="user.status == 'validated'">
+									<a ng-click="reject()" translate>admin.user.reject</a>
+								</li>
 
-						</ul>
+								<li ng-show="user.status == 'rejected'">
+									<a ng-click="validate()" translate>admin.user.validate</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li >
+									<a ng-click="remove()" translate>admin.user.remove</a>
+								</li>
+
+							</ul>
+						</div>
+
 					</div>
-
 				</div>		
 
 			</div>							
