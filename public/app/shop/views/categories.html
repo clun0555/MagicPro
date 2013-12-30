@@ -1,17 +1,22 @@
 <div class="category-navigator thumnails">
 
-	<div class="slide category-view col-md-3" ng-repeat="category in categories | filter:search">
-		<a ui-sref="shop.types({ category: category.slug })" >
+	<div class="slide category-view col-md-6" ng-repeat="category in categories | filter:search">
 			<div class="thumbnail" >
-				<div class="caption" >
-					<h4>{{category.title}}</h4>
-					<div class="nav-background">
-						<imt-image src="{{category.imageId}}" size="s=158" ></imt-image>
-					</div>
-				</div>
+                <a ui-sref="shop.types({ category: category.slug })" >
+                    <div class="caption" >
+                        <h4>{{category.title}}</h4>
+                        <div class="nav-background">
+                            <imt-image src="{{category.imageId}}" size="s=158" ></imt-image>
+                        </div>
+                    </div>
+                </a>
+                <div class="type-img-region">
+                    <li class="type-img thumbnail" ng-repeat="type in category.types">
+                        <imt-image src="{{type.imageId}}" size="s=75" ></imt-image>
+                    </li>
+                </div>
 
 			</div>
-		</a>
 	</div>
 
 </div>

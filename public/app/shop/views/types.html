@@ -1,19 +1,22 @@
 
 <div class="type-navigator thumnails">
 	
-	<div class="slide type-view col-md-3" ng-repeat="type in category.types | filter:search" >
-		<a ui-sref="shop.products({ type: type.slug, category: category.slug })" >
+	<div class="slide type-view col-md-6" ng-repeat="type in category.types | filter:search" >
 			<div class="thumbnail">
-
-				<div class="caption">
-					<h4>{{type.title}}</h4>
-					<div class="nav-background">
-						<imt-image src="{{type.imageId}}" size="s=158" ></imt-image>
-					</div>
-				</div>
-
+                <a ui-sref="shop.products({ type: type.slug, category: category.slug })" >
+                    <div class="caption">
+                        <h4>{{type.title}}</h4>
+                        <div class="nav-background">
+                            <imt-image src="{{type.imageId}}" size="s=158" ></imt-image>
+                        </div>
+                    </div>
+                </a>
+                <div class="product-img-region">
+                    <li class="product-img thumbnail" ng-repeat="product in type.products">
+                        <imt-image src="{{product.imageId}}" size="s=75" ></imt-image>
+                    </li>
+                </div>
 			</div>
-		</a>
 
 	</div>
 
