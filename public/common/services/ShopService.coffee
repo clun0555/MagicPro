@@ -28,8 +28,11 @@ define [
 			
 			@getCategories().then (data) ->
 				category = _.findWhere data.categories, {slug: categorySlug}
-				if category?					
-					deferred.resolve category: category
+				if category?
+					for type in category.types
+						products = $resource("api/products?type=#{type._id}").query ->
+						type.products = products
+						deferred.resolve category: category
 				else
 					deferred.reject { code: 404 }
 

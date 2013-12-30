@@ -3,19 +3,21 @@
 	
 	<div class="slide type-view col-md-6" ng-repeat="type in category.types | filter:search" >
 			<div class="thumbnail">
-                <a ui-sref="shop.products({ type: type.slug, category: category.slug })" >
-                    <div class="caption">
-                        <h4>{{type.title}}</h4>
-                        <div class="nav-background">
-                            <imt-image src="{{type.imageId}}" size="s=158" ></imt-image>
-                        </div>
-                    </div>
-                </a>
-                <div class="product-img-region">
-                    <li class="product-img thumbnail" ng-repeat="product in type.products">
-                        <imt-image src="{{product.imageId}}" size="s=75" ></imt-image>
-                    </li>
-                </div>
+				<a ui-sref="shop.products({ type: type.slug, category: category.slug })" >
+					<div class="caption">
+						<h4>{{type.title}}</h4>
+						<div class="nav-background">
+							<imt-image src="{{type.imageId}}" size="s=158" ></imt-image>
+						</div>
+					</div>
+				</a>
+				<div class="product-img-region">
+					<li class="product-img thumbnail" ng-repeat="product in type.products.slice(0, 4)">
+						<a ui-sref="shop.product({ category: category.slug, type: type.slug, product: product.slug})" >
+							<imt-image src="{{product.imageId}}" size="s=75" ></imt-image>
+						</a>
+					</li>
+				</div>
 			</div>
 
 	</div>
