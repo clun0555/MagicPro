@@ -15,16 +15,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
 	font-family: 'Open Sans', sans-serif !important
 
 .thumbnail
-	border: 1px solid
+	
 	&:active
-		border: 1px solid blue
 		+box-shadow(0 0 12px #bbb)
+	
 	@media (min-width: 768px)
 		&:hover
-			border: 1px solid blue
 			+box-shadow(0 0 12px #bbb)
-
-
 
 body
 	padding-top: 30px
@@ -201,6 +198,9 @@ ul.dropdown-menu.ticked
 
 	i.icon-ok
 		margin-left: -22px
+
+input
+	-webkit-appearance: none
 
 // fix navigation bar text color from gray to white
 @media (max-width: 767px)

@@ -2,4 +2,5 @@
 define [
 	"./IMTImage"	
 	"./IMTServerError"	
+	"./IMTClickOut"	
 ], ->

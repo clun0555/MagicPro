@@ -1,19 +1,75 @@
 
 <div class="product-navigator thumnails">
 	
-	<div class="slide product-title col-md-3" ng-repeat="product in products | filter:search" >
-		<a  ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >
-			<div class="thumbnail">
+	<div class="slide product-title col-md-3 {{ 'product_' + product._id }}" ng-repeat="product in products | filter:search" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }"  imt-click-out="unActivateProduct(product)"  >
+	<!-- ng-mouseover="activateProductHover(product)"  -->
+		
+			<div class="thumbnail" >
 
-				<div class="caption">
-					<h4>{{product.title}}</h4>
-					<div class="nav-background">
-						<imt-image src="{{product.imageId}}" size="s=158" ></imt-image>
+				<div class="caption" >
+
+					<!-- <div class="top-info" ng-click="navigateToProduct(product)"> -->
+					<a class="top-info" ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >
+						<h4  >{{product.title}}</h4>
+						<p>
+							<span class="ref">{{ product.identifier }}</span> | 
+							<span class="price">{{ product.price | currency:'$' }}</span>										
+						</p>
+					
+					
+							<div class="image-wrapper" >
+								<imt-image src="{{getImageId(product, this)}}" size="s=200" ng-class="{ 'visible': focusedDesign == null }" ></imt-image>
+								
+								<imt-image src="{{getImageId(product, design, this)}}" size="s=200" ng-repeat="design in product.designs" ng-class="{ 'visible': focusedDesign == design }" ></imt-image>
+
+
+							</div>
+					<!-- </div> -->
+					</a>
+
+					<div class="bottom-info" ng-click="activateProductClick(product)">
+						
+						<div class="cart-info" ng-class="{'visible' : (hover == product && product.designs.length > 1)}"  >
+
+							<div class="anim-wrapper">
+								<div ng-repeat="(index, design) in product.designs" class="input-group design" ng-class="{ 'active-design': focusedDesign == design }">
+								  <span class="input-group-addon design-label"> {{ design.label }} </span>
+								  <input  type="number" ng-change="updateQuantity(product, design)" ng-model="quantities[product._id][design._id]" ng-focus="focusDesign(design, $parent)" ng-blur="blurDesign($parent)" placeholder="0" class="form-control hide-placeholder-onblur design_quantity_{{index}}" >
+								  <span class="input-group-addon inner"> &times; {{product.inner}}</span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="cart-simple-info multiple-design" ng-show="product.designs.length > 1">								
+							 <i class="icon icon-cart"></i> 
+							 <span class="quantity ">								
+								<span class="readable-quantity">{{ cart.getBundle(product._id).quantity() || 0 }}</span>
+							 </span>
+							 
+							<span class="inner">
+								&times; {{product.inner}}		
+							</span>	
+
+						</div>
+
+						<div class="cart-simple-info single-design"  ng-show="product.designs.length == 1" >
+							 <i class="icon icon-cart"></i> 
+							 <span class="quantity">
+							  	<span ng-show="hover != product" class="readable-quantity">{{quantities[product._id][product.designs[0]._id]}}</span>
+								<span ng-show="hover == product" class="writable-quantity"><input  type="number" ng-change="updateQuantity(product, product.designs[0])" ng-model="quantities[product._id][product.designs[0]._id]" placeholder="0" class="form-control hide-placeholder-onblur design_quantity_0" ></span>
+							 </span>
+							 
+							<span class="inner" >
+								&times; {{product.inner}}	
+							</span>	
+						</div>
+
 					</div>
+
 				</div>
 
 			</div>
-		</a>
+		
 
 	</div>
 

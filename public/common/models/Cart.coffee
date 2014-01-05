@@ -41,7 +41,8 @@ define [
 		quantity: (product, designId) ->
 			if product?
 				bundle = @getBundle(product._id)
-				return if bundle? then bundle.quantity(designId) else 0
+				return 0 unless bundle?
+				return if designId? then bundle.quantity(designId) else bundle.compositions[0].quantity				
 			else
 				_.reduce @bundles,   ((memo, bundle) -> memo + bundle.quantity()), 0
 

@@ -47,7 +47,8 @@ define [
 						data: ($stateParams, ShopService) ->
 							ShopService.flushState()
 							ShopService.getProductsByCategoryTypeSlug($stateParams.category, $stateParams.type)											
-					
+						cart: (CartService) ->	CartService.get()
+						
 					templateUrl: "app/shop/views/products.html"
 					controller: "ShopProductsController"
 				

@@ -95,6 +95,7 @@ define ->
 	"admin.users.filter.all": "All"
 	"admin.users.filter.pending": "Pending"
 	"admin.users.filter.rejected": "Rejected"
+	"admin.users.filter.validated": "Active"
 
 	### user ###
 	"admin.user.name": "Name"

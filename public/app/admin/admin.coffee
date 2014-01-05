@@ -25,7 +25,7 @@ define [
 					resolve: 
 						users: (UserService, $stateParams) -> 
 							
-							query = status: $stateParams.status if $stateParams.status? 
+							query = status: ( $stateParams.status ? 'validated' )
 							
 							UserService.findAll query
 						
