@@ -1,5 +1,5 @@
 define [
-	"./admin"
+	"./admin-states"
 ], (admin) ->
 	
 	admin

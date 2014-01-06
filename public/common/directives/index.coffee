@@ -1,6 +1,6 @@
 
 define [
-	"./IMTImage"	
-	"./IMTServerError"	
-	"./IMTClickOut"	
+	"./IMTImage-directive"
+	"./IMTServerError-directive"
+	"./IMTClickOut-directive"
 ], ->

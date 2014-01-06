@@ -1,6 +1,6 @@
 define [
 	"underscore"
-	"./shop-router"
+	"./shop-states"
 	"common/models/Cart"
 ], (_, shop, Cart) ->
 	
