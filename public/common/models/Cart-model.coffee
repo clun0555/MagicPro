@@ -1,6 +1,6 @@
 define [
 	"underscore"
-	"common/models/Bundle"
+	"common/models/Bundle-model"
 ], (_, Bundle) ->
 
 	class Cart 

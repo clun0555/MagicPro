@@ -1,6 +1,6 @@
 define [
 	"underscore"
-	"common/models/Composition"
+	"common/models/Composition-model"
 ], (_, Composition) ->
 
 	class Bundle

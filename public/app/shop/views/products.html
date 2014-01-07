@@ -33,7 +33,7 @@
 
 							<div class="anim-wrapper">
 								<div ng-repeat="(index, design) in product.designs" class="input-group design" ng-class="{ 'active-design': focusedDesign == design }">
-								  <span class="input-group-addon design-label"> {{ design.label }} </span>
+								  <span class="input-group-addon design-label" ng-click="focusDesign(design, $parent)"> {{ design.label }} </span>
 								  <input  type="number" ng-change="updateQuantity(product, design)" ng-model="quantities[product._id][design._id]" ng-focus="focusDesign(design, $parent)" ng-blur="blurDesign($parent)" placeholder="0" class="form-control hide-placeholder-onblur design_quantity_{{index}}" >
 								  <span class="input-group-addon inner"> &times; {{product.inner}}</span>
 								</div>

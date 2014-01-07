@@ -1,7 +1,7 @@
 define [
 	"./services"
 	"underscore"
-	"common/models/Cart"
+	"common/models/Cart-model"
 ], (services, _, Cart) ->	
 	
 	services.service "CartService", ($resource, $q, SessionService, ShopService) ->
