@@ -71,3 +71,13 @@ define [
 					parent: "order"
 					resolve: 
 						cart: (CartService) ->	CartService.get()
+
+				.state "search",
+					url: "/search"
+					templateUrl: "app/shop/views/products.html"
+					controller: "SearchController"
+					parent: "order"
+					resolve:
+						data: ($stateParams, ShopService) ->
+							ShopService.flushState()
+							ShopService.getProductsByCategoryTypeSlug($stateParams.category, $stateParams.type)

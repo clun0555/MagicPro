@@ -1,7 +1,7 @@
 <ul class="breadcrumb">
 		
 	<!-- Shop -->
-	<li ng-if="$state.includes('shop')" >
+	<li ng-if="$state.includes('shop') || $state.includes('cart') || $state.includes('search')" >
 		<i class="icon-home home-icon"></i>
 		<a ui-sref="shop.categories" class="breadcrumb-home" translate>
 		 breadcrumb.home
@@ -24,6 +24,12 @@
 	<li ng-if="data.product">
 		<a  ui-sref="shop.product({ category: data.category.slug, type: data.type.slug, product: data.product.slug})" >
 		 {{data.product.title}}
+		</a>
+	</li>
+
+	<li ng-if="$state.includes('cart')">
+		<a ui-sref="cart" translate>
+			breadcrumb.cart
 		</a>
 	</li>
 
