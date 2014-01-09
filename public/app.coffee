@@ -15,6 +15,11 @@ define [
 	"angular-translate-interpolation-messageformat"
 	"bootstrap-dropdown"
 
+	"angular-file-upload"
+
+	# "jquery.fileupload-angular"
+	# "jquery.fileupload-process"
+
 	"common/controllers/index"
 	"common/directives/index"
 	"common/services/index"
@@ -35,6 +40,10 @@ define [
 		"ngCookies"
 		"ui.router"
 		'pascalprecht.translate'
+
+		'angularFileUpload'
+
+		# 'blueimp.fileupload'
 
 		# common dependencies
 		"app.controllers"

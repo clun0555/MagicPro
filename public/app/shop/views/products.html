@@ -1,31 +1,37 @@
 
 <div class="product-navigator thumnails">
 	
-	<div class="slide product-title col-md-3 {{ 'product_' + product._id }}" ng-repeat="product in products | filter:search" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }"  imt-click-out="unActivateProduct(product)"  >
-	<!-- ng-mouseover="activateProductHover(product)"  -->
+	<div class="slide product-title col-md-3 {{ 'product_' + product._id }}" ng-repeat="product in products | filter:search" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }"  imt-click-out="unActivateProduct(product)" >
 		
 			<div class="thumbnail" >
 
 				<div class="caption" >
 
-					<!-- <div class="top-info" ng-click="navigateToProduct(product)"> -->
-					<a class="top-info" ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >
-						<h4  >{{product.title}}</h4>
+					<div class="top-info" >
+						<h4  ><a ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >{{product.title}}</a></h4>
 						<p>
 							<span class="ref">{{ product.identifier }}</span> | 
-							<span class="price">{{ product.price | currency:'$' }}</span>										
+							<span class="price">{{ product.price | currency:'$' }}</span>	
+							<span ng-show="isRole('admin')">
+							
+							| <a ui-sref="shop.editproduct({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" ng-if="isRole('admin') && isUserValidated()" translate>productnavigator.product.edit</a>
+
+							</span>
+
+
 						</p>
 					
 					
 							<div class="image-wrapper" >
-								<imt-image src="{{getImageId(product, this)}}" size="s=200" ng-class="{ 'visible': focusedDesign == null }" ></imt-image>
-								
-								<imt-image src="{{getImageId(product, design, this)}}" size="s=200" ng-repeat="design in product.designs" ng-class="{ 'visible': focusedDesign == design }" ></imt-image>
-
+								<a ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >
+									<imt-image src="{{getImageId(product, this)}}" size="s=200" ng-class="{ 'visible': focusedDesign == null }" ></imt-image>
+									
+									<imt-image src="{{getImageId(product, design, this)}}" size="s=200" ng-repeat="design in product.designs" ng-class="{ 'visible': focusedDesign == design }" ></imt-image>
+								</a>	
 
 							</div>
 					<!-- </div> -->
-					</a>
+					</div>
 
 					<div class="bottom-info" ng-click="activateProductClick(product)">
 						
@@ -66,10 +72,29 @@
 
 					</div>
 
+
+
+
 				</div>
 
 			</div>
 		
+
+	</div>
+
+	<div class="slide product-title col-md-3 create-product" ng-show="isRole('admin')" >
+		<div class="thumbnail" >
+		<div class="caption">
+			<div class="top-info">
+				<!-- <h1>New Product</h1> -->
+				<div class="image-wrapper" >
+					<button class="btn btn-success" ui-sref="shop.createproduct" ><i class="fa fa-plus"></i> New product</button>
+				</div>
+				
+			</div>
+
+		</div>
+		</div>
 
 	</div>
 

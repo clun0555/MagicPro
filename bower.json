@@ -21,7 +21,8 @@
     "sass-bootstrap": "~3.0.2",
     "angular-translate-storage-cookie": "~0.1.6",
     "angular-translate-interpolation-messageformat": "~0.1.5",
-    "test": "https://raw.github.com/asciidisco/require-messageformat-plugin/master/msg.js"
+    "test": "https://raw.github.com/asciidisco/require-messageformat-plugin/master/msg.js",
+    "angular-file-upload": "v0.3"
   },
   "resolutions": {
     "angular": "1.2.3"

@@ -208,3 +208,42 @@ input
 		color: white
 
 
+.fileinput-button
+	position: relative
+	overflow: hidden
+	input
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		margin: 0
+		opacity: 0
+		-ms-filter: 'alpha(opacity=0)'
+		font-size: 200px
+		direction: ltr
+		cursor: pointer
+		z-index: 1000
+
+
+// Colors
+$barColor: tomato
+$overlayColor: #fffde8
+$backColor: #2f3439
+
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans)
+
+body
+	padding: 30px 0
+	background-color: $backColor
+	font-family: 'Noto Sans', sans-serif
+
+
+
+.fader-animation.ng-enter,
+.fader-animation.ng-leave 
+	+transition(all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s)
+
+
+
+

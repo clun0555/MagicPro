@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 	<head>
@@ -10,7 +11,7 @@
 
 	</head>
 
-	<body ontouchstart="">
+	<body ontouchstart="" >
 
 		<div id="ribbon-background"></div>
 		<div id="logo-region">
@@ -32,10 +33,10 @@
 
 		<div class="menu-region container" ng-include="'common/views/menu.html'" ng-controller="MenuController" ></div>
 
-		<div id="main-region" class="container" ui-view ></div>
+		<div id="main-region" class="container" ui-view  ></div>
 
-		<footer ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-region container"  ></footer>
-		
+		<footer ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-region container"  >
+		</footer>
 
 	</body>
 </html>

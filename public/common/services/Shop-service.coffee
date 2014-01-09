@@ -5,6 +5,8 @@ define [
 
 	services.service "ShopService", ($resource, $q) ->
 
+		Products = $resource "/api/products/:id", { "_id": "@id"}, { 'update': {method:'PUT'} }
+
 		search:
 			title: ""
 
@@ -146,3 +148,10 @@ define [
 				
 			
 			deferred.promise
+
+		saveProduct: (product) ->
+
+			if product._id?
+				Products.update( { id: product._id }, product).$promise
+			else
+				Products.save( { }, product).$promise

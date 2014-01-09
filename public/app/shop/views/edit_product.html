@@ -1,0 +1,149 @@
+<div class="product-edit-view container" ng-class="{'single-design':  product.designs.length == 1 }"  >
+	
+	
+		<div class="col-md-4">
+			
+			<div class="product-title"><input type="text" ng-model="product.title" placeholder="{{ 'product.edit.title' | translate }}"></div>
+			<p class="product-ref-price">
+				<span class="product-ref" > <input type="text" ng-model="product.identifier" placeholder="{{ 'product.edit.identifier' | translate }}"> &nbsp; </span> 
+				<span class="product-price" >
+					$ <input type="number" ng-model="product.price" placeholder="{{ 'product.edit.price' | translate }}">
+				</span> 
+			</p>
+			
+			<div class="image-chooser-wrapper main-image large">
+				<div class="image-chooser default-drop-target" >
+					
+					<div class="drop-place-holder"></div>
+					
+					<div ng-if="!product.imageItem && product.imageId" >
+						<imt-image class="item-thumbnail" src="{{product.imageId}}" size="w=250" ></imt-image>
+					</div>
+					
+					<div class="uploader" ng-if="!product.imageItem && !product.imageId">
+						<i  class="fa fa-arrow-circle-o-up upload-icon"></i>
+					</div>
+
+					<div ng-if="product.imageItem" imt-thumb-preview="{ file: product.imageItem.file, width: 250 }"></div>	
+					
+					<div  class="pending-state"  ng-show="product.imageItem.isUploading"  >
+						<div class="progress active"  >
+							<div class="progress-bar progress-bar-success" data-ng-style="{width: product.imageItem.progress + '%'}"></div>
+						</div>		 
+					</div>
+
+
+
+					<input type="file" name="files[]" imt-file-selected="setProductImage($files)" >		
+		
+				</div>
+				<div class="bottom-controls"  >
+					<i class="fa fa-trash-o" ng-click="removeImage(product)" ng-show="product.imageItem || product.imageId" ></i>
+				</div>
+			</div>
+		
+			<p class="product-description">
+				<textarea ng-model="product.description" placeholder="{{ 'product.edit.description' | translate }}"></textarea>			
+			</p>
+
+		</div>
+		<div class="col-md-8 row bundle-container" imt-drop-zone="addDesigns($files)">
+
+		<div class="no-designs well" ng-show="product.designs.length == 0">
+			<button class="btn" ng-click="addDesign()"><i class="fa fa-plus"></i> {{ 'product.edit.new.design' | translate }} </button>
+		</div>
+
+		<table class="bundle-table" ng-show="product.designs.length > 0"  >
+				
+				<tbody  >
+					
+					<tr ng-repeat="design in product.designs" class="design" >
+						<td class="design-thumbnail">
+							
+							<div class="image-chooser-wrapper small">
+								<div imt-drop-zone="changeDesignImage(design, $files)" class="image-chooser">
+									<div class="drop-place-holder"></div>
+									<div ng-if="!design.imageItem && design.imageId" >
+										<imt-image class="item-thumbnail" src="{{design.imageId}}" size="s=70" ></imt-image>
+									</div>
+
+									<div class="uploader" ng-if="!design.imageItem && !design.imageId">
+										<i  class="fa fa-arrow-circle-o-up upload-icon"></i>
+									</div>
+
+									<div ng-if="design.imageItem" imt-thumb-preview="{ file: design.imageItem.file, width: 70, height: 70, crop: true }"></div>
+
+									<div  class="pending-state"  ng-show="design.imageItem.isUploading"  >
+										<div class="progress progress-striped active"  >
+											<div class="progress-bar progress-bar-success" data-ng-style="{width: design.imageItem.progress + '%'}"></div>
+										</div>		 
+									</div>
+									
+									<input type="file" name="files[]" imt-file-selected="changeDesignImage(design, $files)" >									
+
+								</div>
+								<div class="bottom-controls" >
+									<i class="fa fa-trash-o" ng-show="design.imageItem || design.imageId" ng-click="removeImage(design)"></i>
+								</div>
+							</div>
+
+						</div>
+
+						</td>
+
+						<td class="design-info" >
+							<input type="text" ng-model="design.identifier" class="design-identifier"><input type="text" ng-model="design.label" class="design-label">								
+						</td>
+
+						<td class="inner" >
+							<span class="product-inner" >
+								&times; <input type="text" ng-model="product.inner">
+							</span> 						
+						</td>
+
+						
+
+						
+						<td class="delete-design" >
+							<!-- <span class="delete-button-session" >
+								<span class="ui-button-text-only btn btn-danger" tabindex="-1" >
+									<i class="fa fa-minus"></i>
+								</span>
+							</span> -->
+							<button class="btn btn-sl btn-danger"  ng-click="removeDesign(design)" > <i class="fa fa-trash-o"></i> Delete </button>
+						</td>
+						
+					</tr>
+					
+				</tbody>
+				<tfoot>
+						<tr>
+							
+
+							<td ></td>
+							<td colspan="3" class="add-design-button" >
+								<button class="btn" ng-click="addDesign()"><i class="fa fa-plus"></i> {{ 'product.edit.new.design' | translate }} </button>
+							</td>
+						</tr>
+				</tfoot>
+			</table>
+
+
+			<p class="buttons">
+				<button class="btn btn-link btn-lg" ui-sref="shop.products()" >  {{ 'product.edit.cancel' | translate }} </button>	
+				<button class="btn btn-primary btn-lg" ng-click="save()" ><i class="fa fa-save"></i>  {{'product.edit.save' | translate }} </button>
+
+
+			</p>
+				
+			
+		</div>
+	
+
+
+
+
+
+</div>
+
+

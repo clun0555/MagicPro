@@ -10,7 +10,7 @@ define [
 			$stateProvider
 
 				.state "order",
-					template: '<ui-view/>'
+					template: '<div ui-view class="slide" />'
 					abstract: true
 					data: security: "validated"
 
@@ -19,7 +19,7 @@ define [
 					abstract: true					
 					templateUrl: "app/shop/views/shop.html"
 					parent: "order"
-									
+														
 				.state "shop.categories",
 					url: ""
 					templateUrl: "app/shop/views/categories.html"
@@ -38,7 +38,7 @@ define [
 					resolve: 
 						data: ($state, $stateParams, ShopService) ->
 							ShopService.flushState()
-							ShopService.getCategoryBySlug($stateParams.category)							
+							ShopService.getCategoryBySlug($stateParams.category)
 			
 
 				.state "shop.products",
@@ -63,6 +63,25 @@ define [
 					
 					templateUrl: "app/shop/views/product.html"
 					controller: "ShopProductController"
+
+				.state "shop.editproduct",
+					url: "/:category/:type/:product/edit"
+					resolve: 
+						data: ($stateParams, ShopService) ->
+							ShopService.getProductBySlug($stateParams.category, $stateParams.type, $stateParams.product)					
+					data: security: "admin"
+					templateUrl: "app/shop/views/edit_product.html"
+					controller: "ShopProductEditController"
+
+				.state "shop.createproduct",
+					url: "/:category/:type/product/new"
+					resolve: 
+						data: ($stateParams, ShopService) ->
+							ShopService.getTypeBySlug($stateParams.category, $stateParams.type)
+						# product: {}
+					data: security: "admin"
+					templateUrl: "app/shop/views/edit_product.html"
+					controller: "ShopProductEditController"
 
 				.state "cart",
 					url: "/cart"
