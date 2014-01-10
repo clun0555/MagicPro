@@ -50,7 +50,7 @@
 						{{user.lastname}} 						
 					</a>
 				</td>
-				<td class="icons-col">
+				<td class="icons-col" ng-show="$stateParams.status == 'rejected'">
 					<a ng-click="removeUser(user)" translate>
 						<i class="fa fa-trash-o bigger-130"></i>
 					</a>
