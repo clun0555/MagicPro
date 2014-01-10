@@ -1,0 +1,231 @@
+.product-edit-view
+	
+	padding-top: 20px
+
+	input:focus
+		border-color: lightgray
+
+
+	.product-title
+		margin-bottom: 10px
+
+		input
+			width: 100%
+			font-size: 2em
+			font-weight: 300
+
+
+	.product-ref 
+		// padding: 10px
+		input
+			width: 100px
+
+		// display: inline-block
+
+	.product-price 
+		border: 1px solid lightgray
+		padding: 5px
+		input
+			// height: 100%
+			width: 100px
+			border: 0
+			padding: 0px
+
+	.product-inner 
+		border: 1px solid lightgray
+		padding: 5px
+		background: white
+		input
+			// height: 100%
+			width: 40px
+			border: 0
+			padding-top: 0px
+			padding-right: 0px
+			background: white
+
+	.product-description
+		margin-top: 10px
+		textarea
+			width: 100%
+			min-height: 100px
+
+	.no-designs
+		text-align: center
+		height: 200px
+		vertical-align: middle
+
+	
+	.bundle-table tr.design
+		height: 120px
+
+	.design-identifier
+		// padding-left: 10px
+		text-align: center
+
+	// tr:nth-of-type(even)
+	// 	background: whitesmoke
+
+	
+	.design-info
+		padding-left: 10px
+
+	.design-info > input
+		font-size: 1.3em
+		font-weight: 300
+		padding: 15px 10px
+
+	.inner .product-inner
+		padding: 15px 10px
+		font-size: 1.3em
+
+		> input, > span
+			font-size: 1.3em
+			font-weight: 300
+
+
+	.design-identifier
+		width: 60px
+	
+	.design-label
+		border-left: 0px
+		width: 150px
+		// margin-left: -1px
+
+	.delete-design
+		text-align: right
+
+
+
+
+	.main-image img, .main-image imt-image
+		width: 100%
+
+	.bundle-table
+		width: 100%
+
+		.design-thumbnail
+			width: 80px
+
+		td.add-design-button
+			text-align: right
+
+
+	.image-chooser-wrapper
+		
+		background: whitesmoke
+
+		canvas
+			width: 100%
+
+		&.large 
+			padding: 10px
+			
+			.image-chooser .uploader
+				height: 225px
+				width: 225px
+				line-height: 225px
+				i.upload-icon
+					font-size: 130px
+
+			.bottom-controls
+				min-height: 30px
+				i
+					padding: 7px
+					font-size: 1.3em
+
+		&.small 
+			padding: 5px
+			
+			.image-chooser .uploader
+				height: 70px
+				width: 70px
+				line-height: 70px
+				i.upload-icon
+					font-size: 35px
+
+			.bottom-controls
+				min-height: 15px
+				i
+					padding: 0px
+					padding-right: 2px
+
+		.bottom-controls
+			text-align: right
+			
+			i
+				cursor: pointer
+		
+		.image-chooser
+			// display: table
+			position: relative				
+			overflow: hidden
+
+			&:hover > .uploader > i.upload-icon
+				color: #555 !important
+
+			> .uploader
+				text-align: center
+				background: white
+				
+				i.upload-icon
+					color: lightgray
+					padding: 0
+					margin: 0
+					vertical-align: middle					
+					+transition(0.5s color ease)
+
+
+			&.drag-over .drop
+				border: 1px solid lightgray
+
+			&.drag-over .drop-place-holder
+				opacity: .9
+
+			.drop-place-holder
+				z-index: 900
+				background: #333333
+				opacity: 0
+				position: absolute
+				top: 0px
+				bottom: 0px
+				right: 0px
+				left: 0px
+
+			.pending-state
+				z-index: 901
+				position: absolute
+				bottom: 5px
+				right: 0px
+				left: 0px
+				
+				.progress
+					height: 5px
+					margin: 0px		
+
+
+		input
+			position: absolute
+			top: 0
+			right: 0
+			bottom: 0
+			left: 0
+			margin: 0
+			opacity: 0
+			-ms-filter: 'alpha(opacity=0)'
+			font-size: 200px
+			direction: ltr
+			cursor: pointer
+			z-index: 1000
+
+	.buttons
+		text-align: right
+		margin-top: 30px
+
+	
+
+body.drag-over .image-chooser.default-drop-target .drop-place-holder
+	opacity: .9
+
+
+
+

@@ -1,3 +1,7 @@
+body.drag-over .product-title.create-product .thumbnail .image-wrapper
+	background: #555
+
+
 .product-navigator
 	width: auto
 	height: auto
@@ -11,6 +15,28 @@
 		cursor: pointer
 		height: 350px
 		z-index: 10
+
+		&.create-product
+			
+
+			.thumbnail
+				padding-top: 70px
+				border: 3px dashed lightgrey
+				height: 330px
+
+			.image-wrapper
+				background: whitesmoke
+
+				width: 193px
+				line-height: 193px
+				text-align: center
+				
+				button
+					
+					display: inline
+					vertical-align: middle
+					// margin: auto
+
 
 		&.hover
 			z-index: 11
@@ -32,9 +58,10 @@
 			h4
 				font-weight: 400
 				font-size: 20px
-				color: #555
-				&:hover 
-					text-decoration: initial !important
+				a
+					color: #555
+					&:hover 
+						text-decoration: initial !important
 
 
 

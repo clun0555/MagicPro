@@ -12,6 +12,7 @@ Product = new mongoose.Schema
 	size: {type: String }
 	inner: { type: Number, require: true }
 	modified: { type: Date, default: Date.now }
+	price: {type: Number, require: true}
 
 module.exports = mongoose.model("Product", Product)
 

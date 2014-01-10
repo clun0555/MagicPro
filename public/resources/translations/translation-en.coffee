@@ -83,6 +83,8 @@ define ->
 	
 	### productnavigator ###
 	"productnavigator.buy": "Buy"
+	"productnavigator.product.edit": "Edit"
+	
 
 	### users ###
 	"admin.users.title": "Users"
@@ -129,6 +131,7 @@ define ->
 	"admin.user.address": "Address"
 	"admin.user.street": "Street"
 	"admin.user.suburb": "Suburb"
+	"admin.user.suburb": "Suburb"
 	"admin.user.state": "State"
 	"admin.user.postalcode": "Postal Code"
 
@@ -147,6 +150,7 @@ define ->
 	"breadcrumb.home": "Home"
 	"breadcrumb.admin": "Admin"
 	"breadcrumb.admin.users": "Users"
+	"breadcrumb.product.edit": "Edit"
 
 	### cart ###
 	"cart.quantity": "Quantity"
@@ -163,6 +167,18 @@ define ->
 	### product ###
 	"product.many": "HOW MANY?"
 	"product.inner": "INNER"
+	"product.edit": "edit"
+	
+	
+
+	### product edit ###
+	"product.edit.save": "Save"
+	"product.edit.cancel": "Cancel"
+	"product.edit.new.design": "Add design"
+	"product.edit.title": "Label"
+	"product.edit.identifier": "Identifier"
+	"product.edit.price": "price"
+	"product.edit.description": "Description..."
 
 	### menu ###
 	"menu.welcome": "Welcome,"

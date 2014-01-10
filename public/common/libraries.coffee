@@ -26,13 +26,27 @@ require.config
 		
 		"jquery": "vendor/jquery/jquery" # twitter bootstrap dependency
 		"bootstrap-dropdown": "vendor/sass-bootstrap/js/dropdown" # widgets, ui guidelines
-		
-		# "moment": "vendor/moment" # date formating		
-		# "spin": "vendor/spin"		
-		# "jquery-fileupload": "vendor/jquery.fileupload" # file upload
-		# "jquery.ui.widget": "vendor/jquery.ui.widget" 
-		# "text": "vendor/require/text" # requirejs plugin to load a text resource
 
+		"angular-file-upload": "vendor/angular-file-upload/angular-file-upload"
+		
+		# FILE UPLOAD ... thank god all is concatenated at build time :)
+		# "jquery.fileupload": "vendor/jquery-file-upload/js/jquery.fileupload" # file upload dependency
+		# "jquery.fileupload-angular": "vendor/jquery-file-upload/js/jquery.fileupload-angular" # file upload dependency
+		# "jquery.fileupload-process": "vendor/jquery-file-upload/js/jquery.fileupload-process" # file upload dependency
+		# "jquery.fileupload-audio": "vendor/jquery-file-upload/js/jquery.fileupload-audio" # file upload dependency
+		# "jquery.fileupload-audio": "vendor/jquery-file-upload/js/jquery.fileupload-audio" # file upload dependency
+		# "jquery.fileupload-video": "vendor/jquery-file-upload/js/jquery.fileupload-video" # file upload dependency
+		# "jquery.fileupload-validate": "vendor/jquery-file-upload/js/jquery.fileupload-validate" # file upload dependency
+		# "jquery.fileupload-image": "vendor/jquery-file-upload/js/jquery.fileupload-image" # file upload dependency
+		# "load-image": "vendor/blueimp-load-image/js/load-image" # file upload dependency
+		# "load-image-meta": "vendor/blueimp-load-image/js/load-image-meta" # file upload dependency
+		# "load-image-exif": "vendor/blueimp-load-image/js/load-image-exif" # file upload dependency
+		# "load-image-ios": "vendor/blueimp-load-image/js/load-image-ios" # file upload dependency
+		# "load-image-orientation": "vendor/blueimp-load-image/js/load-image-orientation" # file upload dependency
+		# "canvas-to-blob": "vendor/blueimp-canvas-to-blob/js/canvas-to-blob" # file upload dependency
+		# "jquery.ui.widget": "vendor/jquery-file-upload/js/vendor/jquery.ui.widget" 
+
+		# "text": "vendor/require/text" # requirejs plugin to load a text resource
 		# "resources": "/resources" # path to access resources
 
 	
@@ -42,12 +56,17 @@ require.config
 
 		"underscore":
 			exports: "_"
+			deps: ["underscore.string"]
+			init: (_str) ->
+				this._.mixin(_str.exports())
+
 
 		'angular':
 			deps: ["messageformat"]
 			exports: 'angular'
 			init: (MessageFormat) ->
-				# not very clean... setting messageformat in deps doesn't work for some reasom
+				# not very clean... 
+				# setting messageformat in deps doesn't work for some reasom
 				window.MessageFormat = MessageFormat
 				window.MessageFormat.locale.zh = ( n ) ->  "other"
 				this.angular
@@ -61,9 +80,16 @@ require.config
 		"angular-translate": ["angular"]
 		"angular-translate-storage-cookie": ["angular-translate", "angular-cookies"]
 		"angular-translate-interpolation-messageformat": ["angular-translate"]		
+
+		# "jquery.ui.widget": ["jquery"]
+
+		# "jquery.fileupload": ["jquery.ui.widget", "load-image"]
+		# "jquery.fileupload-process": ["jquery.fileupload"]
+		# "jquery.fileupload-angular": ["angular", "jquery.fileupload"]
 		
 		# "messageformat-en": ["messageformat"]
 
+		"angular-file-upload": ["angular", "jquery"]
 			
 		"bootstrap-dropdown": ["jquery"]
 

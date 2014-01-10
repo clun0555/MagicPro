@@ -6,8 +6,11 @@ below, you can see we bring in our services and constants modules
 which avails each service of, for example, the `config` constants object.
 ###
 define [
+
 	"./Shop-service"
 	"./Cart-service"
 	"./Session-service"
 	"./User-service"
+	"./Uuid-service"
+	
 ], ->

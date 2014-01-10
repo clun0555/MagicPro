@@ -25,6 +25,11 @@
 		<a  ui-sref="shop.product({ category: data.category.slug, type: data.type.slug, product: data.product.slug})" >
 		 {{data.product.title}}
 		</a>
+
+	</li>
+
+	<li ng-if="$state.includes('shop.editproduct')">
+		<span translate> breadcrumb.product.edit </span>				
 	</li>
 
 	<li ng-if="$state.includes('cart')">

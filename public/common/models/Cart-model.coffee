@@ -3,7 +3,7 @@ define [
 	"common/models/Bundle-model"
 ], (_, Bundle) ->
 
-	class Cart 
+	class Cart
 
 		constructor: ->
 			@bundles = []
@@ -22,7 +22,6 @@ define [
 			else if isNew 
 				@bundles.push bundle
 			
-
 		getBundle: (productId) ->
 			_.find @bundles, (bundle) -> bundle.product._id is productId
 

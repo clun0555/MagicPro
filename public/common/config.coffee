@@ -34,6 +34,7 @@ define [
 		$rootScope.isUserValidated = ->
 			SessionService.user().status is "validated"
 
+
 		# Enforce security when state changes
 		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
 			
@@ -90,6 +91,29 @@ define [
 			$rootScope.fromStateParams = fromParams
 			console.log $rootScope.fromState
 			console.log $rootScope.fromStateParams
+
+
+		# handle global file drop
+		window.addEventListener "dragover", (e) ->
+			e = e || event
+			e.preventDefault()
+			$("body").addClass("drag-over")
+		, false 
+		
+		window.addEventListener "dragleave", (e) ->
+			e = e || event
+			e.preventDefault()
+			$("body").removeClass("drag-over")
+
+		, false 
+
+		window.addEventListener("drop", (e) ->
+			e = e || event
+			e.preventDefault()
+			$("body").removeClass("drag-over")
+			files = e.dataTransfer.files			
+			$rootScope.$broadcast("fileDrop", files)
+		,false)
 
 
 		
