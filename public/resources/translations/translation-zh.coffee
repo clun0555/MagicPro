@@ -83,4 +83,7 @@ define ->
 	### menu ###
 	"menu.welcome": "您好,"
 
+	### search ###
+	"search.home": "您好,"
+
 

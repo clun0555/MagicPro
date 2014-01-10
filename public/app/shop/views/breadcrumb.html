@@ -29,7 +29,13 @@
 
 	<li ng-if="$state.includes('cart')">
 		<a ui-sref="cart" translate>
-			breadcrumb.cart
+			cart.preview
+		</a>
+	</li>
+
+	<li ng-if="$state.includes('search')">
+		<a ui-sref="search" translate>
+			search.home
 		</a>
 	</li>
 
