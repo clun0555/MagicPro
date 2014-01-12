@@ -58,7 +58,6 @@ app.resource('users')
 app.resource('categories')
 app.resource('carts')
 
-app.post "/file/create", require("./controllers/files").create
 app.get "/api/users/:email/forgot", require("./controllers/users").forgot
 app.get "/api/users/:forgotKey/reset", require("./controllers/users").userByForgotKey
 app.post "/api/users/:forgotKey/reset", require("./controllers/users").reset

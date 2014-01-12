@@ -7,6 +7,7 @@ module.exports = exports = (schema, options) ->
 		do (schema, options, field) ->
 			definition = {}
 			
+			# TODO define strict schema
 			# definition[field] = {
 			# 	path: String
 			# 	type: String
@@ -69,7 +70,6 @@ module.exports = exports = (schema, options) ->
 
 
 	schema.pre 'save', (next) ->
-		console.log "save"
 		publishJobs = (@syncFile(field) for field in options.fields)
 
 		Q.all(publishJobs).then -> next()
