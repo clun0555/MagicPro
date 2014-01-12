@@ -51,8 +51,6 @@ app.configure ->
 authorization.setup app
 authentification.setup app
 
-
-
 app.resource('products')
 app.resource('users')
 app.resource('categories')
