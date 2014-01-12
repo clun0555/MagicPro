@@ -1,6 +1,9 @@
 Product = require("../models/product")
 _ = require("underscore")
 user = require("connect-roles")
+s3 = require("../utils/s3")
+
+
 
 module.exports = 
 
@@ -36,8 +39,21 @@ module.exports =
 			else if not product?
 				res.send "Missing product"
 			else
+				
+				oldDesigns = product.designs
 				_.extend product, req.body
-				product.save (err, product) -> res.send err or product			
+				# product.designs = oldDesigns
+
+				for design in oldDesigns 
+					stillExists = _.findWhere(req.body.designs, {'_id': design.id})?					
+					unless stillExists
+						# product.designs.push design
+						design.remove()
+
+				product.save (err, product) -> res.send err or product					
+				
+
+				
 
 	destroy: (req, res) ->
 		res.send Product.findByIdAndRemove req.params.product		

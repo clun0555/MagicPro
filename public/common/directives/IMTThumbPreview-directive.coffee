@@ -14,8 +14,8 @@ define [
 			# not $fileUploader.isHTML5 or 
 			return  if not $window.FileReader or not $window.CanvasRenderingContext2D
 			params = scope.$eval(attributes.imtThumbPreview)
-			return  if not angular.isObject(params.file) or (params.file not instanceof $window.File)
-			type = params.file.type
+			return  if not angular.isObject(params.fileItem.file) or (params.fileItem.file not instanceof $window.File)
+			type = params.fileItem.file.type
 			type = "|" + type.slice(type.lastIndexOf("/") + 1) + "|"
 			return  if "|jpg|png|jpeg|bmp|".indexOf(type) is -1
 
@@ -29,13 +29,16 @@ define [
 					width: params.width
 					height: params.height
 
-
 			onLoadFile = (event) ->
 				img = new Image()
 				img.onload = onLoadImage
 				img.src = event.target.result
 			
 			onLoadImage = ->
+
+				params.fileItem.dim = width: @width, height: @height
+					
+
 				width = params.width or @width / @height * params.height
 				height = params.height or @height / @width * params.width
 				canvas.attr
@@ -55,5 +58,5 @@ define [
 			
 			reader = new FileReader()
 			reader.onload = onLoadFile
-			reader.readAsDataURL params.file
+			reader.readAsDataURL params.fileItem.file
 	]

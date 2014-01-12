@@ -60,8 +60,8 @@ define [
 				return 
 
 			$scope.getImageId = (product, design, $scope) ->
-				return design.imageId if design.imageId?
-				product.imageId
+				return design.image.path if design.image?
+				product.image?.path
 
 			$scope.$on "fileDrop", (event, $files) ->
 				$scope.$parent.files = $files
@@ -99,7 +99,7 @@ define [
 			})
 
 			uploader.bind "afteraddingfile", (event, item ) ->
-				item.imageId = UuidService.generate() + ".jpg"
+				item.imageId = "draft/" + UuidService.generate() + ".jpg"
 				item.formData[0].key = item.imageId
 
 			addToQueue = (file) ->
@@ -155,9 +155,10 @@ define [
 
 
 			$scope.removeImage = (element) ->
-				if element.imageId?
-					element.imageId = null
-				else if element.imageItem?
+				
+				element.image = null
+
+				if element.imageItem?
 					element.imageItem.cancel()
 					element.imageItem.remove()
 					element.imageItem = null
@@ -174,15 +175,31 @@ define [
 			$scope.save = ->
 				product = _.clone ($scope.product)
 				product.type = product.type._id
-				product.imageId = product.imageItem.imageId if product.imageItem?
+				
+				if product.imageItem?
+					product.image = {
+						path: product.imageItem.imageId
+						width:  product.imageItem.dim.width
+						height:  product.imageItem.dim.height
+					}
+
+				# product.imageId = product.imageItem.imageId if product.imageItem?
 				product.imageItem = null
 				product.slug = _.slugify(product.title)
+
+
 
 
 				designs = []
 				for design, index in product.designs
 					design = _.clone design
-					design.imageId = design.imageItem.imageId if design.imageItem?
+					# design.imageId = design.imageItem.imageId if design.imageItem?
+					if design.imageItem?
+						design.image = {
+							path: design.imageItem.imageId
+							width:  design.imageItem.dim.width
+							height:  design.imageItem.dim.height
+						}
 					design.imageItem = null
 					designs.push design
 
