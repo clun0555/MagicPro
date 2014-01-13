@@ -13,11 +13,11 @@ define [
 			# Arrived in this state by droping a file... lets add it to our product
 			files = $scope.files
 			$scope.$parent.files = null
-			$scope.setProductImage files	
+			uploader.addFile(files[0], $scope.product, "image") if files[0]?			
 
 		# droping a file anywhere will set our product main image
-		$scope.$on "fileDrop", (event, $files) -> 
-			$scope.setProductImage($files)				
+		# $scope.$on "fileDrop", (event, files) -> 
+			# uploader.addFile(files[0], $scope.product, "image") if files[0]?				
 
 		_.extend $scope, 
 
