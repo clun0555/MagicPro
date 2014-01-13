@@ -84,6 +84,7 @@ define ->
 	### productnavigator ###
 	"productnavigator.buy": "Buy"
 	"productnavigator.product.edit": "Edit"
+	"productnavigator.edit.delete": "Delete"
 	
 
 	### users ###
@@ -182,3 +183,6 @@ define ->
 
 	### menu ###
 	"menu.welcome": "Welcome,"
+
+	### search ###
+	"search.home": "Search"

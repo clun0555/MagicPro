@@ -128,6 +128,24 @@ define [
 			
 			deferred.promise
 
+		getProductByTitle: (productTitle) ->
+
+			deferred = $q.defer()
+
+			products = $resource("api/products/?title=#{productTitle}").query =>
+
+				# fetch types for all products
+				typeIds =
+					for product in products
+						do (product) =>
+							@getTypeById(product.type).then( (data) -> product.type = data.type )
+
+				$q.all(typeIds).then ->
+					console.log products
+					deferred.resolve products: products
+
+			deferred.promise
+
 		getProductsByIds: (productIds) ->
 			
 			deferred = $q.defer()

@@ -26,9 +26,16 @@ define [
 					controller: "ShopCategoriesController"												
 					resolve: 
 						data: ($stateParams, ShopService) ->
-							ShopService.flushState()
 							ShopService.getCategories()
 
+				.state "shop.search",
+						url: "/search/:searchInput"
+						templateUrl: "app/shop/views/products.html"
+						controller: "ShopProductsController"
+						resolve:
+							data: ($stateParams, ShopService) ->
+								ShopService.getProductByTitle($stateParams.searchInput)
+							cart: (CartService) ->	CartService.get()
 						
 				.state "shop.types",
 					url: "/:category"					
@@ -37,7 +44,6 @@ define [
 					
 					resolve: 
 						data: ($state, $stateParams, ShopService) ->
-							ShopService.flushState()
 							ShopService.getCategoryBySlug($stateParams.category)
 			
 
@@ -45,7 +51,6 @@ define [
 					url: "/:category/:type"
 					resolve: 
 						data: ($stateParams, ShopService) ->
-							ShopService.flushState()
 							ShopService.getProductsByCategoryTypeSlug($stateParams.category, $stateParams.type)											
 						cart: (CartService) ->	CartService.get()
 						
@@ -91,12 +96,3 @@ define [
 					resolve: 
 						cart: (CartService) ->	CartService.get()
 
-				.state "search",
-					url: "/search"
-					templateUrl: "app/shop/views/products.html"
-					controller: "SearchController"
-					parent: "order"
-					resolve:
-						data: ($stateParams, ShopService) ->
-							ShopService.flushState()
-							ShopService.getProductsByCategoryTypeSlug($stateParams.category, $stateParams.type)

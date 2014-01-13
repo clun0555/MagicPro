@@ -195,14 +195,17 @@ define [
 			if $scope.$parent.files?
 				files = $scope.files
 				$scope.$parent.files = null
-				$scope.setProductImage files						
+				$scope.setProductImage files
 				
 		.controller "BreadCrumbController", ($scope, $rootScope, ShopService, $state) ->
 						
 			$scope.$watch '$state.$current.locals.globals.data', (data) ->
 				$scope.data = data
 				$scope.search = ShopService.search
-			
+
+			$scope.searchProduct = ->
+				$state.go "shop.search", searchInput: ShopService.search.title
+
 		.controller "CartController", ($scope, CartService) ->
 			
 			CartService.get().then (cart) -> $scope.cart = cart

@@ -38,6 +38,8 @@ define ->
 
 	### productnavigator ###
 	"productnavigator.buy": "下單"
+	"productnavigator.product.edit": "編輯"
+	"productnavigator.edit.delete": "刪除"
 
 	### adminsidebar ###
 	"adminsidebar.users": "用戶"
@@ -80,10 +82,19 @@ define ->
 	"product.many": "數量"
 	"product.inner": "內裝"
 
+	### product edit ###
+	"product.edit.save": "儲存"
+	"product.edit.cancel": "返回"
+	"product.edit.new.design": "新增 樣式"
+	"product.edit.title": "標示"
+	"product.edit.identifier": "ID"
+	"product.edit.price": "價錢"
+	"product.edit.description": "簡介..."
+
 	### menu ###
 	"menu.welcome": "您好,"
 
 	### search ###
-	"search.home": "您好,"
+	"search.home": "收尋"
 
 

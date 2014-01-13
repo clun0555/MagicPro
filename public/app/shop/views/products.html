@@ -1,7 +1,7 @@
 
 <div class="product-navigator thumnails">
 	
-	<div class="slide product-title col-md-3 {{ 'product_' + product._id }}" ng-repeat="product in products | filter:search" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }"  imt-click-out="unActivateProduct(product)" >
+	<div class="slide product-title col-md-3 {{ 'product_' + product._id }}" ng-repeat="product in products" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }"  imt-click-out="unActivateProduct(product)" >
 		
 			<div class="thumbnail" >
 
