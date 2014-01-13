@@ -16,15 +16,15 @@
 					
 					<div class="drop-place-holder"></div>
 					
-					<div ng-if="!product.imageItem && product.imageId" >
-						<imt-image class="item-thumbnail" src="{{product.imageId}}" size="w=250" ></imt-image>
+					<div ng-if="!product.imageItem && product.image" >
+						<imt-image class="item-thumbnail" src="{{product.image.path}}" size="w=250" ></imt-image>
 					</div>
 					
-					<div class="uploader" ng-if="!product.imageItem && !product.imageId">
+					<div class="uploader" ng-if="!product.imageItem && !product.image">
 						<i  class="fa fa-arrow-circle-o-up upload-icon"></i>
 					</div>
 
-					<div ng-if="product.imageItem" imt-thumb-preview="{ file: product.imageItem.file, width: 250 }"></div>	
+					<div ng-if="product.imageItem" imt-thumb-preview="{ fileItem: product.imageItem, width: 250 }"></div>	
 					
 					<div  class="pending-state"  ng-show="product.imageItem.isUploading"  >
 						<div class="progress active"  >
@@ -38,7 +38,7 @@
 		
 				</div>
 				<div class="bottom-controls"  >
-					<i class="fa fa-trash-o" ng-click="removeImage(product)" ng-show="product.imageItem || product.imageId" ></i>
+					<i class="fa fa-trash-o" ng-click="removeImage(product)" ng-show="product.imageItem || product.image" ></i>
 				</div>
 			</div>
 		
@@ -63,15 +63,15 @@
 							<div class="image-chooser-wrapper small">
 								<div imt-drop-zone="changeDesignImage(design, $files)" class="image-chooser">
 									<div class="drop-place-holder"></div>
-									<div ng-if="!design.imageItem && design.imageId" >
-										<imt-image class="item-thumbnail" src="{{design.imageId}}" size="s=70" ></imt-image>
+									<div ng-if="!design.imageItem && design.image" >
+										<imt-image class="item-thumbnail" src="{{design.image.path}}" size="s=70" ></imt-image>
 									</div>
 
-									<div class="uploader" ng-if="!design.imageItem && !design.imageId">
+									<div class="uploader" ng-if="!design.imageItem && !design.image">
 										<i  class="fa fa-arrow-circle-o-up upload-icon"></i>
 									</div>
 
-									<div ng-if="design.imageItem" imt-thumb-preview="{ file: design.imageItem.file, width: 70, height: 70, crop: true }"></div>
+									<div ng-if="design.imageItem" imt-thumb-preview="{ fileItem: design.imageItem, width: 70, height: 70, crop: true }"></div>
 
 									<div  class="pending-state"  ng-show="design.imageItem.isUploading"  >
 										<div class="progress progress-striped active"  >
@@ -83,7 +83,7 @@
 
 								</div>
 								<div class="bottom-controls" >
-									<i class="fa fa-trash-o" ng-show="design.imageItem || design.imageId" ng-click="removeImage(design)"></i>
+									<i class="fa fa-trash-o" ng-show="design.imageItem || design.image" ng-click="removeImage(design)"></i>
 								</div>
 							</div>
 

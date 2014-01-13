@@ -12,5 +12,7 @@ define [
 	"./Session-service"
 	"./User-service"
 	"./Uuid-service"
+	"./File-service"
+	"./Product-service"
 	
 ], ->
