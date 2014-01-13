@@ -7,5 +7,6 @@ define [
 	"./IMTDropZone-directive"	
 	"./IMTThumbPreview-directive"	
 	"./IMTFileSelected-directive"	
+	"./IMTFileChooser-directive"	
 
 ], ->

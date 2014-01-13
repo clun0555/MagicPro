@@ -3,11 +3,16 @@ Defines the main routes in the application.
 The routes you see here will be anchors '#/' unless specifically configured otherwise.
 ###
 define [
+	"underscore"
 	"angular"
 	"app"
 	"resources/translations/translations"
+	"./utils/utils"
 	
-], (angular, app, translations) ->
+], (_, angular, app, translations, utils) ->
+
+	# add global utils function to underscore
+	_.mixin utils
 
 	app.config ($translateProvider) ->
 

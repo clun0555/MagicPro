@@ -2,61 +2,48 @@ define [
 	"./directives"
 ], (directives) ->
 
+	drawOptions = (image, resizeOptions) ->
+		switch resizeOptions.action
+			when "square"
+				if image.height >= image.width
+					[ image, 0, 0, image.width, image.width, 0, 0, resizeOptions.width, resizeOptions.height ]
+				else
+					[ image, 0, 0, image.height, image.height, 0, 0, resizeOptions.width, resizeOptions.height ]
+
+			when "resize"
+				[ image, 0, 0, resizeOptions.width, resizeOptions.height ]
+
+			when "crop"
+				# todo handle crop
+				[ image, 0, 0, image.width, image.width, 0, 0, width, height ]
+
+	loadImage = (context, canvas, image, resizeOptions) ->
+				
+		canvas.attr
+			width: resizeOptions.width
+			height: resizeOptions.height
+
+		context.drawImage.apply context, drawOptions(image, resizeOptions) 
 
 
-	directives.directive "imtThumbPreview", ["$fileUploader", "$window", ($fileUploader, $window) ->
+	directives.directive "imtThumbPreview", ($fileUploader, $window, ImageSizeService) ->
 		restrict: "A"
 		template: "<canvas/>"
+		
 		link: (scope, element, attributes) ->
-			pixelRatio = window.devicePixelRatio
-
-	
-			# not $fileUploader.isHTML5 or 
-			return  if not $window.FileReader or not $window.CanvasRenderingContext2D
-			params = scope.$eval(attributes.imtThumbPreview)
-			return  if not angular.isObject(params.fileItem.file) or (params.fileItem.file not instanceof $window.File)
-			type = params.fileItem.file.type
-			type = "|" + type.slice(type.lastIndexOf("/") + 1) + "|"
-			return  if "|jpg|png|jpeg|bmp|".indexOf(type) is -1
-
 
 			canvas = element.find("canvas")
 			context = canvas[0].getContext("2d")
-			context.scale(pixelRatio, pixelRatio)
+			context.scale(window.devicePixelRatio, window.devicePixelRatio)
 
-			if params.width? and params.height?
-				canvas.attr
-					width: params.width
-					height: params.height
+			scope.$watch 'fileItem', -> 
+				# when file changes, change preview
+				if scope.fileItem?.image?
+					resizeOptions = ImageSizeService.getResizeInput(attributes.imtThumbPreview, scope.fileItem.dim)
+					loadImage context, canvas, scope.fileItem.image, resizeOptions
 
-			onLoadFile = (event) ->
-				img = new Image()
-				img.onload = onLoadImage
-				img.src = event.target.result
-			
-			onLoadImage = ->
-
-				params.fileItem.dim = width: @width, height: @height
-					
-
-				width = params.width or @width / @height * params.height
-				height = params.height or @height / @width * params.width
-				canvas.attr
-					width: width
-					height: height
-
-				if params.crop?
-
-					if @height >= @width
-						context.drawImage this, 0, 0, @width, @width, 0, 0, width, height
-					else
-						context.drawImage this, 0, 0, @height, @height, 0, 0, width, height
-
-				else				
-					context.drawImage this, 0, 0, width, height			
 			
 			
-			reader = new FileReader()
-			reader.onload = onLoadFile
-			reader.readAsDataURL params.fileItem.file
-	]
+			
+			
+	

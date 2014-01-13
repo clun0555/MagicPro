@@ -1,0 +1,27 @@
+
+<div class="image-chooser-wrapper"  >
+	<div imt-drop-zone="changeFile($files)" class="image-chooser">
+		<div class="drop-place-holder"></div>
+		<div ng-if="!fileItem && getImage()" >
+			<imt-image class="item-thumbnail" src="{{getImage().path}}" size="{{size}}" ></imt-image>
+		</div>
+
+		<div class="uploader" ng-if="!fileItem && !getImage()">
+			<i  class="fa fa-arrow-circle-o-up upload-icon"></i>
+		</div>
+
+		<div ng-if="fileItem && fileItem.image" imt-thumb-preview="{{size}}"></div>
+
+		<div  class="pending-state"  ng-show="fileItem.isUploading"  >
+			<div class="progress progress-striped active"  >
+				<div class="progress-bar progress-bar-success" data-ng-style="{width: fileItem.progress + '%'}"></div>
+			</div>		 
+		</div>
+		
+		<input type="file" name="files[]" imt-file-selected="changeFile($files)" >									
+
+	</div>
+	<div class="bottom-controls" >
+		<i class="fa fa-trash-o" ng-show="fileItem || getImage()" ng-click="removeFile()"></i>
+	</div>
+</div>	

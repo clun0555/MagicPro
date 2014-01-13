@@ -4,7 +4,7 @@ define [
 
 	services.service "ProductService", ($rootScope, $fileUploader, UuidService) ->
 		
-		getNextDesignIdentifier = (product) ->
+		getNextDesignIdentifier: (product) ->
 				
 			counter = 0
 

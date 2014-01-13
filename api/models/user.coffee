@@ -5,6 +5,7 @@ LocalStrategy = require("passport-local").Strategy
 BadRequestError = require("passport-local").BadRequestError
 options = saltlen: 32, iterations: 25000, keylen: 512, usernameField: "email"	
 Cart = require("./cart")
+FilePlugin = require("../utils/FilePlugin")
 
 User = new mongoose.Schema
 	firstname: { type: String, required: true }
@@ -13,7 +14,6 @@ User = new mongoose.Schema
 	role: { type: String, required: true, default: "user" }
 	status: { type: String, required: true, default: "pending" }
 	cart: { type: mongoose.Schema.Types.Mixed }
-	imageId: { type: String }
 	company: { type: String }
 	abn: { type: String }
 	street: { type: String }
@@ -23,6 +23,8 @@ User = new mongoose.Schema
 	hash: String
 	salt: String
 	forgot: String
+
+User.plugin(FilePlugin, {fields: ["avatar"]})
 
 User.methods.setPassword = (password, cb) ->
 	return cb(new BadRequestError("user.password.required"))  unless password

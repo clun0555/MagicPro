@@ -29,8 +29,10 @@ define [
 		# .controller "UserCreateController", ($scope, UserService) ->
 		# 	$scope.user = {}
 
-		.controller "UserController", ($scope, user, UserService) ->						
+		.controller "UserController", ($scope, user, UserService, FileUploadService) ->						
 			$scope.user = user
+
+			$scope.uploader = FileUploadService.newUploader($scope)
 
 			# $scope.save = ->
 			# 	item.update().then ->

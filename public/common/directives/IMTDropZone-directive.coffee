@@ -17,9 +17,6 @@ define [
 				e.stopPropagation()
 				$(elem).removeClass("drag-over")
 
-			$(elem).bind "drop", (e) ->
-				
-
 			elem.bind 'drop', (e) ->
 
 				$(elem).removeClass("drag-over")
@@ -28,12 +25,13 @@ define [
 				e.stopPropagation()
 				
 				files =  e.originalEvent.dataTransfer.files
+				
+				# scope.$apply ->
 
 				scope.$files = files
-
 				scope.$eval attr.imtDropZone
 
-				scope.$apply()
+				# scope.$apply()
 				
 				return false				
 				

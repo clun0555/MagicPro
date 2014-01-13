@@ -21,12 +21,16 @@ module.exports = exports = (schema, options) ->
 
 			schema.add definition
 
+	hasRequiredMetadata = (data) ->
+		data? and data.path? and data.width? and data.height?
+
 
 	schema.methods.isDraft = (field) ->
 		@[field]?.path.indexOf("draft/") == 0
 
 	schema.methods.getPreviousFile = (field) ->
 		@["_"+field]
+
 
 	schema.methods.removePreviousFile = (field) ->
 		
@@ -42,26 +46,24 @@ module.exports = exports = (schema, options) ->
 
 	schema.methods.syncFile = (field) ->
 
+		# make sure file data is here and complete
+		unless hasRequiredMetadata(@[field])
+			# if not, silently remove data, and remove previous files if exist
+			delete @[field]
+			return @removePreviousFile(field)
+
 		deferred = Q.defer()
 
-		# file is defined
-		if @[field]?
-
-			# file is not a draft do nothing
-			return deferred.resolve() unless @isDraft(field)
-			
-			# file is a draft, publish...
-			s3.publishFile(@[field].path).then (newPath) =>
-				@[field].path = newPath
-
-				# and remove previous file
-				@removePreviousFile(field).then -> deferred.resolve()
+		# file is not a draft do nothing
+		return deferred.resolve() unless @isDraft(field)
 		
-		else
-			# file isnt defined, remove previous file
+		# file is a draft, publish...
+		s3.publishFile(@[field].path).then (newPath) =>
+			@[field].path = newPath
+
+			# and remove previous file
 			@removePreviousFile(field).then -> deferred.resolve()
-				
-		
+
 		deferred.promise
 
 	schema.post 'init', (doc) ->

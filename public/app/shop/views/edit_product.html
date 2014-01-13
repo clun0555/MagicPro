@@ -11,36 +11,7 @@
 				</span> 
 			</p>
 			
-			<div class="image-chooser-wrapper main-image large">
-				<div class="image-chooser default-drop-target" >
-					
-					<div class="drop-place-holder"></div>
-					
-					<div ng-if="!product.imageItem && product.image" >
-						<imt-image class="item-thumbnail" src="{{product.image.path}}" size="w=250" ></imt-image>
-					</div>
-					
-					<div class="uploader" ng-if="!product.imageItem && !product.image">
-						<i  class="fa fa-arrow-circle-o-up upload-icon"></i>
-					</div>
-
-					<div ng-if="product.imageItem" imt-thumb-preview="{ fileItem: product.imageItem, width: 250 }"></div>	
-					
-					<div  class="pending-state"  ng-show="product.imageItem.isUploading"  >
-						<div class="progress active"  >
-							<div class="progress-bar progress-bar-success" data-ng-style="{width: product.imageItem.progress + '%'}"></div>
-						</div>		 
-					</div>
-
-
-
-					<input type="file" name="files[]" imt-file-selected="setProductImage($files)" >		
-		
-				</div>
-				<div class="bottom-controls"  >
-					<i class="fa fa-trash-o" ng-click="removeImage(product)" ng-show="product.imageItem || product.image" ></i>
-				</div>
-			</div>
+			<div imt-file-chooser="{ 'model': product, 'field': 'image', size: 'w=250' }" class="large" ></div>			
 		
 			<p class="product-description">
 				<textarea ng-model="product.description" placeholder="{{ 'product.edit.description' | translate }}"></textarea>			
@@ -60,32 +31,7 @@
 					<tr ng-repeat="design in product.designs" class="design" >
 						<td class="design-thumbnail">
 							
-							<div class="image-chooser-wrapper small">
-								<div imt-drop-zone="changeDesignImage(design, $files)" class="image-chooser">
-									<div class="drop-place-holder"></div>
-									<div ng-if="!design.imageItem && design.image" >
-										<imt-image class="item-thumbnail" src="{{design.image.path}}" size="s=70" ></imt-image>
-									</div>
-
-									<div class="uploader" ng-if="!design.imageItem && !design.image">
-										<i  class="fa fa-arrow-circle-o-up upload-icon"></i>
-									</div>
-
-									<div ng-if="design.imageItem" imt-thumb-preview="{ fileItem: design.imageItem, width: 70, height: 70, crop: true }"></div>
-
-									<div  class="pending-state"  ng-show="design.imageItem.isUploading"  >
-										<div class="progress progress-striped active"  >
-											<div class="progress-bar progress-bar-success" data-ng-style="{width: design.imageItem.progress + '%'}"></div>
-										</div>		 
-									</div>
-									
-									<input type="file" name="files[]" imt-file-selected="changeDesignImage(design, $files)" >									
-
-								</div>
-								<div class="bottom-controls" >
-									<i class="fa fa-trash-o" ng-show="design.imageItem || design.image" ng-click="removeImage(design)"></i>
-								</div>
-							</div>
+							<div imt-file-chooser="{ 'model': design, 'field': 'image', size: 's=70' }" class="small" ></div>
 
 						</div>
 
@@ -131,7 +77,16 @@
 
 			<p class="buttons">
 				<button class="btn btn-link btn-lg" ui-sref="shop.products()" >  {{ 'product.edit.cancel' | translate }} </button>	
-				<button class="btn btn-primary btn-lg" ng-click="save()" ><i class="fa fa-save"></i>  {{'product.edit.save' | translate }} </button>
+				<button class="btn btn-primary btn-lg save" ng-click="save()" ng-disabled="uploader.uploader.isUploading" >
+					<div  class="pending-state"  ng-show="uploader.uploader.isUploading"  >
+						<div class="progress active "  >
+							<div class="progress-bar progress-bar-success" data-ng-style="{width: (uploader.uploader.progress) + '%'}"></div>
+						</div>	
+					</div>
+
+					<i class="fa fa-save"></i> 
+				 	{{'product.edit.save' | translate }} 
+				</button>
 
 
 			</p>

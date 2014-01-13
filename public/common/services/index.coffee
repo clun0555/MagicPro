@@ -13,6 +13,8 @@ define [
 	"./User-service"
 	"./Uuid-service"
 	"./File-service"
+	"./FileUpload-service"
 	"./Product-service"
+	"./ImageSize-service"
 	
 ], ->
