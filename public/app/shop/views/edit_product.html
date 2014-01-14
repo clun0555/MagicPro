@@ -26,15 +26,11 @@
 
 		<table class="bundle-table" ng-show="product.designs.length > 0"  >
 				
-				<tbody  >
-					
+				<tbody>
 					<tr ng-repeat="design in product.designs" class="design" >
+						
 						<td class="design-thumbnail">
-							
 							<div imt-file-chooser="{ 'model': design, 'field': 'image', size: 's=70' }" class="small" ></div>
-
-						</div>
-
 						</td>
 
 						<td class="design-info" >
@@ -46,26 +42,15 @@
 								&times; <input type="text" ng-model="product.inner">
 							</span> 						
 						</td>
-
-						
-
 						
 						<td class="delete-design" >
-							<!-- <span class="delete-button-session" >
-								<span class="ui-button-text-only btn btn-danger" tabindex="-1" >
-									<i class="fa fa-minus"></i>
-								</span>
-							</span> -->
 							<button class="btn btn-sl btn-danger"  ng-click="removeDesign(design)" translate> <i class="fa fa-trash-o"></i> productnavigator.edit.delete </button>
 						</td>
 						
-					</tr>
-					
+					</tr>					
 				</tbody>
 				<tfoot>
 						<tr>
-							
-
 							<td ></td>
 							<td colspan="3" class="add-design-button" >
 								<button class="btn" ng-click="addDesign()"><i class="fa fa-plus"></i> {{ 'product.edit.new.design' | translate }} </button>
