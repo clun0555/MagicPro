@@ -42,7 +42,10 @@ define [
 
 	directives.directive "imtThumbPreview", ($fileUploader, $window, ImageSizeService) ->
 		restrict: "A"
-		template: "<canvas class=\"first-canvas\" /><canvas class=\"second-canvas\" />"
+		template: """
+			<canvas class="first-canvas" ></canvas>
+			<canvas class="second-canvas" ></canvas>
+			"""
 		
 		link: (scope, element, attributes) ->
 
