@@ -11,7 +11,7 @@
 				</span>
 			</p>
 			
-			<imt-image class="item-thumbnail" src="{{product.image.path}}" size="w=250" ></imt-image>
+			<div class="item-thumbnail" imt-src="product.image" imt-size="w=250" />			
 
 			<p class="product-description">{{ product.description}}</p>
 		</div>
@@ -28,7 +28,7 @@
 					
 					<tr ng-repeat="design in product.designs">
 						<td class="design-thumbnail">
-							<imt-image src="{{design.image.path || product.image.path}}" size="s=75"  ></imt-image>
+							<div imt-src="design.image || product.image" imt-size="s=75" />
 						</td>
 						<td class="design-info">
 							<span class="design-label">{{  design.label || product.title }}</span>
@@ -63,8 +63,6 @@
 									<span class="total-price">{{cart.price(product) | currency:"$" }}</span>
 									
 								</div>
-							
-
 
 							</td>
 						</tr>

@@ -4,7 +4,7 @@
 		<div class="drop-place-holder"></div>
 		
 		<div ng-show="!fileItem && getImage()" class="item-thumbnail-wrapper" >
-			<imt-image class="item-thumbnail" src="{{getImage().path}}" size="{{size}}" ></imt-image>
+			<div class="item-thumbnail" imt-src="getImage()" imt-size="{{size}}" ></div>
 		</div>
 
 		<div class="uploader" ng-show="!fileItem && !getImage()">

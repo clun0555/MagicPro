@@ -24,9 +24,10 @@
 					
 							<div class="image-wrapper" >
 								<a ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >
-									<imt-image src="{{getImageId(product, this)}}" size="s=200" ng-class="{ 'visible': focusedDesign == null }" ></imt-image>
 									
-									<imt-image src="{{getImageId(product, design, this)}}" size="s=200" ng-repeat="design in product.designs" ng-class="{ 'visible': focusedDesign == design }" ></imt-image>
+									<div imt-src="product.image" imt-size="s=200" ng-class="{ 'visible': focusedDesign == null }" ></div>
+									
+									<div imt-src="design.image || product.image" imt-size="s=200" ng-repeat="design in product.designs" ng-class="{ 'visible': focusedDesign == design }" ></div>
 								</a>	
 
 							</div>

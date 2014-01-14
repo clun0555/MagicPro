@@ -8,5 +8,6 @@ define [
 	"./IMTThumbPreview-directive"	
 	"./IMTFileSelected-directive"	
 	"./IMTFileChooser-directive"	
+	"./IMTSrc-directive"	
 
 ], ->

@@ -48,9 +48,9 @@ define [
 			$scope.focusedDesign = null
 			return 
 
-		$scope.getImageId = (product, design, $scope) ->
-			return design.image.path if design.image?
-			product.image?.path
+		# $scope.getImage = (product, design, $scope) ->
+		# 	design.image ? product.image
+			
 
 		$scope.$on "fileDrop", (event, $files) ->
 			$scope.$parent.files = $files

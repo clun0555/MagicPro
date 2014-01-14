@@ -30,7 +30,9 @@
 						<div style="clear: both">
 						<li class="slide composition-info" ng-repeat="composition in bundle.compositions" ng-class="{ inactive: !(composition.quantity > 0) }"  >
 
-							<span class="design-image"> <imt-image src="{{composition.design.imageId || bundle.product.imageId}}" size="s=75" ></imt-image> </span>
+							<span class="design-image"> 
+							<div imt-src="composition.design.image || bundle.product.image" imt-size="s=75" ></div> 
+							</span>
 							<span class="design-label">
 								{{ composition.design.label || bundle.product.title }} <span class="design-identifier">({{ composition.design.identifier || bundle.product.identifier }})</span>
 <!--								<br>

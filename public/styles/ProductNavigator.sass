@@ -70,18 +70,20 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 			width: 200px
 			height: 200px
 
-			.visible img
-				opacity: 1
+			// .visible .imt-image-wrapper
+			// 	opacity: 1
 			
-			img
+			.imt-image-wrapper
 				background-color: #dfe0e2
-				
-
 				margin-bottom: 10px
 				opacity: 0
 				position: absolute
 				left: 0
 				+transition(opacity .5s ease-in-out)
+
+				&.visible
+					opacity: 1
+			
 				
 				
 
