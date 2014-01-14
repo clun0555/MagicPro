@@ -24,7 +24,8 @@ define [
 				e.preventDefault()
 				e.stopPropagation()
 				
-				files =  e.originalEvent.dataTransfer.files
+				# files =  e.originalEvent.dataTransfer.files
+				files =  (e.dataTransfer ? e.originalEvent.dataTransfer).files
 
 				scope.$files = files
 				scope.$eval attr.imtDropZone
