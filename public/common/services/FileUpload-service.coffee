@@ -52,6 +52,11 @@ define [
 						height:  fileItem.dim.height
 					}
 
+				@uploader.bind "progressall", =>
+					@progress = @uploader.progress
+					@isUploading = @uploader.isUploading
+
+
 			isImage: (fileItem) ->
 				type = fileItem.file.type
 				type = "|" + type.slice(type.lastIndexOf("/") + 1) + "|"
@@ -80,6 +85,9 @@ define [
 			
 			removeByModel: (model, field) ->
 				@removeFile @getFileItem(model, field)
+
+			bind: (eventName, callback) ->
+				@uploader.bind eventName, callback
 
 
 		newUploader: (scope) ->

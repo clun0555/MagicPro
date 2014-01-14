@@ -78,9 +78,9 @@
 			<p class="buttons">
 				<button class="btn btn-link btn-lg" ui-sref="shop.products()" >  {{ 'product.edit.cancel' | translate }} </button>	
 				<button class="btn btn-primary btn-lg save" ng-click="save()" ng-disabled="uploader.uploader.isUploading" >
-					<div  class="pending-state"  ng-show="uploader.uploader.isUploading"  >
+					<div  class="pending-state"  ng-show="uploader.isUploading"  >
 						<div class="progress active" >
-							<div class="progress-bar progress-bar-success" data-ng-style="{width: (uploader.uploader.progress) + '%'}"></div>
+							<div class="progress-bar progress-bar-success" data-ng-style="{width: (uploader.progress) + '%'}"></div>
 						</div>
 					</div>
 

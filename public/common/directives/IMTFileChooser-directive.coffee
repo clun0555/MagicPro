@@ -49,7 +49,7 @@ define [
 
 			resize()
 
-			uploader.uploader.bind "afterimageloaded", (evemt, fileItem) ->
+			uploader.bind "afterimageloaded", (evemt, fileItem) ->
 				if fileItem is $scope.fileItem
 					$scope.currentImage = $scope.fileItem.image
 
