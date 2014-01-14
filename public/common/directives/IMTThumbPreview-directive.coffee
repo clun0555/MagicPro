@@ -44,7 +44,9 @@ define [
 		restrict: "A"
 		template: """
 			<canvas class="first-canvas" ></canvas>
+
 			<canvas class="second-canvas" ></canvas>
+
 			"""
 		
 		link: (scope, element, attributes) ->
@@ -52,9 +54,9 @@ define [
 			# 2 canvas/contexs are created to allow a smooth transition when changing images
 			contexts =
 				first: 
-					canvas: element.find(".first-canvas")					
+					canvas: $(element).find(".first-canvas")					
 				second:
-					canvas: element.find(".second-canvas")									
+					canvas: $(element).find(".second-canvas")									
 			
 			contexts.first.context = contexts.first.canvas[0].getContext("2d")
 			contexts.second.context = contexts.second.canvas[0].getContext("2d")
