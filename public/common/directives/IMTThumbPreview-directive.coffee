@@ -1,6 +1,7 @@
 define [
+	"jquery"
 	"./directives"
-], (directives) ->
+], ($, directives) ->
 
 	drawOptions = (image, resizeOptions) ->
 		switch resizeOptions.action
@@ -17,33 +18,74 @@ define [
 				# todo handle crop
 				[ image, 0, 0, image.width, image.width, 0, 0, width, height ]
 
-	loadImage = (context, canvas, image, resizeOptions) ->
-				
-		canvas.attr
+	loadImage = (contexts, image, resizeOptions, element, $scope) ->
+
+		contexts.current.canvas.attr
 			width: resizeOptions.width
 			height: resizeOptions.height
 
-		context.drawImage.apply context, drawOptions(image, resizeOptions) 
+		contexts.current.context.drawImage.apply contexts.current.context, drawOptions(image, resizeOptions) 
+		
+		if contexts.current.canvas.height() > contexts.other().canvas.height()
+			contexts.switch()
+			setTimeout ->
+				$scope.resize()
+			, 300
+			
+		else
+			$scope.resize()
+			setTimeout ->
+				contexts.switch()
+			, 300
+		
 
 
 	directives.directive "imtThumbPreview", ($fileUploader, $window, ImageSizeService) ->
 		restrict: "A"
-		template: "<canvas/>"
+		template: "<canvas class=\"first-canvas\" /><canvas class=\"second-canvas\" />"
 		
 		link: (scope, element, attributes) ->
 
-			canvas = element.find("canvas")
-			context = canvas[0].getContext("2d")
-			context.scale(window.devicePixelRatio, window.devicePixelRatio)
+			# 2 canvas/contexs are created to allow a smooth transition when changing images
+			contexts =
+				first: 
+					canvas: element.find(".first-canvas")					
+				second:
+					canvas: element.find(".second-canvas")									
+			
+			contexts.first.context = contexts.first.canvas[0].getContext("2d")
+			contexts.second.context = contexts.second.canvas[0].getContext("2d")
 
-			scope.$watch 'fileItem', -> 
+			contexts.current = contexts.first
+			contexts.other = -> if @first is @current then @second else @first
+			contexts.hide = -> $(@other().canvas).fadeOut()
+			contexts.switch = -> 
+				$(@current.canvas).fadeIn()
+				$(@other().canvas).fadeOut()
+				@current = @other()
+			
+			contexts.first.context.scale(window.devicePixelRatio, window.devicePixelRatio)
+			contexts.second.context.scale(window.devicePixelRatio, window.devicePixelRatio)
+
+			handleFileChange = ->
 				# when file changes, change preview
-				if scope.fileItem?.image?
-					resizeOptions = ImageSizeService.getResizeInput(attributes.imtThumbPreview, scope.fileItem.dim)
-					loadImage context, canvas, scope.fileItem.image, resizeOptions
+				resizeOptions = ImageSizeService.getResizeInput(attributes.imtThumbPreview, scope.fileItem.dim)
+				loadImage contexts, scope.fileItem.image, resizeOptions, element, scope
+			
+			handleFileRemove = ->	
+				# hide canvas when remove image
+				contexts.hide() unless scope.fileItem?.image?
+					
 
+			scope.$watch 'currentImage', handleFileChange
+			scope.$watch 'fileItem', handleFileRemove
+				
 			
-			
+				
+
+
+
+	
 			
 			
 	

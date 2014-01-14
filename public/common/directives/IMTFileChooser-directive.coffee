@@ -1,6 +1,7 @@
 define [
+	"jquery"
 	"./directives"
-], (directives) ->
+], ($, directives) ->
 
 	directives.directive "imtFileChooser", ->		
 		restrict: "A"
@@ -8,7 +9,7 @@ define [
 		replace: true
 		scope: true
 
-		controller: ($scope, $attrs) ->
+		controller: ($scope, $attrs, $element, ImageSizeService) ->
 
 			params = $scope.$eval($attrs.imtFileChooser)
 
@@ -16,15 +17,18 @@ define [
 
 			$scope.size = params.size ? "w=200"
 
-			$scope.classes = $attrs["class"]
-
 			$scope.fileItem = uploader.getFileItem params.model, params.field
 
 			$scope.getImage = ->
-				params.model[params.field]
+				params.model[params.field]	
 
 			$scope.changeFile = ($files) ->
-				$scope.removeFile() if $scope.fileItem?
+				
+				if $scope.fileItem?
+					uploader.removeFile($scope.fileItem)					
+				else
+					params.model[params.field] = null
+
 				$scope.fileItem = uploader.addFile $files[0], params.model, params.field
 
 			$scope.removeFile = ->
@@ -32,7 +36,32 @@ define [
 					uploader.removeFile($scope.fileItem)
 					$scope.fileItem = null	
 				else
-					params.model[params.field] = null
+					params.model[params.field] = null	
+
+				resize()
+
+				return
+
+			$scope.resize = resize = ->
+				dim = $scope.fileItem?.dim or $scope.getImage() or { width: 1000, height: 1000 }
+				resizeOptions = ImageSizeService.getResizeInput($scope.size, dim)
+				$($element).find(".image-chooser").css height: resizeOptions.height
+
+			resize()
+
+			uploader.uploader.bind "afterimageloaded", (evemt, fileItem) ->
+				if fileItem is $scope.fileItem
+					$scope.currentImage = $scope.fileItem.image
+
+					
+
+					
+
+		# link: ($scope, element, $attrs) ->
+
+			
+
+
 		
 
 			

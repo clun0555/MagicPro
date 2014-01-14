@@ -6,14 +6,15 @@ define [
 		
 		class FileUploadScope
 
-			onLoadFile = (fileItem, event) ->
+			onLoadFile = (fileItem, event, uploader) ->
 				img = new Image()
-				img.onload = -> onLoadImage(fileItem, this)
+				img.onload = -> onLoadImage(fileItem, this, uploader)
 				img.src = event.target.result
 
-			onLoadImage = (fileItem, image) ->
+			onLoadImage = (fileItem, image, uploader) ->
 				fileItem.dim = width: image.width, height: image.height
-				fileItem.image = image				
+				fileItem.image = image
+				uploader.trigger "afterimageloaded", fileItem				
 			
 			constructor: (scope) ->
 				@uploader = $fileUploader.create({
@@ -40,7 +41,7 @@ define [
 					# if file is an image, load it to read meta data, and preview it
 					if @isImage fileItem
 						reader = new FileReader()
-						reader.onload = (event) -> onLoadFile(fileItem, event)
+						reader.onload = (event) => onLoadFile(fileItem, event, @uploader)
 						reader.readAsDataURL fileItem.file
 
 				# when upload is done, attach file metadata to datamodel

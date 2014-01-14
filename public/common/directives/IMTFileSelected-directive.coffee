@@ -9,3 +9,4 @@ define [
 			elem.bind 'change', (event) ->
 				scope.$files = @files
 				scope.$eval(attr.imtFileSelected)	
+				elem.prop('value', null)
