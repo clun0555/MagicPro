@@ -93,9 +93,7 @@ define [
 
 		$rootScope.$on '$stateChangeSuccess', (ev, to, toParams, from, fromParams) ->
 			$rootScope.fromState = from
-			$rootScope.fromStateParams = fromParams
-			console.log $rootScope.fromState
-			console.log $rootScope.fromStateParams
+			$rootScope.fromStateParams = fromParams			
 
 
 		# handle global file drop

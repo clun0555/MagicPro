@@ -68,9 +68,10 @@ define [
 			contexts.second.context.scale(window.devicePixelRatio, window.devicePixelRatio)
 
 			handleFileChange = ->
-				# when file changes, change preview
-				resizeOptions = ImageSizeService.getResizeInput(attributes.imtThumbPreview, scope.fileItem.dim)
-				loadImage contexts, scope.fileItem.image, resizeOptions, element, scope
+				if scope.fileItem?.image?
+					# when file changes, change preview
+					resizeOptions = ImageSizeService.getResizeInput(attributes.imtThumbPreview, scope.fileItem.dim)
+					loadImage contexts, scope.fileItem.image, resizeOptions, element, scope
 			
 			handleFileRemove = ->	
 				# hide canvas when remove image
@@ -79,13 +80,4 @@ define [
 
 			scope.$watch 'currentImage', handleFileChange
 			scope.$watch 'fileItem', handleFileRemove
-				
-			
-				
-
-
-
-	
-			
-			
-	
+							

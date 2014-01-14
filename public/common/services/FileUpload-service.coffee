@@ -39,7 +39,7 @@ define [
 					fileItem.formData[0].key = fileItem.fileId
 					
 					# if file is an image, load it to read meta data, and preview it
-					if @isImage fileItem
+					if @isImage fileItem.file
 						reader = new FileReader()
 						reader.onload = (event) => onLoadFile(fileItem, event, @uploader)
 						reader.readAsDataURL fileItem.file
@@ -52,13 +52,17 @@ define [
 						height:  fileItem.dim.height
 					}
 
-				@uploader.bind "progressall", =>
-					@progress = @uploader.progress
+				@uploader.bind "completeall", =>
 					@isUploading = @uploader.isUploading
+					@progress = @uploader.progress
+
+				@uploader.bind "progress", =>
+					@isUploading = @uploader.isUploading
+					@progress = @uploader.progress
 
 
-			isImage: (fileItem) ->
-				type = fileItem.file.type
+			isImage: (file) ->
+				type = file.type
 				type = "|" + type.slice(type.lastIndexOf("/") + 1) + "|"
 				"|jpg|png|jpeg|bmp|".indexOf(type) >= 0
 
@@ -68,6 +72,8 @@ define [
 
 			# add file to the upload queue and link it to the datamodel
 			addFile: (file, model, field) ->
+				return unless @isImage(file)
+
 				@uploader.addToQueue(file)
 				fileItem = @uploader.queue[@uploader.queue.length - 1]
 				fileItem.imtModel = model
@@ -91,7 +97,9 @@ define [
 
 
 		newUploader: (scope) ->
-			new FileUploadScope scope				
+			new FileUploadScope scope	
+		
+
 
 
 		

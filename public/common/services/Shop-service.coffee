@@ -141,7 +141,6 @@ define [
 							@getTypeById(product.type).then( (data) -> product.type = data.type )
 
 				$q.all(typeIds).then ->
-					console.log products
 					deferred.resolve products: products
 
 			deferred.promise
@@ -161,7 +160,6 @@ define [
 							@getTypeById(product.type).then( (data) -> product.type = data.type )
 
 				$q.all(typeIds).then ->
-					console.log products
 					deferred.resolve(products)
 				
 			
