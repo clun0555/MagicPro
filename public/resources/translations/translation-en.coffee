@@ -180,6 +180,8 @@ define ->
 	"product.edit.identifier": "Identifier"
 	"product.edit.price": "price"
 	"product.edit.description": "Description..."
+	"product.edit.uploading": "Uploading..."
+	"product.edit.saving": "Saving..."
 
 	### menu ###
 	"menu.welcome": "Welcome,"

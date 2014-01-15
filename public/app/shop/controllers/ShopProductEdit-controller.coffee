@@ -37,10 +37,22 @@ define [
 				$scope.product.designs.splice index, 1
 
 			save: ->
-				product = _.clone ($scope.product)
-				product.type = product.type._id
-				
-				product.slug = _.slugify(product.title)
 
-				ShopService.saveProduct(product).then -> $state.go "shop.products"
+				$scope.saving = true
+
+				
+				doSave = ->
+
+					product = _.clone ($scope.product)
+					product.type = product.type._id
+					
+					product.slug = _.slugify(product.title)
+
+					ShopService.saveProduct(product).then -> $state.go "shop.products"
+
+				if uploader.isUploading
+					uploader.bind "completeall", -> doSave()
+				else					
+					doSave()	
+
 
