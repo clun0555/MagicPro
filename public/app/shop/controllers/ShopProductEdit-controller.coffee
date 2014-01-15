@@ -46,8 +46,6 @@ define [
 					product = _.clone ($scope.product)
 					product.type = product.type._id
 					
-					product.slug = _.slugify(product.title)
-
 					ShopService.saveProduct(product).then -> 
 						CartService.removeUnexistingCompositions product
 						$state.go "shop.products"

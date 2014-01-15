@@ -1,10 +1,10 @@
 mongoose = require("mongoose")
 Design = require("./design")
 FilePlugin = require("../utils/FilePlugin")
+SlugPlugin = require("../utils/SlugPlugin")
 
 Product = new mongoose.Schema
 	identifier: {type: String, required: true }
-	slug: {type: String, require: true, unique: true}
 	title: { type: String, required: true }
 	description: { type: String }
 	type: {type: mongoose.Schema.ObjectId, ref: 'Type'}
@@ -15,6 +15,11 @@ Product = new mongoose.Schema
 	price: {type: Number, require: true}
 
 Product.plugin(FilePlugin, {fields: ["image"]})
+Product.plugin(SlugPlugin.plugin, {source: 'title'})
 
-module.exports = mongoose.model("Product", Product)
+ProductModel = mongoose.model("Product", Product)
+
+SlugPlugin.enhanceModel(ProductModel)
+
+module.exports = ProductModel
 
