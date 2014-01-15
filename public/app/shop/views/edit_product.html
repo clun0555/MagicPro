@@ -5,7 +5,20 @@
 			
 			<div class="product-title"><input type="text" ng-model="product.title" placeholder="{{ 'product.edit.title' | translate }}"></div>
 			<p class="product-ref-price">
-				<span class="product-ref" > <input type="text" ng-model="product.identifier" placeholder="{{ 'product.edit.identifier' | translate }}"> &nbsp; </span> 
+				
+
+				<div class="product-ref form-group" ng-class="{'has-error': serverError == 'duplicate.identifier' }" > 
+					<input type="text" ng-model="product.identifier" placeholder="{{ 'product.edit.identifier' | translate }}" ng-change="resetServerError()" >
+					
+					<div class="error-tip bottom"  >						
+						<span  translate> product.edit.validation.duplicate.identifier </span>	
+					</div>
+
+				</div> 
+				
+				
+
+
 				<span class="product-price" >
 					$ <input type="number" ng-model="product.price" placeholder="{{ 'product.edit.price' | translate }}">
 				</span> 
@@ -70,7 +83,7 @@
 					</div>
 
 					
-				 	<span ng-show="!saving" translate><i class="fa fa-save"></i> product.edit.save</span>
+				 	<span ng-show="!saving" ><i class="fa fa-check"></i> {{'product.edit.save' | translate}}</span>
 				 	<span ng-show="saving && uploader.isUploading" translate>product.edit.uploading</span>
 				 	<span ng-show="saving && !uploader.isUploading" translate>product.edit.saving</span>
 				 	

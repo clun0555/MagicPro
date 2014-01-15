@@ -4,7 +4,7 @@ FilePlugin = require("../utils/FilePlugin")
 SlugPlugin = require("../utils/SlugPlugin")
 
 Product = new mongoose.Schema
-	identifier: {type: String, required: true }
+	identifier: {type: String, required: true, unique: true }
 	title: { type: String, required: true }
 	description: { type: String }
 	type: {type: mongoose.Schema.ObjectId, ref: 'Type'}

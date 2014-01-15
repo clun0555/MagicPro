@@ -182,6 +182,7 @@ define ->
 	"product.edit.description": "Description..."
 	"product.edit.uploading": "Uploading..."
 	"product.edit.saving": "Saving..."
+	"product.edit.validation.duplicate.identifier": "This identifier is already used by another product"
 
 	### menu ###
 	"menu.welcome": "Welcome,"

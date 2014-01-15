@@ -15,10 +15,6 @@ define [
 			$scope.$parent.files = null
 			uploader.addFile(files[0], $scope.product, "image") if files[0]?			
 
-		# droping a file anywhere will set our product main image
-		# $scope.$on "fileDrop", (event, files) -> 
-			# uploader.addFile(files[0], $scope.product, "image") if files[0]?				
-
 		_.extend $scope, 
 
 			addDesigns: ($files) ->
@@ -36,8 +32,11 @@ define [
 				index = $scope.product.designs.indexOf design
 				$scope.product.designs.splice index, 1
 
-			save: ->
+			resetServerError: ->
+				$scope.serverError = null
 
+			save: ->
+				$scope.serverError = null
 				$scope.saving = true
 
 				
@@ -46,9 +45,15 @@ define [
 					product = _.clone ($scope.product)
 					product.type = product.type._id
 					
-					ShopService.saveProduct(product).then -> 
-						CartService.removeUnexistingCompositions product
-						$state.go "shop.products"
+					ShopService.saveProduct(product).then( 
+						-> 
+							CartService.removeUnexistingCompositions product
+							$state.go "shop.products"
+						(res) ->
+							# currently only one thing could go wrong
+							$scope.serverError = "duplicate.identifier"
+							$scope.saving = false
+					)
 
 				if uploader.isUploading
 					uploader.bind "completeall", -> doSave()

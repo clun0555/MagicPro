@@ -30,7 +30,11 @@ module.exports =
 
 		product = new Product _.extend({}, req.body)
 		
-		product.save (err, product) -> res.send err or product
+		product.save (err, product) -> 
+			if err
+				res.status(400).send err
+			else
+				res.send err or product
 			
 	update: (req, res) ->
 		Product.findById req.params.product,  (err, product) ->
@@ -50,7 +54,11 @@ module.exports =
 						# product.designs.push design
 						design.remove()
 
-				product.save (err, product) -> res.send err or product					
+				product.save (err, product) -> 
+					if err
+						res.status(400).send err					
+					else
+						res.send product					
 				
 
 				

@@ -104,7 +104,8 @@ input[type=number]::-webkit-outer-spin-button
 
 
 .has-error .error-tip
-	opacity: .85
+	opacity: .85	
+	height: auto
 
 .form-item
 	position: relative
@@ -135,7 +136,33 @@ input[type=number]::-webkit-outer-spin-button
 	width: 230px
 	content: ' '
 	opacity: 0
+	height: 0	
 	+transition(opacity .25s ease-in-out)
+
+
+	&.bottom:after, &.bottom:before 
+		top: 100%
+		left: 50%
+		border: solid transparent
+		content: " "
+		height: 0
+		width: 0
+		position: absolute
+		pointer-events: none
+	
+
+	&.bottom:after 
+		border-color: rgba(242, 222, 222, 0)
+		border-top-color: #f2dede
+		border-width: 10px
+		margin-left: -10px
+	
+	&.bottom:before 
+		border-color: rgba(240, 151, 132, 0)
+		border-top-color: #f09784
+		border-width: 11px
+		margin-left: -11px
+	
 
 	&:before
 		position: absolute
