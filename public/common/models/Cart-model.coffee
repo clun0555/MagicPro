@@ -59,6 +59,12 @@ define [
 		reset: ->
 			@bundles = []
 
+		# check if cart has any un-existing designs for this product (may have been deleted)
+		removeUnexistingCompositions: (product) ->
+			bundle = @getBundle(product._id)
+			bundle.removeUnexistingCompositions(product) if bundle?
+
+
 		quantities: (product) ->
 			quantities  = {}
 			

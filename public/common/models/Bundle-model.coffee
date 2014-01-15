@@ -52,6 +52,13 @@ define [
 		price: (designId) ->
 			@quantity(designId) * @product.price * @product.inner
 
+
+		removeUnexistingCompositions: (product) ->
+			for composition in @compositions.slice(0)
+				design = _.findWhere product.designs, '_id': composition.design._id
+				@removeComposition composition unless design?
+
+
 		toJSON: ->
 			compositions: @compositions
 			product: @product._id

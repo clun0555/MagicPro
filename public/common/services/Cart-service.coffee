@@ -14,6 +14,7 @@ define [
 			deferred = $q.defer()
 
 			localCartJSON = SessionService.retrieveLocal("cart")
+			populatedCart = { bundles: [] }
 
 			unless localCartJSON?
 				deferred.resolve({})
@@ -24,18 +25,32 @@ define [
 			products = ShopService.getProductsByIds(productIds).then (products) ->
 				
 				for bundle in localCartJSON.bundles
-					bundle.product = _.findWhere products,  "_id": bundle.product
-					for composition in bundle.compositions
-						composition.design = _.findWhere bundle.product.designs, "_id": composition.design
+
+					product = _.findWhere products,  "_id": bundle.product
+					
+					if product? 
+						populatedBundle = _.clone bundle
+						
+						populatedBundle.product = product
+						populatedBundle.compositions = []	
+						
+						for composition in bundle.compositions
+							design = _.findWhere product.designs, "_id": composition.design
+							if design?
+								populatedComposition = _.clone composition
+								populatedComposition.design = design
+								populatedBundle.compositions.push populatedComposition
+
+						if populatedBundle.compositions.length
+							populatedCart.bundles.push populatedBundle
 
 
-				deferred.resolve localCartJSON
+				deferred.resolve populatedCart
 
 			deferred.promise
 
 		cart = ->
 			SessionService.get().cart
-
 
 		### Public ###
 
@@ -63,6 +78,10 @@ define [
 
 		store: ->
 			SessionService.storeLocal "cart", cart().toJSON()
+
+		removeUnexistingCompositions: (product) ->
+			cart().removeUnexistingCompositions(product)
+			@store()
 
 		save: ->
 			deferred = $q.defer()

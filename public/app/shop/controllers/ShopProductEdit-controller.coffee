@@ -3,7 +3,7 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller "ShopProductEditController", ($scope, data, ShopService, $state, $stateParams, ProductService, FileUploadService) ->
+	shop.controller "ShopProductEditController", ($scope, data, ShopService, $state, $stateParams, ProductService, FileUploadService, CartService) ->
 			
 		uploader = $scope.uploader = FileUploadService.newUploader($scope)
 
@@ -48,7 +48,9 @@ define [
 					
 					product.slug = _.slugify(product.title)
 
-					ShopService.saveProduct(product).then -> $state.go "shop.products"
+					ShopService.saveProduct(product).then -> 
+						CartService.removeUnexistingCompositions product
+						$state.go "shop.products"
 
 				if uploader.isUploading
 					uploader.bind "completeall", -> doSave()
