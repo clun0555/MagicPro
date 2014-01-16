@@ -63,7 +63,7 @@ module.exports = (grunt) ->
 		compass:
 			dist:
 				options:
-					sourcemap: true
+					# sourcemap: true
 					sassDir: "public/styles/"
 					cssDir: "dist/public/styles/"
 					specify: [ "public/styles/main.sass"]
