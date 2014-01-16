@@ -29,13 +29,33 @@ define [
 							ShopService.getCategories()
 
 				.state "shop.search",
-						url: "/search/:searchInput"
-						templateUrl: "app/shop/views/products.html"
-						controller: "ShopProductsController"
-						resolve:
-							data: ($stateParams, ShopService) ->
-								ShopService.getProductByTitle($stateParams.searchInput)
-							cart: (CartService) ->	CartService.get()
+					url: "/search/:searchInput"
+					template: "<ui-view>"
+					resolve:
+						data: ($stateParams, ShopService) ->
+							ShopService.searchProduct($stateParams.searchInput)
+						cart: (CartService) ->	CartService.get()
+
+					controller: (data, $scope, $stateParams, ShopService) ->
+						ShopService.search.title = $stateParams.searchInput
+
+						if data.products.length is 1
+							data.product = data.products[0]
+							$scope.$state.go "shop.search.single"
+						else
+							$scope.$state.go "shop.search.multiple"
+
+					onExit: (ShopService) ->
+						ShopService.search.title = null
+
+				.state "shop.search.multiple",
+					templateUrl: "app/shop/views/products.html"
+					controller: "ShopProductsController"
+						
+				.state "shop.search.single",
+					templateUrl: "app/shop/views/product.html"
+					controller: "ShopProductController"
+						
 						
 				.state "shop.types",
 					url: "/:category"					

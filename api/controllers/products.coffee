@@ -18,6 +18,8 @@ module.exports =
 		if req.query?
 			if req.query.advanced?
 				res.send Product.find JSON.parse(req.query.advanced)
+			else if req.query.search?
+				res.send Product.find { $or: [ { title: new RegExp(req.query.search, "i") }, { identifier: new RegExp(req.query.search, "i") } ] }
 			else
 				res.send Product.find req.query
 		else

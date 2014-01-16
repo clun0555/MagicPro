@@ -73,9 +73,6 @@
 
 					</div>
 
-
-
-
 				</div>
 
 			</div>
@@ -83,7 +80,7 @@
 
 	</div>
 
-	<div class="slide product-title col-md-3 create-product" ng-show="isRole('admin')" >
+	<div class="slide product-title col-md-3 create-product" ng-show="isRole('admin') && $state.includes('shop.products')" >
 		<div class="thumbnail" >
 		<div class="caption">
 			<div class="top-info">
