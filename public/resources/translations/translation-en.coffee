@@ -182,8 +182,10 @@ define ->
 	"product.edit.description": "Description..."
 	"product.edit.uploading": "Uploading..."
 	"product.edit.saving": "Saving..."
-	"product.edit.validation.duplicate.identifier": "This identifier is already used by another product"
-
+	"product.edit.validation.title.required": "Please provide a title"
+	"product.edit.validation.price.required": "Please provide a price"
+	"product.edit.validation.identifier.duplicate": "This identifier is already used by another product"
+	"product.edit.validation.identifier.required": "Please provide an identifier"
 	### menu ###
 	"menu.welcome": "Welcome,"
 

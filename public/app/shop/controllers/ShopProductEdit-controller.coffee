@@ -41,6 +41,12 @@ define [
 
 				
 				doSave = ->
+					$scope.submited = true
+
+					unless $scope.productform.$valid
+						$scope.saving = false
+						return
+
 
 					product = _.clone ($scope.product)
 					product.type = product.type._id

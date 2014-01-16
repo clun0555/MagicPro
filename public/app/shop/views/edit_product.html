@@ -1,17 +1,32 @@
 <div class="product-edit-view container" ng-class="{'single-design':  product.designs.length == 1 }"  >
-	
+	<form novalidate name="productform" >
 	
 		<div class="col-md-4">
 			
-			<div class="product-title"><input type="text" ng-model="product.title" placeholder="{{ 'product.edit.title' | translate }}"></div>
+			<div class="product-title form-group" ng-class="{ 'has-error': (submited && (productform.title.$invalid) ) }" >
+				<div class="form-item">
+					<input type="text" ng-model="product.title" placeholder="{{ 'product.edit.title' | translate }}" name="title" required >
+
+					<div class="error-tip"  >						
+						<span  translate> product.edit.validation.title.required </span>	
+					</div>
+
+				</div>
+
+			</div>
 			<p class="product-ref-price">
 				
 
-				<div class="product-ref form-group" ng-class="{'has-error': serverError == 'duplicate.identifier' }" > 
-					<input type="text" ng-model="product.identifier" placeholder="{{ 'product.edit.identifier' | translate }}" ng-change="resetServerError()" >
+				<div class="product-ref form-group" ng-class="{'has-error': submited && (serverError == 'duplicate.identifier' || productform.identifier.$invalid ) }" > 
 					
-					<div class="error-tip bottom"  >						
-						<span  translate> product.edit.validation.duplicate.identifier </span>	
+					<div class="form-item">
+						<input type="text" ng-model="product.identifier" placeholder="{{ 'product.edit.identifier' | translate }}" ng-change="resetServerError()" required name="identifier">
+						
+						<div class="error-tip bottom"  >						
+							<span ng-show="serverError == 'duplicate.identifier'" translate> product.edit.validation.identifier.duplicate </span>	
+							<span ng-show="productform.identifier.$invalid" translate> product.edit.validation.identifier.required </span>	
+						</div>
+
 					</div>
 
 				</div> 
@@ -19,9 +34,15 @@
 				
 
 
-				<span class="product-price" >
-					$ <input type="number" ng-model="product.price" placeholder="{{ 'product.edit.price' | translate }}">
-				</span> 
+				<div class="product-price form-group" ng-class="{ 'has-error': (submited && (productform.price.$invalid) ) }" >
+					<div class="form-item"   >
+						<span>$ <input type="number" ng-model="product.price" placeholder="{{ 'product.edit.price' | translate }}" name="price" required >
+						</span>
+						<div class="error-tip"  >						
+							<span  translate> product.edit.validation.price.required </span>	
+						</div>
+					</div>
+				</div> 
 			</p>
 			
 			<div imt-file-chooser="{ 'model': product, 'field': 'image', size: 'w=222' }" class="large" ></div>			
@@ -94,7 +115,7 @@
 		</div>
 	
 
-
+	</form>
 
 
 

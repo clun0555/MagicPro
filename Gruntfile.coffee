@@ -21,9 +21,9 @@ module.exports = (grunt) ->
 					dest: "dist/public/resources/"
 				,
 					expand: true
-					cwd: "public/styles/lib/"
+					cwd: "public/styles/"
 					src: ["**"]
-					dest: "dist/public/styles/lib/"
+					dest: "dist/public/styles/"
 
 				,
 					expand: true
@@ -63,9 +63,11 @@ module.exports = (grunt) ->
 		compass:
 			dist:
 				options:
+					sourcemap: true
 					sassDir: "public/styles/"
 					cssDir: "dist/public/styles/"
 					specify: [ "public/styles/main.sass"]
+					# httpPath: "styles/"
 					# environment: 'production'
 
 		# default watch configuration
