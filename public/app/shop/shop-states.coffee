@@ -38,6 +38,7 @@ define [
 
 					controller: (data, $scope, $stateParams, ShopService) ->
 						ShopService.search.title = $stateParams.searchInput
+						$scope.searchQuery = $stateParams.searchInput
 
 						if data.products.length is 1
 							data.product = data.products[0]

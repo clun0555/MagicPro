@@ -1,5 +1,13 @@
 
-<div class="product-navigator thumnails">
+<div ng-show="products.length == 0" >
+	<p class="no-products" >
+		{{'products.search.noproducts' | translate}} <b>{{searchQuery}}</b>
+	</p>
+
+</div>
+
+
+<div class="product-navigator thumnails"  ng-show="products.length > 0">
 	
 	<div class="slide product-title col-md-3 {{ 'product_' + product._id }}" ng-repeat="product in products" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }"  imt-click-out="unActivateProduct(product)" >
 		

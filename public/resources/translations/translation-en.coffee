@@ -85,6 +85,9 @@ define ->
 	"productnavigator.buy": "Buy"
 	"productnavigator.product.edit": "Edit"
 	"productnavigator.edit.delete": "Delete"
+
+
+
 	
 
 	### users ###
@@ -191,3 +194,4 @@ define ->
 
 	### search ###
 	"search.home": "Search"
+	"products.search.noproducts": "Sorry, we could't find any products matching"
