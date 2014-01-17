@@ -3,7 +3,7 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller "ShopProductEditController", ($scope, data, ShopService, $state, $stateParams, ProductService, FileUploadService, CartService) ->
+	shop.controller "ShopProductEditController", ($scope, data, ShopService, $state, $stateParams, ProductService, FileUploadService, CartService, $modal) ->
 			
 		uploader = $scope.uploader = FileUploadService.newUploader($scope)
 
@@ -65,5 +65,18 @@ define [
 					uploader.bind "completeall", -> doSave()
 				else					
 					doSave()	
+
+			open: ->
+				$modal.open(
+					templateUrl: "app/shop/views/category_chooser.html"
+					controller: "CategoryChooserController"
+					resolve:
+						categories: (ShopService) -> ShopService.getCategories()
+						currentType: -> $scope.product.type
+							
+				).result.then (type) ->
+					$scope.product.type = type
+				
+
 
 

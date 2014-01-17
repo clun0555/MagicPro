@@ -1,0 +1,16 @@
+ <div class="category-chooser modal-body">
+    <div class="dropdown clearfix">   
+        <ul class="dropdown-menu ticked">
+            <li ng-repeat-start="category in categories" class="category dropdown-header">{{ category.title }}</li>
+
+        	<li ng-repeat-end ng-repeat="type in category.types" ng-click="select(type)" class="type" ng-class="{'active': selected.type == type}" >
+        		<a> <i class="fa fa-check"  ></i> {{type.title}}</a>
+        	</li>
+                        
+        </ul>        
+    </div>        
+</div>
+<!-- <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div> -->

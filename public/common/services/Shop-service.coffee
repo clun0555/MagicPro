@@ -21,6 +21,11 @@ define [
 			else
 				categories = $resource("api/categories").query =>
 					@categories = categories
+
+					# reverse link to a types category
+					for category in categories
+						type.category = category for type in category.types
+
 					deferred.resolve categories: @categories
 
 			deferred.promise

@@ -7,4 +7,5 @@ define [
 	"./controllers/ShopProductEdit-controller"
 	"./controllers/ShopProducts-controller"
 	"./controllers/ShopTypes-controller"
+	"./controllers/ShopCategoryChooser-controller"
 ], ->

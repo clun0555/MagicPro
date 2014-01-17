@@ -11,9 +11,10 @@
 						<span  translate> product.edit.validation.title.required </span>	
 					</div>
 
-				</div>
+				</div>    			
 
 			</div>
+
 			<p class="product-ref-price">
 				
 
@@ -42,8 +43,12 @@
 							<span  translate> product.edit.validation.price.required </span>	
 						</div>
 					</div>
-				</div> 
+				</div>
+
+				<button class="btn btn-light category-button" ng-click="open()">{{ product.type.category.title }} <i class="fa fa-angle-right"></i> {{ product.type.title }}</button> 
 			</p>
+
+
 			
 			<div imt-file-chooser="{ 'model': product, 'field': 'image', size: 'w=222' }" class="large" ></div>			
 		
@@ -112,10 +117,12 @@
 			</p>
 				
 			
-		</div>
-	
+		</div>	
 
 	</form>
+
+
+
 
 
 
