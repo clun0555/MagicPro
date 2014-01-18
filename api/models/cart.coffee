@@ -14,5 +14,14 @@ Cart = new mongoose.Schema
 		}]
 	}]
 
+
+Cart.methods.totalPrice = ->
+	price = 0
+	for bundle in @bundles
+		for composition in bundle.compositions
+			price += bundle.product.price * composition.quantity
+	price
+
+
 module.exports = mongoose.model("Cart", Cart)
 

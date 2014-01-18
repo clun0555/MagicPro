@@ -23,7 +23,7 @@ module.exports =
 	create: (req, res) ->
 
 		cart = new Cart _.extend({}, req.body)
-		
+
 		cart.save (err, cart) -> 
 			return res.send err if err?
 
@@ -47,16 +47,20 @@ module.exports =
 
 
 sendConfirmationEmail = (cart, user) ->
-	cartJSON = cart.toJSON()
 	designs = []
 
 
 	cart.populate "bundles.product", =>
 
-		for bundle in cart.bundles
+		cartJSON = cart.toJSON()
+
+		cartJSON.price = cart.totalPrice()
+
+		for bundle in cartJSON.bundles
+			bundle.product.formatedPrice = "$" + bundle.product.price
 			for composition in bundle.compositions
-				# bundle.populate("product")
-				design = _.findWhere(bundle.product.designs, { id:  composition.design.toJSON()  })
+				design = _.find bundle.product.designs, (design) -> design._id.toJSON() is composition.design.toJSON()
+				composition.design = design
 				designs.push 
 					"itemId": bundle.product.identifier 
 					"designId": design.identifier
@@ -68,7 +72,10 @@ sendConfirmationEmail = (cart, user) ->
 			
 			options = {
 				subject: "Magic Pro Order",
-				text: csv
+				# text: csv
+				data: 
+					cart: cartJSON
+				template: "clientorder"
 				to: user.email
 				attachments: [{
 					fileName: "order.csv"

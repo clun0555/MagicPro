@@ -33,6 +33,12 @@ module.exports = (grunt) ->
 				,
 
 					expand: true
+					cwd: "api/templates"
+					src: ["**"]
+					dest: "dist/api/templates"
+				,
+
+					expand: true
 					cwd: "public"
 					src: ["index.html"]
 					dest: "dist/public/"
