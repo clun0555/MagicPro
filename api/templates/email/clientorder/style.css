@@ -1,5 +1,5 @@
 body{
-  width:100% !important;
+  width:550px !important;
   -webkit-text-size-adjust:none;
   margin:0;
   padding:30px;
@@ -11,8 +11,26 @@ table td{
 	vertical-align: top;
 }
 
-h1, h2{
-	font-weight: 300
+h1, h2, h3{
+	font-weight: 300;
+}
+
+h1{
+	font-size: 2.4em;
+	font-weight: 300;
+}
+
+h2{
+	font-size: 2em;
+	border-bottom: 1px solid lightgray;
+}
+
+h3{
+	font-size: 1.5em;
+}
+
+.customer-info{
+	font-weight: 300;
 }
 
 li{
@@ -33,7 +51,7 @@ li{
 }
 
 
-.bundle  .product-info h2{
+.bundle  .product-info h3{
 	margin: 0;
 }
 
@@ -51,8 +69,8 @@ li{
 }
 
 .design-info{
-	width: 90px;
-	display: inline-block;
+	width: 120px;
+	/*display: inline-block;*/
 }
 
 .design-identifier{
@@ -60,11 +78,32 @@ li{
 	font-weight: 100;	
 }
 
+.quantity{
+	/*display: inline-block;*/
+	width: 100px;
+	text-align: right;
+	font-weight: 400;
+}
+
+.quantity .inner{
+	font-weight: 300;
+}
+
 .total-price{
 	border-top: 1px solid lightgray;
-	font-size: 1.2em;
-	text-align: center;
+	font-size: 1.3em;
+	text-align: right;
 	padding-top: 7px;
+}
+
+hr{
+	height:1px;
+	line-height:0px;
+	border-bottom:1px solid lightgray;
+	border-top:0px;
+	border-left:0px;
+	border-right:0px;
+	margin-top: 40px;
 }
 
 

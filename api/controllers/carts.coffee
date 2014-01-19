@@ -4,6 +4,7 @@ _ = require("underscore")
 email = require("../utils/email")
 json2csv = require('json2csv')
 user = require("connect-roles")
+environment = require("../config/environment")
 
 module.exports = 
 
@@ -67,21 +68,32 @@ sendConfirmationEmail = (cart, user) ->
 					"quantity": composition.quantity
 					"unitPrice": bundle.product.price
 
+		options = {
+			subject: "Magic Pro Order",
+			data: 
+				cart: cartJSON
+				user: user
+			template: "clientorder"
+			to: environment.EMAIL_FROM
+			cc: null
+		}
+
+		email.send 
+			subject: "Magic Pro Order",
+			data: 
+				cart: cartJSON
+				user: user
+			template: "clientorder"
+			to:  user.email
+			cc: null
 
 		json2csv { data: designs, fields: ['itemId', 'designId', 'quantity', 'unitPrice'], fieldNames: ['Item Id', 'Design Id', 'Quantity', 'Unit Price'] } , (err, csv) ->
 			
-			options = {
-				subject: "Magic Pro Order",
-				# text: csv
-				data: 
-					cart: cartJSON
-				template: "clientorder"
-				to: user.email
-				attachments: [{
-					fileName: "order.csv"
-					contents: csv
-				}]
-			}
+			options.attachments = [{
+				fileName: "order.csv"
+				contents: csv
+			}]			
+			options.to = environment.EMAIL_FROM
 
 			email.send (options)
 			

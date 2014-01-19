@@ -1,27 +1,43 @@
 <h1>Order Confirmation</h1>
 
+<table class="customer-info"><tr><td>
+	
+	<%= user.company || '' %> <% if (user.abn){ %>(ABN: <%= user.abn %>)<% } %><br />
+	<%=user.firstname%> <%=user.lastname%> <br />
+	<%= user.street || '' %> <br />
+	<%= user.suburb || '' %> <%= user.state || '' %> <%= user.postalcode || '' %>
+
+</td></tr></table>
+	
+<h2>Your order</h2>
+
 <table>
 	<tbody>
 		<% cart.bundles.forEach(function(bundle){ %>
 		<tr class="bundle">
 			<td class="product-info" >
-				<h2><%= bundle.product.title %></h2>
+				<h3><%= bundle.product.title %></h3>
 				<span class="ref"><%= bundle.product.identifier %></span>	| 
 				<span class="price"><%= helpers.currency(bundle.product.price) %></span>	
 			</td>
 
 			<td class="compositions">
-				<% bundle.compositions.forEach(function(composition){ %>	
-					<li> 
-						<span class="design-info">
+				<table>
+					<% bundle.compositions.forEach(function(composition){ %>	
+					<tr> 
+						<td class="design-info">
 							<% if (composition.design.label){ %>
 								<span class="design-label" ><%=  composition.design.label %></span>
 								<span class="design-identifier" >(<%=  composition.design.identifier || '' %>)</span>
 							<% } %>
-						</span>
-						<span class="quantity" ><%=  composition.quantity %> x <%=  bundle.product.inner %></span>
-					</li>
+						</td>
+						<td class="quantity" ><%=  composition.quantity %> <span class="inner" >x <%=  bundle.product.inner %></span>
+						</td>
+					</tr>
 				<% }) %>
+
+				</table>
+				
 			</td>
 		</tr>
 		<% }) %>
@@ -36,6 +52,13 @@
 
 
 </table>
-	
+
+
+<hr />
+
+MagicPro / magicpro-aust@bigpond.com / p: (02) 9757 2998 / f: (02) 9757 2658
+
+
+
 
 
