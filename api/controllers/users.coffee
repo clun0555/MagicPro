@@ -69,8 +69,11 @@ module.exports =
 						email.send 
 							to: user2.email
 							cc: null
-							subject: "password reset"
-							text: environment.DOMAIN + "/#/reset/" + user2.forgot
+							subject: "MagicPro Password Reset"
+							template: "passwordreset"
+							data: 
+								resetLink: environment.DOMAIN + "/#/reset/" + user2.forgot
+								user: user
 
 
 	userByForgotKey: (req, res) ->

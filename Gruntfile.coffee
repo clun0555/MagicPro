@@ -85,8 +85,8 @@ module.exports = (grunt) ->
 				options: event: ['added', 'changed']
 
 			copy:
-				files: ["api/**/*.js", "api/**/*.json", "public/index.html"]
-				tasks: [ "copy:dist"]
+				files: ["api/**/*.ejs", "api/**/*.css", "api/**/*.js", "api/**/*.json", "public/index.html"]
+				tasks: [ "newer:copy:dist"]
 				options: event: ['added', 'changed']
 
 			compass:

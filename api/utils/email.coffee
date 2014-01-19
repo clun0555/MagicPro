@@ -21,7 +21,7 @@ resolveTemplate = (options) ->
 	defer = q.defer()
 	
 	if options.text
-		return defer.resolve(options.text)
+		defer.resolve(options.text)
 
 	else if options.template?
 

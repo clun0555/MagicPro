@@ -2,10 +2,11 @@
 
 <table class="customer-info"><tr><td>
 	
-	<%= user.company || '' %> <% if (user.abn){ %>(ABN: <%= user.abn %>)<% } %><br />
+	<% if ( user.company || user.abn ){ %><%= user.company || '' %> <% if (user.abn){ %>(ABN: <%= user.abn %>)<% } %><br /><% } %>
 	<%=user.firstname%> <%=user.lastname%> <br />
-	<%= user.street || '' %> <br />
-	<%= user.suburb || '' %> <%= user.state || '' %> <%= user.postalcode || '' %>
+	<% if (user.street){ %><%= user.street || '' %> <br /><% } %>
+	<% if (user.suburb || user.state || user.postalcode){ %><%= user.suburb || '' %> <%= user.state || '' %> <%= user.postalcode || '' %><br /><% } %>
+	<%= user.email || '' %>
 
 </td></tr></table>
 	
