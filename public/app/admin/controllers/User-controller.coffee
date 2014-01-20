@@ -16,11 +16,11 @@ define [
 
 		$scope.validate = ->
 			$scope.user.status = "validated"
-			$scope.save(  flash: "Validated!" )
+			$scope.save(  flash: "admin.user.flash.validated" )
 
 		$scope.reject = ->
 			$scope.user.status = "rejected"
-			$scope.save( flash: "Rejected!" )
+			$scope.save( flash: "admin.user.flash.rejected" )
 		
 		$scope.save = ( options = {} ) ->
 			$scope.errors = {}
@@ -37,7 +37,7 @@ define [
 				UserService.save($scope.user).then(
 					->
 						$scope.submiting = false
-						$scope.flash  = options.flash ? "admin.user.saved"						
+						$scope.flash  = options.flash ? "admin.user.flash.saved"						
 
 					->
 						$scope.submiting = false

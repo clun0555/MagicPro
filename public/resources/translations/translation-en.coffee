@@ -134,7 +134,9 @@ define ->
 	"admin.user.suburb": "Suburb"
 	"admin.user.state": "State"
 	"admin.user.postalcode": "Postal Code"
-	"admin.user.saved": "Saved!"
+	"admin.user.flash.saved": "Saved!"
+	"admin.user.flash.validated": "Validated!"
+	"admin.user.flash.rejected": "Rejected!"
 
 
 	### user ###
