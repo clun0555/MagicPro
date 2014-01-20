@@ -227,3 +227,8 @@ define ->
 	### search ###
 	"search.home": "Search"
 	"products.search.noproducts": "Sorry, we could't find any products matching"
+
+
+	### footer ###
+	"footer.developed.by": "Developed by"
+
