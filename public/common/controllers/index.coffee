@@ -6,4 +6,6 @@ define [
 	"./Register-controller"
 	"./Forgot-controller"
 	"./Reset-controller"
+	"./Profile-controller"
+	"./PasswordChange-controller"
 ], ->

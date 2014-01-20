@@ -55,11 +55,11 @@ define [
 		reset: (data) ->
 			deferred = $q.defer()
 			
-			$resource("api/users/#{data.forgotKey}/reset").save(data).$promise.then( 
-			 	(user) ->
-			 		deferred.resolve user			 	
-			 	->			
-			 		deferred.reject()
+			$resource("api/users/#{data.forgotKey ? data.email}/reset").save(data).$promise.then( 
+				(user) -> 
+					deferred.resolve user			 	
+				(xhr) -> 
+					deferred.reject { code: xhr.status, message: xhr.data }			 	
 			)
 
 			deferred.promise

@@ -46,12 +46,16 @@ module.exports =
 	update: (req, res) ->
 		User.findById req.params.user,  (err, user) ->
 			if err 
-				res.send err
+				res.status(400).send err
 			else if not user?
-				res.send "Missing user"
+				res.status(400).send "Missing user"
 			else
 				_.extend user, req.body
-				user.save (err, user) -> res.send err or user			
+				user.save (err, user) -> 
+					if err
+						res.status(400).send err
+					else
+						res.send user			
 
 	destroy: (req, res) ->
 		res.send User.findByIdAndRemove req.params.user
@@ -85,17 +89,41 @@ module.exports =
 			else
 				res.send err or user
 
+	# 2 ways to reset password
+	#    - forgotKey + new password
+	# or - email, current password, new password
 	reset: (req, res) ->
-		User.findOne { forgot: req.params.forgotKey },  (err, user) ->
-			if err 
-				res.send err
-			else if not user?
-				res.status(403).send("")
-			else
-				user.setPassword req.body.password, ->
-					user.forgot = null
-					user.save (err, user2) -> 
-						res.send err or user2						
+		if req.params.forgotKey? and req.body.currentPassword? and req.body.newPassword
+
+			User.findOne { email: req.params.forgotKey },  (err, user) ->
+				if err 
+					res.send err
+				else if not user?
+					res.status(403).send("")
+				else 
+					user.authenticate req.body.currentPassword, (err, user, errKey) ->
+						return res.status(403).send(err) if err?
+						return res.status(403).send(errKey) if errKey?
+
+						user.setPassword req.body.newPassword, ->
+							user.forgot = null
+							user.setPassword req.body.newPassword, ->
+								user.save (err, user2) -> res.send err or user2
+
+		else if req.params.forgotKey
+
+			User.findOne { forgot: req.params.forgotKey },  (err, user) ->
+				if err 
+					res.send err
+				else if not user?
+					res.status(403).send("")
+				else
+					user.setPassword req.body.password, ->
+						user.forgot = null
+						user.save (err, user2) -> 
+							res.send err or user2
+		else
+			res.status(403).send("Missing parameters")						
 
 
 

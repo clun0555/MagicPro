@@ -8,6 +8,7 @@
 		<a class="navbar-brand" ui-sref="index" translate>menu.title</a>
 	</div>
 	<div class="nav-collapse" collapse="isCollapsed">
+		
 		<ul class="nav navbar-nav navbar-left" ng-if="user">
 			<li ng-class="{ active: $state.includes('order') }" ng-if="isUserValidated()"   ><a ui-sref="shop.categories" translate >menu.order</a></li>
 			<li ng-class="{ active: $state.includes('admin') }" ng-if="isRole('admin') && isUserValidated()" ><a ui-sref="admin"  translate >menu.admin</a></li>
@@ -17,7 +18,7 @@
 		<ul class="nav navbar-nav navbar-right"  ng-if="user">
 			<li class="light-blue">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-user"></i>
+						<i class="fa fa-user "></i>
 						
 						<span class="user-info">
 							<small translate>menu.welcome</small>
@@ -27,10 +28,10 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown" href="#" translate>menu.account</a></li>
+					<li><a class="dropdown" ui-sref="account.profile" > <i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} </a></li>
 					<li class="divider"></li>
 					<li class="dropdown-header"></li>
-					<li><a class="dropdown " translate ng-click="logout()" >menu.logout</a></li>
+					<li><a class="dropdown "  ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a></li>
 
 				</ul>
 			</li>

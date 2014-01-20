@@ -61,7 +61,23 @@ define [
 
 				.state "validating",
 					url: "/validating"
-					templateUrl: "common/views/validating.html" 								
+					templateUrl: "common/views/validating.html"
+
+				.state "account",
+					templateUrl: "common/views/account.html"
+					resolve:
+						user: (SessionService) -> SessionService.user()
+
+				.state "account.profile",
+					url: "/profile"
+					templateUrl: "common/views/profile.html"
+					controller: "ProfileController"
+				
+				.state "account.password",
+					url: "/profile/password"
+					templateUrl: "common/views/change_password.html"
+					controller: "PasswordChangeController"
+					
 
 				.state "otherwise",
 					url: "*path"

@@ -1,3 +1,4 @@
 define [
-	"./controllers"	
+	"./controllers/User-controller"
+	"./controllers/Users-controller"
 ], ->

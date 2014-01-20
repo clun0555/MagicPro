@@ -9,7 +9,7 @@ Cart = require("./cart")
 User = new mongoose.Schema
 	firstname: { type: String, required: true }
 	lastname: { type: String, required: true }
-	email: { type: String, required: true }
+	email: { type: String, required: true, unique: true }
 	role: { type: String, required: true, default: "user" }
 	status: { type: String, required: true, default: "pending" }
 	cart: { type: mongoose.Schema.Types.Mixed }

@@ -35,56 +35,13 @@ define [
 					templateUrl: "app/admin/views/user.html"
 					controller: "UserController"
 					resolve:
-						user: -> { role: "user", status: "validated" }
-
-				# .state "admin.users.new",
-				# 	url: "/new"
-				# 	onEnter: ($stateParams, $state, $modal, $resource) ->
-				# 		userEditModal = $modal.open(							
-				# 			templateUrl: "app/admin/views/user.html"
-				# 			controller: "UserController"
-				# 			resolve:
-				# 				user: -> { role: "user", status: "validated" }
-							
-				# 		)
-
-				# 		userEditModal.result.finally (result) ->
-				# 			$state.transitionTo "admin.users", {}
-
-						
-
-				# 	onExit: ($modal) ->
-				# 		# close modal when navigating away
-				# 		userEditModal.dismiss()
-				# 		# userEditModal = null
+						user: -> { role: "user", status: "validated" }				
 					
 				.state "admin.user",
 					url: "/users/:userId"
 					templateUrl: "app/admin/views/user.html"
 					controller: "UserController"
 					resolve:
-						user: (UserService, $stateParams) -> UserService.find $stateParams.userId
-
-
-					# onEnter: ($stateParams, $state, $modal, $resource) ->
-					# 	$modal.open(
-							
-							
-					# 	).result.then (result) ->
-					# 		$state.transitionTo "admin.users"					
-						
-
-
-				# .state "admin.user",
-				# 	url: "/users/:userId"
-				# 	onEnter: ($stateParams, $state, $modal, $resource) ->
-				# 		$modal.open(
-				# 			templateUrl: "app/admin/views/user.html"
-				# 			controller: "UserController"
-				# 			resolve:
-				# 				user: (UserService, $stateParams) -> UserService.find $stateParams.userId
-							
-				# 		).result.then (result) ->
-				# 			$state.transitionTo "admin.users"					
+						user: (UserService, $stateParams) -> UserService.find $stateParams.userId								
 						
 

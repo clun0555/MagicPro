@@ -86,10 +86,6 @@ define ->
 	"productnavigator.product.edit": "Edit"
 	"productnavigator.edit.delete": "Delete"
 
-
-
-	
-
 	### users ###
 	"admin.users.title": "Users"
 	"admin.users.pending": "pending"
@@ -138,6 +134,41 @@ define ->
 	"admin.user.suburb": "Suburb"
 	"admin.user.state": "State"
 	"admin.user.postalcode": "Postal Code"
+	"admin.user.saved": "Saved!"
+
+
+	### user ###
+	"profile.name": "Name"
+	"profile.firstname": "First Name"
+	"profile.lastname": "Last Name"
+	"profile.email": "Email"
+	"profile.role": "Role"
+	"profile.wrong-data": "Oops! Wrong data"
+	"profile.email.invalid": "Email is invalid"
+	"profile.email.required": "Please enter an email address"
+	"profile.email.duplicate": "This email address is already used for a different account"
+	"profile.firstname.required": "Please enter a first name"
+	"profile.lastname.required": "Please enter a last name"
+	"profile.password.required": "Please enter a password"
+	"profile.password.forgot": "forgot your password ?"
+	"profile.save": "Save"
+	"profile.company": "Company"
+	"profile.company.name": "Company Name"
+	"profile.abn": "ABN"
+	"profile.address": "Address"
+	"profile.street": "Street"
+	"profile.suburb": "Suburb"
+	"profile.state": "State"
+	"profile.postalcode": "Postal Code"
+	"profile.password.change": "Change password"
+	"profile.password.changing": "Changing password..."
+	"profile.current.password": "Current password"
+	"profile.current.password.required": "Please enter your password"
+	"profile.current.password.incorect": "Incorect password"
+	"profile.new.password.required": "Please enter a new password"
+	"profile.new.password": "New password"
+	"profile.password.changed": "Password Changed !"
+	"profile.saved": "Saved !"
 
 	### errorpage ###
 	"errorpage.error": "Error"
@@ -171,9 +202,7 @@ define ->
 	### product ###
 	"product.many": "HOW MANY?"
 	"product.inner": "INNER"
-	"product.edit": "edit"
-	
-	
+	"product.edit": "edit"	
 
 	### product edit ###
 	"product.edit.save": "Save"
@@ -189,6 +218,7 @@ define ->
 	"product.edit.validation.price.required": "Please provide a price"
 	"product.edit.validation.identifier.duplicate": "This identifier is already used by another product"
 	"product.edit.validation.identifier.required": "Please provide an identifier"
+	
 	### menu ###
 	"menu.welcome": "Welcome,"
 

@@ -1,0 +1,237 @@
+
+<div class="profile-view">
+	
+	<div ng-show="flash" class="alert alert-success"> <i class="fa fa-check"></i>  {{flash | translate}}</div>
+
+	<form novalidate name="credentials" class="form-horizontal">
+		<fieldset ng-disabled="submiting">
+			
+	
+			<div class="form-group">
+				<label class="col-lg-3 control-label"></label>
+				<div class="col-lg-9">
+					<!-- <h1 >{{user.firstname}} {{user.lastname}}</h1> -->
+
+				</div>
+			</div>
+			
+					
+			<!-- First name  -->
+			<div 
+				class="form-group name-group firstname-group "
+				ng-class="{ 'has-error': (submited &&  credentials.firstname.$error.required) }" >
+
+				<label class="col-lg-3 control-label" translate >profile.name</label>
+				<div class="col-lg-9 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="firstname" 
+							name="firstname" 
+							placeholder="{{ 'profile.firstname' | translate }}" 
+							autofocus="" 
+							ng-model="user.firstname"
+							required 									
+						>
+
+						<div 
+							class="error-tip" 
+							translate >
+							profile.firstname.required							
+						</div>
+
+				</div>
+			</div>
+
+
+			<div 
+				class="form-group name-group lastname-group"
+				ng-class="{ 'has-error': (submited &&   credentials.lastname.$error.required) }" >
+
+				<label class="col-lg-3 control-label"  ></label>
+				<div class="col-lg-9 form-item">
+					
+						
+						<!-- First name  -->
+						<input 
+							type="text" 
+							class="form-control" 
+							name="lastname" 
+							name="lastname" 
+							placeholder="{{ 'profile.lastname' | translate }}"
+							ng-model="user.lastname"
+							required 									
+						>
+						<div class="error-tip" translate >
+								profile.lastname.required							
+						</div>
+
+
+				</div>
+			</div>
+
+			<!-- Company  -->
+			<div 
+				class="form-group company-group"
+				ng-class="{ 'has-error': (submited &&  credentials.firstname.$error.required) }" >
+
+				<label class="col-lg-3 control-label" translate >profile.company</label>
+				<div class="col-lg-9 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="company" 
+							name="company" 
+							placeholder="{{ 'profile.company.name' | translate }}" 
+							ng-model="user.company"															
+						>
+
+						
+
+				</div>
+			</div>
+
+			<div class="form-group abn-group" >
+
+				<label class="col-lg-3 control-label" ></label>
+				<div class="col-lg-9 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="abn" 
+							name="abn" 
+							placeholder="{{ 'profile.abn' | translate }}" 
+							ng-model="user.abn"															
+						>
+
+						
+
+				</div>
+			</div>
+
+			<!-- Street  -->
+			<div class="form-group street-group" >
+
+				<label class="col-lg-3 control-label" translate>profile.address</label>
+				<div class="col-lg-9 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="street" 
+							name="street" 
+							placeholder="{{ 'profile.street' | translate }}" 
+							ng-model="user.street"															
+						>
+
+						
+
+				</div>
+			</div>
+
+			<!-- Suburb / state / Postal Code  -->
+			<div class="form-group adress2-group " >
+
+				<label class="col-lg-3 control-label"></label>
+				<div class="col-lg-9 form-item">
+						<!-- <div class="container"> -->
+							<div class="suburb">
+								<input 
+									type="text" 
+									class="form-control  " 
+									name="suburb" 
+									name="suburb" 
+									placeholder="{{ 'profile.suburb' | translate }}" 
+									ng-model="user.suburb"															
+								>
+							</div>
+							
+							<div class="state">
+								<input 
+									type="text" 
+									class="form-control  " 
+									name="state" 
+									name="state" 
+									placeholder="{{ 'profile.state' | translate }}" 
+									ng-model="user.state"															
+								>
+							</div>
+
+							<div class="postalcode">
+								<input 
+									type="text" 
+									class="form-control  " 
+									name="postalcode" 
+									name="postalcode" 
+									placeholder="{{ 'profile.postalcode' | translate }}" 
+									ng-model="user.postalcode"															
+								>
+							</div>
+
+						<!-- </div> -->
+
+						
+
+				</div>
+			</div>
+
+			<div 
+				class="form-group email-group" 
+				ng-class="{ 'has-error': (submited  && ( credentials.email.$invalid) || serverError) }" >
+
+				<label class="col-lg-3 control-label" translate >profile.email</label>
+				<div class="col-lg-9 form-item">
+					<input 
+						type="email" 
+						class="form-control" 
+						name="email" 
+						placeholder="{{ 'profile.email' | translate }}"
+	 					ng-model="user.email"
+	 					ng-change="resetServerError()"
+	 					required >
+
+					<div class="error-tip" >						
+						<span ng-show="credentials.email.$error.email" translate > profile.email.invalid</span>
+						<span ng-show="credentials.email.$error.required" translate > profile.email.required</span>
+						<span ng-show="serverError" translate>profile.email.duplicate</span>
+					</div>
+
+				</div>
+
+			</div>	
+
+			<div class="form-group " > 
+
+				<div class="col-lg-12">
+					
+					<div class="pull-right">
+
+						<div class="btn-group">
+							<button class="btn btn-lg btn-info" ng-click="save()" >
+							<i class="fa fa-check"></i>
+							{{'profile.save' | translate}}
+
+							</button>
+						</div>
+
+					</div>
+				</div>		
+
+			</div>							
+
+		</fieldset>
+
+	</form>			
+
+</div>
+
+      
+			
+						
+					
+
+
+

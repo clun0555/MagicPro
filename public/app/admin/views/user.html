@@ -1,7 +1,7 @@
 
 <div class="user-view">
 
-	<div ng-show="flash" class="alert alert-success">{{flash}}</div>
+	<div ng-show="flash" class="alert alert-success"> <i class="fa fa-check"></i> {{flash | translate}}</div>
 
 	<form novalidate name="credentials" class="form-horizontal">
 		<fieldset ng-disabled="submiting">
@@ -145,43 +145,40 @@
 			<div class="form-group adress2-group " >
 
 				<label class="col-lg-3 control-label"></label>
-				<div class="col-lg-9 form-item">
-						<!-- <div class="container"> -->
-							<div class="suburb">
-								<input 
-									type="text" 
-									class="form-control  " 
-									name="suburb" 
-									name="suburb" 
-									placeholder="{{ 'admin.user.suburb' | translate }}" 
-									ng-model="user.suburb"															
-								>
-							</div>
-							
-							<div class="state">
-								<input 
-									type="text" 
-									class="form-control  " 
-									name="state" 
-									name="state" 
-									placeholder="{{ 'admin.user.state' | translate }}" 
-									ng-model="user.state"															
-								>
-							</div>
+				<div class="col-lg-9 form-item">						
 
-							<div class="postalcode">
-								<input 
-									type="text" 
-									class="form-control  " 
-									name="postalcode" 
-									name="postalcode" 
-									placeholder="{{ 'admin.user.postalcode' | translate }}" 
-									ng-model="user.postalcode"															
-								>
-							</div>
+					<div class="suburb">
+						<input 
+							type="text" 
+							class="form-control  " 
+							name="suburb" 
+							name="suburb" 
+							placeholder="{{ 'admin.user.suburb' | translate }}" 
+							ng-model="user.suburb"															
+						>
+					</div>
+					
+					<div class="state">
+						<input 
+							type="text" 
+							class="form-control  " 
+							name="state" 
+							name="state" 
+							placeholder="{{ 'admin.user.state' | translate }}" 
+							ng-model="user.state"															
+						>
+					</div>
 
-						<!-- </div> -->
-
+					<div class="postalcode">
+						<input 
+							type="text" 
+							class="form-control  " 
+							name="postalcode" 
+							name="postalcode" 
+							placeholder="{{ 'admin.user.postalcode' | translate }}" 
+							ng-model="user.postalcode"															
+						>
+					</div>				
 						
 
 				</div>
@@ -202,12 +199,9 @@
 	 					required >
 
 					<div class="error-tip" >						
-							<span ng-show="credentials.email.$error.email" translate > admin.user.email.invalid</span>
-							<span ng-show="credentials.email.$error.required" translate > admin.user.email.required</span>
-							<span ng-show="serverError"> 
-								{{ 'admin.user.email.duplicate' | translate }} <br>
-								<a ui-sref="forgot({ 'email': user.email })" translate>admin.user.password.forgot</a>
-							</span>					
+						<span ng-show="credentials.email.$error.email" translate > admin.user.email.invalid</span>
+						<span ng-show="credentials.email.$error.required" translate > admin.user.email.required</span>
+						<span ng-show="serverError" translate >admin.user.email.duplicate</span>					
 					</div>
 
 				</div>

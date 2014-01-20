@@ -1,7 +1,6 @@
 define [
-	"./controllers"
-	"resources/translations/translations"
-], (controllers, translations) ->
+	"./controllers"	
+], (controllers) ->
 	
 	controllers
 		.controller "RegisterController", ($scope, $state, SessionService, $stateParams, $parse) ->
