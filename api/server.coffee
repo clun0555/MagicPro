@@ -1,3 +1,4 @@
+require('newrelic')
 express = require("express")
 path = require("path")
 mongoose = require("mongoose")
