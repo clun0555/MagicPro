@@ -5,3 +5,4 @@ node_modules
 dist
 npm-debug.log
 environment.coffee
+newrelic_agent.log
