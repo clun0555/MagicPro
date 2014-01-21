@@ -6,11 +6,13 @@
 
 ###Local database
 
-Use `mongorestore --drop ./data/<db-name>` to create database with sample data.
+Use `mongorestore --drop ./data/test/magicpro` to create database with sample data.
 
 ###Remote
 
-mongorestore -h paulo.mongohq.com:10036 -d app19587030 -u heroku -p 200f0e8e5aefadc9e467a7a32d118167 ./data/magicpro --drop
+mongorestore -h paulo.mongohq.com:10036 -d app19587030 -u heroku -p 200f0e8e5aefadc9e467a7a32d118167 ./data/test/magicpro --drop
+
+mongorestore -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f912a0a3438fdb06914c2f96 ./data/prod/magicpro --drop
 
 
 ##Export/Backup a database data to the file system
@@ -18,16 +20,14 @@ mongorestore -h paulo.mongohq.com:10036 -d app19587030 -u heroku -p 200f0e8e5aef
 
 ###Localy
 
-Use `mongodump -d <db-name> -o data` to export database data.
+Use `mongodump -d <db-name> -o data/test` to export database data.
 
 
 ###Remote
 
+`mongodump -h paulo.mongohq.com:10036 -d app19587030 -u heroku -p 200f0e8e5aefadc9e467a7a32d118167 -o ./data/test/magicpro`
 
-Use 'mongorestore --drop -h <host:port> -d <db-name> -u <username> -p <password> ./data/<bd-name>' to replace a remote mongodb with sample data
-
-ex: 
-mongodump -h paulo.mongohq.com:10036 -d app19587030 -u heroku -p 200f0e8e5aefadc9e467a7a32d118167 -o ./data/magicpro
+`mongodump -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f912a0a3438fdb06914c2f96 -o ./data/prod/magicpro`
 
 
 

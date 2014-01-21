@@ -1,7 +1,10 @@
 define [
 	"jquery"
 	"./directives"
-], ($, directives) ->
+	"common/utils/Environment"
+], ($, directives, Environment) ->
+
+	path = Environment.IMAGE_SERVER_PATH
 
 	directives.directive "imtSrc", (ImageSizeService) ->
 		{
@@ -24,7 +27,7 @@ define [
 
 				if image?
 					sizeInfo = ImageSizeService.getResizeInput(scope.size, image)
-					scope.imageSrc = "http://image-resizer-magicpro.herokuapp.com/#{ image.path ? 'placeholder2.jpg' }?#{scope.size}"
+					scope.imageSrc = "#{path}/#{ image.path ? 'placeholder2.jpg' }?#{scope.size}"
 
 					$(element).css {
 						width: sizeInfo.width

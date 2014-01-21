@@ -1,1 +1,0 @@
-{ "indexes" : [ { "v" : 1, "key" : { "user" : 1, "userSource" : 1 }, "unique" : true, "ns" : "app19587030.system.users", "name" : "user_1_userSource_1" }, { "v" : 1, "key" : { "_id" : 1 }, "ns" : "app19587030.system.users", "name" : "_id_" } ] }

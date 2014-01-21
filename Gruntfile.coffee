@@ -238,7 +238,7 @@ module.exports = (grunt) ->
 
 		fileContent = "define(function(){ return " + JSON.stringify(exposedVariables) + "; });"
 		
-		grunt.file.write "./dist/public/scripts/utils/Environment.js", fileContent
+		grunt.file.write "./dist/public/common/utils/Environment.js", fileContent
 
 
 	# runs and watchs application. Uses nodemon to keep process alive with latests code changes
