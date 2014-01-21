@@ -14,7 +14,7 @@
 				<div class="product-img-region">
 					<li class="product-img thumbnail" ng-repeat="product in type.products.slice(0, 4)">
 						<a ui-sref="shop.product({ category: category.slug, type: type.slug, product: product.slug})" >
-							<imt-image src="{{product.imageId}}" size="s=75" ></imt-image>
+							<div imt-src="product.image" imt-size="s=75" ></div>
 						</a>
 					</li>
 				</div>
