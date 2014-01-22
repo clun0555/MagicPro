@@ -5,8 +5,10 @@ exports.createS3Policy = (S3_BUCKET, S3_SECRET, callback) ->
 	callback {} unless S3_BUCKET? and S3_SECRET?
 
 	date = new Date()
+	date.setYear(date.getYear() + 1)
+
 	s3Policy =
-		expiration: "2014-12-01T12:00:00.000Z" # hard coded for testing
+		expiration: date.toISOString()
 		conditions: [
 			{ bucket: S3_BUCKET ? ''}
 			# ["starts-with", "$key", "uploads/"]
