@@ -231,14 +231,23 @@ module.exports = (grunt) ->
 
 	# Creates a js modules containing environment variables
 	grunt.registerTask 'expose_environment_variables', 'Expose Enviroement Variables to front end', ->
+
+		done = @async()
 		
 		environment = require("./dist/api/config/environment")
 
-		exposedVariables = _.pick environment, "IMAGE_SERVER_PATH"
+		require("./dist/api/utils/s3").createS3Policy (policy) ->
 
-		fileContent = "define(function(){ return " + JSON.stringify(exposedVariables) + "; });"
-		
-		grunt.file.write "./dist/public/common/utils/Environment.js", fileContent
+			exposedVariables = _.pick environment, "IMAGE_SERVER_PATH", "S3_BUCKET", "S3_KEY"
+
+			exposedVariables.S3_POLICY = policy.s3Policy
+			exposedVariables.S3_SIGNATURE = policy.s3Signature
+
+			fileContent = "define(function(){ return " + JSON.stringify(exposedVariables) + "; });"
+
+			grunt.file.write "./dist/public/common/utils/Environment.js", fileContent
+
+			done()
 
 
 	# runs and watchs application. Uses nodemon to keep process alive with latests code changes

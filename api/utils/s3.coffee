@@ -39,12 +39,12 @@ exports.publishFiles = (drafts) ->
 	Q.all publishJobs
 
 
-exports.createS3Policy = (contentType, callback) ->
+exports.createS3Policy = (callback) ->
 	date = new Date()
 	s3Policy =
 		expiration: "2014-12-01T12:00:00.000Z" # hard coded for testing
 		conditions: [
-			{ bucket: "magicpro" }
+			{ bucket: environment.S3_BUCKET }
 			# ["starts-with", "$key", "uploads/"]
 			["starts-with", "$Content-Type", ""],
 			{ acl: "public-read" }
@@ -66,9 +66,6 @@ exports.createS3Policy = (contentType, callback) ->
 		s3Policy: base64Policy
 		s3Signature: signature
 
-	
-
-	
 	# send it back
 	callback s3Credentials
 
