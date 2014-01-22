@@ -1,6 +1,7 @@
 define [
 	"./services"	
-], (services) ->
+	"common/utils/Environment"
+], (services, Environment) ->
 
 	services.service "FileUploadService", ($rootScope, $fileUploader, UuidService) ->
 		
@@ -19,7 +20,7 @@ define [
 			constructor: (scope) ->
 				@uploader = $fileUploader.create({
 					scope: scope,
-					url: 'https://magicpro.s3.amazonaws.com/'
+					url: "https://#{ Environment.S3_BUCKET }.s3.amazonaws.com/"
 					isHTML5: true
 					autoUpload: true
 
@@ -27,9 +28,9 @@ define [
 					formData: [
 						acl: "public-read"
 						success_action_status: "201"
-						AWSAccessKeyId: 'AKIAIHAIMDM6LGXYHWUA'
-						policy: "eyJleHBpcmF0aW9uIjoiMjAxNC0xMi0wMVQxMjowMDowMC4wMDBaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0IjoibWFnaWNwcm8ifSxbInN0YXJ0cy13aXRoIiwiJENvbnRlbnQtVHlwZSIsIiJdLHsiYWNsIjoicHVibGljLXJlYWQifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9LFsic3RhcnRzLXdpdGgiLCIka2V5IiwiIl1dfQ=="
-						signature: "ZEI8IhQi7G58YDfJssQhY+F/rSY="
+						AWSAccessKeyId: Environment.S3_KEY
+						policy: Environment.S3_POLICY
+						signature: Environment.S3_SIGNATURE
 						"Content-Type": "image/jpeg"
 					]	
 				})

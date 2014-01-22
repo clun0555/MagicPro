@@ -1,5 +1,7 @@
 _ = require("underscore")
 url = require("../utils/url")
+s3Utils = require("../utils/s3Utils")
+
 
 config =
 
@@ -63,6 +65,8 @@ config.MONGO_PASSWORD = path.password
 config.MONGO_HOSTNAME = path.hostname
 config.MONGO_PORT = path.port
 config.MONGO_DATABASE = path.pathname
+
+config.s3Policy =  (cb) -> s3Utils.createS3Policy(config.S3_BUCKET, config.S3_SECRET, cb)
 
 # returns a instance of session store depending on configuration
 config.getSessionStore = (express, mongoose) ->

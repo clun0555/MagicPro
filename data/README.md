@@ -30,4 +30,9 @@ Use `mongodump -d <db-name> -o data/test` to export database data.
 `mongodump -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f912a0a3438fdb06914c2f96 -o ./data/prod/magicpro`
 
 
+mongo paulo.mongohq.com:10036/app19587030 -u heroku -p 200f0e8e5aefadc9e467a7a32d118167
+
+
+mongo paulo.mongohq.com:10014/strider -u investmytalent -p arimt2013
+
 
