@@ -236,12 +236,12 @@ module.exports = (grunt) ->
 		
 		environment = require("./dist/api/config/environment")
 
-		require("./dist/api/utils/s3").createS3Policy (policy) ->
+		exposedVariables = _.pick environment, "IMAGE_SERVER_PATH", "S3_BUCKET", "S3_KEY"
 
-			exposedVariables = _.pick environment, "IMAGE_SERVER_PATH", "S3_BUCKET", "S3_KEY"
+		environment.s3Policy (policy) ->
 
-			exposedVariables.S3_POLICY = policy.s3Policy
-			exposedVariables.S3_SIGNATURE = policy.s3Signature
+			exposedVariables.S3_POLICY = policy.S3_POLICY
+			exposedVariables.S3_SIGNATURE = policy.S3_SIGNATURE
 
 			fileContent = "define(function(){ return " + JSON.stringify(exposedVariables) + "; });"
 
