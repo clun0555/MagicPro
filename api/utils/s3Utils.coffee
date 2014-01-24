@@ -5,7 +5,7 @@ exports.createS3Policy = (S3_BUCKET, S3_SECRET, callback) ->
 	callback {} unless S3_BUCKET? and S3_SECRET?
 
 	date = new Date()
-	date.setYear(date.getYear() + 1)
+	date.setFullYear(date.getFullYear() + 1)
 
 	s3Policy =
 		expiration: date.toISOString()
