@@ -4,6 +4,7 @@ define [
 
 	directives.directive "imtClickOut", ($document) ->
 		restrict: "A"
+		scope: true
 		link: (scope, elem, attr, ctrl) ->
 			elem.bind "click", (e) ->
 				

@@ -1,9 +1,9 @@
 <ul class="breadcrumb">
-		
+
 	<!-- Shop -->
-	<li ng-if="$state.includes('shop') || $state.includes('cart') || $state.includes('search')" >
+	<li ng-if="$state.includes('shop') || $state.includes('cart') || $state.includes('search') " >
 		<i class="icon-home home-icon"></i>
-		<a ui-sref="shop.categories" class="breadcrumb-home" translate>
+		<a ui-sref="shop.products" class="breadcrumb-home" translate>
 		 breadcrumb.home
 		</a>
 	</li>
@@ -14,19 +14,19 @@
 		</a>
 	</li>
 
+	<li ng-if="$state.includes('shop.productsbycategory')">
+		<span>{{ data.category.title }}</span>
+	</li>
 
-	<li ng-if="data.category">
-		<a ui-sref="shop.types({ category: data.category.slug })" >
-		 {{data.category.title}}
+	<li ng-if="$state.includes('shop.productsbytype')">
+		<a ui-sref="shop.productsbycategory({ category: data.category.slug })" >
+		 	{{data.category.title}}
 		</a>
 	</li>
 
-	<li ng-if="data.type">
-		<a ui-sref="shop.products({ category: data.category.slug, type: data.type.slug})" >
-		 {{data.type.title}}
-		</a>
+	<li ng-if="$state.includes('shop.productsbytype')">
+		<span>{{data.type.title}}</span>		 	
 	</li>
-
 
 	<li ng-if="$state.includes('shop.product')">
 		<a  ui-sref="shop.product({ category: data.category.slug, type: data.type.slug, product: data.product.slug})" >
@@ -67,13 +67,14 @@
 
 
 </ul>
-<div class="nav-search" id="nav-search" >
+
+<!-- <div class="nav-search" id="nav-search" >
 	<form class="form-search" ng-submit="searchProduct()">
 		<span class="input-icon">
 			<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" ng-model="search.title">
 			<i class="nav-search-icon fa fa-search"></i>
 		</span>
 	</form>
-</div>
+</div> -->
 
 

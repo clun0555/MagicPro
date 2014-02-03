@@ -3,18 +3,20 @@ Defines the main routes in the application.
 The routes you see here will be anchors '#/' unless specifically configured otherwise.
 ###
 define [
+	"jquery"
 	"underscore"
 	"angular"
 	"app"
 	"resources/translations/translations"
 	"./utils/utils"
+	"fastclick"
 	
-], (_, angular, app, translations, utils) ->
+], ($, _, angular, app, translations, utils, FastClick) ->
 
 	# add global utils function to underscore
 	_.mixin utils
 
-	app.config ($translateProvider) ->
+	app.config ($translateProvider, $uiViewScrollProvider) ->
 
 		for translation in translations
 			$translateProvider.translations translation['locale.code'], translation
@@ -24,14 +26,31 @@ define [
 		$translateProvider.useMessageFormatInterpolation()
 		$translateProvider.preferredLanguage 'en'
 
+		$uiViewScrollProvider.useAnchorScroll()
+
+
+		# snapRemoteProvider.globalOptions.disable = 'left'
+
 
 
 	# Handle states authentification / authorization
-	app.run ($rootScope, $state,  $stateParams, $injector, SessionService) ->
+	app.run ($rootScope, $state,  $stateParams, $injector, SessionService, $urlRouter ) ->
+
+		$rootScope.info = cartVisible: false
 
 		
 		$rootScope.$state = $state		
 		$rootScope.$stateParams = $stateParams		
+
+
+		$rootScope.hideDrawers = ($event) ->
+			if $event
+				$target = $($event.target)
+				return if $target.hasClass("drawer-toggle") or $target.parents(".drawer-toggle").length or $target.hasClass("drawer") or $target.parents(".drawer").length 
+
+			$rootScope.info.cartVisible = false if $rootScope.info.cartVisible
+			$rootScope.info.leftDrawerVisible = false if $rootScope.info.leftDrawerVisible
+		
 
 		$rootScope.isRole = (roles...) ->
 			SessionService.user()?.role in roles
@@ -39,11 +58,25 @@ define [
 		$rootScope.isUserValidated = ->
 			SessionService.user().status is "validated"
 
+		FastClick.attach(document.body)
+
+		# add no-touch class to allow hover pseudo class to only apply on non touch devices
+		isTouch = ("ontouchstart" of document.documentElement)
+		touchClass = if isTouch then "touch" else "no-touch"
+		document.documentElement.className += " " + touchClass		
+
+
+		document.addEventListener 'touchmove', ((e) -> 
+			if $('body').hasClass("drawer-active")
+				e.preventDefault()
+		), false					
+
+	
 
 		# Enforce security when state changes
-		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
+		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, $urlRouter) ->
 			
-
+			
 			unless SessionService.isSessionFetched()
 				# user state is unknown, ask server if there is an active user				
 				event.preventDefault()
@@ -51,7 +84,8 @@ define [
 					->
 						# server has an active session. It is now stored on the client
 						# re-play state to check security
-						$state.go toState.name, toParams							
+						$state.go toState.name, toParams	
+																		
 					->	
 						$state.go toState.name, toParams
 												
@@ -68,7 +102,7 @@ define [
 					# if session doesn't meet security
 					event.preventDefault()
 
-					if SessionService.user()?
+					if SessionService.isLoggedIn()
 						# if user is known, redirect to error page
 						$state.go "error", { code: 403 }, { location: false }
 					else

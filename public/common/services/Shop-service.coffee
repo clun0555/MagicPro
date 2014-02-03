@@ -36,10 +36,10 @@ define [
 			@getCategories().then (data) ->
 				category = _.findWhere data.categories, {slug: categorySlug}
 				if category?
-					for type in category.types
-						products = $resource("api/products?type=#{type._id}").query ->
-						type.products = products
-						deferred.resolve category: category
+					# for type in category.types
+					# 	products = $resource("api/products?type=#{type._id}").query ->
+					# 	type.products = products
+					deferred.resolve category: category
 				else
 					deferred.reject { code: 404 }
 
@@ -184,6 +184,48 @@ define [
 
 				$q.all(typeIds).then ->
 					deferred.resolve(products)
+				
+			
+			deferred.promise
+
+		getProductsByCategorySlug: (categorySlug) ->
+			
+			deferred = $q.defer()
+
+			@getCategoryBySlug(categorySlug).then (data) =>
+
+				types = (type._id for type in data.category.types)
+
+				advanced = "type": "$in": types
+
+				products = $resource("api/products?advanced=#{JSON.stringify(advanced)}").query =>
+					
+					# fetch types for all products
+					typeIds = 
+						for product in products
+							do (product) =>
+								@getTypeById(product.type).then( (data) -> product.type = data.type )
+
+					$q.all(typeIds).then ->
+						deferred.resolve(products: products, category: data.category)
+				
+			
+			deferred.promise
+
+		getAllProducts: ->
+			
+			deferred = $q.defer()
+
+			products = $resource("api/products").query =>
+				
+				# fetch types for all products
+				typeIds = 
+					for product in products
+						do (product) =>
+							@getTypeById(product.type).then( (data) -> product.type = data.type )
+
+				$q.all(typeIds).then ->
+					deferred.resolve(products: products)
 				
 			
 			deferred.promise

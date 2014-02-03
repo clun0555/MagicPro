@@ -5,7 +5,7 @@ define [
 	class Composition
 		
 		constructor: (options = {}) ->
-			{ @design }	= options
+			{ @design, @product }	= options
 
 		pieces: (product) ->
 			@quantity * ( product.inner ? 1 )
@@ -18,9 +18,11 @@ define [
 		toObject: ->
 			quantity: @quantity
 			design: @design			
+			product: @product			
 
 		fromJSON: (json) ->
 			@quantity = json.quantity
 			@design = json.design
+			@product = json.product
 
 			this

@@ -1,27 +1,34 @@
-<div class="product-edit-view container" ng-class="{'single-design':  product.designs.length == 1 }"  >
-	<form novalidate name="productform" >
+<div class="product-edit-view" ng-class="{'single-design':  product.designs.length == 1 }"  >
 	
-		<div class="col-md-4">
+	<form novalidate name="productform" class="form-horizontal" >
+	
+		<div class="form-group " >
+			<h1 class="col-md-12" translate> {{ !product._id ? 'product.edit.new.title' : 'product.edit.edit.title' }}</h1>
+		</div>
+
+		<div class="form-group form-header" > {{'product.edit.header.general' | translate}} </div>
+
+		<div  >
 			
-			<div class="product-title form-group" ng-class="{ 'has-error': (submited && (productform.title.$invalid) ) }" >
-				<div class="form-item">
-					<input type="text" ng-model="product.title" placeholder="{{ 'product.edit.title' | translate }}" name="title" required >
+			<!-- <div class="row"> -->
 
-					<div class="error-tip"  >						
-						<span  translate> product.edit.validation.title.required </span>	
-					</div>
+				<div class="product-title form-group" ng-class="{ 'has-error': (submited && (productform.title.$invalid) ) }" >
+					<label class="col-md-3 control-label" translate >product.edit.title</label>
+					<div class="col-md-9 form-item">
+						<input class="form-control" type="text" ng-model="product.title" placeholder="{{ 'product.edit.title' | translate }}" name="title" required >
 
-				</div>    			
+						<div class="error-tip"  >						
+							<span  translate> product.edit.validation.title.required </span>	
+						</div>
 
-			</div>
+					</div>    			
 
-			<p class="product-ref-price">
-				
+				</div>
 
 				<div class="product-ref form-group" ng-class="{'has-error': submited && (serverError == 'duplicate.identifier' || productform.identifier.$invalid ) }" > 
-					
-					<div class="form-item">
-						<input type="text" ng-model="product.identifier" placeholder="{{ 'product.edit.identifier' | translate }}" ng-change="resetServerError()" required name="identifier">
+					<label class="col-md-3 control-label" translate >product.edit.identifier</label>
+					<div class="col-md-9  form-item">
+						<input class="form-control" type="text" ng-model="product.identifier" placeholder="{{ 'product.edit.identifier' | translate }}" ng-change="resetServerError()" required name="identifier">
 						
 						<div class="error-tip bottom"  >						
 							<span ng-show="serverError == 'duplicate.identifier'" translate> product.edit.validation.identifier.duplicate </span>	
@@ -32,76 +39,111 @@
 
 				</div> 
 				
-				
-
-
-				<div class="product-price form-group" ng-class="{ 'has-error': (submited && (productform.price.$invalid) ) }" >
-					<div class="form-item"   >
-						<span>$ <input type="number" ng-model="product.price" placeholder="{{ 'product.edit.price' | translate }}" name="price" required >
-						</span>
+				<div class="form-group" ng-class="{ 'has-error': (submited && (productform.price.$invalid) ) }" >
+					<label class="col-md-3 control-label" translate >product.edit.price</label>
+					<div class="col-md-9 form-item product-price"  >
+						<input class="form-control" type="number" ng-model="product.price" placeholder="{{ 'product.edit.price' | translate }}" name="price" required >
+						
 						<div class="error-tip"  >						
 							<span  translate> product.edit.validation.price.required </span>	
 						</div>
 					</div>
 				</div>
+				
+				<!-- ng-class="{ 'has-error': (submited && (productform.price.$invalid) ) }" -->
+				<div class="form-group"  >
+					<label class="col-md-3 control-label" translate >product.edit.category</label>
+					<div class="col-md-9 form-item product-category"  >
+						<button class="btn btn-imt-dimmed category-button" ng-click="open()">
+							<span ng-show="product.type">{{ product.type.category.title }} <i class="fa fa-angle-right"></i> {{ product.type.title }}</span>
+							<span class="placeholder" ng-show="!product.type"> {{ 'product.edit.category' | translate }} <i class="fa fa-angle-right"></i></span>
+						</button> 						
+					</div>
+				</div>
 
-				<button class="btn btn-light category-button" ng-click="open()">{{ product.type.category.title }} <i class="fa fa-angle-right"></i> {{ product.type.title }}</button> 
-			</p>
 
+				<!-- ng-class="{ 'has-error': (submited && (productform.price.$invalid) ) }" -->
+				<div class="form-group"  >
+					<label class="col-md-3 control-label" translate >product.edit.description</label>
+					<div class="col-md-9 form-item product-description"  >
+						<textarea class="form-control" ng-model="product.description" placeholder="{{ 'product.edit.description' | translate }}"></textarea>			
+						<!-- <div class="error-tip"  >						
+							<span  translate> product.edit.validation.price.required </span>	
+						</div> -->
+					</div>
+				</div>
+
+			<div class="form-group form-header" > {{'product.edit.header.variants' | translate}} </div>
+			
+			<!-- </div> -->
+			<div class="form-group">
+				<div class="designs col-xs-12 col-md-12" imt-drop-zone="addDesigns($files)" ng-class="{ 'mutliple-designs': product.designs.length > 1 }">
+					<!-- <label class="col-md-3 control-label" ></label> -->
+					<div class="design slide"  ng-repeat="design in product.designs"  >
+											
+							<div class="product-file-chooser ">
+								<div imt-file-chooser="{ 'model': design, 'field': 'image', size: 's=70' }" class="small " ></div>
+							</div>
+						
+						<div class="product-info">							
+							<input type="text" ng-model="design.label" class="design-label form-control" placeholder="{{ ( product.designs.length == 1 ? 'product.edit.design.default.title' : 'product.edit.design.title') | translate }}">						
+						</div>
+						<div  class="delete-button" ng-click="removeDesign(design)">							
+							<i class="fa fa-times"></i>
+						</div>
+					</div>
+					
+					<a class="btn btn-imt-dimmed add-design-button" ng-click="addDesign()"> <i class="fa fa-plus"></i> &nbsp; New Variant</a>
+				
+
+				</div>
+			</div>
+				
+		
+
+			<!-- <div class="no-designs well" ng-show="product.designs.length == 0">
+				<button class="btn" ng-click="addDesign()"><i class="fa fa-plus"></i> {{ 'product.edit.new.design' | translate }} </button>
+			</div>
+
+			<table class="bundle-table" ng-show="product.designs.length > 0"  >
+					
+					<tbody>
+						<tr ng-repeat="design in product.designs" class="design" >
+							
+							<td class="design-thumbnail">
+								<div imt-file-chooser="{ 'model': design, 'field': 'image', size: 's=70' }" class="small" ></div>
+							</td>
+
+							<td class="design-info" >
+								<input type="text" ng-model="design.identifier" class="design-identifier"><input type="text" ng-model="design.label" class="design-label">								
+							</td>
+
+							<td class="inner" >
+								<span class="product-inner" >
+									&times; <input type="text" ng-model="product.inner">
+								</span> 						
+							</td>
+							
+							<td class="delete-design" >
+								<button class="btn btn-sl btn-danger"  ng-click="removeDesign(design)" translate> <i class="fa fa-trash-o"></i> productnavigator.edit.delete </button>
+							</td>
+													
+						</tr>					
+					</tbody>
+					<tfoot>
+							<tr>
+								<td ></td>
+								<td colspan="3" class="add-design-button" >
+									<button class="btn" ng-click="addDesign()"><i class="fa fa-plus"></i> {{ 'product.edit.new.design' | translate }} </button>
+								</td>
+							</tr>
+					</tfoot>
+				</table> -->
 
 			
-			<div imt-file-chooser="{ 'model': product, 'field': 'image', size: 'w=222' }" class="large" ></div>			
-		
-			<p class="product-description">
-				<textarea ng-model="product.description" placeholder="{{ 'product.edit.description' | translate }}"></textarea>			
-			</p>
-
-		</div>
-		<div class="col-md-8 row bundle-container" imt-drop-zone="addDesigns($files)">
-
-		<div class="no-designs well" ng-show="product.designs.length == 0">
-			<button class="btn" ng-click="addDesign()"><i class="fa fa-plus"></i> {{ 'product.edit.new.design' | translate }} </button>
-		</div>
-
-		<table class="bundle-table" ng-show="product.designs.length > 0"  >
-				
-				<tbody>
-					<tr ng-repeat="design in product.designs" class="design" >
-						
-						<td class="design-thumbnail">
-							<div imt-file-chooser="{ 'model': design, 'field': 'image', size: 's=70' }" class="small" ></div>
-						</td>
-
-						<td class="design-info" >
-							<input type="text" ng-model="design.identifier" class="design-identifier"><input type="text" ng-model="design.label" class="design-label">								
-						</td>
-
-						<td class="inner" >
-							<span class="product-inner" >
-								&times; <input type="text" ng-model="product.inner">
-							</span> 						
-						</td>
-						
-						<td class="delete-design" >
-							<button class="btn btn-sl btn-danger"  ng-click="removeDesign(design)" translate> <i class="fa fa-trash-o"></i> productnavigator.edit.delete </button>
-						</td>
-												
-					</tr>					
-				</tbody>
-				<tfoot>
-						<tr>
-							<td ></td>
-							<td colspan="3" class="add-design-button" >
-								<button class="btn" ng-click="addDesign()"><i class="fa fa-plus"></i> {{ 'product.edit.new.design' | translate }} </button>
-							</td>
-						</tr>
-				</tfoot>
-			</table>
-
-
-			<p class="buttons">
+			<p class="buttons pull-right">
 				<button class="btn btn-link btn-lg" ui-sref="shop.products()" >  {{ 'product.edit.cancel' | translate }} </button>	
-				<button class="btn btn-primary btn-lg save" ng-click="save()" ng-disabled="saving" >
+				<button class="btn btn-imt-primary three-d btn-lg save" ng-click="save()" ng-disabled="saving" >
 					<div  class="pending-state"  ng-show="uploader.isUploading && saving"  >
 						<div class="progress active" >
 							<div class="progress-bar progress-bar-success" data-ng-style="{width: (uploader.progress) + '%'}"></div>
@@ -120,10 +162,6 @@
 		</div>	
 
 	</form>
-
-
-
-
 
 
 </div>

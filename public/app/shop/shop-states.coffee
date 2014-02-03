@@ -10,35 +10,46 @@ define [
 			$stateProvider
 
 				.state "order",
-					template: '<div ui-view class="slide" />'
+					template: '<div ui-view class="slide" ></div>'
 					abstract: true
-					data: security: "validated"
+					data: security: "validated"					
+					parent: "layout"
+					resolve: 
+						cart: (CartService) ->
+							CartService.get()
 
 				.state "shop", 
 					url: "/products"
 					abstract: true					
-					templateUrl: "app/shop/views/shop.html"
 					parent: "order"
-														
-				.state "shop.categories",
-					url: ""
-					templateUrl: "app/shop/views/categories.html"
-					controller: "ShopCategoriesController"												
-					resolve: 
-						data: ($stateParams, ShopService) ->
-							ShopService.getCategories()
+					templateUrl: "app/shop/views/shop.html"					
 
+
+				.state "shop.navigator", 
+					abstract: true
+					views: 
+						"side":
+							templateUrl: "app/shop/views/side_categories.html"
+							controller: "ShopSideCategoriesController"
+							resolve: 
+								data: ($stateParams, ShopService) ->
+									ShopService.getCategories()
+
+						"": 
+							template: "<div ui-view></div>"
+														
 				.state "shop.search",
+					parent: "shop.navigator"
 					url: "/search/:searchInput"
-					template: "<ui-view>"
+					template: "<div ui-view></div>"
 					resolve:
 						data: ($stateParams, ShopService) ->
 							ShopService.searchProduct($stateParams.searchInput)
 						cart: (CartService) ->	CartService.get()
 
 					controller: (data, $scope, $stateParams, ShopService) ->
-						ShopService.search.title = $stateParams.searchInput
-						$scope.searchQuery = $stateParams.searchInput
+						ShopService.search.title = $stateParams.searchInput ? ""
+						$scope.searchQuery = $stateParams.searchInput ? ""
 
 						if data.products.length is 1
 							data.product = data.products[0]
@@ -50,25 +61,40 @@ define [
 						ShopService.search.title = null
 
 				.state "shop.search.multiple",
+					parent: "shop.search"
 					templateUrl: "app/shop/views/products.html"
 					controller: "ShopProductsController"
 						
 				.state "shop.search.single",
+					parent: "shop.search"
 					templateUrl: "app/shop/views/product.html"
 					controller: "ShopProductController"
 						
-						
-				.state "shop.types",
-					url: "/:category"					
-					templateUrl: "app/shop/views/types.html"
-					controller: "ShopTypesController"
-					
-					resolve: 
-						data: ($state, $stateParams, ShopService) ->
-							ShopService.getCategoryBySlug($stateParams.category)
-			
 
 				.state "shop.products",
+					parent: "shop.navigator"
+					url: ""
+					resolve: 
+						data: ($stateParams, ShopService) ->
+							ShopService.getAllProducts()											
+						cart: (CartService) ->	CartService.get()
+						
+					templateUrl: "app/shop/views/products.html"
+					controller: "ShopProductsController"
+						
+				.state "shop.productsbycategory",
+					parent: "shop.navigator"
+					url: "/:category"
+					resolve: 
+						data: ($stateParams, ShopService) ->
+							ShopService.getProductsByCategorySlug($stateParams.category)											
+						cart: (CartService) ->	CartService.get()
+						
+					templateUrl: "app/shop/views/products.html"
+					controller: "ShopProductsController"
+
+				.state "shop.productsbytype",
+					parent: "shop.navigator"
 					url: "/:category/:type"
 					resolve: 
 						data: ($stateParams, ShopService) ->
@@ -79,8 +105,8 @@ define [
 					controller: "ShopProductsController"
 				
 
-
 				.state "shop.product",
+					parent: "shop.navigator"
 					url: "/:category/:type/:product"
 					resolve: 
 						data: ($stateParams, ShopService) ->
@@ -91,7 +117,8 @@ define [
 					controller: "ShopProductController"
 
 				.state "shop.editproduct",
-					url: "/:category/:type/:product/edit"
+					url: "/products/:category/:type/:product/edit"
+					parent: "order"
 					resolve: 
 						data: ($stateParams, ShopService) ->
 							ShopService.getProductBySlug($stateParams.category, $stateParams.type, $stateParams.product)					
@@ -100,10 +127,10 @@ define [
 					controller: "ShopProductEditController"
 
 				.state "shop.createproduct",
-					url: "/:category/:type/product/new"
+					url: "/product/new"
+					parent: "order"
 					resolve: 
-						data: ($stateParams, ShopService) ->
-							ShopService.getTypeBySlug($stateParams.category, $stateParams.type)
+						data: (ShopService) -> {}
 						# product: {}
 					data: security: "admin"
 					templateUrl: "app/shop/views/edit_product.html"
@@ -113,7 +140,6 @@ define [
 					url: "/cart"
 					templateUrl: "app/shop/views/cart_preview.html" 
 					controller: "CartPreviewController"
-					parent: "order"
-					resolve: 
-						cart: (CartService) ->	CartService.get()
+					parent: "order"	
+
 

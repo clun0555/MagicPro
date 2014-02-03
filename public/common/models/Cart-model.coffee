@@ -74,6 +74,14 @@ define [
 
 			quantities
 
+		compositions: ->
+			compositions = []
+			for bundle in @bundles
+				for composition in bundle.compositions
+					compositions.push composition
+
+			compositions
+
 
 		toJSON: ->
 			bundles: @bundles

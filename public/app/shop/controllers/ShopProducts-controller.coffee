@@ -1,17 +1,64 @@
 define [
 	"underscore"
 	"../shop-states"	
-], (_, shop) ->
+	"common/utils/utils"
+], (_, shop, utils) ->
 
-	shop.controller "ShopProductsController", ($scope, data, cart, ShopService, CartService, $state) ->
-		$scope.products = data.products
+	shop.controller "ShopProductsController", ($scope, data, cart, ShopService, CartService, $state, SessionService) ->
+		amount = 12
+		from = amount
+		allProducts = data.products
+		# $scope.products = allProducts
+		$scope.products = allProducts.slice(0, amount)
 		$scope.search = ShopService.search
 		$scope.cart = cart
 
 		$scope.quantities = {}
 
+
+		$scope.orders =  [
+			{ field: 'price', asc: true }
+			{ field: 'price', asc: false }
+			{ field: 'title', asc: true }
+			{ field: 'title', asc: false }
+			{ field: 'category', asc: true }
+			{ field: 'category', asc: false }
+		]
+
+		$scope.orderLabels = 
+			'price' : 'productnavigator.order.price'
+			'title' : 'productnavigator.order.title'
+			'category' : 'productnavigator.order.category'
+
+		localOrder = SessionService.retrieveLocal("order")
+		if localOrder? 
+			$scope.currentOrder =  _.find $scope.orders, (order) -> localOrder.title is order.title and localOrder.asc is order.asc
+		else
+			$scope.currentOrder =  $scope.orders[2]
+		
 		for product in data.products
-			$scope.quantities[product._id] = cart.quantities(product)
+			$scope.quantities[product._id] = cart.quantities(product)		
+
+		$scope.doPaging = ->
+			$scope.loading = true
+			if from < allProducts.length
+				for product in  allProducts.slice(from, from+amount)
+					$scope.products.push product  
+				from += amount
+				$scope.loading = false			
+
+		$scope.doSort = (order, asc) ->
+			if order.field is "price"
+				allProducts.sort utils.sortBy('price', order.asc, parseFloat)
+			else if order.field is "title"
+				allProducts.sort utils.sortBy('title', order.asc, (title) -> title.toUpperCase())
+			else if order.field is "category"
+				allProducts.sort utils.sortBy('type', order.asc, (type) -> type.category.title.toUpperCase())
+			
+			$scope.products = allProducts.slice(0, $scope.products.length)
+
+			$scope.currentOrder = order
+			SessionService.storeLocal "order", order
 
 		$scope.updateQuantity = (product, design) ->
 			quantity = $scope.quantities[product._id][design._id]
@@ -48,11 +95,9 @@ define [
 			$scope.focusedDesign = null
 			return 
 
-		# $scope.getImage = (product, design, $scope) ->
-		# 	design.image ? product.image
-			
-
 		$scope.$on "fileDrop", (event, $files) ->
 			$scope.$parent.files = $files
 			$state.go "shop.createproduct", { category: product.type.category.slug, type: product.type.slug, product: product.slug}
+
+		$scope.doSort($scope.currentOrder)
 

@@ -1,175 +1,293 @@
 .product-edit-view
+	max-width: 600px
+	margin: 50px auto
+	// border: 1px solid lightgray
+	// padding: 30px
+	+clearfix()
 
-
-	padding-top: 20px
-
-	input:focus
-		border-color: lightgray
-
-
-	.product-title
+	h1
+		font-weight: 300
+		margin-top: 0
 		margin-bottom: 10px
 
-
-		.form-item
-			padding-right: 10px
-
+	.product-title
 		input
-			width: 100%
-			font-size: 2em
-			font-weight: 300
+			font-size: 1.5em
+			height: 60px
 
-
-	.category-button
-		display: block
-		width: 95%
-
-
-	.product-ref
-		position: relative 
-		display: inline-block
-		// padding: 10px
-		input
-			width: 100px
-
-		.error-tip
-			top: 120%
-			left: -58px
-
-		// display: inline-block
-
-	.product-price 
-		border: 1px solid lightgray
-		padding: 5px
-		display: inline-block
-		
-		.form-item
-			padding-right: 10px
-
-			.error-tip
-				top: -13px
-				left: 113%
-
-		input
-			// height: 100%
-			width: 100px
-			border: 0
-			padding: 0px
-
-	.product-inner 
-		border: 1px solid lightgray
-		padding: 5px
-		background: white
-		input
-			// height: 100%
-			width: 40px
-			border: 0
-			padding-top: 0px
-			padding-right: 0px
-			background: white
-
-	.product-description
-		margin-top: 10px
-		textarea
-			width: 100%
-			min-height: 100px
-
-	.no-designs
-		text-align: center
-		height: 200px
-		vertical-align: middle
-
-	
-	.bundle-table tr.design
-		height: 120px
-
-	.design-identifier
-		// padding-left: 10px
-		text-align: center
-
-	// tr:nth-of-type(even)
-	// 	background: whitesmoke
-
-	
-	.design-info
-		padding-left: 10px
-
-	.design-info > input
-		font-size: 1.3em
+	.category-button .placeholder
+		color: darken(whitesmoke, 20%)
 		font-weight: 300
-		padding: 15px 10px
-
-	.inner .product-inner
-		padding: 15px 10px
-		font-size: 1.3em
-
-		> input, > span
-			font-size: 1.3em
-			font-weight: 300
+		text-transform: lowercase
 
 
-	.design-identifier
-		width: 60px
-	
-	.design-label
-		border-left: 0px
-		width: 150px
-		// margin-left: -1px
+	.designs
+		// background: whitesmoke
+		+clearfix()
+		padding-left: 30px
 
-	.delete-design
-		text-align: right
+		&.mutliple-designs .design 
+			.product-info
+				margin-right: 50px
 
+			.delete-button
 
+				display: block
 
+				
+		.design 
+			+clearfix()
+			background: whitesmoke
+			padding: 10px
+			margin-bottom: 4px
+			position: relative
+			height: 97px
 
-	.main-image img, .main-image imt-image
-		width: 100%
+			.product-file-chooser
+				width: 80px
+				position: absolute
+				left: 0
+				top: 0
 
-	.bundle-table
-		width: 100%
+				.image-chooser-wrapper
+					background: #EAEAEA
 
-		.design-thumbnail
-			width: 80px
+			.product-info
+				margin-left: 80px
+				padding-left: 5px
+				padding-right: 5px
+				padding-top: 13px
+				// padding-left: 10px
+				
+				input
+					height: 50px
+					font-size: 1.2em
+					box-shadow: none
+					background: #EAEAEA
+					color: #999999
+					font-weight: 600
+					border: 0
 
-		td.add-design-button
-			text-align: right
+			.delete-button
+				text-align: center
+				position: absolute
+				right: 0
+				top: 0
+				bottom: 0
+				width: 50px
+				background: #EAEAEA
+				color: white
+				font-size: 2em
+				line-height: 97px
+				cursor: pointer
+				+transition(background .3s ease)
+				display: none
+
+				+imt-hover
+					background: $imt-primary-color
+
+			
+
+					
+
+				
+
+		.add-design-button
+			font-size: 1.2em
+			display: table
+			margin: 10px auto
+			padding: 10px 20px
+
+				
+			// .product-file-chooser, .product-info
+			// 	// display: inline-block
+			// 	float: left
+			
+			// .design-identifier
+			// 	width: 50px
+
+			// .design-identifier, .design-label
+			// 	display: inline-block
 
 
 	.buttons
-		text-align: right
-		margin-top: 30px
+		margin-top: 50px
 
 
 
-		.save
+// .product-edit-view
 
-			&[disabled]
-				opacity: 1
 
-			.pending-state
-				z-index: 901
-				position: absolute
-				top: -5px
-				right: -5px
-				left: -5px
+// 	padding-top: 20px
+
+// 	input:focus
+// 		border-color: lightgray
+
+
+// 	.product-title
+// 		margin-bottom: 10px
+
+
+// 		.form-item
+// 			padding-right: 10px
+
+// 		input
+// 			width: 100%
+// 			font-size: 2em
+// 			font-weight: 300
+// 			height: 50px
+
+
+// 	.category-button
+// 		display: block
+// 		width: 95%
+
+
+// 	.product-ref
+// 		position: relative 
+// 		display: inline-block
+// 		// padding: 10px
+// 		input
+// 			width: 100px
+
+// 		.error-tip
+// 			top: 120%
+// 			left: -58px
+
+// 		// display: inline-block
+
+// 	.product-price 
+// 		border: 1px solid lightgray
+// 		padding: 5px
+// 		display: inline-block
+		
+// 		.form-item
+// 			padding-right: 10px
+
+// 			.error-tip
+// 				top: -13px
+// 				left: 113%
+
+// 		input
+// 			// height: 100%
+// 			width: 100px
+// 			border: 0
+// 			padding: 0px
+
+// 	.product-inner 
+// 		border: 1px solid lightgray
+// 		padding: 5px
+// 		background: white
+// 		input
+// 			// height: 100%
+// 			width: 40px
+// 			border: 0
+// 			padding-top: 0px
+// 			padding-right: 0px
+// 			background: white
+
+// 	.product-description
+// 		margin-top: 10px
+// 		textarea
+// 			width: 100%
+// 			min-height: 100px
+
+// 	.no-designs
+// 		text-align: center
+// 		height: 200px
+// 		vertical-align: middle
+
+	
+// 	.bundle-table tr.design
+// 		height: 120px
+
+// 	.design-identifier
+// 		// padding-left: 10px
+// 		text-align: center
+
+// 	// tr:nth-of-type(even)
+// 	// 	background: whitesmoke
+
+	
+// 	.design-info
+// 		padding-left: 10px
+
+// 	.design-info > input
+// 		font-size: 1.3em
+// 		font-weight: 300
+// 		padding: 15px 10px
+
+// 	.inner .product-inner
+// 		padding: 15px 10px
+// 		font-size: 1.3em
+
+// 		> input, > span
+// 			font-size: 1.3em
+// 			font-weight: 300
+
+
+// 	.design-identifier
+// 		width: 60px
+	
+// 	.design-label
+// 		border-left: 0px
+// 		width: 150px
+// 		// margin-left: -1px
+
+// 	.delete-design
+// 		text-align: right
+
+
+
+
+// 	.main-image img, .main-image imt-image
+// 		width: 100%
+
+// 	.bundle-table
+// 		width: 100%
+
+// 		.design-thumbnail
+// 			width: 80px
+
+// 		td.add-design-button
+// 			text-align: right
+
+
+// 	.buttons
+// 		text-align: right
+// 		margin-top: 30px
+
+
+
+// 		.save
+
+// 			&[disabled]
+// 				opacity: 1
+
+// 			.pending-state
+// 				z-index: 901
+// 				position: absolute
+// 				top: -5px
+// 				right: -5px
+// 				left: -5px
 
 				
-				.progress
-					height: 48px					
-					margin: 0px	
-					background: transparent
+// 				.progress
+// 					height: 48px					
+// 					margin: 0px	
+// 					background: transparent
 
-					.progress-bar
-						background: black
-						float: left
-						opacity: .1
+// 					.progress-bar
+// 						background: black
+// 						float: left
+// 						opacity: .1
 
 
 
 	
 
-body.drag-over .image-chooser.default-drop-target .drop-place-holder
-	opacity: .9
+// body.drag-over .image-chooser.default-drop-target .drop-place-holder
+// 	opacity: .9
 
 
 

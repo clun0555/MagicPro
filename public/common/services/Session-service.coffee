@@ -106,11 +106,14 @@ define [
 		# retrieve data from local storage for the current user
 		retrieveLocal: (dataKey) ->
 			jsonData = localStorage.getItem(@getStoreKey(dataKey))
-			JSON.parse(jsonData)
+			if jsonData then JSON.parse(jsonData) else null
 
 		# checks if some data was stored for that user in localstorage
 		hasLocal: (dataKey) ->
 			retrieveLocal(dataKey)?
+
+		isLoggedIn: ->
+			@user()?
 
 		isAuthentificated: ->
 			@session? and @session isnt false

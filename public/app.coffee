@@ -11,9 +11,12 @@ define [
 	"angular-cookies"
 	"angular-ui-router"
 	"angular-translate"
+	# "angular-touch"
 	"angular-translate-storage-cookie"
 	"angular-translate-interpolation-messageformat"
-	"bootstrap-dropdown"
+	# "bootstrap-dropdown"
+
+	"fastclick"
 
 	"angular-file-upload"
 
@@ -24,6 +27,7 @@ define [
 	"common/directives/index"
 	"common/services/index"
 	"views/views"
+	"ng-infinite-scroll"
 
 
 	"app/shop/index"
@@ -42,6 +46,8 @@ define [
 		'pascalprecht.translate'
 
 		'angularFileUpload'
+		'infinite-scroll'
+		# 'ngTouch'
 
 		# 'blueimp.fileupload'
 

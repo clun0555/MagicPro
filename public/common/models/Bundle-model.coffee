@@ -20,7 +20,7 @@ define [
 				
 
 		getOrCreateComposition: (design) ->
-			@getComposition(design._id) ? new Composition(design: design)
+			@getComposition(design._id) ? new Composition(design: design, product: @product)
 
 		getComposition: (designId) ->
 			_.find @compositions, (composition) -> composition.design._id is designId

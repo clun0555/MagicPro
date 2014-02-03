@@ -10,7 +10,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
-    "angular-ui-router": "latest",
+    "angular-ui-router": "0.2.8-bowratic-tedium",
     "angular-animate": "latest",
     "angular-bootstrap": "latest",
     "requirejs": "latest",
@@ -22,9 +22,13 @@
     "angular-translate-storage-cookie": "~0.1.6",
     "angular-translate-interpolation-messageformat": "~0.1.5",
     "test": "https://raw.github.com/asciidisco/require-messageformat-plugin/master/msg.js",
-    "angular-file-upload": "v0.3"
+    "angular-file-upload": "v0.3",
+    "angularjs-breakpoint": "https://github.com/snapjay/angularjs-breakpoint",
+    "modernizr": "~2.7.1",
+    "ngInfiniteScroll": "~1.0.0"
   },
   "resolutions": {
-    "angular": "1.2.3"
+    "jquery": ">= 1.9.0",
+    "angular": "1.2.10"
   }
 }

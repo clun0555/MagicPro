@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="622px" height="219px" viewBox="0 0 622 219" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>Artboard 1</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-1" sketch:type="MSArtboardGroup">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(38.000000, 55.000000)" stroke="#252323" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1.05729167,11.3411612 L1.05729167,100.467732" id="Path-1" sketch:type="MSShapeGroup"></path>
+                <path d="M2,57.8615087 L31.1205953,68 L61,58.0422631 L31.3755882,47 L2,57.8615087 Z" id="Path-2" sketch:type="MSShapeGroup"></path>
+                <path d="M2,10.6871918 L31.8414768,0 L32,111" id="Path-3" sketch:type="MSShapeGroup"></path>
+                <path d="M62.7540501,58 L63.2459499,100" id="Path-4" sketch:type="MSShapeGroup"></path>
+            </g>
+            <text id="Design" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="96" font-weight="260" fill="#000000">
+                <tspan x="305" y="142">Design</tspan>
+            </text>
+            <text id="IMT" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="96" font-weight="420" fill="#000000">
+                <tspan x="124" y="143">IMT</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -5,38 +5,51 @@
 		<meta charset="utf-8">
 		<base href="/">
 		<title>Home</title>
+		
 		<link rel="stylesheet" type="text/css" href="/styles/main.css?rel=@@timestamp" />
+		
 		<script data-main="/main.js?rel=@@timestamp" src="/vendor/requirejs/require.js?rel=@@timestamp" ></script>
-		<meta name="viewport" content="width=device-width, initial-scale=0.75, user-scalable=no">
+		
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">		
 
 	</head>
 
-	<body ontouchstart="" >
+	<body  ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible}" >
 
-		<div id="ribbon-background"></div>
-		<div id="logo-region">
-			<div class="logo-view container">
-				<div class="ribbon1-img img-container">
-					<img src="/resources/img/ribbon2.png" alt="MagicPro Ribbon Image Top">
-				</div>
-				<div class="logo-container">
-					<div class="logo-img img-container">
-						<img src="/resources/img/magic_logo.png" alt="MagicPro Logo">
-					</div>
-
-				</div>
-				<div class="ribbon2-img img-container flip-vertical">
-					<img src="/resources/img/ribbon2.png" alt="MagicPro Ribbon Image Bottom">
-				</div>
-			</div>
+		<div class="drawer right-drawer" ng-class="{ 'active': info.cartVisible }">
+			<div ui-view="cart-drawer" ></div>
+		</div>
+		
+		<div class="drawer left-drawer" ng-class="{ 'active': info.leftDrawerVisible }">
+			<div ui-view="left-drawer" ></div>
 		</div>
 
-		<div class="menu-region container" ng-include="'common/views/menu.html'" ng-controller="MenuController" ></div>
+		<div 
+			ng-class="{ 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible }" 
+			class="menu-region navbar navbar-default navbar-fixed-top content-slide" 
+			ng-include="'common/views/menu.html'" 
+			ng-controller="MenuController"
+			ng-click="hideDrawers($event)"  >
+		</div>
+		
+		<div 
+			ng-class="{ 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible }" 
+			class="content-wrapper content-slide" 
+			ng-click="hideDrawers($event)" 
+		>
+			
+			<div id="main-region" class="container-fluid" ui-view autoscroll="false"  >						
+				
+			</div>		
+			<footer  class="footer-region container-fluid"  >
+				<div class="row">
+					<div class="imt-row" ng-include="'common/views/footer.html'" ng-controller="FooterController"></div>
+				</div>
 
-		<div id="main-region" class="container" ui-view  ></div>
+			</footer>
 
-		<footer ng-include="'common/views/footer.html'" ng-controller="FooterController" class="footer-region container"  >
-		</footer>
+		</div>
 
 	</body>
+
 </html>

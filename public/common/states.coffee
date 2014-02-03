@@ -11,42 +11,94 @@ define [
 
 			$locationProvider.html5Mode true
 
+			$urlRouterProvider.when "/",  ($match, $stateParams, SessionService, $state) ->
+				# alert "controller2"
+				homeState = "shop.products"
+					# if not SessionService.isAuthentificated()
+					# 	"login"
+					# else if SessionService.user()?.status is "validated"
+						
+					
+
+				$state.go homeState	
+
 			$stateProvider
 
-				.state "index", 
-					url: "/"
-					template: '<ui-view/>'
-					controller: ($state, SessionService) ->
+				.state "layout",
+					url: ""
+					abstract: true
+					views: 
+						"cart-drawer@": 
+							templateUrl: "app/shop/views/cart.html" 
+							controller: "CartController"							
 
+
+						"left-drawer@": 
+							templateUrl: "app/shop/views/left_drawer.html"
+							controller: "ShopSideCategoriesController"
+							resolve: 
+								data: ($stateParams, ShopService) ->
+									ShopService.getCategories()
+
+						"":
+							template: "<ui-view />"
+						
+
+				.state "index",
+					url: ""
+					parent: "layout"
+					onEnter: ($state, SessionService) ->
 						homeState = 
 							if not SessionService.isAuthentificated()
 								"login"
 							else if SessionService.user()?.status is "validated"
-								"shop.categories"
+								"shop.products"
 							else
 								"validating"
 
-						$state.go homeState			
+						$state.go homeState	
+						
+					# views: 
+						
+					# 	"@":
+					# 		template: "<ui-view />"
+							
+							# controller: ($state, SessionService) ->
+							# 	homeState = 
+							# 		if not SessionService.isAuthentificated()
+							# 			"login"
+							# 		else if SessionService.user()?.status is "validated"
+							# 			"shop.products"
+							# 		else
+							# 			"validating"
 
+							# 	$state.go homeState	
+
+
+										
 						
 
 				.state "error",
+					parent: "layout"
 					url: "/error/:code"
 					templateUrl: "common/views/error.html" 
 					controller: ($scope, $stateParams) ->
 						$scope.code = $stateParams.code
 
 				.state "login",
+					parent: "layout"
 					url: "/login"
 					templateUrl: "common/views/login.html" 
 					controller: "LoginController" 
 
-				.state "forgot",
+				.state "forgot",	
+					parent: "layout"
 					url: "/forgot?email"
 					templateUrl: "common/views/forgot.html" 
 					controller: "ForgotController" 
 
 				.state "reset",
+					parent: "layout"
 					url: "/reset/:forgotKey"
 					templateUrl: "common/views/reset.html" 
 					controller: "ResetController"
@@ -55,25 +107,30 @@ define [
 							UserService.findByForgotKey $stateParams.forgotKey
 
 				.state "register",
+					parent: "layout"
 					url: "/register?email"
 					templateUrl: "common/views/register.html" 
 					controller: "RegisterController" 
 
 				.state "validating",
+					parent: "layout"
 					url: "/validating"
 					templateUrl: "common/views/validating.html"
 
 				.state "account",
+					parent: "layout"
 					templateUrl: "common/views/account.html"
 					resolve:
 						user: (SessionService) -> SessionService.user()
 
 				.state "account.profile",
+					parent: "account"
 					url: "/profile"
 					templateUrl: "common/views/profile.html"
 					controller: "ProfileController"
 				
 				.state "account.password",
+					parent: "account"
 					url: "/profile/password"
 					templateUrl: "common/views/change_password.html"
 					controller: "PasswordChangeController"

@@ -1,126 +1,66 @@
 .cart-detail
-	color: #555555
-	li
-		list-style: none
-	ul
-		padding-left: 0
 
-	.bundle-info
-		margin: 10px 10px 30px 0px
-
-
-		& > *
-			display: inline-block
-			vertical-align: middle
-
-		.product-info
-			margin-left: 0px
-			width: 350px
+	.cart-items
+		
+		padding: 50px 0
+		// max-width: 400px
+		margin: 0 auto
 			
-			.product-title
-				font-weight: 100
-				font-size: 30px
+		.cart-item	
+			padding: 0
+			margin-top: 10px
+			font-size: 1.2em
+			// height: 150px
+			// background: whitesmoke
+			// +clearfix()
+			// border-left: 4px solid $imt-primary-color
+	
+			// .product-image
+			// 	float: left
 
-			.product-ref
-				font-style: italic
-				font-weight: 100
+			&.removed
+				opacity: .5
+				
 
-			.product-price
-				font-size: 15px
+			.product-info
+				padding: 10px
+				// float: left
+				display: block
 
-		.composition-list	
-			margin-left: 20px
-			
-			.composition-info
-				// border: 1px solid red
+				.design-title
+					font-weight: 300
 
-				&.inactive
-					opacity: .5
+				.price
+					font-size: 1em
 
-				margin: 10px
+				.cart-btn-group
+					margin-top: 10px
 
+			// +imt-hover
+			// 	background: $imt-drawer-bg-alternate
 
-				& > span
-					display: inline-block
-					vertical-align: middle
+			.bundle-quantity
+				float: right
 
-				.design-delete
-					cursor: pointer
-					color: #888888
-					font-size: 12px
-					line-height: 15px
-					
-					i
-						font-size: 15px
-						font-weight: 100
+	.cart-title
+		padding-top: 50px
+		h1
+			font-size: 3em
 
-					&:hover
-						font-weight: 400
-						color: rgb(209, 91, 71)
-						// +rotate(45deg)
-					// border: 1px solid lightgray
-
-
-				.design-label
-					width: 180px
-
-					padding-left: 10px
-					font-size: 15px
-					vertical-align: middle
-					word-break: break-word
-
-					.design-identifier
-						font-weight: 100
-						font-style: italic
-
-				.composition-quantity input
-					text-align: center
-					// width: 100%
-					// height: 100%			
-					padding: 15px
-					width: 150px
-					background: none
-					border: 0
-					font-weight: 100
-					font-size: 20px
-					color: #555555
-
-
-					border: 1px solid #eeeeee
-					&:hover, &:focus
-						border: 1px solid lightgray
-
-					&:focus
-						box-shadow: 0
-						outline: none
-				.inner
-					color: #888888
-					min-width: 80px
-					padding: 20px
-					font-weight: 600
-					font-size: 20px
-		.delete-button-session
-			.btn
-				padding: 0px 0px
-
-
-	@media (min-width: 768px)
-		.cart-summary
-			margin-left: 220px
 	.cart-summary
-		margin-top: -15px
-		padding-top: 5px
-		font-size: 30px
-		width: 250px
-		border-top: 1px solid lightgray
-		text-align: center
-		font-weight: 300
+		padding: 50px
+		
+		background: whitesmoke				
+		
+		&.cart-summary
+			text-align: left	
 
-		.submit-cart
-			margin-top: 30px
-			margin-left: 25px
+			.btn
+				font-size: 1.5em
+
+			.cart-price
+				margin-bottom: 20px
+				font-size: 3em
 
 
-	.thanks
-		margin-left: 20px
 

@@ -6,6 +6,23 @@
 
 	.item-thumbnail
 		width: 100%
+	
+	.item-mini-thumbnails
+		width: 100%
+		+clearfix()
+		.item-mini-thumbnail
+			margin: 4px
+			float: left
+			background: whitesmoke
+			width: 50px
+			height: 50px
+			opacity: .4
+			+transition(opacity .5s ease)
+			cursor: pointer
+
+			+imt-hover("&.active")
+				opacity: 1
+
 
 	.product-ref
 		font-style: italic
@@ -19,100 +36,60 @@
 		font-size: 12px
 
 	&.single-design .bundle-container table
-		margin-top: 40px			
+		margin-top: 40px	
+
+	.btn.two-d
+		border: 1px solid $imt-primary-color
+
+
 
 	.bundle-container
-		margin-top: 20px
-		padding-left: 40px
+
+		margin: 0 25px
+		// display: table
 	
+		.designs
 
-		table
-			
-			td 
+			.design:not(.single-design)
 				padding: 10px
-			
-			thead
-				th.design-count
-					text-align: center
-					font-size: 12px
-					font-weight: normal
+				width: 250px
+				margin-top: 3px
+				+clearfix()
+				border-left: 4px solid transparent
+				+transition(all .5s ease)
+				cursor: pointer
+				position: relative
+				// display: table
 
-			tbody	
+				// &:nth-child(even)
 
-				td.design-info
-					width: 135px
-					font-size: 15px
-					.design-id
-						font-weight: 300
-						font-style: italic
-						display: block
-						text-align: center
+				&.active, +imt-hover
+					border-color: $imt-primary-color
+					background: whitesmoke
 
-					.design-label
-						font-weight: 400
-						display: block
-						text-align: center
-
-				td.design-count 	
-					text-align: center
-					width: 155px
-					input
-						text-align: center
-
-						width: 150px
-						padding: 15px
-						background: none
-						border: 0
-						font-weight: 100
-
-						font-size: 20px
-						color: #555555
-
-						border: 1px solid #eeeeee
-						&:hover, &:focus
-							border: 1px solid lightgray
-
-						&:focus
-							box-shadow: 0
-							outline: none
-					@media (max-width: 768px)
-						input
-							width: 90px
-
-				tr:last-child td
-					padding-bottom: 20px
-
-				td.inner
-					color: #888888
-					font-weight: 600
-					font-size: 20px
-
-					span
-						white-space: nowrap
-
-
-			tfoot
-
-				td.bundle-summary-region
-					padding: 0px
-					font-size: 20px
-					width: 220px
-					text-align: center
-					overflow: visible
+				.design-label
+					width: 126px
+					height: 35px
+					// text-transform: uppercase
 					display: block
-					
-					.product-detail-bundle-summary
-						padding-top: 20px
-						border-top: 1px solid lightgray
-						// display: inline
-						// white-space: nowrap
+					margin-top: auto
+					margin-bottom: auto
 
-					.total-quantity
-						font-weight: 100
-					.piece-unit
-						font-weight: 100
-						font-size: 12px
-					.total-price
-						font-weight: 200	
+				.cart-btn-group
+					position: absolute
+					top: 10px
+					right: 10px
+					// float: right
+
+			.design.single-design
+				.design-label
+					display: none
+							
+
+						
+
+
+
+
 
 		

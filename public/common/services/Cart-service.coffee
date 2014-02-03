@@ -39,6 +39,7 @@ define [
 							if design?
 								populatedComposition = _.clone composition
 								populatedComposition.design = design
+								populatedComposition.product = product
 								populatedBundle.compositions.push populatedComposition
 
 						if populatedBundle.compositions.length
@@ -50,7 +51,7 @@ define [
 			deferred.promise
 
 		cart = ->
-			SessionService.get().cart
+			SessionService.get()?.cart
 
 		### Public ###
 
@@ -60,21 +61,24 @@ define [
 			@store()
 
 		get:  ->
-			deferred = $q.defer()
+			return @deferred.promise if @deferred?
+			
+			@deferred = $q.defer()
 
 			if cart()
-				deferred.resolve cart()
+				@deferred.resolve cart()
 				
 			else 
 
-				getPopulatedLocalCartJSON().then (jsonCart) ->
+				getPopulatedLocalCartJSON().then (jsonCart) =>
 				
-					SessionService.keep "cart", new Cart().fromJSON(jsonCart)				
+					SessionService.keep "cart", new Cart().fromJSON(jsonCart)
+					console.log "new cart object"				
 
-					deferred.resolve cart()
+					@deferred.resolve cart()
 				
 				
-			deferred.promise
+			@deferred.promise
 
 		store: ->
 			SessionService.storeLocal "cart", cart().toJSON()

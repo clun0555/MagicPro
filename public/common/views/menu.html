@@ -1,41 +1,73 @@
-<div class="navbar navbar-default ">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" ui-sref="index" translate>menu.title</a>
-	</div>
-	<div class="nav-collapse" collapse="isCollapsed">
+<div class="navbar-inner">
+
+	<div class="container-fluid">
+		<div class="imt-row">
 		
-		<ul class="nav navbar-nav navbar-left" ng-if="user">
-			<li ng-class="{ active: $state.includes('order') }" ng-if="isUserValidated()"   ><a ui-sref="shop.categories" translate >menu.order</a></li>
-			<li ng-class="{ active: $state.includes('admin') }" ng-if="isRole('admin') && isUserValidated()" ><a ui-sref="admin"  translate >menu.admin</a></li>
-		</ul>
-
-
-		<ul class="nav navbar-nav navbar-right"  ng-if="user">
-			<li class="light-blue">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-user "></i>
-						
-						<span class="user-info">
-							<small translate>menu.welcome</small>
-							{{user.firstname}}
-						</span>
-
-						<i class="fa fa-caret-down"></i>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a class="dropdown" ui-sref="account.profile" > <i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} </a></li>
-					<li class="divider"></li>
-					<li class="dropdown-header"></li>
-					<li><a class="dropdown "  ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a></li>
-
+			<nav>
+				
+				<ul class="nav navbar-nav navbar-left visible-xs"  ng-if="user">
+					<li>
+						<a  class="drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
+					</li>
 				</ul>
-			</li>
-		</ul>
+				<ul class="nav navbar-nav navbar-right "  ng-if="user">
+					
+					<li class="section-link hidden-xs" ng-class="{ 'active': $state.includes('shop') }">
+						<a ui-sref="shop.products"   >Store</a>
 
+					</li>
+					<li class="section-link hidden-xs" ng-class="{ 'active': $state.includes('about') }" >
+						<a ui-sref="about">About</a>
+
+					</li>
+					
+					<li class="section-link hidden-xs" ng-class="{ 'active': $state.includes('admin') }" >
+						<a ui-sref="admin" >Admin</a>
+
+					</li>
+					<li class="divider hidden-xs">&nbsp;</li>
+
+					<li class="dropdown hidden-xs">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-user "></i>
+							{{user.firstname}}
+							<i class="fa fa-caret-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown" ui-sref="account.profile" > <i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} </a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header"></li>
+							<li><a class="dropdown "  ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a></li>
+
+						</ul>
+					</li>		
+
+					<li ng-if="cart" ng-show="cart && cart.quantity() > 0" >
+						<a class="btn pull-right drawer-toggle cart-toggle"  btn-checkbox ng-model="info.cartVisible">
+							<i class="icon icon-cart"></i>
+							<span ng-show="cart.quantity() == 0">Cart</span>
+							<span ng-show="cart.quantity() > 0">{{cart.quantity()}}</span>											
+						</a>					
+					</li>		
+					
+				</ul>
+
+			</nav>
+
+			<nav class="logo-nav" >
+				<ul class="nav navbar-nav navbar-left">
+					<li>
+						<a href="/" >
+							<span class="logo">
+								<img class="chair" src="/resources/img/chair.svg" >
+								<span class="imt">IMT</span><span class="design">Design</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+				
+			</nav>
+		</div>
+		
 	</div>
 </div>

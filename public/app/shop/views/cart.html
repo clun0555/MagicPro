@@ -1,31 +1,31 @@
 
-<div class="cart-view container">
-	
-	<ul class="cart-items">
-		<li ng-show=" cart.quantity() > 0 ">
-			<div class="bundle-numbers">
-				<h2 translate>cart.quantity</h2>
-				<h2 class="bundle-price" translate>cart.price</h2>
-			</div>
-		</li>
-		<li class="cart-item slide" ng-repeat="bundle in cart.bundles">
-				<a ui-sref="shop.product({ category: bundle.product.type.category.slug, type: bundle.product.type.slug, product: bundle.product.slug})">
-					<span class="bundle-title">{{ bundle.product.title }}</span>
-				</a>
-				<div class="bundle-numbers">
-					<span class="bundle-quantity">{{ bundle.quantity() }} <span> &times; {{bundle.product.inner}} </span> </span>
-					<span class="bundle-price">{{  bundle.price() | currency:'$' }}</span>
-				</div>
-		</li>
-	</ul>
-	
+<div class="cart-view">
 
+	<h3 ng-click="hideDrawers()" class="continue-shopping" > <i class="fa fa-angle-left"></i> &nbsp;&nbsp;{{'cart.continue.shopping' | translate}}</h3>
+
+
+	<ul class="cart-items">
+		
+		<li class="cart-item slide" ng-repeat="composition in cart.compositions()" ui-sref="shop.product({ category: composition.product.type.category.slug, type: composition.product.type.slug, product: composition.product.slug})">
+				
+				<span class="product-title">{{ composition.product.title }}</span> 
+
+				<span class="design-title" >/ {{ composition.design.label }}</span>
+				
+				<span class="bundle-quantity">{{ composition.quantity }} </span>
+				
+		</li>
+
+
+	</ul>	
 	
 	<div class="cart-summary">
-		<i class="cart-icon icon-cart icon-large" ></i> <span class="cart-price"> {{ cart.price() | currency:"$" }}</span>
-		<div ng-show=" cart.quantity() > 0 ">
-			<a class="btn btn-primary  submit" ui-sref="cart" translate>cart.preview</a>
-		</div>
+		<span class="cart-price"> {{ cart.price() | currency:"$" }}</span>		
+	</div>
+
+	<div ng-show=" cart.quantity() > 0 " class="cart-buttons">
+		<a class="btn btn-imt-info three-d edit" ng-click="edit()" >  {{'cart.edit' | translate}}</a>
+		<a class="btn btn-imt-primary three-d checkout" ng-click="checkout()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
 	</div>
 	
 </div>

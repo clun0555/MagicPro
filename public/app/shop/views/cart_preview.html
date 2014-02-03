@@ -1,10 +1,3 @@
-<div class="row">
-	<div class="col-md-12 breadcrumb-region" >
-
-		<div class="breadcrumbs" ng-include="'app/shop/views/breadcrumb.html'" ng-controller="BreadCrumbController"  ></div>
-
-	</div>
-</div>
 
 <div class="cart-detail">
 
@@ -13,83 +6,81 @@
 		<p translate>preview.message</p>
 		<a class="btn btn-primary home btn-lg " ui-sref="index" translate>breadcrumb.home</a>
 	</div>
+	<div class="cart-title">
+	
+		<div class="container">
+			
+			<div class="row">				
+				
+					<h1><i class="icon icon-cart"></i> Cart</h1>
+			</div>
 
-	<ul ng-show="!saved && !cart.isEmpty()">
+		</div>
+	</div>
+	<div ng-show="!saved && !cart.isEmpty()" class="cart-items container">
 
-		<h1>Your Order</h1>
-		<table>
-			<tbody>
-				<tr class="slide bundle-info" ng-repeat="bundle in cart.bundles">
-					<td class="product-info">
-						<a ui-sref="shop.product({ category: bundle.product.type.category.slug, type: bundle.product.type.slug, product: bundle.product.slug})" ><h1 class="product-title">{{ bundle.product.title }}</h1>	</a>
-						<span class="product-ref" >{{bundle.product.identifier}} | </span>
-						<span class="product-price" >{{ bundle.product.price | currency:"$" }}</span>
-					</td>
+		<div class="row">
 
-					<td class="composition-list">
-						<div style="clear: both">
-						<li class="slide composition-info" ng-repeat="composition in bundle.compositions" ng-class="{ inactive: !(composition.quantity > 0) }"  >
+			<div class="cart-item slide col-lg-2 col-sm-3 col-xs-6 " ng-repeat="composition in cart.compositions()" ng-class="{ 'removed': !composition.quantity }" >
+					
+					<div class="product-image" imt-src="composition.design.image || composition.product.image" imt-size="s=400"></div>
 
-							<span class="design-image"> 
-							<div imt-src="composition.design.image || bundle.product.image" imt-size="s=75" ></div> 
-							</span>
-							<span class="design-label">
-								{{ composition.design.label || bundle.product.title }} <span class="design-identifier">({{ composition.design.identifier || bundle.product.identifier }})</span>
-<!--								<br>
-								<span class="design-delete" ng-click="remove(bundle, composition)" >
-									&lt;!&ndash; <i class="fa fa-times-circle-o"></i>  &ndash;&gt;
-									<i class="fa fa-trash-o"></i> {{ 'preview.delete' | translate }}
+					<div class="product-info" >
+						
+						<div class="product-description" ui-sref="shop.product({ category: composition.product.type.category.slug, type: composition.product.type.slug, product: composition.product.slug})" >
+							<span class="product-title">{{ composition.product.title }}</span> 
+							<span class="design-title" >/ {{ composition.design.label }}</span>
+						</div>
 
-								</span>-->
-							</span>
+						<div class="price">
+							{{ composition.product.price | currency:'$' }}
+						</div>
 
-							<span class="composition-quantity">
-									<input type="number"
-										min="0"
-										max="9999"
-										ng-maxlength="4"
-										ng-model="composition.quantity"
-										ng-change="updateQuantity(composition.design, bundle.product, composition.quantity)"
-										class="hide-placeholder-onblur"	placeholder="0"
-									>
-							</span>
-
-							<span class="inner">x {{bundle.product.inner}}</span>
-							<span class="delete-button-session">
-								<span class="ui-button-text-only btn btn-danger" tabindex="-1" ng-click="remove(bundle, composition)">
-									<i class="fa fa-minus"></i>
+						<div class="btn-group cart-btn-group">
+							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
+							<span class="btn-content">
+								<!-- <a class="btn-clicker" ng-hide="composition.quantity > 0 || isFocused"   class="btn btn-default " ng-click="reAdd(composition)" >
+									ADD							
+								</a> -->
+								<!-- ng-show="composition.quantity > 0 || isFocused"  -->
+								<input 
+									type="number"
+									class="form-control" 
+									
+									ng-model="composition.quantity"
+									ng-change="updateQuantity(composition)"
+									ng-focus="isFocused = true; selectDesign(design)"
+									ng-blur="isFocused = false" 
+								>
+								<!-- ng-show="composition.quantity > 0 || isFocused" -->
+								<span ng-click="remove(composition)" class="btn btn-default cross"  >
+										<i>&times; </i>	
 								</span>
 							</span>
-							</div>
-						</li>
 
+						</div>
 
-					</td>
+					</div>					
+					
+			</div>
+		</div>
 
-				</tr>
-			</tbody>
-		</table>
+	</div>
+	<div class="cart-summary">
+	
+		<div class="container">
+			
+			<div class="row">				
+				
+					<div class="cart-price">
+						{{cart.price() | currency:'$'}}				
+					</div> 
+					<a class="btn btn-imt-primary three-d checkout" ng-click="checkout()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
+				
+			</div>
 
-		<li class="bundle-info">
-			<ul class="product-info"></ul>
-			<ul class="composition-list">
-				<li class="composition-info ">
-					<div class="cart-summary">
-					{{ cart.price() | currency:'$' }}
-					<br>
-					<a ui-sref="shop.categories" class="btn btn-link submit-cart btn-lg "><i class="fa fa-caret-left"></i>&nbsp;{{ 'preview.back' | translate}}</a>
-					<button class="btn btn-primary submit-cart btn-lg " ng-click="submit()" ng-disabled="cart.quantity() == 0" translate>preview.submit</button>
-
-					</div>
-
-				</li>
-			</ul>
-		</li>
-
-
-
-	</ul>
-
+		</div>
+	</div>
 </div>
 
 

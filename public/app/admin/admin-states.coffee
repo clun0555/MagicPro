@@ -17,6 +17,7 @@ define [
 					url: "/admin"
 					data: security: "admin"
 					templateUrl: "app/admin/views/admin.html"
+					parent: "layout"
 
 				.state "admin.users",
 					url: "/users?status"

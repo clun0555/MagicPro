@@ -1,0 +1,61 @@
+<div class="left-drawer-content">
+	
+	<form class="form-search" ng-submit="searchProduct()">
+		<div class="input-group margin-bottom-sm search-group">
+			<span class="input-group-addon" > <i class="fa fa-search fa-fw"></i> </span>
+			<input class="form-control" type="text" placeholder="Search..." ng-model="search.title">
+		</div>
+	</form>
+	
+
+
+	
+	<ul class="side-categories menus">
+		<li class="header">
+			<a class="section-link">Store</a>
+		</li>
+		<li class="menu">
+			<a ui-sref="shop.products()" ng-click="selectedCategory = null" ng-class="{'active' : $state.includes('shop.products')}"  >All</a>	
+		</li>
+
+		<li class="category-title menu" ng-repeat="category in categories" ng-class="{'colapsed' : isCategoryToggled(category)}" >
+
+			<a ui-sref="shop.productsbycategory({ 'category': category.slug})" ng-click="$parent.selectedCategory = category; $parent.selectedType = null" ng-class="{'active' : isCategoryActive(category)}" >{{category.title}}</a>
+			
+			<ul class="type-list" >
+				
+				<li class="type-title menu" ng-repeat="type in category.types" ng-click="$parent.$parent.selectedType = type" >				
+					<a ui-sref="shop.productsbytype({ 'type': type.slug, 'category': category.slug })" ng-class="{'active' : isTypeActive(category, type)}" >	
+						{{type.title}}				
+					</a>
+				</li>
+
+			</ul>		
+		</li>
+
+	</ul>
+
+	<ul class="global-menus menus">
+		
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
+			<a ui-sref="about">About</a>
+		</li>
+		
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" >
+			<a ui-sref="admin" >Admin</a>
+		</li>
+
+	
+		<li class="menu">
+			<a ui-sref="account.profile" > 
+				<i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} 
+			</a>
+		</li>
+		<li class="menu">
+			<a ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a>
+		</li>
+
+	</ul>
+
+</div>
+

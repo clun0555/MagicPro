@@ -7,7 +7,7 @@ define [
 			
 		uploader = $scope.uploader = FileUploadService.newUploader($scope)
 
-		$scope.product = data.product ? { designs: [], type: data.type }
+		$scope.product = data?.product ? { designs: [ {} ] }
 
 		if $scope.$parent.files?
 			# Arrived in this state by droping a file... lets add it to our product

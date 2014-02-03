@@ -47,7 +47,7 @@
 				</td>
 				<td>
 					<a ui-sref="admin.user({ 'userId': user._id })">
-						{{user.lastname}} 						
+						{{user.company || user.lastname}} 						
 					</a>
 				</td>
 				<td class="icons-col" ng-show="$stateParams.status == 'rejected'">

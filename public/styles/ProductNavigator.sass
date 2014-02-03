@@ -7,20 +7,20 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 	margin-left: 30px
 
 .product-navigator
-	width: auto
-	height: auto
+	// width: auto
+	// height: auto
 	border-radius: 4px
 
 
 
 
 	.product-title
-		min-width: 250px
+		// min-width: 250px
 		margin-top: 10px
 		margin-bottom: 10px
 		white-space: nowrap
 		cursor: pointer
-		height: 350px
+		// height: 350px
 		z-index: 10
 
 		&.create-product
@@ -29,13 +29,14 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 			.thumbnail
 				padding-top: 70px
 				border: 3px dashed lightgrey
-				height: 330px
+
+				// height: 330px
 
 			.image-wrapper
 				background: whitesmoke
 
-				width: 193px
-				line-height: 193px
+				// width: 193px
+				// line-height: 193px
 				text-align: center
 				
 				button
@@ -52,7 +53,7 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 			padding: 0px	
 
 		.thumbnail
-			border: 1px solid #ccc
+			border: 0
 			background: white
 			border-radius: 0
 			padding: 0px 10px
@@ -67,29 +68,34 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 				font-size: 20px
 				a
 					color: #555
-					&:hover 
+					+imt-hover
 						text-decoration: initial !important
 
 
 
 		.image-wrapper
 			position: relative
-			width: 200px
-			height: 200px
+			// width: 200px
+			// height: 200px
 
 			// .visible .imt-image-wrapper
 			// 	opacity: 1
 			
 			.imt-image-wrapper
-				background-color: #dfe0e2
+				background-color: white
+				margin: 0 auto
 				margin-bottom: 10px
 				opacity: 0
-				position: absolute
-				left: 0
+				display: none
+
+				// position: absolute
+				// left: 0
 				+transition(opacity .5s ease-in-out)
+				
 
 				&.visible
 					opacity: 1
+					display: inherit
 			
 				
 				
@@ -183,11 +189,18 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 
 
 
-		&.hover .cart-simple-info.single-design, .cart-simple-info:hover
+		&.hover .cart-simple-info.single-design
 			border: 1px solid lightgray
 
 			.icon-cart
-				background: whitesmoke				
+				background: whitesmoke			
+
+		.cart-simple-info
+			+imt-hover
+				border: 1px solid lightgray
+
+				.icon-cart
+					background: whitesmoke	
 
 		&.hover .cart-simple-info.multiple-design
 			border: 1px solid transparent

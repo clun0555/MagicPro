@@ -1,0 +1,34 @@
+<div class="side-categories-wrapper">
+	<div class="hidden-xs search-region" >
+		<form class="form-search" ng-submit="searchProduct()">
+			<div class="input-group margin-bottom-sm">
+				<span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+				<input class="form-control" type="text" placeholder="Search" ng-model="search.title" >
+			</div>
+		</form>
+		
+	</div>
+	<ul class="side-categories">
+		<li >
+			<a ui-sref="shop.products()" ng-click="selectedCategory = null" ng-class="{'active' : $state.includes('shop.products')}"  >All</a>	
+		</li>
+
+		<li class="category-title" ng-repeat="category in categories" ng-class="{'colapsed' : isCategoryToggled(category)}" >
+
+			<a ui-sref="shop.productsbycategory({ 'category': category.slug})" ng-click="$parent.selectedCategory = category; $parent.selectedType = null" ng-class="{'active' : isCategoryActive(category)}" >{{category.title}}</a>
+			
+			<ul class="type-list" >
+				
+				<li class="type-title" ng-repeat="type in category.types" ng-click="$parent.$parent.selectedType = type" >				
+					<a ui-sref="shop.productsbytype({ 'type': type.slug, 'category': category.slug })" ng-class="{'active' : isTypeActive(category, type)}" >	
+						{{type.title}}				
+					</a>
+				</li>
+
+			</ul>		
+		</li>
+
+	</ul>
+	
+</div>
+

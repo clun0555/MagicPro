@@ -1,100 +1,82 @@
-.cart-view
-	color: #555555
-	padding-top: 20px
-	padding-left: 0
-
-	.cart-icon
-		font-size: 30px
-		font-weight: 200
-
-
-	.cart-title
-		font-size: 30px
-		font-weight: 200		
-
-	.cart-summary
-		float: right
-
-		.cart-price
-			font-size: 20px		
-			font-weight: 200			
-			// width: 70px
-
-		div
-			text-align: right
-
-
+.right-drawer
 	
-	.cart-items
-		margin: 0
-		margin-bottom: 20px
-		padding-left: 0
+	background: $imt-drawer-bg
 
-		li
-			list-style: none
-			font-size: 15px
-			font-weight: 200
+	.cart-view
+		color: white
+		padding-left: 0	
+		width: 100%
+		
+		.continue-shopping
 			padding: 0px
-			overflow-y: auto
+			height: 65px
+			padding: 25px
+			font-size: 1em
+			margin-top: 0px
+			margin-bottom: 20px
+			background: $imt-drawer-bg-alternate
+			width: 100%
+			color: #A4A4A4
+			cursor: pointer
 
-			// &:hover
-			// 	.bundle-title
-			// 		font-weight: 400
+			+imt-hover
+				color: lighten(#A4A4A4, 20%)
 
-			h2
-				display: inline
-				font-weight: bold
-				margin-top: 0px
-				padding-top: 0px
-				font-size: 14px
-				width: 120px
+		.cart-items
+			+clearfix()
+			padding: 0
+				
+			.cart-item	
+				padding: 5px 10px
+				
+				font-size: 1.2em
+					
+				.design-title
+					font-weight: 300
 
-			.bundle-title
-				display: inline-block
-				padding-top: 5px
-				font-size: 14px
-				color: #045e9f
-				width: 120px
-				&:hover
-					text-decoration: underline
-			
-			.bundle-numbers
-				float: right
-				h2
-					font-weight: 100
-					display: inline
-					text-align: right
-					padding-right: 5px
-					font-size: 14px
-				h2 .bundle-price
-					width: 90px
-					display: inline-block
-					border-left: 1px solid lightgray
-					padding-left: 10px
-					padding-top: 5px
-					padding-bottom: 5px
-					text-align: right
-					font-size: 14px
+				+imt-hover
+					background: $imt-drawer-bg-alternate
 
 				.bundle-quantity
-					// width: 30px
-					font-weight: 100
-					display: inline-block
-					text-align: right
-					padding-right: 5px
-					font-size: 14px
+					float: right
 
-				.bundle-price
-					width: 90px
-					display: inline-block
-					border-left: 1px solid lightgray
-					padding-left: 10px
-					padding-top: 5px
-					padding-bottom: 5px
-					text-align: right
-					font-size: 14px
 
-	.submit
-		margin-top: 10px
+		.cart-summary
+			padding: 10px
+			background: $imt-drawer-bg-alternate
+			text-align: right
+			.cart-price
+				font-size: 20px		
+				font-weight: 200			
+				
+		.cart-buttons 
+			text-align: right
+			margin-top: 10px
+			
+			> a
+				display: inline-block	
+				margin: 8px	
+				
+				&.checkout
+					width: 140px
+
+				&.edit
+					width: 80px
+					color: #A4A4A4
+
+
+		@media (min-width: $screen-sm-min)
+			
+			.cart-buttons > a
+				margin: 10px
+				&.checkout
+					width: 180px
+
+				&.edit
+					width: 130px
+			
+				
+
+	
 
 

@@ -85,6 +85,11 @@ define ->
 	"productnavigator.buy": "Buy"
 	"productnavigator.product.edit": "Edit"
 	"productnavigator.edit.delete": "Delete"
+	"productnavigator.order.price": "price"
+	"productnavigator.order.title": "title"
+	"productnavigator.order.category": "category"
+	"productnavigator.order.ascending": "ascending"
+	"productnavigator.order.descending": "descending"
 
 	### users ###
 	"admin.users.title": "Users"
@@ -193,6 +198,10 @@ define ->
 	"cart.quantity": "Quantity"
 	"cart.price": "Price"
 	"cart.preview": "Preview"
+	"cart.checkout": "Checkout"
+	"cart.edit": "Edit"
+	"cart.continue.shopping": "Continue shopping"
+	"cart.widget.add": "ADD"
 
 	### preview ###
 	"preview.thank": "Thank you"
@@ -207,15 +216,23 @@ define ->
 	"product.edit": "edit"	
 
 	### product edit ###
+
 	"product.edit.save": "Save"
 	"product.edit.cancel": "Cancel"
 	"product.edit.new.design": "Add design"
-	"product.edit.title": "Label"
+	"product.edit.title": "Title"
+	"product.edit.category": "Category"
 	"product.edit.identifier": "Identifier"
 	"product.edit.price": "price"
-	"product.edit.description": "Description..."
+	"product.edit.header.variants": "Variants / Images"
+	"product.edit.header.general": "General information"
+	"product.edit.design.title": "Title"
+	"product.edit.design.default.title": "Default"
+	"product.edit.description": "Description"
 	"product.edit.uploading": "Uploading..."
 	"product.edit.saving": "Saving..."
+	"product.edit.new.title": "New Product"
+	"product.edit.edit.title": "Edit Product"
 	"product.edit.validation.title.required": "Please provide a title"
 	"product.edit.validation.price.required": "Please provide a price"
 	"product.edit.validation.identifier.duplicate": "This identifier is already used by another product"

@@ -8,4 +8,5 @@ define [
 	"./controllers/ShopProducts-controller"
 	"./controllers/ShopTypes-controller"
 	"./controllers/ShopCategoryChooser-controller"
+	"./controllers/ShopSideCategories-controller"
 ], ->

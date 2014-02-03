@@ -1,93 +1,21 @@
 
-body,
-.bootstrap-container *,    
-.bootstrap-container body, 
-.bootstrap-container td, 
-.bootstrap-container tr, 
-.bootstrap-container div, 
-.bootstrap-container p, 
-.bootstrap-container form, 
-.bootstrap-container input, 
-.bootstrap-container select, 
-.bootstrap-container textarea, 
-.bootstrap-container font,
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
-	font-family: 'Open Sans', sans-serif !important
-
-.thumbnail
-	
-	&:active
-		+box-shadow(0 0 12px #bbb)
-	
-	@media (min-width: 768px)
-		&:hover
-			+box-shadow(0 0 12px #bbb)
+// hide ui untill it is loaded
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
+	display: none !important
 
 body
-	padding-top: 30px
-	background: url(/resources/img/magic_bg.jpg)
-	background-size: 900px 100%
-	background-repeat: repeat	
-
-@media (max-width: 768px)
-	body
-		padding-top: 0px
-
-body:before
-	position: relative
+	background: white
+	padding: 70px 0
+	background-color: white
+	overflow-x: hidden
+	height: 100%
+	margin: 70px 0
+	-webkit-font-smoothing: antialiased
 
 #main-region	
 	padding-bottom: 30px
 	min-height: 500px
 	background: rgba(255, 255, 255, 1)
-
-.fa-search
-	padding: 0px 3px
-	z-index: 2
-	position: absolute
-	top: 1px
-	bottom: 1px
-	left: 3px
-	line-height: 28px
-	display: inline-block
-	color: rgb(144, 144, 144)
-	font-size: 16px
-
-@media (max-width: 768px)
-	.nav
-		background-color: #438eb9
-	
-.navbar 
-	border-radius: 0px
-
-	border: 0
-
-	.navbar-brand
-		padding-right: 30px
-		padding-left: 30px
-		margin-top: 3px
-		font-weight: 300
-
-	height: 50px
-
-	.ace-nav > li 
-		line-height: 50px
-		height: 50px
-
-
-.nav-background
-	background-color: #dfe0e2
-	width: 158px
-	height: 158px
-
-@media (min-width: 768px)
-	.nav-collapse
-		display: block
-
-@media (max-width: 768px)
-	.navbar-nav
-		margin: -1px -15px
-		border: 1px solid #DDD
 
 // remove input placeholde when focused
 input.hide-placeholder-onblur
@@ -102,130 +30,24 @@ input[type=number]::-webkit-outer-spin-button
 	-webkit-appearance: none
 	margin: 0
 
-
-.has-error .error-tip
-	opacity: .85	
-	height: auto
-	min-height: 35px
-	padding: 5px 10px
-
-.form-item
-	position: relative
-	
-	.error-tip
-		position: absolute
-		left: 100%
-		top: 0px			
-		vertical-align: middle
-
-// Validation tip styles
-.error-tip
-	$error-tip-border-color: rgb(240, 151, 132)
-	$error-tip-background-color: rgba(242,222,222, 1)
-	$error-tip-color: #b94a48
-
-	background: $error-tip-background-color
-	border: 1px solid $error-tip-border-color
-	
-	margin: 5px 0px
-	border-radius: 1px
-	font-weight: 600
-	line-height: 22px
-	// box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
-	color: $error-tip-color
-	position: relative
-	width: 230px
-	content: ' '
-	opacity: 0
-	height: 0
-	// overflow: hidden
-	// min-height: 0
-	z-index: 2000	
-	+transition(opacity .25s ease-in-out)
+input, input.form-control:focus, .has-error input.form-control, .has-error input.form-control:focus
+	+box-shadow(none)
 
 
-	&.top:after, &.top:before 
-		top: 100%
-		left: 50%
-		border: solid transparent
-		content: " "
-		height: 0
-		width: 0
-		position: absolute
-		pointer-events: none
-	
+input
+	height: 40px
 
-	&.top:after 
-		border-color: rgba(242, 222, 222, 0)
-		border-top-color: #f2dede
-		border-width: 10px
-		margin-left: -10px
-	
-	&.top:before 
-		border-color: rgba(240, 151, 132, 0)
-		border-top-color: #f09784
-		border-width: 11px
-		margin-left: -11px
+input, textarea, input.form-control, textarea.form-control
+	background: whitesmoke
+	border: 0
+	box-shadow: none
+	+imt-placeholder
+		color: darken(whitesmoke, 20%)
+		font-weight: 300
 
-
-	&.bottom:after, &.bottom:before 
-		bottom: 100%
-		left: 50%
-		border: solid transparent
-		content: " "
-		height: 0
-		width: 0
-		position: absolute
-		pointer-events: none
-
-
-	&.bottom:after 
-		border-color: rgba(242, 222, 222, 0)
-		border-bottom-color: #f2dede
-		border-width: 7px
-		margin-left: -7px
-
-	&.bottom:before 
-		border-color: rgba(240, 151, 132, 0)
-		border-bottom-color: #f09784
-		border-width: 8px
-		margin-left: -8px
-
-	
-	&:not(.bottom):not(.top)
-		&:before
-			position: absolute
-			display: inline-block
-			border-top: 7px solid transparent
-			border-right: 7px solid $error-tip-background-color
-			border-bottom: 7px solid transparent
-			border-right-color: $error-tip-border-color
-			left: -7px
-			top: 10px
-			content: ''
-			// opacity: .6
-
-		&:after
-			// opacity: .6
-			position: absolute
-			display: inline-block
-			border-top: 6px solid transparent
-			border-right: 6px solid $error-tip-background-color
-			border-bottom: 6px solid transparent
-			left: -6px
-			top: 11px
-			content: ''
-
-
-	a
-		color: lighten($error-tip-color, 10%)
-		text-decoration: none
-		border-bottom: 1px lighten($error-tip-color, 10%) dotted
-		font-weight: 400
-		font-size: 0.9em
-
-		&:hover
-			border-bottom: 1px lighten($error-tip-color, 10%) solid
+.has-error input.form-control
+	// background: #f2dede
+	color: #b94a48
 
 
 // change background color of disabled elements
@@ -237,17 +59,29 @@ input[type=number]::-webkit-outer-spin-button
 fieldset[disabled] .btn-link
 	background: transparent !important
 
+.form-header
+	text-transform: uppercase
+	margin: 40px 0 20px 0
+	border-bottom: 4px solid #af1f31
+	padding-bottom: 4px
+	font-weight: 600
+	color: #555
+
+.control-label
+	color: #777
+	font-weight: 400
+
 // make all links show a pointer cursor... even when no href
 a
 	cursor: pointer
 
 
+
+
+
 // custom drop down with a left tick
 ul.dropdown-menu.ticked
 	margin-bottom: 10px
-	// left: inherit
-	// right: 0
-	// text-align: left
 	
 	a
 		padding-left: 30px
@@ -258,205 +92,256 @@ ul.dropdown-menu.ticked
 input
 	-webkit-appearance: none
 
-// fix navigation bar text color from gray to white
-@media (max-width: 767px)
-	.navbar-default .navbar-nav .open .dropdown-menu > li > a
-		color: white
-
-
-.fileinput-button
+.ui-view-container
 	position: relative
+
+
+body.drawer-active
+	overflow: hidden	
+
+
+.drawer
+	position: fixed
+	top: 0px
+	right: 0px
+	width: $imt-right-drawer-width
+	height: 100%
+	color: white
+	padding: 0px
+	z-index: 0
+
+	&.active
+		z-index: 1
+
+	@media (min-width: $screen-sm-min)
+		width: $imt-right-drawer-width-sm
+
+.left-drawer	
+	left: 0px	
+
+.page
+	width: 100%
+	height: 100%
+	position: absolute
+	left: 0px
+	top: 0px	
+
+.content-wrapper
+	background: white
 	overflow: hidden
-	input
-		position: absolute
-		top: 0
-		right: 0
-		bottom: 0
-		left: 0
-		margin: 0
-		opacity: 0
-		-ms-filter: 'alpha(opacity=0)'
-		font-size: 200px
-		direction: ltr
-		cursor: pointer
-		z-index: 1000
+	// padding: 5px
+	min-height: 100%
+	position: absolute
+	top: 0px
+	left: 0px	
+	width: 100%
+	padding-top: 65px
+
+.content-slide
+	+transition(all .2s linear)
+	+transform(translate3d(0,0,0))	
+	+box-shadow(2px -20px 17px 5px rgba(0, 0, 0, 0.5))
+	z-index: 2
+
+.right-drawer-open.content-slide
+	+transform(translate3d(-$imt-right-drawer-width,0,0))
+
+	@media (min-width: $screen-sm-min)
+		+transform(translate3d(-$imt-right-drawer-width-sm,0,0))
+	
+
+.left-drawer-open.content-slide
+	+transform(translate3d($imt-right-drawer-width,0,0))	
+
+	@media (min-width: $screen-sm-min)
+		+transform(translate3d($imt-right-drawer-width-sm,0,0))
 
 
-// Colors
-$barColor: tomato
-$overlayColor: #fffde8
-$backColor: #2f3439
+@mixin make-button($btn-bg, $btn-color)
+	
+	position: relative
+	text-decoration: none
+	background-color: $btn-bg
+	border-color: $btn-bg
+	+border-radius(4px)
+	+box-shadow(0px 4px 0px rgba(lighten($btn-bg, 5%), 1), 0px 4px 6px rgba(0,0,0,.1))
+	+transition(all .1s ease)
+	font-weight: 300
+	text-transform: uppercase
+	color: $btn-color
+	letter-spacing: .2em
 
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans)
+	+imt-hover
+		background-color: darken($btn-bg, 5%)
+		border-color: darken($btn-bg, 5%)
+		+box-shadow(0px 4px 0px rgba($btn-bg, 1), 0px 4px 6px rgba(0,0,0,.1))
 
-body
-	padding: 30px 0
-	background-color: $backColor
-	font-family: 'Noto Sans', sans-serif
-
-
-
-.fader-animation.ng-enter,
-.fader-animation.ng-leave 
-	+transition(all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s)
-
-
-
-.image-chooser-wrapper
-	&.large 
-		padding: 10px
-		
-		.image-chooser .uploader
-			line-height: 225px
-			i.upload-icon
-				font-size: 130px
-
-		.bottom-controls
-			min-height: 20px
-			i
-				padding-top: 7px
-				padding-right: 7px
-				font-size: 1.3em
-
-	&.small 
-		padding: 5px
-		
-		.image-chooser .uploader
-			line-height: 70px
-			i.upload-icon
-				font-size: 35px
-
-		.bottom-controls
-			min-height: 15px
-			i
-				padding-top: 2px
-				
+	&:active
+		+box-shadow(0px 3px 0px rgba(lighten($btn-bg, 5%), 1), 0px 3px 3px rgba(0,0,0,.1))
+		position: relative
+		top: 2px
 
 
-.image-chooser-wrapper
+.btn.btn-primary.three-d
+	+make-button($btn-primary-bg, white)
 
+.btn.btn-imt-primary.three-d
+	+make-button($imt-primary-color, white)
+
+.btn.btn-imt-info.three-d
+	+make-button(lighten(#333, 2%), white)
+
+.btn.btn-imt-dimmed
 	background: whitesmoke
+	// color: white
+	color: #999999
+	text-transform: uppercase
+	+transition(background .3s ease, color .3s ease)
 
-	.image-chooser
-		
-		position: relative				
-		overflow: hidden
-		width: 100%
-		height: 250px
-		+transition(width .5s ease, height .5s ease)
-
-		.drop-place-holder
-			z-index: 900
-			background: #333333
-			opacity: 0
-			position: absolute
-			top: 0px
-			bottom: 0px
-			right: 0px
-			left: 0px
-
-		.item-thumbnail-wrapper
-			position: absolute
-			top: 0px
-			bottom: 0px
-			left: 0px
-			right: 0px
-
-			.item-thumbnail
-				img
-					width: 100%
+	+imt-hover
+		color: white
+		background: $imt-primary-color
 
 
-		> .uploader
-			text-align: center
-			background: white
-			position: absolute
-			top: 0px
-			bottom: 0px
-			left: 0px
-			right: 0px
-			
-			i.upload-icon
-				color: lightgray
-				padding: 0
-				margin: 0
-				vertical-align: middle					
-				+transition(0.5s color ease)
-				font-size: 35px
-
-		&:hover > .uploader > i.upload-icon
-			color: #555 !important
 
 
-		.thumb-preview
-			// background: blue
-			position: absolute
-			top: 0px
-			bottom: 0px
-			left: 0px
-			right: 0px
+.search-region
+	margin-bottom: 15px
+	// text-align: right
 
-			
-			canvas
-				width: 100%
-				position: absolute
-				// height: 100%
-				// 
-				// top: 0px
-				// left: 0px
-
-		.pending-state
-			z-index: 901
-			position: absolute
-			bottom: 0px
-			right: 0px
-			left: 0px
-			
-			.progress
-				height: 5px
-				margin: 0px	
-
+	.input-group 
+		// width: 100px
+		// float: right
+		> *
+			border: 0
+			outline: 0
+			+box-shadow(none)
 
 		input
-			position: absolute
-			top: 0
-			right: 0
-			bottom: 0
-			left: 0
-			margin: 0
-			opacity: 0
-			-ms-filter: 'alpha(opacity=0)'
-			font-size: 200px
-			direction: ltr
-			cursor: pointer
-			z-index: 1000	
+			background: whitesmoke
+			width: 150px
+			+transition(width .3s ease)
+
+			// &:focus
+			// 	width: 150px
+
+.sort-region
+	margin-top: -50px
+	padding-right: 25px
+	text-align: right
+
+	.sorted-by
+		color: #555
+
+	.dropdown-menu
+		text-align: left
+		right: 0
+		left: inherit
 
 
 
-		&.drag-over .drop
-			border: 1px solid lightgray
+.cart-btn-group
+	$primary: $imt-primary-color
+	$secondary: darken($imt-primary-color, 5%)
+	$raduis: 6px
+	width: 95px
+	overflow: hidden
 
-		&.drag-over .drop-place-holder
-			opacity: .9
+	*
+		border: none
 
+	.btn-icon
+		background-color: $primary
+		color: white
+		padding: 8px 3px
+		width: 30px
+		float: left
+		height: 35px
+		+border-radius($raduis 0px 0px $raduis  !important) 
 
-	.bottom-controls
+	.btn-content
+		width: 65px
+		float: left
+		position: relative
+		background: $secondary
+		height: 35px
+		+border-radius(0px $raduis $raduis 0px !important)
+		overflow: hidden
+		+imt-hover
+			background: $primary
+							
+
+	.btn-clicker
+		background-color: darken($imt-primary-color, 3%)
 		width: 100%
-		// padding: 5px
-		text-align: right
+		height: 100%
+		padding: 8px 3px
+		color: white
+		+border-radius(0px $raduis $raduis 0px !important) 
+		float: left
+		display: block
+		text-decoration: none
+		text-align: center
+		+imt-hover
+			background: $primary
+
+	
+
+	input.form-control
+		padding: 6px 3px
+		// padding-left: 10px
+		display: table-cell
+		color: white
+		width: 40px
+		background: transparent
+		+border-radius(0px)
+		height: 35px
+		font-weight: 300
+		float: left
+		text-align: center
+		+transition(background .3s ease)
+		
+
+	.cross
+		background: transparent
+		color: +rgba(white, .3)						
+		padding: 6px 1px
+		height: 35px
+		width: 25px
+		font-weight: 400
+		+transition(background .3s ease)
 		
 		i
-			cursor: pointer
+			font-size: 17px
+			border: 0
+			border-radius: 30px
+			padding: 0px
+			line-height: 16px
+			display: block
+			width: 16px
+			height: 16px
+			margin-top: 4px
+			+transition(all .3s ease)
+			background: #E4C9CD
+			color: $secondary
+
+		+imt-hover
+			i
+				border-color: white
+				background: white
+				color: $secondary
+				opacity: 1
+
+.imt-row
+	padding: 0 15px
 
 
-.imt-image-wrapper
 
-	background: #EFEFEF	
-	
-	.imt-image
-		opacity: 0
-		+transition(opacity .6s)
-		
+
+
+
+
+
 
 
 
