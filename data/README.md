@@ -14,6 +14,8 @@ mongorestore -h paulo.mongohq.com:10036 -d app19587030 -u heroku -p 200f0e8e5aef
 
 mongorestore -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f912a0a3438fdb06914c2f96 ./data/prod/magicpro --drop
 
+mongorestore -h troup.mongohq.com:10043 -d app21905351 -u heroku -p f13d53de0d7cb682de87d4bef2a99a79 ./data/demo/imtstore --drop
+
 
 ##Export/Backup a database data to the file system
 

@@ -8,13 +8,13 @@
 
 <div class="hidden-xs col-sm-12 sort-region" >
 							
-		<div class="btn-group btn-group-xs" >
+		<div class="btn-group btn-group-xs sort-trigger" >
 			<a href="" dropdown-toggle > <i class="fa fa-caret-down"></i>  sort by <span class="sorted-by" >{{ orderLabels[currentOrder.field] | translate }} | {{ (currentOrder.asc ? 'productnavigator.order.ascending' : 'productnavigator.order.descending') | translate }}</span> </a>
 
 			<ul class="dropdown-menu">
 				<li ng-class="{'active': currentOrder == order }" ng-repeat=" order in orders" >				
 					<a ng-click="doSort(order)" >						
-						<i class="fa fa-check" ng-show="currentOrder == order" ></i> {{ orderLabels[order.field] | translate }} | {{ (order.asc ? 'productnavigator.order.ascending' : 'productnavigator.order.descending') | translate }}				   			
+					  <i class="fa fa-angle-{{  order.asc ? 'down' : 'up' }}"></i>	<span class="order-field">{{ orderLabels[order.field] | translate }}</span> <span class="order-way">| {{ (order.asc ? 'productnavigator.order.ascending' : 'productnavigator.order.descending') | translate }}</span>				   			
 					</a>
 				</li>					
 			</ul>
@@ -36,7 +36,7 @@
 					<div class="top-info" >
 						<h4  ><a ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >{{product.title}}</a></h4>
 						<p>
-							<span class="ref">{{ product.identifier }}</span> | 
+							<!-- <span class="ref">{{ product.identifier }}</span> |  -->
 							<span class="price">{{ product.price | currency:'$' }}</span>	
 							<span ng-show="isRole('admin')">
 							

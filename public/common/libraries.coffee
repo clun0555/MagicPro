@@ -48,7 +48,7 @@ require.config
 
 
 		'angular':
-			deps: ["messageformat"]
+			deps: ["messageformat", "jquery"]
 			exports: 'angular'
 			init: (MessageFormat) ->
 				# not very clean... 
