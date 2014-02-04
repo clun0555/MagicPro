@@ -17,9 +17,9 @@
 
 		</div>
 	</div>
-	<div ng-show="!saved && !cart.isEmpty()" class="cart-items container">
+	<div ng-show="!saved && !cart.isEmpty()" class="cart-items row">
 
-		<div class="row">
+		<div class="">
 
 			<div class="cart-item slide col-lg-2 col-sm-3 col-xs-6 " ng-repeat="composition in cart.compositions()" ng-class="{ 'removed': !composition.quantity }" >
 					

@@ -76,6 +76,37 @@ a
 	cursor: pointer
 
 
+ul.nav-tabs.right
+	text-align: right
+
+	li
+		display: inline-block
+		float: none
+
+ul.nav-tabs 
+
+	li
+		border-top: 3px solid transparent
+
+		
+			
+		&.active
+			// border-top: 3px solid $imt-primary-color !important
+
+			a
+				border-top: 0
+				+box-shadow(0px -3px 0 $imt-primary-color)
+				padding-top: 7px
+
+				+imt-hover
+					border-top: 0					
+
+
+
+
+		
+			
+
 
 
 

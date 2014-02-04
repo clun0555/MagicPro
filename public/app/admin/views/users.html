@@ -5,22 +5,22 @@
 
 	<a ui-sref="admin.new" > <i class="fa fa-plus"></i> &nbsp; {{ 'admin.users.add' | translate }}</a>
 	
-	<ul class="nav nav-tabs pull-right">
-	  <li ng-class="{'active': $stateParams.status == null }" >
-	  	<a ui-sref="admin.users({status: null})" translate >admin.users.filter.validated</a>
-	  </li>
-	  <li ng-class="{'active': $stateParams.status == 'pending' }" > 
-		<a ui-sref="admin.users({status: 'pending'})" translate >
-			admin.users.filter.pending 
-			<!-- &nbsp;<span class="badge pull-right">42</span> -->
-		</a>
-	  </li>  
-	  <li ng-class="{'active': $stateParams.status == 'rejected' }" > 
-		<a ui-sref="admin.users({status: 'rejected'})" translate >
-			admin.users.filter.rejected 
-			<!-- &nbsp;<span class="badge pull-right">42</span> -->
-		</a>
-	  </li>  
+	<ul class="nav nav-tabs right ">
+		<li ng-class="{'active': $stateParams.status == null }" >
+			<a ui-sref="admin.users({status: null})" translate >admin.users.filter.validated</a>
+		</li>
+		<li ng-class="{'active': $stateParams.status == 'pending' }" > 
+			<a ui-sref="admin.users({status: 'pending'})" translate >
+				admin.users.filter.pending 
+				<!-- &nbsp;<span class="badge pull-right">42</span> -->
+			</a>
+		</li>  
+		<li ng-class="{'active': $stateParams.status == 'rejected' }" > 
+			<a ui-sref="admin.users({status: 'rejected'})" translate >
+				admin.users.filter.rejected 
+				<!-- &nbsp;<span class="badge pull-right">42</span> -->
+			</a>
+		</li>  
 	  <!-- <li ng-class="{'active': $stateParams.role == 'buyer' }"> <a ui-sref="admin.users({role: 'buyer'})">Validated</a></li>	   -->
 	</ul>
 
