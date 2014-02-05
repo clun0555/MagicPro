@@ -16,7 +16,7 @@ define [
 	# add global utils function to underscore
 	_.mixin utils
 
-	app.config ($translateProvider, $uiViewScrollProvider) ->
+	app.config ($translateProvider, $uiViewScrollProvider, AuthentificationServiceProvider) ->
 
 		for translation in translations
 			$translateProvider.translations translation['locale.code'], translation
@@ -27,6 +27,8 @@ define [
 		$translateProvider.preferredLanguage 'en'
 
 		$uiViewScrollProvider.useAnchorScroll()
+
+		# AuthentificationServiceProvider.setName "rom"
 
 
 		# snapRemoteProvider.globalOptions.disable = 'left'

@@ -17,3 +17,7 @@ define [
 			$scope.hideDrawers()			
 			
 		CartService.get().then (cart) -> $scope.cart = cart
+
+		$scope.$on "user:changed", -> 
+			if $scope.user?
+				CartService.get().then (cart) -> $scope.cart = cart

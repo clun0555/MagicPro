@@ -25,7 +25,9 @@
     "angular-file-upload": "v0.3",
     "angularjs-breakpoint": "https://github.com/snapjay/angularjs-breakpoint",
     "modernizr": "~2.7.1",
-    "ngInfiniteScroll": "~1.0.0"
+    "ngInfiniteScroll": "~1.0.0",
+    "angular-mocks": "~1.2.11",
+    "q": "~1.0.0"
   },
   "resolutions": {
     "jquery": ">= 1.9.0",

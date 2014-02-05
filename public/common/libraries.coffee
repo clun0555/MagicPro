@@ -32,6 +32,10 @@ require.config
 
 		"ng-infinite-scroll": "vendor/ngInfiniteScroll/ng-infinite-scroll"
 		
+		"angular-mocks": "vendor/angular-mocks/angular-mocks"
+
+		"q": "vendor/q/q"
+		
 		# "text": "vendor/require/text" # requirejs plugin to load a text resource
 		# "resources": "/resources" # path to access resources
 
@@ -67,6 +71,7 @@ require.config
 		"angular-translate-storage-cookie": ["angular-translate", "angular-cookies"]
 		"angular-translate-interpolation-messageformat": ["angular-translate"]				
 		"angular-file-upload": ["angular", "jquery"]
+		"angular-mocks": ["angular"]
 
 		"ng-infinite-scroll": ["angular", "jquery"]
 			

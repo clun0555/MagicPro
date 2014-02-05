@@ -12,7 +12,7 @@ define [
 		validated: (user) ->
 			user?.status is "validated"
 	
-	services.service "SessionService", ($resource, $q, $http, $rootScope) ->
+	services.service "SessionService", ($resource, $q, $http, $rootScope, AuthentificationService) ->
 
 		login: (email, password) ->
 			
@@ -24,7 +24,10 @@ define [
 				=>	
 					@session = { user: user }
 					$rootScope.user = @user()
-					deferred.resolve()
+					AuthentificationService.login({}).then =>
+						$rootScope.$broadcast("user:changed")
+						deferred.resolve()
+						
 				(xhr) => 
 					@session = null
 					deferred.reject { code: xhr.status, message: xhr.data }
@@ -59,6 +62,7 @@ define [
 				.success (data) =>
 					@session = false
 					$rootScope.user = @user()
+					$rootScope.$broadcast("user:changed")
 					deferred.resolve()
 				.error (data) =>
 					@session = false
@@ -79,6 +83,7 @@ define [
 					.success (data) =>
 						@session = user: data
 						$rootScope.user = @user()
+						$rootScope.$broadcast("user:changed")
 						deferred.resolve()
 					.error (data) =>
 						@session = false
@@ -90,7 +95,7 @@ define [
 			rules[rule](@user())
 
 		getUserKey: ->
-			@user()._id ? "guest"
+			@user()?._id ? "guest"
 
 		getStoreKey: (dataKey) ->
 			@getUserKey() + "-" + dataKey

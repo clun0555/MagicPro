@@ -9,8 +9,10 @@ define [
 		'user.password.incorect' : "login.password.incorect"
 
 	controllers
-		.controller "LoginController", ($scope, $state, SessionService, $parse) ->
+		.controller "LoginController", ($scope, $state, SessionService, $parse, AuthentificationService) ->
 			
+			AuthentificationService.greet()
+
 			$scope.login = ->
 				$scope.errors = {}
 				$scope.submited = true				

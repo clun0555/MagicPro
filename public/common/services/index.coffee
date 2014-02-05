@@ -15,5 +15,6 @@ define [
 	"./FileUpload-service"
 	"./Product-service"
 	"./ImageSize-service"
+	"./Authentification-service"
 	
 ], ->

@@ -19,6 +19,7 @@ define [
 	"fastclick"
 
 	"angular-file-upload"
+	# "angular-mocks"
 
 	# "jquery.fileupload-angular"
 	# "jquery.fileupload-process"
@@ -47,14 +48,12 @@ define [
 
 		'angularFileUpload'
 		'infinite-scroll'
-		# 'ngTouch'
-
-		# 'blueimp.fileupload'
 
 		# common dependencies
 		"app.controllers"
 		"app.directives"
 		"app.services"
+		# "ngMock"
 
 		# featues dependencies
 		"app.shop"

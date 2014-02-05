@@ -27,7 +27,7 @@ define [
 
 
 
-			$scope.$watch "user", -> 
+			$scope.$on "user:changed", -> 
 				if $scope.user?
 					CartService.get().then (cart) -> $scope.cart = cart
 
