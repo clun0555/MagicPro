@@ -1,7 +1,7 @@
 
-<div class="cart-view">
+<div class="cart-view" ng-click="hideDrawers()" >
 
-	<h3 ng-click="hideDrawers()" class="continue-shopping" > <i class="fa fa-angle-left"></i> &nbsp;&nbsp;{{'cart.continue.shopping' | translate}}</h3>
+	<h3  class="continue-shopping" > <i class="fa fa-angle-left"></i> &nbsp;&nbsp;{{'cart.continue.shopping' | translate}}</h3>
 
 
 	<ul class="cart-items">
@@ -19,7 +19,7 @@
 
 	</ul>	
 	
-	<div class="cart-summary">
+	<div class="cart-summary" ng-click="edit()" >
 		<span class="cart-price"> {{ cart.price() | currency:"$" }}</span>		
 	</div>
 

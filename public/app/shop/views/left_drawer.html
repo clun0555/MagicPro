@@ -1,6 +1,6 @@
-<div class="left-drawer-content">
+<div class="left-drawer-content" >
 	
-	<form class="form-search" ng-submit="searchProduct()">
+	<form class="form-search" ng-submit="searchProduct(); hideDrawers()">
 		<div class="input-group margin-bottom-sm search-group">
 			<span class="input-group-addon" > <i class="fa fa-search fa-fw"></i> </span>
 			<input class="form-control" type="text" placeholder="Search..." ng-model="search.title">
@@ -10,12 +10,12 @@
 
 
 	
-	<ul class="side-categories menus">
+	<ul class="side-categories menus" >
 		<li class="header">
 			<a class="section-link">Store</a>
 		</li>
 		<li class="menu">
-			<a ui-sref="shop.products()" ng-click="selectedCategory = null" ng-class="{'active' : $state.includes('shop.products')}"  >All</a>	
+			<a ui-sref="shop.products()" ng-click="selectedCategory = null; hideDrawers()" ng-class="{'active' : $state.includes('shop.products')}"  >All</a>	
 		</li>
 
 		<li class="category-title menu" ng-repeat="category in categories" ng-class="{'colapsed' : isCategoryToggled(category)}" >
@@ -24,7 +24,7 @@
 			
 			<ul class="type-list" >
 				
-				<li class="type-title menu" ng-repeat="type in category.types" ng-click="$parent.$parent.selectedType = type" >				
+				<li class="type-title menu" ng-repeat="type in category.types" ng-click="$parent.$parent.selectedType = type; hideDrawers()" >				
 					<a ui-sref="shop.productsbytype({ 'type': type.slug, 'category': category.slug })" ng-class="{'active' : isTypeActive(category, type)}" >	
 						{{type.title}}				
 					</a>
@@ -35,7 +35,7 @@
 
 	</ul>
 
-	<ul class="global-menus menus">
+	<ul class="global-menus menus" ng-click="hideDrawers()" >
 		
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
 			<a ui-sref="about">About</a>

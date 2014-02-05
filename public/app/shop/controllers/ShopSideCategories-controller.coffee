@@ -3,7 +3,7 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller "ShopSideCategoriesController", ($scope, data, ShopService, $state) ->						
+	shop.controller "ShopSideCategoriesController", ($scope, data, ShopService, $state, SessionService) ->						
 		
 		$scope.isCategoryActive = (category) ->
 			# return true if $scope.selectedCategory is category and $scope.selectedType == null
@@ -23,6 +23,9 @@ define [
 
 		$scope.searchProduct = ->
 			$state.go "shop.search", searchInput: ShopService.search.title
+
+		$scope.logout = ->
+			SessionService.logout().then -> $state.go "index"
 
 		$scope.categories = data.categories
 		$scope.search = ShopService.search
