@@ -195,6 +195,7 @@ define ->
 	"breadcrumb.product.edit": "Edit"
 
 	### cart ###
+	"cart.title": "Cart"
 	"cart.quantity": "Quantity"
 	"cart.price": "Price"
 	"cart.preview": "Preview"
@@ -202,6 +203,11 @@ define ->
 	"cart.edit": "Edit"
 	"cart.continue.shopping": "Continue shopping"
 	"cart.widget.add": "ADD"
+
+	### Checkout ###
+	"checkout.title": "Checkout"
+	"checkout.disabled": "Sorry, checkout has been disabled for this demo."
+	"checkout.back.cart": "Back to cart"
 
 	### preview ###
 	"preview.thank": "Thank you"
@@ -244,6 +250,7 @@ define ->
 	### search ###
 	"search.home": "Search"
 	"products.search.noproducts": "Sorry, we could't find any products matching"
+
 
 
 	### footer ###

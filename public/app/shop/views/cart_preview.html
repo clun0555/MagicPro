@@ -10,16 +10,15 @@
 	
 		<div class="container">
 			
-			<div class="row">				
-				
-					<h1><i class="icon icon-cart"></i> Cart</h1>
+			<div class="row">								
+				<h1 ><i class="icon icon-cart"></i> {{ 'cart.title' | translate }}</h1>
 			</div>
 
 		</div>
 	</div>
 	<div ng-show="!saved && !cart.isEmpty()" class="cart-items row">
 
-		<div class="">
+		<div>
 
 			<div class="cart-item slide col-lg-2 col-sm-3 col-xs-6 " ng-repeat="composition in cart.compositions()" ng-class="{ 'removed': !composition.quantity }" >
 					
@@ -75,7 +74,7 @@
 					<div class="cart-price">
 						{{cart.price() | currency:'$'}}				
 					</div> 
-					<a class="btn btn-imt-primary three-d checkout" ng-click="checkout()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
+					<a class="btn btn-imt-primary three-d checkout" ui-sref="checkout" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
 				
 			</div>
 

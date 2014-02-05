@@ -25,7 +25,7 @@
 
 	<div ng-show=" cart.quantity() > 0 " class="cart-buttons">
 		<a class="btn btn-imt-info three-d edit" ng-click="edit()" >  {{'cart.edit' | translate}}</a>
-		<a class="btn btn-imt-primary three-d checkout" ng-click="checkout()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
+		<a class="btn btn-imt-primary three-d checkout" ui-sref="checkout" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
 	</div>
 	
 </div>

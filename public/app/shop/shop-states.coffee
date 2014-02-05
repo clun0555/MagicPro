@@ -142,4 +142,9 @@ define [
 					controller: "CartPreviewController"
 					parent: "order"	
 
+				.state "checkout",
+					url: "/checkout"
+					templateUrl: "app/shop/views/checkout.html" 
+					parent: "order"	
+
 
