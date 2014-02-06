@@ -14,20 +14,22 @@
 		float: left !important
 		
 
-	nav .nav.navbar-nav li.section-link 
-		a
-			padding-left: 4px	
-			padding-right: 4px	
-			margin-left: 6px
-			margin-right: 6px
-			padding-bottom: 4px
-			border-bottom: 4px solid transparent
-			+transition(border-color .3s ease)
-		
-		+imt-hover("&.active")
+	nav .nav.navbar-nav 
+		margin-top: 5px
+		li.section-link 
 			a
-				background: none
-				border-color: $imt-primary-color
+				padding-left: 4px	
+				padding-right: 4px	
+				margin-left: 6px
+				margin-right: 6px
+				padding-bottom: 4px
+				border-bottom: 4px solid transparent
+				+transition(border-color .3s ease)
+			
+			+imt-hover("&.active")
+				a
+					background: none
+					border-color: $imt-primary-color
 
 
 
@@ -93,6 +95,9 @@
 			min-height: 65px
 			padding-top: 7px
 			background-color: white
+
+		nav .nav.navbar-nav 
+			margin-top: 0px
 
 		.logo-nav
 			

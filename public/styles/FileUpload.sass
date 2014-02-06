@@ -169,10 +169,26 @@
 			cursor: pointer
 
 
-.imt-image-wrapper
 
-	background: white
-	
-	.imt-image
-		opacity: 0
-		+transition(opacity .6s)
+.imt-image-wrapper
+	overflow: hidden
+	.imt-image-placeholder
+
+		width: 100%
+		position: relative
+		height: 0
+		overflow: hidden
+		background: #FAFAFA
+
+		img
+			position: absolute
+			display: block
+			max-width: 100%
+			max-height: 100%
+			left: 0
+			right: 0
+			top: 0			
+			bottom: 0
+			opacity: 0
+			+transition(opacity .6s)
+			// margin: auto
