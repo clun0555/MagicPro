@@ -6,6 +6,7 @@ Category = new mongoose.Schema
 	slug: {type: String, require: true, unique: true}
 	description: { type: String }
 	imageId: { type: String }
+	order: { type: Number }
 	types: [Type.schema]
 
 
