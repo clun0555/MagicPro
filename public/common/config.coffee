@@ -16,6 +16,9 @@ define [
 	# add global utils function to underscore
 	_.mixin utils
 
+	window.addEventListener 'load', ->
+		FastClick.attach(document.body)
+
 	app.config ($translateProvider, $uiViewScrollProvider, AuthentificationServiceProvider) ->
 
 		for translation in translations

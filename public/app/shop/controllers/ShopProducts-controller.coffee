@@ -95,6 +95,9 @@ define [
 			$scope.focusedDesign = null
 			return 
 
+		$scope.goToProduct = (product) ->
+			$state.go "shop.product", { category: product.type.category.slug, type: product.type.slug, product: product.slug}
+
 		$scope.$on "fileDrop", (event, $files) ->
 			$scope.$parent.files = $files
 			$state.go "shop.createproduct", { category: product.type.category.slug, type: product.type.slug, product: product.slug}

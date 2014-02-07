@@ -11,18 +11,14 @@ define [
 	"angular-cookies"
 	"angular-ui-router"
 	"angular-translate"
-	# "angular-touch"
 	"angular-translate-storage-cookie"
 	"angular-translate-interpolation-messageformat"
-	# "bootstrap-dropdown"
+	"angular-bindonce"	
 
 	"fastclick"
 
 	"angular-file-upload"
 	# "angular-mocks"
-
-	# "jquery.fileupload-angular"
-	# "jquery.fileupload-process"
 
 	"common/controllers/index"
 	"common/directives/index"
@@ -48,6 +44,7 @@ define [
 
 		'angularFileUpload'
 		'infinite-scroll'
+		"pasvaz.bindonce"
 
 		# common dependencies
 		"app.controllers"

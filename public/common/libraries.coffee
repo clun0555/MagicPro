@@ -20,6 +20,8 @@ require.config
 		"angular-translate": "vendor/angular-translate/angular-translate" # translation
 		"angular-translate-storage-cookie": "vendor/angular-translate-storage-cookie/angular-translate-storage-cookie" # persiting translations
 		"angular-translate-interpolation-messageformat": "vendor/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat" # persiting translations
+		"angular-bindonce": "vendor/angular-bindonce/bindonce" # one way binding
+		
 		"messageformat": "vendor/messageformat/messageformat" # pluralization / genders
 		"messageformat-zh": "vendor/messageformat/locale/zh" # pluralization / genders
 		# "messageformat-en": "vendor/messageformat/locale/en" # persiting translations		
@@ -72,6 +74,7 @@ require.config
 		"angular-translate-interpolation-messageformat": ["angular-translate"]				
 		"angular-file-upload": ["angular", "jquery"]
 		"angular-mocks": ["angular"]
+		"angular-bindonce": ["angular"]
 
 		"ng-infinite-scroll": ["angular", "jquery"]
 			

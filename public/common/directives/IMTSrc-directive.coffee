@@ -12,7 +12,7 @@ define [
 			template: 
 				"""
 					<div class="imt-image-wrapper" >
-						<div class="imt-image-placeholder">
+						<div  class="imt-image-placeholder">
 							<img 
 								onload="this.style.opacity='1'"
 								ng-src="{{imageSrc}}"														

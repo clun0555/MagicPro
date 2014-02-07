@@ -19,7 +19,13 @@ define [
 			# 			$scope.cartVisible = false
 		
 			$scope.toggle = ->
-				$scope.info.leftDrawerVisible = !$scope.info.leftDrawerVisible
+				$rootScope.info.leftDrawerVisible = !$rootScope.info.leftDrawerVisible
+
+			$scope.toggleCart = ->
+				# alert "helo"
+				$rootScope.info.cartVisible = !$rootScope.info.cartVisible
+				return
+				# $scope.info.leftDrawerVisible = !$scope.info.leftDrawerVisible
 				# $scope.isCollapsed = !$scope.isCollapsed
 
 			$scope.logout = ->

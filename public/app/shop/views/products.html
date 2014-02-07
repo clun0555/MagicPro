@@ -27,26 +27,26 @@
 
 <div infinite-scroll="doPaging()" infinite-scroll-distance="2" infinite-scroll-disabled="loading" class="product-navigator row"  ng-show="products.length > 0">
 	
-	<div class="slide product-title col-lg-3 col-sm-4 col-xs-6 {{ 'product_' + product._id }}" ng-repeat="product in products" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }"  imt-click-out="unActivateProduct(product)" >
+	<div bindonce class="slide product-title col-lg-3 col-sm-4 col-xs-6" ng-repeat="product in products" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }" >
 		
 			<div class="thumbnail" >
 
 				<div class="caption" >
 
 					<div class="top-info" >
-						<h4  ><a ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >{{product.title}}</a></h4>
+						<h4  ><a  ng-click="goToProduct(product)" bo-text="product.title" ></a></h4>
 						<p>
 							<!-- <span class="ref">{{ product.identifier }}</span> |  -->
-							<span class="price">{{ product.price | currency:'$' }}</span>	
-							<span ng-show="isRole('admin')">
+							<span class="price" bo-text="product.price | currency:'$'" ></span>	
+							<span bo-show="isRole('admin')">
 							
-							| <a ui-sref="shop.editproduct({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" ng-if="isRole('admin') && isUserValidated()" translate>productnavigator.product.edit</a>
+							| <a  ng-click="goToProduct(product)" translate>productnavigator.product.edit</a>
 
 							</span>
 
 						</p>
 							<div class="image-wrapper" >
-								<a ui-sref="shop.product({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" >									
+								<a ng-click="goToProduct(product)" >									
 									<div imt-src="product.designs[0].image" imt-size="s=300" ng-class="{ 'visible': focusedDesign == null }" ></div>								
 								</a>	
 							</div>

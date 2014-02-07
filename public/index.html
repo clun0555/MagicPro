@@ -12,32 +12,31 @@
 		
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">		
 
+		
+
 	</head>
 
-	<body  ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible}" >
+	<body   ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible, 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible}" >
+		<div class="content-slide-overlay content-slide" ng-click="hideDrawers()" ></div>
 
 		<div class="drawer right-drawer" ng-class="{ 'active': info.cartVisible }">
 			<div ui-view="cart-drawer" ></div>
 		</div>
 		
-		<div class="drawer left-drawer" ng-class="{ 'active': info.leftDrawerVisible }">
+		<div class="drawer left-drawer" >
 			<div ui-view="left-drawer" ></div>
 		</div>
 
 		<div 
-			ng-class="{ 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible }" 
 			class="menu-region navbar navbar-default navbar-fixed-top content-slide" 
 			ng-include="'common/views/menu.html'" 
 			ng-controller="MenuController"
-			ng-click="hideDrawers($event)"  >
+		>
 		</div>
 		
 		<div 
-			ng-class="{ 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible }" 
-			class="content-wrapper content-slide" 
-			ng-click="hideDrawers($event)" 
-		>
-			
+			class="content-wrapper content-slide" 			
+		>			
 			<div id="main-region" class="container-fluid" ui-view autoscroll="false"  >						
 				
 			</div>		

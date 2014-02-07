@@ -67,6 +67,7 @@
 			
 			.chair
 				height: 30px
+				width: 21px
 				margin-top: -7px
 				
 			.imt
@@ -75,14 +76,27 @@
 			.design
 				font-weight: 100
 
-	.btn.cart-toggle
+	.btn.cart-toggle, .btn.left-drawer-toggle
 		font-size: 1.2em
 		color: #333
 		padding: 8px
-		margin: 2px
+		margin: 2px 15px
 		+border-radius(10px)
 		+box-shadow(none)
-		background: whitesmoke !important			
+		+transition(background .3s ease)
+		// background: whitesmoke !important			
+	
+	.btn.cart-toggle
+		body.right-drawer-open  &, &:active
+			background: $imt-drawer-bg-alternate !important
+			color: white
+
+	.btn.left-drawer-toggle
+		body.left-drawer-open  &, &:active
+			background: $imt-drawer-bg-alternate !important
+			color: white
+
+
 
 
 	@media (min-width: $screen-sm-min)
@@ -107,6 +121,7 @@
 				
 				.chair
 					height: 50px
+					width: 34px
 					margin-top: -15px
 
 
@@ -119,7 +134,7 @@
 
 		.btn.cart-toggle
 			padding: 10px
-			margin: 5px
+			margin: 5px			
 			
 			
 
