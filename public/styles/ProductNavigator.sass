@@ -25,9 +25,6 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 	border-radius: 4px
 
 
-
-
-
 	.product-title
 		// min-width: 250px
 		margin-top: 10px
@@ -36,29 +33,7 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 		cursor: pointer
 		// height: 350px
 		z-index: 10
-
-		&.create-product
-			
-
-			.thumbnail
-				padding-top: 70px
-				border: 3px dashed lightgrey
-
-				// height: 330px
-
-			.image-wrapper
-				background: whitesmoke
-
-				// width: 193px
-				// line-height: 193px
-				text-align: center
-				
-				button
-					
-					display: inline
-					vertical-align: middle
-					// margin: auto
-
+		padding: 10px
 
 		&.hover
 			z-index: 11
@@ -70,7 +45,8 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 			border: 0
 			background: white
 			border-radius: 0
-			padding: 0px 10px
+			padding: 0px
+			margin-bottom: 0px
 
 		.top-info	
 			padding: 0px
@@ -79,21 +55,23 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 
 			h4
 				font-weight: 400
-				font-size: 20px
+				text-overflow: ellipsis
+				overflow: hidden
+				white-space: nowrap
+				line-height: 1.3em
+				
 				a
 					color: #555
 					+imt-hover
 						text-decoration: initial !important
 
+				@media (min-width: $screen-sm-min)
+					font-size: 1.5em
+
 
 
 		.image-wrapper
 			position: relative
-			// width: 200px
-			// height: 200px
-
-			// .visible .imt-image-wrapper
-			// 	opacity: 1
 			
 			.imt-image-wrapper
 				background-color: white
@@ -109,9 +87,7 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 
 				&.visible
 					opacity: 1
-					display: inherit
-			
-				
+					display: inherit				
 				
 
 
@@ -131,166 +107,8 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 
 				&.visible .anim-wrapper
 					max-height: 200px
-					opacity: 1		
-
-
-
-
-			.cart-info
-
-				margin-left: 5px
-				margin-right: 0px
-				margin-bottom: 5px
-
-
-				.design
-					border: 1px solid transparent
-					margin-bottom: 2px
-					// +transition(border-color .3s ease)
-
-					&.active-design
-						border-color: lightgray
-						.design-label
-							background: whitesmoke
-
-
-					.input-group-addon
-						background: none
-				
-					.input-group:first-child > .design-label
-						border-top: 0px
-
-					.form-control
-						padding-left: 10px
-						border-right: 0px
-						margin-bottom: 0px
-						outline: 0
-						display: inline-block
-						width: 60px
-						vertical-align: top
-						// text-align: center
-						border: 0px
-						border-left: 1px solid lightgray
-						color: #555555
-						
-
-							
-					.design-label
-						width: 87px
-						max-width: 87px
-						font-size: .9em
-						border-left: 0
-						border-top: 0
-						border-bottom: 0
-						text-align: right
-						padding-left: 0px
-						overflow: hidden
-						text-overflow: ellipsis
-						display: inline-block
-						padding-top: 5px
-						padding-bottom: 5px
-						line-height: 24px
-						+transition(background .3s ease)
-						
-					.inner
-						border: 0px
-
-		&.hover .cart-simple-info
-			
-			.quantity
-				width: auto
-				min-width: 65px
-
-
-
-		&.hover .cart-simple-info.single-design
-			border: 1px solid lightgray
-
-			.icon-cart
-				background: whitesmoke			
-
-		.cart-simple-info
-			+imt-hover
-				border: 1px solid lightgray
-
-				.icon-cart
-					background: whitesmoke	
-
-		&.hover .cart-simple-info.multiple-design
-			border: 1px solid transparent
-
-			.icon-cart
-				background: transparent				
-
-		.cart-simple-info
-			font-size: 1.1em
-			text-align: right
-			display: block
-			float: right
-			padding-right: 5px
-			border: 1px solid lightgray
-			+transition(border .3s ease)
-			
-			> .icon-cart, > .quantity, > .inner
-				display: inline-block
-				vertical-align: middle
-				padding: 8px 3px
-				height: 32px
-				line-height: 13px
-
-			.quantity > *
-				display: inline-block
-				vertical-align: top
-				height: 32px
-
-			.icon-cart
-				padding-left: 4px
-				padding-right: 4px
-				border-right: 1px solid lightgray
-				+transition(background .3s ease)
-
-
-			.readable-quantity
-				text-align: left
-				width: 100%				
-
-
-			.quantity
-
-				position: relative
-				display: inline-block
-				width: auto
-				+transition(min-width .3s ease)
-				
-				// min-width: 40px
-				> *
-					display: inline-block
-					padding: 0
-					overflow: hidden
-					border: 1px solid transparent
-
-			input
-				
-				padding: 0px
-				display: inline-block				
-				height: 20px
-				border: 0
-				border-color: transparent
-				margin: 0
-				width: 100%
-				color: #555555
-				position: absolute
-				top: 5px
-				left: 0px
-				bottom: 0px
-				right: 0px
-
-				&[readonly]
-					background-color: white !important
-					cursor: pointer !important
-				
-				&:focus
-					border-color: transparent
+					opacity: 1
+		
 
 				
 
