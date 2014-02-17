@@ -52,7 +52,7 @@ define [
 							if not SessionService.isAuthentificated()
 								"login"
 							else if SessionService.user()?.status is "validated"
-								"shop.products"
+								"home"
 							else
 								"validating"
 
