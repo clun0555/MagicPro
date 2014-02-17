@@ -80,9 +80,13 @@ define ->
 	"menu.account": "Account"
 	"menu.logout": "Log out"
 	"menu.admin": "Admin"
+	"menu.store": "Store"
+	"menu.home": "Home"
+	"menu.blog": "Blog"
 	
 	### productnavigator ###
 	"productnavigator.buy": "Buy"
+	"productnavigator.featured": "Featured products"
 	"productnavigator.product.edit": "Edit"
 	"productnavigator.edit.delete": "Delete"
 	"productnavigator.order.price": "price"
@@ -231,6 +235,7 @@ define ->
 	"product.edit.identifier": "Identifier"
 	"product.edit.price": "price"
 	"product.edit.header.variants": "Variants / Images"
+	"product.edit.featured": "Featured"
 	"product.edit.header.general": "General information"
 	"product.edit.design.title": "Title"
 	"product.edit.design.default.title": "Default"

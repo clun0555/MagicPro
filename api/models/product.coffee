@@ -13,6 +13,7 @@ Product = new mongoose.Schema
 	inner: { type: Number, require: true }
 	modified: { type: Date, default: Date.now }
 	price: {type: Number, require: true}
+	featured: {type: Boolean}
 
 Product.plugin(FilePlugin, {fields: ["image"]})
 Product.plugin(SlugPlugin.plugin, {source: 'title'})

@@ -1,72 +1,81 @@
-<ul class="breadcrumb">
+<div>
 
 	<!-- Shop -->
-	<li ng-if="$state.includes('shop') || $state.includes('cart') || $state.includes('search') " >
+	<!-- <div ng-if="$state.includes('shop') || $state.includes('cart') || $state.includes('search') " >
 		<i class="icon-home home-icon"></i>
 		<a ui-sref="shop.products" class="breadcrumb-home" translate>
 		 breadcrumb.home
 		</a>
-	</li>
+	</div> -->
 
-	<li ng-if="$state.includes('shop.search')">
+	<!-- <div ng-if="$state.includes('shop.search')">
 		<a ui-sref="shop.search" translate>
 			search.home
 		</a>
-	</li>
+	</div> -->
 
-	<li ng-if="$state.includes('shop.productsbycategory')">
-		<span>{{ data.category.title }}</span>
-	</li>
+	<div ng-if="$state.includes('shop.productsbycategory')">
+		<h1>{{ data.category.title }}</h1>
+		<a class="btn btn-imt-dimmed" ui-sref="shop.products" >
+			<i class="fa fa-caret-left"></i> <span >All products</span>
+		</a>	
 
-	<li ng-if="$state.includes('shop.productsbytype')">
+	</div>
+	<!--
+	<div ng-if="$state.includes('shop.productsbytype')">
 		<a ui-sref="shop.productsbycategory({ category: data.category.slug })" >
 		 	{{data.category.title}}
 		</a>
-	</li>
+	</div>
+	-->
+	<div ng-if="$state.includes('shop.productsbytype')">
+		<h1>{{data.type.title}}</h1>
+		<a class="btn btn-imt-dimmed" ui-sref="shop.productsbycategory({ category: data.category.slug, type: data.type.slug, product: data.product.slug})" >
+			<i class="fa fa-caret-left"></i> <span >{{data.category.title}}</span>
+		</a>		 	
+	</div>
 
-	<li ng-if="$state.includes('shop.productsbytype')">
-		<span>{{data.type.title}}</span>		 	
-	</li>
-
-	<li ng-if="$state.includes('shop.product')">
-		<a  ui-sref="shop.product({ category: data.category.slug, type: data.type.slug, product: data.product.slug})" >
-		 {{data.product.title}}
+	<div ng-if="$state.includes('shop.product')">
+		<!-- <h1>{{data.product.title}}</h1> -->
+		<a class="btn btn-imt-dimmed" ui-sref="shop.productsbytype({ category: data.category.slug, type: data.type.slug, product: data.product.slug})" >
+			<i class="fa fa-caret-left"></i> <span >{{data.category.title}}</span>
 		</a>
+		 
 
-	</li>
+	</div>
 
-	<li ng-if="$state.includes('shop.editproduct')">
+	<div ng-if="$state.includes('shop.editproduct')">
 		<span translate> breadcrumb.product.edit </span>				
-	</li>
+	</div>
 
-	<li ng-if="$state.includes('cart')">
+	<div ng-if="$state.includes('cart')">
 		<a ui-sref="cart" translate>
 			cart.preview
 		</a>
-	</li>	
+	</div>	
 
 	<!-- Admin -->
-	<li ng-if="$state.includes('admin')" >
+	<!-- <div ng-if="$state.includes('admin')" >
 		<i class="icon-home home-icon"></i>
 		<a ui-sref="admin" class="breadcrumb-home" translate>
 		 	breadcrumb.admin
 		</a>
-	</li>
+	</div>
 
-	<li ng-if="$state.includes('admin.users') || $state.includes('admin.user')" >
+	<div ng-if="$state.includes('admin.users') || $state.includes('admin.user')" >
 		<a ui-sref="admin.users" translate>
 		 	breadcrumb.admin.users
 		</a>
-	</li>
+	</div>
 
-	<li ng-if="$state.includes('admin.user')" >
+	<div ng-if="$state.includes('admin.user')" >
 		<a ui-sref="admin.users" >
 		 	 {{user.firstname}} {{ 'breadcrumb.admin.user' | translate }}
 		</a>
-	</li>
+	</div>
+ -->
 
-
-</ul>
+</div>
 
 <!-- <div class="nav-search" id="nav-search" >
 	<form class="form-search" ng-submit="searchProduct()">

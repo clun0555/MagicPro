@@ -1,8 +1,22 @@
 
+.menu-region.navbar.navbar-default 
+	background: rgba(255, 255, 255, .9)
+	border-bottom: 0
+		
+	.logo
+		transition: all .4s ease
+		transform: scale(1) translate3d(0px, 0px, 0px)
+
+
+	body.scroll-at-top &.navbar.navbar-default 
+		background: rgba(255, 255, 255, 0)
+	
+
 .menu-region 
 	
 	height: 50px
 	z-index: 1030
+	box-shadow: none
 	
 	.navbar-left
 		float: left !important
@@ -24,7 +38,7 @@
 				margin-right: 6px
 				padding-bottom: 4px
 				border-bottom: 4px solid transparent
-				+transition(border-color .3s ease)
+				// transition: border-color .3s ease
 			
 			+imt-hover("&.active")
 				a
@@ -84,9 +98,9 @@
 		color: #333
 		padding: 8px
 		margin: 2px 15px
-		+border-radius(10px)
-		+box-shadow(none)
-		+transition(background .3s ease)
+		border-radius: 10px
+		box-shadow: none
+		transition: background .3s ease
 		// background: whitesmoke !important			
 	
 	.btn.cart-toggle
@@ -100,9 +114,15 @@
 			color: white
 
 
+	@media (min-width: $screen-md-min)
 
+		body.scroll-at-top.home-state &.navbar.navbar-default 
+			.logo
+				transform: scale(1.5, 1.5) translate3d(40px, 10px, 0px)
 
 	@media (min-width: $screen-sm-min)
+
+		
 		
 		nav
 			ul

@@ -31,7 +31,12 @@ define [
 			$scope.logout = ->
 				SessionService.logout().then -> $state.go "index"
 
+			$scope.isCurrentMenu = (state) ->
+				$rootScope.nextState?.name.indexOf(state) >= 0 or $rootScope.$state.includes(state)
 
+			$scope.changeMenu = (state) ->
+				$rootScope.nextState = $state.get(state)
+				$state.go state
 
 			$scope.$on "user:changed", -> 
 				if $scope.user?

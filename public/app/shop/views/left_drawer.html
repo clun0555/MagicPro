@@ -6,13 +6,12 @@
 			<input class="form-control" type="text" placeholder="Search..." ng-model="search.title">
 		</div>
 	</form>
-	
 
 
 	
 	<ul class="side-categories menus" >
 		<li class="header">
-			<a class="section-link">Store</a>
+			<a class="section-link" translate>menu.store</a>
 		</li>
 		<li class="menu">
 			<a ui-sref="shop.products()" ng-click="selectedCategory = null; hideDrawers()" ng-class="{'active' : $state.includes('shop.products')}"  >All</a>	
@@ -37,12 +36,16 @@
 
 	<ul class="global-menus menus" ng-click="hideDrawers()" >
 		
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('home') }" >
+			<a ui-sref="home" translate>menu.home</a>
+		</li>
+
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
-			<a ui-sref="about">About</a>
+			<a ui-sref="about" translate>menu.about</a>
 		</li>
 		
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" >
-			<a ui-sref="admin" >Admin</a>
+			<a ui-sref="admin" translate>menu.admin</a>
 		</li>
 
 	

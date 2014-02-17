@@ -9,5 +9,6 @@ define [
 	"./IMTFileSelected-directive"	
 	"./IMTFileChooser-directive"	
 	"./IMTSrc-directive"	
+	"./IMTScrollPosition-directive"	
 
 ], ->

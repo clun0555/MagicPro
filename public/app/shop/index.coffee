@@ -9,4 +9,5 @@ define [
 	"./controllers/ShopTypes-controller"
 	"./controllers/ShopCategoryChooser-controller"
 	"./controllers/ShopSideCategories-controller"
+	"./controllers/ShopHome-controller"
 ], ->

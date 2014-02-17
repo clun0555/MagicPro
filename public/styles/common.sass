@@ -30,8 +30,11 @@ input[type=number]::-webkit-outer-spin-button
 	-webkit-appearance: none
 	margin: 0
 
+input[type=text], input[type=email], input[type=number], input[type=password]
+	-webkit-appearance: none
+
 input, input.form-control:focus, .has-error input.form-control, .has-error input.form-control:focus
-	+box-shadow(none)
+	box-shadow: none
 
 
 input
@@ -95,7 +98,7 @@ ul.nav-tabs
 
 			a
 				border-top: 0
-				+box-shadow(0px -3px 0 $imt-primary-color)
+				box-shadow: 0px -3px 0 $imt-primary-color
 				padding-top: 7px
 
 				+imt-hover
@@ -126,9 +129,6 @@ ul.dropdown-menu.ticked
 	
 	i.icon-ok, i.fa-check
 		margin-left: -22px
-
-input
-	-webkit-appearance: none
 
 .ui-view-container
 	position: relative
@@ -187,10 +187,10 @@ body.right-drawer-open
 	padding-top: 65px
 
 .content-slide
-	+transition(all .3s ease)
-	+transform(translate3d(0,0,0))	
-	-webkit-backface-visibility: hidden
-	+box-shadow(2px -20px 17px 5px rgba(0, 0, 0, 0.5))
+	transition: all .3s ease
+	transform: translate3d(0,0,0)
+	// -webkit-backface-visibility: hidden
+	box-shadow: 2px -20px 17px 5px rgba(0, 0, 0, 0.5)
 	z-index: 2
 
 .content-slide-overlay
@@ -203,23 +203,23 @@ body.right-drawer-open
 	z-index: 5000
 	background-color: transparent
 	display: none
-	+box-shadow(none)
+	box-shadow: none
 
 	body.drawer-active &
 		display: block
 
 .right-drawer-open .content-slide
-	+transform(translate3d(-$imt-right-drawer-width,0,0))
+	transform: translate3d(-$imt-right-drawer-width,0,0)
 
 	@media (min-width: $screen-sm-min)
-		+transform(translate3d(-$imt-right-drawer-width-sm,0,0))
+		transform: translate3d(-$imt-right-drawer-width-sm,0,0)
 	
 
 .left-drawer-open .content-slide
-	+transform(translate3d($imt-right-drawer-width,0,0))	
+	transform: translate3d($imt-right-drawer-width,0,0)
 
 	@media (min-width: $screen-sm-min)
-		+transform(translate3d($imt-right-drawer-width-sm,0,0))
+		transform: translate3d($imt-right-drawer-width-sm,0,0)
 
 
 @mixin make-button($btn-bg, $btn-color)
@@ -228,9 +228,9 @@ body.right-drawer-open
 	text-decoration: none
 	background-color: $btn-bg
 	border-color: $btn-bg
-	+border-radius(4px)
-	+box-shadow(0px 4px 0px rgba(lighten($btn-bg, 5%), 1), 0px 4px 6px rgba(0,0,0,.1))
-	+transition(all .1s ease)
+	border-radius: 4px
+	box-shadow: 0px 4px 0px rgba(lighten($btn-bg, 5%), 1), 0px 4px 6px rgba(0,0,0,.1)
+	transition: all .1s ease
 	font-weight: 300
 	text-transform: uppercase
 	color: $btn-color
@@ -239,10 +239,10 @@ body.right-drawer-open
 	+imt-hover
 		background-color: darken($btn-bg, 5%)
 		border-color: darken($btn-bg, 5%)
-		+box-shadow(0px 4px 0px rgba($btn-bg, 1), 0px 4px 6px rgba(0,0,0,.1))
+		box-shadow: 0px 4px 0px rgba($btn-bg, 1), 0px 4px 6px rgba(0,0,0,.1)
 
 	&:active
-		+box-shadow(0px 3px 0px rgba(lighten($btn-bg, 5%), 1), 0px 3px 3px rgba(0,0,0,.1))
+		box-shadow: 0px 3px 0px rgba(lighten($btn-bg, 5%), 1), 0px 3px 3px rgba(0,0,0,.1)
 		position: relative
 		top: 2px
 
@@ -261,11 +261,14 @@ body.right-drawer-open
 	// color: white
 	color: #999999
 	text-transform: uppercase
-	+transition(background .3s ease, color .3s ease)
+	transition: background .3s ease, color .3s ease
 
 	+imt-hover
 		color: white
 		background: $imt-primary-color
+
+	&.active
+		box-shadow: none
 
 
 
@@ -280,18 +283,18 @@ body.right-drawer-open
 		> *
 			border: 0
 			outline: 0
-			+box-shadow(none)
+			box-shadow: none
 
 		input
 			background: whitesmoke
 			width: 150px
-			+transition(width .3s ease)
+			transition: width .3s ease
 
 			// &:focus
 			// 	width: 150px
 
 .sort-region
-	margin-top: -50px
+	margin-top: 20px
 	padding-right: 25px
 	text-align: right
 
@@ -322,7 +325,7 @@ body.right-drawer-open
 		width: 30px
 		float: left
 		height: 35px
-		+border-radius($raduis 0px 0px $raduis  !important) 
+		border-radius: $raduis 0px 0px $raduis  !important
 
 	.btn-content
 		width: 65px
@@ -330,7 +333,7 @@ body.right-drawer-open
 		position: relative
 		background: $secondary
 		height: 35px
-		+border-radius(0px $raduis $raduis 0px !important)
+		border-radius: 0px $raduis $raduis 0px !important
 		overflow: hidden
 		+imt-hover
 			background: $primary
@@ -342,7 +345,7 @@ body.right-drawer-open
 		height: 100%
 		padding: 8px 3px
 		color: white
-		+border-radius(0px $raduis $raduis 0px !important) 
+		border-radius: 0px $raduis $raduis 0px !important
 		float: left
 		display: block
 		text-decoration: none
@@ -359,12 +362,12 @@ body.right-drawer-open
 		color: white
 		width: 40px
 		background: transparent
-		+border-radius(0px)
+		border-radius: 0px
 		height: 35px
 		font-weight: 300
 		float: left
 		text-align: center
-		+transition(background .3s ease)
+		transition: background .3s ease
 		
 
 	.cross
@@ -374,7 +377,7 @@ body.right-drawer-open
 		height: 35px
 		width: 25px
 		font-weight: 400
-		+transition(background .3s ease)
+		transition: background .3s ease
 		
 		i
 			font-size: 17px
@@ -386,7 +389,7 @@ body.right-drawer-open
 			width: 16px
 			height: 16px
 			margin-top: 4px
-			+transition(all .3s ease)
+			transition: all .3s ease
 			background: #E4C9CD
 			color: $secondary
 
@@ -402,6 +405,25 @@ body.right-drawer-open
 
 .affix
 	top: 70px
+	z-index: 10
+	left: 15px
+	width: 250px
+	box-shadow: none
+
+
+// .side-categories-region
+// 	position: fixed
+// 	top: 100px
+// 	left: 20px
+
+.content-region, .breadcrumb-region	
+	margin-right: 15px
+	margin-left: 15px
+	transition: margin .4s ease
+	// transform: translate3d(0,0,0)
+	@media (min-width: $screen-md-min)
+		// transform: translate3d(250px,0,0)
+		margin-left: 250px
 
 
 

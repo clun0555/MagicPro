@@ -71,6 +71,22 @@
 				</div>
 			</div>
 
+
+			<div class="form-group"  >
+				<label class="col-md-3 control-label" translate >product.edit.featured</label>
+				<div class="col-md-9 form-item product-featured"  >
+
+					<a btn-checkbox class="btn btn-imt-dimmed btn-lg" ng-model="product.featured" > 
+						<span  ng-show="product.featured" ><i class="fa fa-check"></i> {{'product.edit.featured' | translate}} </span>
+						<span  ng-hide="product.featured" > Off </span>
+						<!-- <i ng-hide="product.featured" class="fa fa-square-o"></i> {{'product.edit.featured' | translate}} -->
+						
+					</a>
+					
+					<!-- <input type="checkbox" class="ios-switch green  bigswitch" ng-model="product.featured" ng-class="{ 'active': product.featured }" ><div><div></div></div> -->
+				</div>
+			</div>
+
 			<div class="form-group form-header" > {{'product.edit.header.variants' | translate}} </div>
 			
 			<div class="form-group">
@@ -83,7 +99,7 @@
 							</div>
 						
 						<div class="product-info">							
-							<input type="text" ng-model="design.label" class="design-label form-control" placeholder="{{ ( product.designs.length == 1 ? 'product.edit.design.default.title' : 'product.edit.design.title') | translate }}">						
+							<input type="text" ng-model="design.label" class="design-label form-control" placeholder="{{ 'product.edit.design.title' | translate }}" >						
 						</div>
 						<div  class="delete-button" ng-click="removeDesign(design)">							
 							<i class="fa fa-times"></i>

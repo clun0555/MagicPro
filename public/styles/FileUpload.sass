@@ -172,14 +172,18 @@
 
 .imt-image-wrapper
 	overflow: hidden
-	margin: 10px
+	// margin: 10px
 	.imt-image-placeholder
 
 		width: 100%
+		// height: 100%
 		position: relative
 		height: 0
 		overflow: hidden
 		background: #FAFAFA
+
+		&.loaded
+			background: transparent
 
 		img
 			position: absolute
@@ -192,4 +196,4 @@
 			bottom: 0
 			opacity: 0
 			+transition(opacity .6s)
-			// margin: auto
+			margin: auto

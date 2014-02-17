@@ -27,7 +27,7 @@ function $ViewScrollProvider() {
 
     return function ($element) {
       $timeout(function () {
-        $element[0].scrollIntoView();
+        $element[0].scrollIntoView();        
       }, 0, false);
     };
   }];

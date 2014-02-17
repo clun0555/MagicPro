@@ -8,10 +8,11 @@ define [
 		amount = 12
 		from = amount
 		allProducts = data.products
-		# $scope.products = allProducts
+		# $scope.products = allProducts		
 		$scope.products = allProducts.slice(0, amount)
 		$scope.search = ShopService.search
 		$scope.cart = cart
+		$scope.categories = data.categories
 
 		$scope.quantities = {}
 
@@ -95,8 +96,8 @@ define [
 			$scope.focusedDesign = null
 			return 
 
-		$scope.goToProduct = (product) ->
-			$state.go "shop.product", { category: product.type.category.slug, type: product.type.slug, product: product.slug}
+		$scope.goToProduct = (product, state = "shop.product") ->
+			$state.go state, { category: product.type.category.slug, type: product.type.slug, product: product.slug}
 
 		$scope.$on "fileDrop", (event, $files) ->
 			$scope.$parent.files = $files

@@ -2118,6 +2118,7 @@ function $ViewScrollProvider() {
     return function ($element) {
       $timeout(function () {
         $element[0].scrollIntoView();
+        scrollBy(0, -70);
       }, 0, false);
     };
   }];

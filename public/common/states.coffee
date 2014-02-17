@@ -13,7 +13,7 @@ define [
 
 			$urlRouterProvider.when "/",  ($match, $stateParams, SessionService, $state) ->
 				# alert "controller2"
-				homeState = "shop.products"
+				homeState = "home"
 					# if not SessionService.isAuthentificated()
 					# 	"login"
 					# else if SessionService.user()?.status is "validated"
@@ -41,7 +41,7 @@ define [
 									ShopService.getCategories()
 
 						"":
-							template: "<ui-view />"
+							template: "<div ui-view autoscroll='false'></div>"
 						
 
 				.state "index",

@@ -26,9 +26,10 @@ define [
 	"views/views"
 	"ng-infinite-scroll"
 
-
 	"app/shop/index"
 	"app/admin/index"
+	"app/blog/index"
+
 ], (angular) ->
 	
 	angular.module("app", [
@@ -55,8 +56,10 @@ define [
 		# featues dependencies
 		"app.shop"
 		"app.admin"
+		"app.blog"
 
 		# all templates
 		"templates.app"
 
-	]).value('$anchorScroll', angular.noop) # prevents routes to scroll at the top
+	])
+	# .value('$anchorScroll', angular.noop) # prevents routes to scroll at the top

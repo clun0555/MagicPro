@@ -29,8 +29,8 @@ define [
 		$translateProvider.useMessageFormatInterpolation()
 		$translateProvider.preferredLanguage 'en'
 
-		$uiViewScrollProvider.useAnchorScroll()
-
+		# $uiViewScrollProvider.useAnchorScroll()
+#
 		# AuthentificationServiceProvider.setName "rom"
 
 
@@ -42,6 +42,7 @@ define [
 	app.run ($rootScope, $state,  $stateParams, $injector, SessionService, $urlRouter ) ->
 
 		$rootScope.info = cartVisible: false
+		$rootScope.scrollPosition = 0
 
 		
 		$rootScope.$state = $state		
@@ -80,7 +81,8 @@ define [
 
 		# Enforce security when state changes
 		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, $urlRouter) ->
-			
+			$rootScope.$nextState = toState
+			$rootScope.nextState = toState
 			
 			unless SessionService.isSessionFetched()
 				# user state is unknown, ask server if there is an active user				

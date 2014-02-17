@@ -66,15 +66,26 @@ module.exports = (grunt) ->
 			
 			
 		# compiles sass files unsing compass mixins
-		compass:
+		# compass:
+		# 	dist:
+		# 		options:
+		# 			# sourcemap: true
+		# 			sassDir: "public/styles/"
+		# 			cssDir: "dist/public/styles/"
+		# 			specify: [ "public/styles/main.sass"]
+		# 			# httpPath: "styles/"
+		# 			# environment: 'production'
+
+		sass:
 			dist:
-				options:
-					# sourcemap: true
-					sassDir: "public/styles/"
-					cssDir: "dist/public/styles/"
-					specify: [ "public/styles/main.sass"]
-					# httpPath: "styles/"
-					# environment: 'production'
+				loadPath: "public/styles/"
+				files: {"dist/public/styles/main.css": "public/styles/main.sass"}
+						
+		autoprefixer:
+			dist:
+				src: "dist/public/styles/main.css"
+				dest: "dist/public/styles/main.css"				
+						
 
 		# default watch configuration
 		watch:
@@ -89,9 +100,9 @@ module.exports = (grunt) ->
 				tasks: [ "newer:copy:dist"]
 				options: event: ['added', 'changed']
 
-			compass:
+			sass:
 				files: "**/*.sass"
-				tasks: "compass:dist"
+				tasks: "styles"
 				options: event: ['added', 'changed']
 
 			resources:
@@ -155,13 +166,6 @@ module.exports = (grunt) ->
 					dest: "./dist/public/index.html"
 				]
 
-		mocha: 
-			# Test all files ending in .html anywhere inside the test directory.
-			browser: ['dist/test/**/*.html'],
-			options: 
-				reporter: 'Spec',
-				run: true
-
 		nodemon: 
 			dev: 
 				options: 
@@ -197,11 +201,12 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-contrib-coffee"
 	grunt.loadNpmTasks "grunt-contrib-clean"
 	grunt.loadNpmTasks "grunt-contrib-copy"
-	grunt.loadNpmTasks "grunt-contrib-compass"
+	# grunt.loadNpmTasks "grunt-contrib-compass"
+	grunt.loadNpmTasks "grunt-contrib-sass"
+	grunt.loadNpmTasks "grunt-autoprefixer"
 	grunt.loadNpmTasks "grunt-shell"
 	grunt.loadNpmTasks "grunt-contrib-requirejs"
 	grunt.loadNpmTasks "grunt-replace"
-	grunt.loadNpmTasks "grunt-mocha"	
 	grunt.loadNpmTasks "grunt-newer"
 	grunt.loadNpmTasks "grunt-concurrent"
 	grunt.loadNpmTasks "grunt-nodemon"
@@ -211,7 +216,7 @@ module.exports = (grunt) ->
 	###### CUSTOM TASKS #####
 
 	# bootstrap / clean project
-	grunt.registerTask "reset", ["clean", "coffee:all", "copy:dist", "compass:dist", "replace:dist", "expose_environment_variables", "html2js:app"]
+	grunt.registerTask "reset", ["clean", "coffee:all", "copy:dist", "styles", "replace:dist", "expose_environment_variables", "html2js:app"]
 
 	# default task when deploying to heroku
 	grunt.registerTask 'heroku', 'build'
@@ -222,8 +227,10 @@ module.exports = (grunt) ->
 	# creates a production build. 
 	grunt.registerTask 'build', ['reset', "requirejs:build"]
 
-	# runs all tests
-	grunt.registerTask 'test', ['mocha']
+	# compile sass files and add vendor prefixes
+	grunt.registerTask 'styles', ['sass', "autoprefixer:dist"]
+
+
 
 	#  watches source files for changes and compiles on the fly
 	# grunt watch # automaticaly registered

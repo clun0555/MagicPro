@@ -89,7 +89,6 @@ define [
 						getPopulatedLocalCartJSON().then (jsonCart) =>
 						
 							SessionService.keep "cart", new Cart().fromJSON(jsonCart)
-							console.log "new cart object"				
 
 							@deferred.resolve cart()
 						

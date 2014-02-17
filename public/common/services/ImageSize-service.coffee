@@ -15,6 +15,21 @@ define [
 				else
 					value.replace /[^0-9]/, ""
 
+		generateResizeQuery: (info) ->
+			switch info.action
+				
+				when "resize"
+					"w="+info.width
+
+				when "square"
+					"s="+info.width
+
+				when "crop"
+					""
+
+
+
+
 		# parses resize query and return a object literal containing input for resizing
 		parseResizeQuery: (query) ->		
 
@@ -63,6 +78,31 @@ define [
 			else if resizeOptions.height? and not resizeOptions.width?
 				resizeOptions.width = (resizeOptions.height * dimension.width) / dimension.height
 
+			resizeOptions.ratio = resizeOptions.height / resizeOptions.width
+
 			resizeOptions
+
+		
+
+		breakpoint: (width) ->
+			breakpoints = [ 200, 400, 600, 800, 1200, 1400, 2600 ]
+			for breakpoint in breakpoints
+				if breakpoint >= width
+					return breakpoint
+
+			return breakpoints[breakpoints.length - 1]
+
+		optimized: (info, currentWidth = window.innerWidth) ->
+			density = window.devicePixelRatio ? 1
+			info.width = @breakpoint(currentWidth * density)
+			info.height = info.width * info.ratio
+			info
+
+
+
+
+
+
+
 
 

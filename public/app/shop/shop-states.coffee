@@ -10,13 +10,23 @@ define [
 			$stateProvider
 
 				.state "order",
-					template: '<div ui-view class="slide" ></div>'
+					template: "<div ui-view autoscroll='true'  ></div>"
 					abstract: true
 					data: security: "validated"					
 					parent: "layout"
 					resolve: 
 						cart: (CartService) ->
 							CartService.get()
+
+				.state "home",
+					url: "/home"
+					templateUrl: "app/shop/views/home.html" 
+					# controller: "CartPreviewController"
+					parent: "order"	
+					controller: "ShopHomeController"
+					resolve: 
+						data: (ShopService) ->
+							ShopService.getAllProducts()
 
 				.state "shop", 
 					url: "/products"
@@ -28,7 +38,7 @@ define [
 				.state "shop.navigator", 
 					abstract: true
 					views: 
-						"side":
+						"side@":
 							templateUrl: "app/shop/views/side_categories.html"
 							controller: "ShopSideCategoriesController"
 							resolve: 
@@ -36,12 +46,13 @@ define [
 									ShopService.getCategories()
 
 						"": 
-							template: "<div ui-view></div>"
-														
+							template: "<div ui-view autoscroll='false'></div>"
+
+			
 				.state "shop.search",
 					parent: "shop.navigator"
 					url: "/search/:searchInput"
-					template: "<div ui-view></div>"
+					template: "<div ui-view autoscroll='false'></div>"
 					resolve:
 						data: ($stateParams, ShopService) ->
 							ShopService.searchProduct($stateParams.searchInput)

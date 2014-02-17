@@ -5,29 +5,34 @@
 		
 			<nav>
 				
-				<ul class="nav navbar-nav navbar-left visible-xs"  ng-if="user">
+				<ul class="nav navbar-nav navbar-left visible-sm visible-xs"  ng-if="user">
 					<li>
 						<a  class="btn left-drawer-toggle drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right "  ng-if="user">
 					
-					<li class="section-link hidden-xs" ng-class="{ 'active': $state.includes('shop') }">
-						<a ui-sref="shop.products"   >Store</a>
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('home') }" >
+						<a ng-click="changeMenu('home')" translate>menu.home</a>
 
 					</li>
-					<li class="section-link hidden-xs" ng-class="{ 'active': $state.includes('about') }" >
-						<a ui-sref="about">About</a>
+
+					<li class="section-link hidden-xs"  ng-class="{ 'active': isCurrentMenu('shop') }">
+						<a ng-click="changeMenu('shop.products')" translate >menu.store</a>
+
+					</li>
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('blog') }" >
+						<a ng-click="changeMenu('blog')" translate>menu.blog</a>
 
 					</li>
 					
-					<li class="section-link hidden-xs" ng-class="{ 'active': $state.includes('admin') }" >
-						<a ui-sref="admin" >Admin</a>
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" >
+						<a ng-click="changeMenu('admin')" ui-sref="admin" translate >menu.admin</a>
 
 					</li>
-					<li class="divider hidden-xs">&nbsp;</li>
+					<li class="divider hidden-sm  hidden-xs">&nbsp;</li>
 
-					<li class="dropdown hidden-xs">
+					<li class="dropdown hidden-sm hidden-xs">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="fa fa-user "></i>
 							{{user.firstname}}
