@@ -2,6 +2,8 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 	background: #555
 
 
+
+
 .no-products
 	margin-top: 30px
 	margin-left: 30px
@@ -19,12 +21,25 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 			.order-way
 				font-weight: 300
 
+.categories-shortcut
+	display: none
+	
+	&.visible
+		display: block
+
+
+	@media (min-width: $screen-md-min)
+		&.visible
+			display: none
+
 .product-navigator
 	// width: auto
 	// height: auto
 	border-radius: 4px
 
 
+	
+			
 	.product-title
 		// min-width: 250px
 		margin-top: 10px
@@ -108,6 +123,9 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 				&.visible .anim-wrapper
 					max-height: 200px
 					opacity: 1
+
+
+
 		
 
 				
