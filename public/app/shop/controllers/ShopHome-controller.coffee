@@ -8,7 +8,7 @@ define [
 		$scope.categories = data.categories
 		$scope.featured = _.filter data.products, (product) -> product.featured
 		$scope.homeImage = { 
-			'path': 'home.jpg'
+			'path': 'home2.jpg'
 			'width': '6999'
 			'height': '3629'
 		}
