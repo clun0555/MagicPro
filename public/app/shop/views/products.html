@@ -11,7 +11,7 @@
 	<div class="row">
 
 		<div class="col-xs-6 col-md-3 mini-block" bindonce="category" ng-repeat="category in categories" ui-sref="shop.productsbycategory({category: category.slug})" >
-			<div imt-src="category.image" imt-size="w=400"></div>
+			<div imt-src="category.image" imt-size="s=400"></div>
 			<div class="category-label" bo-text="category.title"></div>
 		</div>
 
@@ -61,7 +61,7 @@
 						</p>
 							<div class="image-wrapper" >
 								<a ng-click="goToProduct(product)" >									
-									<div imt-src="product.designs[0].image" imt-size="s=300" ng-class="{ 'visible': focusedDesign == null }" ></div>								
+									<div imt-src="product.image" imt-size="s=300" ng-class="{ 'visible': focusedDesign == null }" ></div>								
 								</a>	
 							</div>
 					
