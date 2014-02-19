@@ -8,9 +8,10 @@ define [
 		$scope.categories = data.categories
 		$scope.featured = _.filter data.products, (product) -> product.featured
 		$scope.homeImage = { 
-			'path': 'home2.jpg'
-			'width': '6999'
-			'height': '3629'
+			'path': 'home5.jpg'
+			'width': '2552'
+			'height': '1135'
+
 		}
 
 		$scope.goToProduct = (product, state = "shop.product") ->
