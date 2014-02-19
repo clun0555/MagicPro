@@ -29,38 +29,46 @@
 			h1, h2
 				display: table
 				font-weight: 300
-				padding: 5px
+				padding: 8px
 				
-				color: #555
+				// color: #555
+				color: white
 				margin: 0
+				// background: rgba(10, 10, 10, .2)
 				
 			a
 				margin-top: 10px
 				margin-left: 5px
-				background: rgba(255, 255, 255, .3)
-				border: 2px solid rgba(255, 255, 255, .6)
-				color: #555 
+				background: $imt-primary-color
+				border: 2px solid darken($imt-primary-color, 10%)
+				color: white
 				border-radius: 2px
+
+				+imt-hover
+					background: darken($imt-primary-color, 10%)
+					border: 2px solid $imt-primary-color
 
 			h1
 				font-weight: 400
 				font-size: 1.5em
-				background: transparent !important
+				margin-bottom: 10px
+				// background: transparent !important
 
 			h2
 				font-size: 1.2em
-				background: transparent !important
+				margin-bottom: 10px
+				// background: transparent !important
 
 
 
 			@media (min-width: $screen-sm-min)
 				position: absolute
-				bottom: 30%
+				bottom: 25%
 				left: 7%
-				background: transparent
+				// background: transparent
 
-				h1, h2
-					background: rgba(255, 255, 255, .7)
+				// h1, h2
+				// 	background: rgba(255, 255, 255, .7)
 
 				h1
 					font-size: 2.4em
