@@ -42,13 +42,17 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 			
 	.product-title
 		// min-width: 250px
-		margin-top: 10px
-		margin-bottom: 10px
+		// margin: 10px
+		// margin: 10px
 		white-space: nowrap
 		cursor: pointer
 		// height: 350px
 		z-index: 10
-		padding: 10px
+		padding: 3px 
+		@media (min-width: $screen-sm-min)
+			padding: 15px
+		
+
 
 		&.hover
 			z-index: 11
@@ -62,9 +66,15 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 			border-radius: 0
 			padding: 0px
 			margin-bottom: 0px
+			border: 3px solid whitesmoke
+
+			+imt-desktop-hover
+				border-color: $imt-primary-color					
 
 		.top-info	
 			padding: 0px
+			padding-left: 10px
+			padding-right: 10px
 			text-decoration: initial !important
 			color: #555
 
@@ -74,14 +84,17 @@ body.drag-over .product-title.create-product .thumbnail .image-wrapper
 				overflow: hidden
 				white-space: nowrap
 				line-height: 1.3em
+				font-size: 1.3em
+
 				
 				a
 					color: #555
+					font-size: 1em
 					+imt-hover
 						text-decoration: initial !important
 
 				@media (min-width: $screen-sm-min)
-					font-size: 1.5em
+					font-size: 1.2em
 
 
 

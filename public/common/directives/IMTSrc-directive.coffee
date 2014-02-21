@@ -78,9 +78,7 @@ define [
 					$(element).find("img").bind "load", ->
 						this.style.opacity='1'
 						$(this).parent().addClass('loaded')
-
-					$(element).bind "show", ->
-						alert "show"
+						# alert image.path					
 
 
 							

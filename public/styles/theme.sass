@@ -26,6 +26,19 @@ $border-radius-base: 0
 $border-radius-large: 0
 $border-radius-small: 0
 
+
+@mixin imt-desktop-hover($others:"")
+	
+	@if $others != ""
+		#{$others}
+			@content
+	
+	// only place where :hover speudo element should be used
+	&:hover
+		.no-touch &
+			@content
+	
+
 // smart hover mixin handling touch devices
 // to apply styles to other rules 
 @mixin imt-hover($others:"")

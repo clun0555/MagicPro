@@ -3,10 +3,10 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 product-image">
 			
-			<div class="item-thumbnail" imt-src="design.image || product.image" imt-size="w=400" ng-repeat="design in product.designs" ng-class="{'visible': currentDesign == design}" ></div>
+			<div class="item-thumbnail" imt-src="design.image || product.image" imt-size="w=50" ng-repeat="design in product.designs" ng-class="{'visible': currentDesign == design}" ></div>
 			
 			<div class="item-mini-thumbnails" ng-if="product.designs.length > 1">
-				<div class="item-mini-thumbnail" imt-src="design.image || product.image" imt-size="w=400" ng-repeat="design in product.designs" ng-click="selectDesign(design)" ng-class="{'active': currentDesign == design }"  ></div>
+				<div class="item-mini-thumbnail" imt-src="design.image || product.image" imt-size="w=70" ng-repeat="design in product.designs" ng-click="selectDesign(design)" ng-class="{'active': currentDesign == design }"  ></div>
 			</div>			
 
 			
