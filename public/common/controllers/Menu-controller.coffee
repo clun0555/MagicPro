@@ -41,6 +41,8 @@ define [
 			$scope.$on "user:changed", -> 
 				if $scope.user?
 					CartService.get().then (cart) -> $scope.cart = cart
+				else
+					$scope.cart = null
 
 			# $scope.showCart = ->
 			# 	snapRemote.toggle("right")	

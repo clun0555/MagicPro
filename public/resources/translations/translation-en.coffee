@@ -79,7 +79,10 @@ define ->
 	"menu.loggedin": "Logged in as ${name}"
 	"menu.account": "Account"
 	"menu.logout": "Log out"
+	"menu.login": "Login"
 	"menu.admin": "Admin"
+	"menu.about": "About"
+	"menu.contact": "Contact"
 	"menu.store": "Store"
 	"menu.home": "Home"
 	"menu.blog": "Blog"
@@ -256,7 +259,8 @@ define ->
 	"search.home": "Search"
 	"products.search.noproducts": "Sorry, we could't find any products matching"
 
-
+	### contact ###
+	"contact.title": "Get in Touch"
 
 	### footer ###
 	"footer.developed.by": "Developed by"

@@ -5,12 +5,12 @@
 		
 			<nav>
 				
-				<ul class="nav navbar-nav navbar-left visible-sm visible-xs"  ng-if="user">
+				<ul class="nav navbar-nav navbar-left visible-sm visible-xs" >
 					<li>
 						<a  class="btn left-drawer-toggle drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
 					</li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right "  ng-if="user">
+				<ul class="nav navbar-nav navbar-right "  >
 					
 					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('home') }" >
 						<a ng-click="changeMenu('home')" translate>menu.home</a>
@@ -19,26 +19,33 @@
 
 					<li class="section-link hidden-xs"  ng-class="{ 'active': isCurrentMenu('shop') }">
 						<a ng-click="changeMenu('shop.products')" translate >menu.store</a>
-
 					</li>
-					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('blog') }" >
-						<a ng-click="changeMenu('blog')" translate>menu.blog</a>
 
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('about') }" >
+						<a ng-click="changeMenu('about')" translate>menu.about</a>
+					</li>
+
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('contact') }" >
+						<a ng-click="changeMenu('contact')" translate>menu.contact</a>
 					</li>
 					
-					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" >
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" ng-if="isRole('admin')" >
 						<a ng-click="changeMenu('admin')" ui-sref="admin" translate >menu.admin</a>
 
 					</li>
 					<li class="divider hidden-sm  hidden-xs">&nbsp;</li>
 
-					<li class="dropdown hidden-sm hidden-xs">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<li class="dropdown hidden-sm hidden-xs" >
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-if="user" >
 							<i class="fa fa-user "></i>
 							{{user.firstname}}
 							<i class="fa fa-caret-down"></i>
 						</a>
-						<ul class="dropdown-menu">
+						<a ui-sref="login" data-toggle="dropdown" ng-if="!user" >
+							<i class="fa fa-user "></i>
+							{{ 'menu.login' | translate }}							
+						</a>
+						<ul class="dropdown-menu" ng-if="user">
 							<li><a class="dropdown" ui-sref="account.profile" > <i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} </a></li>
 							<li class="divider"></li>
 							<li class="dropdown-header"></li>

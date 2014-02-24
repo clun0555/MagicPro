@@ -22,11 +22,26 @@ define [
 					url: "/home"
 					templateUrl: "app/shop/views/home.html" 
 					# controller: "CartPreviewController"
-					parent: "order"	
+					parent: "layout"	
+					# parent: "order"	
 					controller: "ShopHomeController"
 					resolve: 
 						data: (ShopService) ->
 							ShopService.getAllProducts()
+
+				.state "contact",
+					url: "/contact"
+					templateUrl: "app/shop/views/contact.html" 					
+					parent: "layout"	
+
+
+				.state "about",
+					url: "/about"
+					templateUrl: "app/shop/views/about.html" 					
+					parent: "layout"	
+					
+					
+					
 
 				.state "shop", 
 					url: "/products"
