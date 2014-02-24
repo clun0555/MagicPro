@@ -1,5 +1,5 @@
 
-<div ng-show="products.length == 0" >
+<div ng-show="products.length == 0 && !isRole('admin')" >
 	<p class="no-products" >
 		{{'products.search.noproducts' | translate}} <b>{{searchQuery}}</b>
 	</p>
