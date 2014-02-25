@@ -50,11 +50,11 @@ define [
 
 		$scope.doSort = (order, asc) ->
 			if order.field is "price"
-				allProducts.sort utils.sortBy('price', order.asc, parseFloat)
+				allProducts.sort utils.sortBySorter('price', order.asc, parseFloat)
 			else if order.field is "title"
-				allProducts.sort utils.sortBy('title', order.asc, (title) -> title.toUpperCase())
+				allProducts.sort utils.sortBySorter('title', order.asc, (title) -> title.toUpperCase())
 			else if order.field is "category"
-				allProducts.sort utils.sortBy('type', order.asc, (type) -> type.category.title.toUpperCase())
+				allProducts.sort utils.sortBySorter('type', order.asc, (type) -> type.category.title.toUpperCase())
 			
 			$scope.products = allProducts.slice(0, $scope.products.length)
 
