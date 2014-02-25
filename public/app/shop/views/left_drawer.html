@@ -9,7 +9,7 @@
 
 
 	
-	<ul class="side-categories menus" >
+	<ul class="side-categories menus"  ng-if="user" >
 		<li class="header">
 			<a class="section-link" translate>menu.store</a>
 		</li>
@@ -40,22 +40,34 @@
 			<a ui-sref="home" translate>menu.home</a>
 		</li>
 
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('shop') }" ng-if="!user" >
+			<a ui-sref="shop.products" translate>menu.store</a>
+		</li>
+
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
 			<a ui-sref="about" translate>menu.about</a>
 		</li>
+
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('contact') }" >
+			<a ui-sref="contact" translate>menu.contact</a>
+		</li>
 		
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" >
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" ng-if="isRole('admin')" >
 			<a ui-sref="admin" translate>menu.admin</a>
 		</li>
 
 	
-		<li class="menu">
+		<li class="menu" ng-if="user" >
 			<a ui-sref="account.profile" > 
 				<i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} 
 			</a>
 		</li>
-		<li class="menu">
+		<li class="menu" ng-if="user">
 			<a ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a>
+		</li>
+
+		<li class="menu" ng-if="!user">
+			<a ui-sref="login" > </i>{{'menu.login' | translate}}</a>
 		</li>
 
 	</ul>
