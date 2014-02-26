@@ -317,6 +317,23 @@ body.right-drawer-open
 	width: 95px
 	overflow: hidden
 
+	&.display-inner
+		width: 130px
+
+		.btn-content
+			width: 100px
+
+		.cart-inner
+			display: table-cell
+			width: 30px
+			padding-top: 8px
+			letter-spacing: nowrap
+			color: white
+			font-size: 1em
+
+		.cross
+			padding-left: 6px
+			padding-top: 3px
 	*
 		border: none
 
@@ -374,12 +391,13 @@ body.right-drawer-open
 
 	.cross
 		background: transparent
-		color: +rgba(white, .3)						
+		color: +rgba(white, .5)						
 		padding: 6px 1px
 		height: 35px
 		width: 25px
 		font-weight: 400
 		transition: background .3s ease
+		display: table-cell
 		
 		i
 			font-size: 17px
@@ -392,7 +410,7 @@ body.right-drawer-open
 			height: 16px
 			margin-top: 4px
 			transition: all .3s ease
-			background: #E4C9CD
+			background: rgba(255, 255, 255, .7)
 			color: $secondary
 
 		+imt-hover

@@ -35,7 +35,7 @@
 							{{ composition.product.price | currency:'$' }}
 						</div>
 
-						<div class="btn-group cart-btn-group">
+						<div class="btn-group cart-btn-group display-inner">
 							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
 							<span class="btn-content">
 								<!-- <a class="btn-clicker" ng-hide="composition.quantity > 0 || isFocused"   class="btn btn-default " ng-click="reAdd(composition)" >
@@ -51,6 +51,10 @@
 									ng-focus="isFocused = true; selectDesign(design)"
 									ng-blur="isFocused = false" 
 								>
+
+								<span class="cart-inner">
+									&times; {{composition.product.inner}}
+								</span>
 								<!-- ng-show="composition.quantity > 0 || isFocused" -->
 								<span ng-click="remove(composition)" class="btn btn-default cross"  >
 										<i>&times; </i>	
