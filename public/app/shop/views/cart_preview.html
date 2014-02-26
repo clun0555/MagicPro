@@ -1,12 +1,12 @@
 
 <div class="cart-detail">
 
-	<div class="thanks" ng-show="saved">
+	<div class="thanks" ng-show="saved"  >
 		<h1 translate>preview.thank</h1>
 		<p translate>preview.message</p>
-		<a class="btn btn-primary home btn-lg " ui-sref="index" translate>breadcrumb.home</a>
+		<a class="btn btn-imt-dimmed home btn-lg " ui-sref="index" translate>breadcrumb.home</a>
 	</div>
-	<div class="cart-title">
+	<div class="cart-title" ng-show="!saved && !cart.isEmpty()">
 	
 		<div class="container">
 			
@@ -65,7 +65,7 @@
 		</div>
 
 	</div>
-	<div class="cart-summary">
+	<div class="cart-summary" ng-show="!saved && !cart.isEmpty()">
 	
 		<div class="container">
 			
@@ -74,7 +74,7 @@
 					<div class="cart-price">
 						{{cart.price() | currency:'$'}}				
 					</div> 
-					<a class="btn btn-imt-primary three-d checkout" ui-sref="checkout" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
+					<a class="btn btn-imt-primary three-d checkout" ng-click="submit()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
 				
 			</div>
 
