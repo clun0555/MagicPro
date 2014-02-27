@@ -22,21 +22,21 @@ define [
 			{
 				title: "Hello"
 				image: 
-					'path': 'carousel-1.jpg'
+					'path': 'MagicPro Slide1.jpg'
 					'width': '941'
 					'height': '376'
 			},
 			{
 				title: "Hello2"
 				image: 
-					'path': 'carousel-2.jpg'
+					'path': 'MagicPro Slide2.jpg'
 					'width': '941'
 					'height': '376'
 			},
 			{
 				title: "Hello3"
 				image: 
-					'path': 'carousel-3.jpg'
+					'path': 'MagicPro Slide3.jpg'
 					'width': '941'
 					'height': '376'
 			}
