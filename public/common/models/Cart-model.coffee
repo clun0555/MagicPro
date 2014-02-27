@@ -54,7 +54,7 @@ define [
 
 
 		isEmpty: ->
-			@bundles.lenght == 0
+			@bundles.length == 0
 
 		reset: ->
 			@bundles = []

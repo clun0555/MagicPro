@@ -6,21 +6,20 @@
 		<p translate>preview.message</p>
 		<a class="btn btn-imt-dimmed home btn-lg " ui-sref="index" translate>breadcrumb.home</a>
 	</div>
-	<div class="cart-title" ng-show="!saved && !cart.isEmpty()">
-	
-		<div class="container">
-			
-			<div class="row">								
-				<h1 ><i class="icon icon-cart"></i> {{ 'cart.title' | translate }}</h1>
-			</div>
 
-		</div>
+	<div class="empty" ng-show="!saved && cart.isEmpty()"  >
+		<h1 translate>cart.title</h1>
+		<p translate>preview.empty.message</p>
+		<a class="btn btn-imt-dimmed home btn-lg " ui-sref="index" translate>preview.continue.shopping</a>
 	</div>
+	
 	<div ng-show="!saved && !cart.isEmpty()" class="cart-items row">
 
-		<div>
+		<h1 ><i class="icon icon-cart"></i> {{ 'cart.title' | translate }}</h1>
 
-			<div class="cart-item slide col-lg-2 col-sm-3 col-xs-6 " ng-repeat="composition in cart.compositions()" ng-class="{ 'removed': !composition.quantity }" >
+		<div class="items">
+
+			<div class="cart-item slide col-xs-12" ng-repeat="composition in cart.compositions()" ng-class="{ 'removed': !composition.quantity }" >
 					
 					<div class="product-image" imt-src="composition.design.image || composition.product.image" imt-size="s=400"></div>
 
@@ -68,22 +67,14 @@
 			</div>
 		</div>
 
-	</div>
-	<div class="cart-summary" ng-show="!saved && !cart.isEmpty()">
-	
-		<div class="container">
-			
-			<div class="row">				
-				
-					<div class="cart-price">
-						{{cart.price() | currency:'$'}}				
-					</div> 
-					<a class="btn btn-imt-primary three-d checkout" ng-click="submit()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a>
-				
-			</div>
-
+		<div class="cart-price">
+			{{cart.price() | currency:'$'}}				
+		</div>
+		<div class="buttons">
+			<a class="btn btn-lg btn-imt-primary three-d checkout" ng-click="submit()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a> 
 		</div>
 	</div>
+	
 </div>
 
 

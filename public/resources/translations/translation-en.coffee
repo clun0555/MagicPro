@@ -222,6 +222,8 @@ define ->
 	"preview.back": "Back"
 	"preview.submit": "Submit"
 	"preview.delete": "delete"
+	"preview.empty.message": "Looks like your cart is empty"
+	"preview.continue.shopping": "Continue shopping..."
 
 	### product ###
 	"product.many": "HOW MANY?"
