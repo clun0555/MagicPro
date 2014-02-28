@@ -65,6 +65,14 @@ define [
 			quantity = $scope.quantities[product._id][design._id]
 			CartService.update product, design, quantity
 
+		$scope.addToCart = (product, design) ->
+			quantity = $scope.quantities[product._id][design._id] = 1
+			CartService.update product, design, quantity
+
+		$scope.removeFromCart = (product, design) ->
+			quantity = $scope.quantities[product._id][design._id] = 0
+			CartService.update product, design, quantity
+
 		$scope.navigateToProduct = (product) ->
 			if $scope.hover is product
 				$state.go 'shop.product', { category: product.type.category.slug, type: product.type.slug, product: product.slug}				
@@ -99,6 +107,19 @@ define [
 		$scope.goToProduct = (product, state = "shop.product") ->
 			$state.go state, { category: product.type.category.slug, type: product.type.slug, product: product.slug}
 
+
+		# $scope.updateQuantity = (design) ->			
+		# 	quantity = $scope.quantities[design._id]
+		# 	CartService.update $scope.product, design, quantity
+
+		# $scope.addToCart  = (product, design) ->
+		# 	$scope.quantities[design._id] = 1
+		# 	$scope.updateQuantity design
+
+		# $scope.removeFromCart  = (design) ->
+		# 	$scope.quantities[design._id] = 0
+		# 	$scope.updateQuantity design
+		
 		$scope.$on "fileDrop", (event, $files) ->
 			$scope.$parent.files = $files
 			$state.go "shop.createproduct", { category: product.type.category.slug, type: product.type.slug, product: product.slug}
