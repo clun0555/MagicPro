@@ -1,5 +1,5 @@
 
-.menu-region.navbar.navbar-default 
+.menu-region.navbar.navbar-default
 	background: rgba(255, 255, 255, .9)
 	border-bottom: 0
 		
@@ -8,7 +8,7 @@
 		transform: scale(1) translate3d(0px, 0px, 0px)
 
 
-	body.scroll-at-top &.navbar.navbar-default 
+//	body.scroll-at-top &.navbar.navbar-default
 		background: rgba(255, 255, 255, 0)
 	
 
@@ -127,6 +127,10 @@
 
 
 	@media (min-width: $screen-sm-min)
+
+		body.scroll-at-top.home-state &.navbar.navbar-default
+			&.navbar
+				min-height: 85px
 
 		nav
 			ul
