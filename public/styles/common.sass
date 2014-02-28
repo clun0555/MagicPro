@@ -17,6 +17,15 @@ body
 	background-size: 900px 100%
 	background-repeat: repeat
 
+//ribon background
+.ribbon-vertical
+	@media (min-width: $screen-sm-min)
+		background: url(../resources/img/ribbon3.png)
+		height: 80%
+		position: absolute
+		margin-left: 50px
+		width: 250px
+
 #main-region	
 	padding-bottom: 30px
 	min-height: 500px
@@ -96,7 +105,8 @@ ul.nav-tabs
 	li
 		border-top: 3px solid transparent
 
-		
+	a
+		background-color: wheat
 			
 		&.active
 			// border-top: 3px solid $imt-primary-color !important

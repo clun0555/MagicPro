@@ -17,7 +17,7 @@ define [
 					<div  class="imt-image-placeholder">
 						<img 
 							ng-src="{{imageSrc}}"														
-						/>						
+						/>
 					</div>
 				"""
 				# can help debug image size breakpoints
