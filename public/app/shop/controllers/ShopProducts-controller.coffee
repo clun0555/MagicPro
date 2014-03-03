@@ -61,7 +61,16 @@ define [
 			$scope.currentOrder = order
 			SessionService.storeLocal "order", order
 
-		$scope.updateQuantity = (product, design) ->
+		$scope.focusCartButton = (product, design, currentScope) ->
+			currentScope.value = $scope.quantities[product._id][design._id]
+			$scope.quantities[product._id][design._id] = ''
+
+		$scope.blurCartButton = (product, design, currentScope) ->
+			if $scope.quantities[product._id][design._id] == ''
+				$scope.quantities[product._id][design._id] = currentScope.value
+
+
+		$scope.updateQuantity = (product, design, value, currentScope) ->
 			quantity = $scope.quantities[product._id][design._id]
 			CartService.update product, design, quantity
 

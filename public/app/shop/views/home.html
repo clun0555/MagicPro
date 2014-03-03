@@ -1,38 +1,7 @@
-<div class="row home">
+<div class=" home">
 	
-	<div class="main-block-carousel col-xs-12">
-		<!-- <img class="responsive-image" src="/resources/img/main-image.jpg" > -->
-		<!-- <div imt-src="homeImage" imt-size="w=400"  ></div>
-		<div class="flexible-caption">
-			<h1>Party, Giftware and Household products</h1>
-			<h2> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </h2>
-			<a ui-sref="shop.products" class="btn btn-lg btn-imt-dimmed three-d">Shop Now <i class="fa fa-caret-right"></i> </a>
-		</div> -->
-	
-<!-- 
-		<carousel interval="5000">
-	      <slide ng-repeat="slide in slides" active="slide.active">
-	        <div imt-src="slide.image" imt-size="w=940"></div>
-	        <div class="carousel-caption">
-	          <h4>Slide {{$index}}</h4>
-	          <p>{{slide.titile}}</p>
-	        </div>
-	      </slide>
-	    </carousel>
- -->
-
-
- 		<!-- <div  class="car">
-	      <div class="car-slide" ng-repeat="slide in slides" ng-class="{'active': $parent.currentSlide == slide}">
-	        <div imt-src="slide.image" imt-size="w=940" class="car-image"></div>
-	        <div class="car-caption">
-	          <h4>Slide {{$index}}</h4>
-	          <p>{{slide.titile}}</p>
-	        </div>
-	      </div>
-
-
-	    </div> -->
+	<div class="main-block-carousel row">
+		
 		<div  class="car">
 			<div imt-src="slide.image" imt-size="w=940" class="car-image" ng-repeat="slide in slides" ng-class="{'active': $parent.currentSlide == slide}">
 
@@ -43,7 +12,7 @@
 				<a ui-sref="shop.products" class="btn btn-lg btn-imt-dimmed three-d">Apply Now <i class="fa fa-caret-right"></i> </a>
 			</div>
 		</div>
-	    <!-- <a ng-click="$parent.currentSlide = slide" ng-repeat="slide in slides">slide.title</a> -->
+
 
 
 	</div>

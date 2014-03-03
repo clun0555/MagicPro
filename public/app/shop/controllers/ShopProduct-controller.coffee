@@ -27,3 +27,11 @@ define [
 		$scope.removeFromCart  = (design) ->
 			$scope.quantities[design._id] = 0
 			$scope.updateQuantity design
+
+		$scope.focusCartButton = (product, design, currentScope) ->
+			currentScope.value = $scope.quantities[design._id]
+			$scope.quantities[design._id] = ''
+
+		$scope.blurCartButton = (product, design, currentScope) ->
+			if $scope.quantities[design._id] == ''
+				$scope.quantities[design._id] = currentScope.value

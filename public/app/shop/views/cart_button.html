@@ -11,7 +11,7 @@
 			ng-model="quantities[product._id][product.designs[0]._id]" 
 			ng-change="updateQuantity(product, product.designs[0])" 
 			ng-focus="isFocused = true; selectDesign(product.designs[0])"
-			ng-blur="isFocused = false"			 			
+			ng-blur="isFocused = false; "			 			
 			ng-click="focusOnInput()"
 		>
 

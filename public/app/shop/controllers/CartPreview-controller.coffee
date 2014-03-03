@@ -26,3 +26,11 @@ define [
 
 		$scope.updateQuantity = (composition) ->
 			CartService.update composition.product, composition.design, composition.quantity
+
+		$scope.focusCartButton = (composition, currentScope) ->
+			currentScope.value = composition.quantity
+			composition.quantity = ''
+
+		$scope.blurCartButton = (composition, currentScope) ->
+			if composition.quantity == ''
+				composition.quantity = currentScope.value

@@ -19,7 +19,7 @@
 
 		<div class="items">
 
-			<div class="cart-item slide col-xs-12" ng-repeat="composition in cart.compositions()" ng-class="{ 'removed': !composition.quantity }" >
+			<div class="cart-item slide col-xs-12" ng-repeat="composition in cart.compositions()" ng-class="{ 'removed': !composition.quantity && !isFocused }" >
 					
 					<div class="product-image" imt-src="composition.design.image || composition.product.image" imt-size="s=400"></div>
 
@@ -53,8 +53,8 @@
 									
 									ng-model="composition.quantity"
 									ng-change="updateQuantity(composition)"
-									ng-focus="isFocused = true; selectDesign(design)"
-									ng-blur="isFocused = false" 
+									ng-focus="isFocused = true; focusCartButton(composition, this); selectDesign(design)"
+									ng-blur="isFocused = false; blurCartButton(composition, this)" 
 									onClick="this.select()"
 								>
 
