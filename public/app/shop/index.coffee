@@ -10,4 +10,5 @@ define [
 	"./controllers/ShopCategoryChooser-controller"
 	"./controllers/ShopSideCategories-controller"
 	"./controllers/ShopHome-controller"
+	"./directives/IMTCartButton-directive"
 ], ->

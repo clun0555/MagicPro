@@ -3,7 +3,7 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller "ShopSideCategoriesController", ($scope, data, ShopService, $state, SessionService) ->						
+	shop.controller "ShopSideCategoriesController", ($scope, data, ShopService, $state, SessionService, CartService) ->						
 		
 		$scope.isCategoryActive = (category) ->
 			# return true if $scope.selectedCategory is category and $scope.selectedType == null
