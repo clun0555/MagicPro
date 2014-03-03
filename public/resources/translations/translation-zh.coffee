@@ -95,8 +95,9 @@ define ->
 	"productnavigator.order.price": "價錢"
 	"productnavigator.order.title": "名稱"
 	"productnavigator.order.category": "類別"
-	"productnavigator.order.ascending": "大致小"
-	"productnavigator.order.descending": "小致大"
+	"productnavigator.order.ascending": "小致大"
+	"productnavigator.order.descending": "大致小"
+	"productnavigator.show.colors": "顯示所有顏色"
 
 	### adminsidebar ###
 	"adminsidebar.users": "用戶"
