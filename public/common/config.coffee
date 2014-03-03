@@ -72,10 +72,10 @@ define [
 		document.documentElement.className += " " + touchClass		
 
 
-		document.addEventListener 'touchmove', ((e) -> 
-			if $('body').hasClass("drawer-active")
-				e.preventDefault()
-		), false					
+		# document.addEventListener 'touchmove', ((e) -> 
+		# 	if $('body').hasClass("drawer-active")
+		# 		e.preventDefault()
+		# ), false					
 
 	
 

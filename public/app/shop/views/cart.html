@@ -8,24 +8,32 @@
 		
 		<li class="cart-item slide" ng-repeat="composition in cart.compositions()" ui-sref="shop.product({ category: composition.product.type.category.slug, type: composition.product.type.slug, product: composition.product.slug})">
 				
-				<span class="product-title">{{ composition.product.title }}</span> 
+				<div class="product-image" imt-src="composition.design.image || composition.product.image" imt-size="s=50"></div>
 
-				<span class="design-title" >/ {{ composition.design.label }}</span>
+				<span class="product-title">{{ composition.product.title }}</span> <br > 
+
+				<span class="design-title" >{{ composition.design.label }}</span>
 				
-				<span class="bundle-quantity">{{ composition.quantity }} </span>
+				<span class="bundle-quantity">{{ composition.quantity }} &times; {{composition.product.inner}} </span>
 				
 		</li>
 
 
 	</ul>	
-	
-	<div class="cart-summary" ng-click="edit()" >
-		<span class="cart-price"> {{ cart.price() | currency:"$" }}</span>		
-	</div>
 
-	<div ng-show=" cart.quantity() > 0 " class="cart-buttons">
-		<!-- <a class="btn btn-imt-info three-d edit" ng-click="edit()" >  {{'cart.edit' | translate}}</a> -->
-		<a class="btn btn-imt-primary three-d checkout" ng-click="edit()"  > <i class="fa fa-check"></i> {{'cart.preview' | translate}}</a>
+	<div class="cart-bottom">
+
+		<div class="cart-summary" ng-click="edit()" >
+			<span class="cart-price"> {{ cart.price() | currency:"$" }}</span>		
+		</div>
+
+		<div ng-show=" cart.quantity() > 0 " class="cart-buttons">
+			<!-- <a class="btn btn-imt-info three-d edit" ng-click="edit()" >  {{'cart.edit' | translate}}</a> -->
+			<a class="btn btn-imt-primary three-d checkout" ng-click="edit()"  > <i class="fa fa-check"></i> {{'cart.preview' | translate}}</a>
+		</div>
+	
+		
 	</div>
+	
 	
 </div>

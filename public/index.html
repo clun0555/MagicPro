@@ -19,8 +19,8 @@
 	<body imt-scroll-position="scrollPosition" ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible, 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible, 'scroll-at-top': scrollPosition <= 0, 'home-state':  $state.includes('home')}" >
 		<div class="content-slide-overlay content-slide" ng-click="hideDrawers()" ></div>
 
-		<div class="drawer right-drawer" ng-class="{ 'active': info.cartVisible }">
-			<div ui-view="cart-drawer" autoscroll="false" ></div>
+		<div class="drawer right-drawer" >
+			<div ui-view="cart-drawer" autoscroll="false" class="cart-drawer" ></div>
 		</div>
 		
 		<div class="drawer left-drawer" >
