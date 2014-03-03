@@ -98,6 +98,7 @@ define ->
 	"productnavigator.order.ascending": "ascending"
 	"productnavigator.order.descending": "descending"
 	"productnavigator.show.colors": "show all colors"
+	"productnavigator.product.itemcode": "Item code"
 
 
 	### users ###

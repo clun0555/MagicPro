@@ -14,8 +14,9 @@
 		<div class="col-xs-12 col-sm-6" >
 			<div class="bundle-container">
 				<h1>{{ product.title}}</h1>
+				<h3>{{ product.identifier}}</h3>
 				<p class="product-ref-price">
-					<span class="product-ref" >{{ product.identifier }} | inner: {{  product.inner }} | </span> 
+					<span class="product-ref" >inner: {{  product.inner }} | </span>
 					
 					<span class="product-price" >{{  product.price | currency:"$" }}</span> 
 					<span ng-show="isRole('admin')" >

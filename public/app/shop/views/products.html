@@ -50,7 +50,11 @@
 					<div class="top-info" >
 						<h4  ><a  ng-click="goToProduct(product)" bo-text="product.title" ></a></h4>
 						<p>
-							<!-- <span class="ref">{{ product.identifier }}</span> |  -->
+							<span class="identifier-title" translate>productnavigator.product.itemcode</span>:
+							<span class="identifier">{{product.identifier}}</span>
+						</p>
+
+						<p>
 							<span class="price" bo-text="product.price | currency:'$'" ></span>	
 							<span bo-show="isRole('admin')">
 							

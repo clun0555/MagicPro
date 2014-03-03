@@ -98,6 +98,7 @@ define ->
 	"productnavigator.order.ascending": "小致大"
 	"productnavigator.order.descending": "大致小"
 	"productnavigator.show.colors": "顯示所有顏色"
+	"productnavigator.product.itemcode": "貨號"
 
 	### adminsidebar ###
 	"adminsidebar.users": "用戶"
