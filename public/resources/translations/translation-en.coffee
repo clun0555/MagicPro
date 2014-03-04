@@ -246,6 +246,7 @@ define ->
 	"product.edit.featured": "Featured"
 	"product.edit.header.general": "General information"
 	"product.edit.design.title": "Title"
+	"product.edit.design.identifier": "id"
 	"product.edit.design.default.title": "Default"
 	"product.edit.description": "Description"
 	"product.edit.uploading": "Uploading..."
