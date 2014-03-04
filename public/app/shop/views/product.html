@@ -42,8 +42,8 @@
 									ng-show="quantities[design._id] > 0 || isFocused" 
 									ng-model="quantities[design._id]" 
 									ng-change="updateQuantity(design)" 
-									ng-focus="isFocused = true; focusCartButton(product, product.designs[0], this); selectDesign(design)"
-									ng-blur="isFocused = false; blurCartButton(product, product.designs[0], this)" 									
+									ng-focus="isFocused = true; focusCartButton(product, design, this); selectDesign(design)"
+									ng-blur="isFocused = false; blurCartButton(product, design, this)" 									
 								>
 
 								<span class="cart-inner">
