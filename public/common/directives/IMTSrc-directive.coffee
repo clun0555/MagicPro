@@ -16,7 +16,8 @@ define [
 				"""
 					<div  class="imt-image-placeholder">
 						<img 
-							ng-src="{{imageSrc}}"														
+							ng-src="{{imageSrc}}"
+							title="{{imageTitle}}"														
 						/>
 					</div>
 				"""
@@ -59,6 +60,7 @@ define [
 				$(element).addClass "imt-image-wrapper"
 				image = scope.$eval(attrs.imtSrc)
 				scope.size = attrs.imtSize
+				scope.imageTitle = image.name ? ''
 
 				if image?
 					sizeInfo = ImageSizeService.getResizeInput(scope.size, image)
