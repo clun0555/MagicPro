@@ -1,8 +1,12 @@
 .product-detail-view
 	color: #555555
+	margin-top: 20px
+	background: rgba(255, 255, 255, .7)
+	padding: 5px
 
 	h1
 		font-weight: 200
+
 	.product-image
 		position: relative
 
@@ -23,7 +27,9 @@
 	
 	.item-mini-thumbnails
 		width: 100%
+		display: none
 		+clearfix()
+
 		.item-mini-thumbnail
 			margin: 4px
 			float: left
@@ -59,27 +65,41 @@
 
 	.bundle-container
 
-		margin: 0 25px
+		margin: 0
 		// display: table
 	
 		.designs
+			// padding-top: 5px
+
+			// background: rgba(255, 255, 255, .7)
 
 			.design:not(.single-design)
+				height: 50px
 				padding: 10px
-				width: 250px
+				width: 100%
+				max-width: 290px
 				margin-top: 3px
 				+clearfix()
 				border-left: 4px solid transparent
 				+transition(all .5s ease)
 				cursor: pointer
 				position: relative
+				padding-left: 55px
 				// display: table
 
 				// &:nth-child(even)
 
 				&.active, +imt-hover
 					border-color: $imt-primary-color
-					background: whitesmoke
+					background: white
+
+				.design-image
+					width: 50px
+					height: 50px
+					position: absolute
+					top: 0
+					left: 0
+
 
 				.design-label
 					width: 126px
@@ -89,15 +109,39 @@
 					margin-top: auto
 					margin-bottom: auto
 
+
+
 				.cart-btn-group
 					position: absolute
-					top: 10px
+					top: 7px
 					right: 10px
 					// float: right
 
 			.design.single-design
 				.design-label
 					display: none
+
+	@media (min-width: $screen-xs-min)
+
+		.bundle-container
+
+			margin: 0 25px
+		
+			.designs
+
+				.design:not(.single-design)
+					padding-left: 10px
+
+					.design-image
+						display: none
+
+		.item-mini-thumbnails
+			display: block
+
+
+
+
+
 							
 
 						

@@ -29,6 +29,9 @@
 				<div class="designs">
 					
 					<div ng-click="selectDesign(design)" ng-repeat="design in product.designs" class="design" ng-class="{'active': currentDesign == design, 'single-design': product.designs.length == 1}">
+						
+						<div ng-if="product.designs.length > 1" class="design-image" imt-src="design.image || product.image" imt-size="s=50"></div>	
+
 						<span class="design-label">{{design.label}}</span>
 						<div class="btn-group cart-btn-group display-inner">
 							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
@@ -62,59 +65,7 @@
 			</div>
 			
 
-		<!-- 	<table>
-				<thead>
-					<tr>
-						<th colspan="2"></th>
-						<th class="design-count" translate>product.many</th>
-						<th class="design-count" translate>product.inner</th>
-					</tr>
-				</thead>
-				<tbody  >
-					
-					<tr ng-repeat="design in product.designs">
-						<td class="design-thumbnail">
-							<div imt-src="design.image || product.image" imt-size="s=75" />
-						</td>
-						<td class="design-info">
-							<span class="design-label">{{  design.label || product.title }}</span>
-							<span class="design-id" >({{  design.identifier || product.identifier }})</span> 
-							
-						</td>
-						<td class="design-count">
-							<input
-								type="number"
-								min="0"
-								max="9999"
-								ng-maxlength="4"
-								class="hide-placeholder-onblur"
-								placeholder="0" ng-change="updateQuantity(design)" ng-model="quantities[design._id]" >
-						</td>
-						<td class="inner" >
-							<span>&times; {{  product.inner }}</span>
-						</td>
-					</tr>
-					
-				</tbody>
-				<tfoot>
-						<tr>
-							<td colspan="2"></td>
-							<td class="bundle-summary-region" colspan="2" >
-								<div class="slide product-detail-bundle-summary">
-									<span class="total-quantity" > {{ cart.pieces(product) }}
-										<span class="piece-unit" translate translate-values="{ amount: {{cart.pieces(product)}} }" > 
-											general.unit.pieces
-										</span> |
-									</span>
-									<span class="total-price">{{cart.price(product) | currency:"$" }}</span>
-									
-								</div>
-
-							</td>
-						</tr>
-				</tfoot>
-			</table> -->
-			
+		
 		</div>
 	</div>
 </div>
