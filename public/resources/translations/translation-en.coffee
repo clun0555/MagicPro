@@ -5,6 +5,12 @@ define ->
 	"locale.label": "English"
 
 
+	## Home ##
+	"home.title1": "Party, Giftware and Household products"
+	"home.title2": "Australia's finest Giftware/Partyware supplier. we trade in large quantities so we only deal with wholesalers, distributors and retailers"
+	"home.apply": "Apply Now"
+	"home.order": "Order Now"
+
 	## general ##
 	"general.unit.pieces": "{amount, plural, one{piece} other{pieces}}"
 	

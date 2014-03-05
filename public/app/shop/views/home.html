@@ -7,9 +7,10 @@
 
 			</div>
 			<div class="flexible-caption">
-				<h1>Party, Giftware and Household products</h1>
-				<h2>Australia's finest Giftware/Partyware supplier. we trade in large quantities so we only deal with wholesalers, distributors and retailers</h2>
-				<a ui-sref="shop.products" class="btn btn-lg btn-imt-dimmed three-d">Apply Now <i class="fa fa-caret-right"></i> </a>
+				<h1 translate>home.title1</h1>
+				<h2 translate>home.title2</h2>
+				<a ui-sref="shop.products" class="btn btn-lg btn-imt-dimmed three-d" ng-show="!user" translate>home.apply<i class="fa fa-caret-right"></i> </a>
+				<a ui-sref="shop.products" class="btn btn-lg btn-imt-dimmed three-d" ng-show="user" translate>home.order<i class="fa fa-caret-right"></i> </a>
 			</div>
 		</div>
 

@@ -4,6 +4,11 @@ define ->
 	"locale.code": "zh"
 	"locale.label": "中文"
 
+	## Home ##
+	"home.title1": "派對用品, 禮品包裝, 家庭用品"
+	"home.title2": "澳洲悉尼大型的禮品用品供應商. 我們以大量出貨, 合作對象只限於商店和批發商"
+	"home.apply": "申請會員"
+	"home.order": "下單"
 
 	## general ##
 	"general.unit.pieces": "{amount, plural, one{個} other{個}}"
