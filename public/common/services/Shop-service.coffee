@@ -73,7 +73,7 @@ define [
 				(data) ->
 
 					category = _.find data.categories, (category) -> _.findWhere(category.types, "_id": typeId )
-					return deferred.reject { code: 404 } unless category?
+					return deferred.resolve type: null, category: null unless category?
 
 					type = _.findWhere(category.types, "_id": typeId)
 					type.category = category			
@@ -113,7 +113,7 @@ define [
 					products = d2.products
 					categories = d2.categories
 
-					products = _.filter products, (product) -> product.type.slug is typeSlug
+					products = _.filter products, (product) -> product.type?.slug is typeSlug
 					deferred.resolve(products: products, type: type, category: type.category)					
 					
 			deferred.promise
@@ -185,7 +185,7 @@ define [
 					products = d2.products
 					categories = d2.categories
 
-					products = _.filter products, (product) -> product.type._id in types
+					products = _.filter products, (product) -> product.type?._id in types
 					deferred.resolve(products: products, category: category, categories: d2.categories)					
 					
 			deferred.promise
@@ -210,10 +210,14 @@ define [
 						data.categories = data2.categories
 
 
-					$q.all(jobs).then =>
-						@products = products.splice(0)
-						data.products = @products
-						deferred.resolve(data)
+					$q.all(jobs).then(
+						=>
+							@products = products.splice(0)
+							data.products = @products
+							deferred.resolve(data)
+						(err) => 
+							console.log err
+					)
 				
 			
 				deferred.promise

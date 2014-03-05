@@ -59,6 +59,13 @@ define [
 			link: (scope, element, attrs) ->
 				$(element).addClass "imt-image-wrapper"
 				image = scope.$eval(attrs.imtSrc)
+				if !image
+					image = 
+						path: "placeholder2.jpg"
+						width: 1000
+						height: 1000
+
+									
 				scope.size = attrs.imtSize
 				scope.imageTitle = image.name ? ''
 
