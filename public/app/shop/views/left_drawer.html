@@ -1,6 +1,6 @@
 <div class="left-drawer-content" >
 	
-	<form class="form-search" ng-submit="searchProduct(); hideDrawers()">
+	<form class="form-search" ng-submit="searchProduct(); hideDrawers()" ng-if="user">
 		<div class="input-group margin-bottom-sm search-group">
 			<span class="input-group-addon" > <i class="fa fa-search fa-fw"></i> </span>
 			<input class="form-control" type="text" placeholder="Search..." ng-model="search.title">
@@ -9,7 +9,7 @@
 
 
 	
-	<ul class="side-categories menus" >
+	<ul class="side-categories menus" ng-if="user" >
 		<li class="header">
 			<a class="section-link" translate>menu.store</a>
 		</li>
@@ -40,6 +40,11 @@
 			<a ui-sref="home" translate>menu.home</a>
 		</li>
 
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('shop') }" ng-if="!user" >
+			<a ui-sref="shop.products" translate>menu.store</a>
+		</li>
+
+
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
 			<a ui-sref="about" translate>menu.about</a>
 		</li>
@@ -49,14 +54,20 @@
 		</li>
 
 	
-		<li class="menu">
+		<li class="menu"  ng-if="user">
 			<a ui-sref="account.profile" > 
 				<i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} 
 			</a>
 		</li>
-		<li class="menu">
+		
+		<li class="menu"  ng-if="user">
 			<a ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a>
 		</li>
+
+		<li class="menu" ng-if="!user">
+			<a ui-sref="login" > </i>{{'menu.login' | translate}}</a>
+		</li>
+
 
 	</ul>
 
