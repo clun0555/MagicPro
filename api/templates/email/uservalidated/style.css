@@ -1,0 +1,112 @@
+body{
+  width:550px !important;
+  -webkit-text-size-adjust:none;
+  margin:0;
+  padding:30px;
+  font-family: "Helvetica Neue" , "Lucida Grande", "Lucida", sans-serif;  
+  color: #555;
+}
+
+table td{
+	vertical-align: top;
+}
+
+h1, h2, h3{
+	font-weight: 300;
+}
+
+h1{
+	font-size: 2.4em;
+	font-weight: 300;
+}
+
+h2{
+	font-size: 2em;
+	border-bottom: 1px solid lightgray;
+}
+
+h3{
+	font-size: 1.5em;
+}
+
+.customer-info{
+	font-weight: 300;
+}
+
+li{
+	list-style: none;
+	padding: 5px;
+}
+
+.bundle{
+	margin-bottom: 30px;
+}
+
+.bundle .product-info{
+	width: 300px;
+}
+
+.bundle .compositions{
+	padding-bottom: 30px;	
+}
+
+
+.bundle  .product-info h3{
+	margin: 0;
+}
+
+.bundle  .product-info .price{
+	font-size: 0.9em;
+}
+
+.bundle  .product-info .ref{
+	font-weight: 300;
+	font-size: 0.9em;
+}
+
+.design-label{
+	font-weight: 300;
+}
+
+.design-info{
+	width: 120px;
+	/*display: inline-block;*/
+}
+
+.design-identifier{
+	font-size: 1em;
+	font-weight: 100;	
+}
+
+.quantity{
+	/*display: inline-block;*/
+	width: 100px;
+	text-align: right;
+	font-weight: 400;
+}
+
+.quantity .inner{
+	font-weight: 300;
+}
+
+.total-price{
+	border-top: 1px solid lightgray;
+	font-size: 1.3em;
+	text-align: right;
+	padding-top: 7px;
+}
+
+hr{
+	height:1px;
+	line-height:0px;
+	border-bottom:1px solid lightgray;
+	border-top:0px;
+	border-left:0px;
+	border-right:0px;
+	margin-top: 40px;
+}
+
+
+
+
+

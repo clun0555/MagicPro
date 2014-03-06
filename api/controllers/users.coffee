@@ -45,6 +45,7 @@ module.exports =
 			
 	update: (req, res) ->
 		User.findById req.params.user,  (err, user) ->
+			oldStatus = user.status
 			if err 
 				res.status(400).send err
 			else if not user?
@@ -55,7 +56,18 @@ module.exports =
 					if err
 						res.status(400).send err
 					else
-						res.send user			
+						res.send user
+						if oldStatus in ["pending", "rejected"] and user.status is "validated"
+							email.send 
+								to: user.email
+								cc: null
+								subject: "Your signup request has been granted"
+								template: "uservalidated"
+								data: 
+									user: user
+									homePage: environment.DOMAIN
+					
+
 
 	destroy: (req, res) ->
 		res.send User.findByIdAndRemove req.params.user
