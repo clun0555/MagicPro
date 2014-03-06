@@ -7,6 +7,8 @@ Category = new mongoose.Schema
 	description: { type: String }
 	imageId: { type: String }
 	types: [Type.schema]
+	order: { type: Number }
+
 
 
 module.exports = mongoose.model("Category", Category)

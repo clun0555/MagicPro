@@ -10,7 +10,7 @@ define [
 			[p[0], decodeURIComponent(p[1])]
 		).object().value()
 
-	sortBy: (field, reverse, primer) ->
+	sortBySorter: (field, reverse, primer) ->
 		key = (if primer then ((x) -> primer x[field]) else ((x) -> x[field]))
 		
 		reverse = [-1, 1][+!!reverse]

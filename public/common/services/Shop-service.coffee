@@ -20,7 +20,9 @@ define [
 				deferred.resolve categories: @categories
 			else
 				categories = $resource("api/categories").query =>
-					@categories = categories
+					# @categories = categories
+					@categories = _.sortBy(categories, "order")
+
 
 					# reverse link to a types category
 					for category in categories
