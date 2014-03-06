@@ -35,7 +35,8 @@ define [
 				$scope.submiting = true
 
 				UserService.save($scope.user).then(
-					->
+					(user) ->
+						$scope.user._id = user._id
 						$scope.submiting = false
 						$scope.flash  = options.flash ? "admin.user.flash.saved"						
 

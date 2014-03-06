@@ -39,9 +39,18 @@ module.exports =
 
 	create: (req, res) ->
 
-		user = new User _.extend({}, req.body)
-		
-		user.save (err, user) -> res.send err or user
+		# user = new User _.extend({}, req.body)
+		User.register(
+			new User(req.body)
+			req.body.password
+			(err, user) ->
+				unless err
+					res.send user					
+				else
+					res.status(401).send(err.message)
+
+		)
+				
 			
 	update: (req, res) ->
 		User.findById req.params.user,  (err, user) ->
@@ -52,20 +61,28 @@ module.exports =
 				res.status(400).send "Missing user"
 			else
 				_.extend user, req.body
-				user.save (err, user) -> 
-					if err
-						res.status(400).send err
-					else
-						res.send user
-						if oldStatus in ["pending", "rejected"] and user.status is "validated"
-							email.send 
-								to: user.email
-								cc: null
-								subject: "Your signup request has been granted"
-								template: "uservalidated"
-								data: 
-									user: user
-									homePage: environment.DOMAIN
+
+				cb = ->
+					user.save (err, user) -> 
+						if err
+							res.status(400).send err
+						else
+							res.send user
+							if oldStatus in ["pending", "rejected"] and user.status is "validated"
+								email.send 
+									to: user.email
+									cc: null
+									subject: "Your signup request has been granted"
+									template: "uservalidated"
+									data: 
+										user: user
+										homePage: environment.DOMAIN
+
+				if req.body.password?
+					user.setPassword req.body.password, cb
+				else
+					cb()
+					
 					
 
 
@@ -119,8 +136,7 @@ module.exports =
 
 						user.setPassword req.body.newPassword, ->
 							user.forgot = null
-							user.setPassword req.body.newPassword, ->
-								user.save (err, user2) -> res.send err or user2
+							user.save (err, user2) -> res.send err or user2
 
 		else if req.params.forgotKey
 
