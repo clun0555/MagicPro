@@ -149,6 +149,8 @@ define ->
 	"admin.user.flash.saved": "Saved!"
 	"admin.user.flash.validated": "Validated!"
 	"admin.user.flash.rejected": "Rejected!"
+	"admin.password": "Password"
+	"admin.password.required": "Please enter a password"
 
 
 	### user ###
