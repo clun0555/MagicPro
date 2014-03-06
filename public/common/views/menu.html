@@ -5,12 +5,12 @@
 		
 			<nav>
 				
-				<ul class="nav navbar-nav navbar-left visible-sm visible-xs"  ng-if="user">
+				<ul class="nav navbar-nav navbar-left visible-sm visible-xs" >
 					<li>
 						<a  class="btn left-drawer-toggle drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
 					</li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right "  ng-if="user">
+				<ul class="nav navbar-nav navbar-right "  >
 					
 					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('home') }" >
 						<a ng-click="changeMenu('home')" translate>menu.home</a>
@@ -26,25 +26,33 @@
 
 					</li>
 					
-					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" >
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" ng-if="isRole('admin')" >
 						<a ng-click="changeMenu('admin')" ui-sref="admin" translate >menu.admin</a>
 
 					</li>
 					<li class="divider hidden-sm  hidden-xs">&nbsp;</li>
 
 					<li class="dropdown hidden-sm hidden-xs">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-if="user">
 							<i class="fa fa-user "></i>
 							{{user.firstname}}
 							<i class="fa fa-caret-down"></i>
 						</a>
-						<ul class="dropdown-menu">
+
+						<a ui-sref="login" data-toggle="dropdown" ng-if="!user" >
+							<i class="fa fa-user "></i>
+							{{ 'menu.login' | translate }}							
+						</a>
+						<ul class="dropdown-menu" ng-if="user">
 							<li><a class="dropdown" ui-sref="account.profile" > <i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} </a></li>
 							<li class="divider"></li>
 							<li class="dropdown-header"></li>
 							<li><a class="dropdown "  ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a></li>
 
 						</ul>
+
+
+
 					</li>		
 
 					<li ng-if="cart" ng-show="cart && cart.quantity() > 0" >

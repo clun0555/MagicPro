@@ -67,6 +67,7 @@ define [
 				.error (data) =>
 					@session = false
 					$rootScope.user = @user()
+					$rootScope.$broadcast("user:changed")
 					deferred.resolve()					
 
 			deferred.promise

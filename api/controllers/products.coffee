@@ -10,13 +10,13 @@ module.exports =
 	options: 
 		name: 'api/products'
 		id: 'product'
-		# before: 
-		# 	destroy: user.is("admin")
-		# 	create: user.is("admin")			
-		# 	update: user.is("admin")
+		before: 
+			destroy: user.is("admin")
+			create: user.is("admin")			
+			update: user.is("admin")
 
-	all: (req, res, next) ->
-		user.is("registered")(req, res, next)
+	# all: (req, res, next) ->
+	# 	user.is("registered")(req, res, next)
 	
 	index: (req, res) ->
 		if req.query?

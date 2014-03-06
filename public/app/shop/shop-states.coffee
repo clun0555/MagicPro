@@ -22,7 +22,7 @@ define [
 					url: "/home"
 					templateUrl: "app/shop/views/home.html" 
 					# controller: "CartPreviewController"
-					parent: "order"	
+					parent: "layout"	
 					controller: "ShopHomeController"
 					resolve: 
 						data: (ShopService) ->
