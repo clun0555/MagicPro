@@ -1,46 +1,81 @@
 .cart-detail
+	// background: whitesmoke
+
+	// padding-top: 60px
+	// padding-bottom: 60px
 
 	.cart-items
+		background: white
+
+		h1
+			border-bottom: 4px solid $imt-primary-color
+			font-weight: 300
+			padding-bottom: 10px
+			margin-bottom: 20px
+			color: #555			
 		
 		padding: 30px 15px
 		// max-width: 400px
 		margin: 0 auto
-			
-		.cart-item	
-			padding: 0
-			margin-top: 10px
-			font-size: 1.2em
-			// height: 150px
-			// background: whitesmoke
-			// +clearfix()
-			// border-left: 4px solid $imt-primary-color
-	
-			// .product-image
-			// 	float: left
 
-			&.removed
-				opacity: .5
+		.cart-price
+			text-align: right
+			font-size: 2.5em
+			font-weight: 600
+			background: whitesmoke
+			padding: 20px
+			border-top: 3px solid lightgray
+			font-weight: 600
+			color: #555			
+
+		.buttons
+			margin-top: 40px
+			text-align: right
+
+
+
+		.items
+			+clearfix()
+			
+			.cart-item	
+				padding: 0
+				margin-top: 10px
+
+				&:not(:last-child)
+					border-bottom: 2px dashed lightgray
 				
 
-			.product-info
-				padding: 10px
-				// float: left
-				display: block
+				.product-image
+					width: 100px
+					float: left
+					margin-right: 10px
+				
+				&.removed
+					opacity: .5
+					
 
-				.design-title
-					font-weight: 300
+				.product-info
+					padding: 10px
+					padding-top: 0px
+					// float: left
+					display: block
+					margin-left: 90px
+					
 
-				.price
-					font-size: 1em
+					.design-title, .product-title
+						font-weight: 300
+						font-size: 1.2em
 
-				.cart-btn-group
-					margin-top: 10px
+					.price
+						font-size: 1em
 
-			// +imt-hover
-			// 	background: $imt-drawer-bg-alternate
+					.cart-btn-group
+						margin-top: 10px
+						
 
-			.bundle-quantity
-				float: right
+				.bundle-quantity
+					float: right
+					font-size: 1.2em
 
 	.cart-title
 		padding-top: 30px
@@ -61,6 +96,52 @@
 			.cart-price
 				margin-bottom: 20px
 				font-size: 3em
+
+	.thanks, .empty
+
+		padding: 30px
+		max-width: 600px
+		margin: 0 auto
+				
+		
+		h1
+			border-bottom: 4px solid $imt-primary-color
+			font-weight: 300
+			padding-bottom: 10px
+			margin-bottom: 20px
+
+		.btn
+			margin-top: 20px
+
+
+	@media (min-width: $screen-sm-min) 
+		
+		.cart-items
+			max-width: 600px
+
+			.items
+
+				.cart-item
+					margin-top: 10px
+					margin-bottom: 10px
+					
+					// padding-bottom: 10px
+					height: 90px
+					width: 100%
+
+					.product-image
+						width: 80px
+
+					.cart-btn-group
+						position: absolute		
+						right: 0
+						top: 0
+
+
+
+
+
+	
 
 
 
