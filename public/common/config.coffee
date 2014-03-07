@@ -95,13 +95,20 @@ define [
 			if security?
 				# if state has security parameters
 
-				unless SessionService.security(security)
+				# security function can return true or false to allow or disalow access. 
+				# it can also return a state to redirect to.				
+				securityCheck = SessionService.security(security) 
+				
+				if securityCheck isnt true
 					# if session doesn't meet security
 					event.preventDefault()
 
 					if SessionService.isLoggedIn()
-						# if user is known, redirect to error page
-						$state.go "error", { code: 403 }, { location: false }
+						if typeof securityCheck is "string"
+							$state.go securityCheck
+						else
+							# if user is known, redirect to error page
+							$state.go "error", { code: 403 }, { location: false }
 					else
 						# server has no active session. Ask user to login					
 						$state.transitionTo "login"

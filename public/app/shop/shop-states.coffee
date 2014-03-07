@@ -12,7 +12,15 @@ define [
 				.state "order",
 					template: "<div ui-view autoscroll='true'  ></div>"
 					abstract: true
-					data: security: "validated"					
+					# data: security: "validated"					
+					data: security: (user) -> 
+						# cant access if not logged in
+						return false unless user?
+						# show validating message if user is not validated yet (expect if admin)
+						return "validating" if user.role isnt "admin" and user.status isnt "validated"
+						# otherwise grant access
+						return true
+
 					parent: "layout"
 					resolve: 
 						cart: (CartService) ->
@@ -32,7 +40,8 @@ define [
 					url: "/products"
 					abstract: true					
 					parent: "order"
-					templateUrl: "app/shop/views/shop.html"					
+					templateUrl: "app/shop/views/shop.html"
+					
 
 
 				.state "shop.navigator", 
