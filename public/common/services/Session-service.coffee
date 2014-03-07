@@ -93,7 +93,10 @@ define [
 			deferred.promise
 
 		security: (rule) ->
-			rules[rule](@user())
+			checker = if typeof rule is 'string' then rules[rule] else rule				
+			checker(@user())
+			
+
 
 		getUserKey: ->
 			@user()?._id ? "guest"
