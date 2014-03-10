@@ -13,4 +13,6 @@ define [
 					url: "/blog"
 					templateUrl: "app/blog/views/articles.html"
 					controller: "BlogArticlesController"
-					parent: "layout"					
+					parent: "layout"
+					resolve: 
+						articles: (BlogService) -> BlogService.getArticles() 					

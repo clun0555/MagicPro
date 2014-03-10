@@ -264,6 +264,13 @@ define ->
 	"products.search.noproducts": "Sorry, we could't find any products matching"
 
 
+	"article.title": "Title"
+	"article.publish": "Publish"
+	"article.update": "Update"
+	"article.edit": "edit"
+	"article.remove": "remove"
+	"article.new": "New Article"
+
 
 	### footer ###
 	"footer.developed.by": "Developed by"

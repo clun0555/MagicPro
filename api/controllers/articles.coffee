@@ -1,4 +1,4 @@
-Category = require("../models/article")
+Article = require("../models/article")
 _ = require("underscore")
 user = require("connect-roles")
 

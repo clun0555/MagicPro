@@ -1,3 +1,24 @@
+
+
+
+
 <div class="articles-view">
-	<h1>Comming soon...</h1>
+
+	<a ng-click="createArticle()" class="btn btn-imt-dimmed" ng-show="isRole('admin')" translate >article.new</a>
+	
+	<div class="article" bindonce="article" ng-repeat="article in articles">
+		<h1 bo-text="article.title"></h1>
+		<div class="article-info">
+			<span class="published-date" bo-text="article.createdOn | date: 'MMM d, y'"></span> &nbsp;&nbsp;
+			<span ng-show="isRole('admin')">
+				<a ng-click="editArticle(article)" translate>article.edit</a> |
+				<a ng-click="removeArticle(article)" translate>article.remove</a>
+			</span>
+		</div>
+		
+		<p bo-text="article.content"></p>
+	</div>
+
+
+
 </div>

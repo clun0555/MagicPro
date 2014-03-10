@@ -1,0 +1,85 @@
+<div class="article-edit-view">
+	
+	<form novalidate name="data" class="form-horizontal">
+		<fieldset ng-disabled="submiting">
+
+			<div 
+				class="form-group title-group "
+				ng-class="{ 'has-error': (submited &&  data.title.$error.required) }" >
+
+				<!-- <label class="col-lg-3 control-label" translate >article.name</label> -->
+				<div class="col-lg-12 form-item">
+					
+						<input 
+							type="text" 
+							class="form-control" 
+							name="title" 
+							placeholder="{{ 'article.title' | translate }}" 
+							autofocus="" 
+							ng-model="article.title"
+							required 									
+						>
+
+						<div 
+							class="error-tip" 
+							translate >
+							article.title.required
+						</div>
+
+				</div>
+			</div>
+
+			<div 
+				class="form-group content-group "
+				ng-class="{ 'has-error': (submited &&  data.content.$error.required) }" >
+
+				<!-- <label class="col-lg-3 control-label" translate >article.content</label> -->
+				<div class="col-lg-12 form-item">
+					
+						<textarea ng-model="article.content" class="article-content" >
+		
+
+
+						</textarea>
+
+						<div 
+							class="error-tip" 
+							translate >
+							article.content.required
+						</div>
+
+				</div>
+			</div>
+
+
+			<div class="form-group " > 
+
+				<div class="col-lg-12">
+					
+					<div class="pull-right">
+
+						<div class="btn-group">
+							<button class="btn btn-lg btn-imt-primary three-d" ng-click="save()" >
+							<i class="fa fa-check"></i>
+							{{ (article._id ? 'article.update' : 'article.publish') | translate}}
+
+							</button>
+						</div>
+
+					</div>
+				</div>		
+
+			</div>			
+
+		</fieldset>
+	</form>
+
+	
+
+	
+
+	
+
+	
+</div>
+

@@ -16,5 +16,6 @@ define [
 	"./Product-service"
 	"./ImageSize-service"
 	"./Authentification-service"
+	"./Blog-service"
 	
 ], ->
