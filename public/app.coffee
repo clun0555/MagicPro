@@ -29,6 +29,7 @@ define [
 	"app/shop/index"
 	"app/admin/index"
 	"app/blog/index"
+	"app/contact/index"
 
 ], (angular) ->
 	
@@ -57,6 +58,7 @@ define [
 		"app.shop"
 		"app.admin"
 		"app.blog"
+		"app.contact"
 
 		# all templates
 		"templates.app"

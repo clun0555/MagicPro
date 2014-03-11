@@ -1,0 +1,99 @@
+<div class="contact-view">
+	
+
+		<form novalidate name="data" class="form-horizontal">
+
+			<fieldset ng-disabled="submiting">
+
+
+				<div class="form-group">
+					<label class="col-lg-3 control-label"></label>
+					<div class="col-lg-9">
+						<h1 translate >contact.title</h1>					
+					</div>
+				</div>
+
+				<!-- Name  -->
+				<div 
+					class="form-group name-group name-group "
+					ng-class="{ 'has-error': (submited &&  data.firstname.$error.required) }" >
+
+					<label class="col-lg-3 control-label" translate >contact.name</label>
+					<div class="col-lg-9 form-item">
+						
+							<input 
+								type="text" 
+								class="form-control" 
+								name="name" 
+								name="name" 
+								placeholder="{{ 'contact.name' | translate }}" 
+								autofocus="" 
+								ng-model="message.name"								
+							>
+
+							<div 
+								class="error-tip" 
+								translate >
+								contact.name.required					
+							</div>
+
+					</div>
+				</div>
+
+				<div 
+					class="form-group email-group" 
+					ng-class="{ 'has-error': (submited  && ( data.email.$invalid) || serverError) }" >
+
+					<label class="col-lg-3 control-label" translate >contact.email</label>
+					<div class="col-lg-9 form-item">
+						<input 
+							type="email" 
+							class="form-control" 
+							name="email" 
+							placeholder="{{ 'contact.email' | translate }}"
+		 					ng-model="message.email"
+		 					required >
+
+						<div class="error-tip" >					
+							<span ng-show="data.email.$error.email" translate > contact.email.invalid</span>
+							<span ng-show="data.email.$error.required" translate > contact.email.required</span>								
+						</div>
+
+					</div>
+
+				</div>
+
+
+				<div 
+					class="form-group email-group" 
+					ng-class="{ 'has-error': (submited  && ( data.message.$invalid) || serverError) }" >
+
+					<label class="col-lg-3 control-label" translate >contact.message</label>
+					<div class="col-lg-9 form-item">
+						<textarea class="form-control" ng-model="message.message" name="message" required placeholder="{{'contact.message' | translate}}" ></textarea>
+
+						<div class="error-tip" >					
+							<span ng-show="data.message.$error.required" translate >contact.message.required</span>								
+						</div>
+
+					</div>
+
+				</div>
+
+
+				<div class="form-group buttons-group">
+					<div class="col-lg-offset-3 col-lg-9">
+						<div class="pull-right">
+							
+							<button class="btn btn-lg btn-imt-primary three-d send-button " translate ng-click="send()" >contact.send</button>
+							
+						</div>
+					</div>
+				</div>
+
+
+			</fieldset>
+
+		</form>
+
+</div>

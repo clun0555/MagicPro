@@ -25,6 +25,11 @@
 						<a ng-click="changeMenu('blog')" translate>menu.blog</a>
 
 					</li>
+
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('contact') }" >
+						<a ng-click="changeMenu('contact')" translate>menu.contact</a>
+
+					</li>
 					
 					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" ng-if="isRole('admin')" >
 						<a ng-click="changeMenu('admin')" ui-sref="admin" translate >menu.admin</a>

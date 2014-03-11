@@ -263,13 +263,21 @@ define ->
 	"search.home": "Search"
 	"products.search.noproducts": "Sorry, we could't find any products matching"
 
-
+	### article ###
 	"article.title": "Title"
 	"article.publish": "Publish"
 	"article.update": "Update"
 	"article.edit": "edit"
 	"article.remove": "remove"
 	"article.new": "New Article"
+
+
+	### contact ###
+	"contact.title": "Contact"
+	"contact.name": "Name"
+	"contact.email": "Email"
+	"contact.message": "Message"
+	"contact.send": "Send"
 
 
 	### footer ###
