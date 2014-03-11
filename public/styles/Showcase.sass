@@ -1,0 +1,63 @@
+.showcase-home-view
+	height: 100%
+	overflow: auto
+
+	.adult-view
+		position: relative
+		overflow: hidden
+		min-height: 100%
+		width: 100%
+
+		.big-caption
+			// position: absolute
+
+			width: 428px
+			margin: 0 auto
+			margin-top: 100px
+			text-align: center
+			z-index: 100
+
+			.rediscover, .smooth
+				color: #faa21c
+				font-size: 4.8em
+				text-transform: uppercase
+				font-weight: 800
+				margin: 0
+				font-family: Ubuntu
+
+			.caption
+				color: white
+				font-size: 1.1em
+				margin-left: -50px
+				margin-right: -50px
+				text-transform: uppercase
+
+
+			.smooth
+				color: white
+				font-size: 7em
+
+
+		.adult-left
+			position: absolute
+			left: 200px
+			top: -100%		
+			transition: transform 3s ease
+			transform: translate3d(0px,0px,0px)
+
+		.adult-right
+			position: absolute
+			right: 200px
+			top: 100%		
+			transition: transform 3s ease
+			transform: translate3d(0px,0px,0px)
+
+	&.loaded .adult-view .adult-left
+		transform: translate3d(0px,500px,0px)
+
+
+	&.loaded .adult-view .adult-right
+		transform: translate3d(0px,-300px,0px)
+
+		
+		// animation-duration: 3s

@@ -3,19 +3,26 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
 	display: none !important
 
+html
+	height: 100%
+
 body
 	background: white
-	padding: 70px 0
+	padding: 0
 	background-color: white
 	overflow-x: hidden
 	height: 100%
-	margin: 70px 0
-	-webkit-font-smoothing: antialiased	
+	margin: 0
+	-webkit-font-smoothing: antialiased		
 
 #main-region	
-	padding-bottom: 30px
-	min-height: 500px
-	background: rgba(255, 255, 255, 1)
+	// padding-bottom: 30px
+	// min-height: 500px
+	height: 100%
+
+	.main-region-inner
+		height: 100%
+
 
 // remove input placeholde when focused
 input.hide-placeholder-onblur
@@ -174,7 +181,10 @@ body.right-drawer-open
 	top: 0px
 	left: 0px	
 	width: 100%
-	padding-top: 65px
+	height: 100%
+
+	// padding-top: 65px
+	background: radial-gradient(at top, #FD637B , #FD637B , #FE3F5E )
 
 .content-slide
 	transition: all .3s ease

@@ -26,7 +26,7 @@ define [
 	"views/views"
 	"ng-infinite-scroll"
 
-	"app/shop/index"
+	"app/showcase/index"
 	"app/admin/index"
 	"app/blog/index"
 	"app/contact/index"
@@ -55,7 +55,7 @@ define [
 		# "ngMock"
 
 		# featues dependencies
-		"app.shop"
+		"app.showcase"
 		"app.admin"
 		"app.blog"
 		"app.contact"

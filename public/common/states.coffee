@@ -41,7 +41,7 @@ define [
 									ShopService.getCategories()
 
 						"":
-							template: "<div ui-view autoscroll='false'></div>"
+							template: "<div ui-view autoscroll='false' class='main-region-inner'></div>"
 						
 
 				.state "index",
