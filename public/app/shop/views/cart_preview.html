@@ -32,7 +32,12 @@
 
 						<div>
 							<h4>
-								{{ composition.product.identifier }}
+								<span>
+									{{ composition.product.identifier }}
+								</span>
+								<span ng-show="composition.design.identifier">
+									({{ composition.design.identifier}})
+								</span>
 							<h4>
 						</div>
 

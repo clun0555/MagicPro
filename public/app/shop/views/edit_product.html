@@ -6,6 +6,12 @@
 			<h1 class="col-md-12" translate> {{ !product._id ? 'product.edit.new.title' : 'product.edit.edit.title' }}</h1>
 		</div>
 
+		<div class="form-group product-img">
+			<div class="product-file-chooser ">
+				<div imt-file-chooser="{ 'model': product, 'field': 'image', size: 's=350' }" class="extra-large " ></div>
+			</div>
+		</div>
+
 		<div class="form-group  form-header" > {{'product.edit.header.general' | translate}}</div>
 
 		<div>
@@ -44,6 +50,17 @@
 					
 					<div class="error-tip"  >						
 						<span  translate> product.edit.validation.price.required </span>	
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{ 'has-error': (submited && (productform.inner.$invalid) ) }" >
+				<label class="col-md-3 control-label" translate >product.edit.inner</label>
+				<div class="col-md-9 form-item product-price"  >
+					<input class="form-control" type="number" ng-model="product.inner" placeholder="{{ 'product.edit.inner' | translate }}" name="price" required >
+
+					<div class="error-tip"  >
+						<span  translate> product.edit.validation.inner.required </span>
 					</div>
 				</div>
 			</div>

@@ -98,6 +98,7 @@ define ->
 	"productnavigator.product.edit": "編輯"
 	"productnavigator.edit.delete": "刪除"
 	"productnavigator.order.price": "價錢"
+	"product.edit.inner": "內裝"
 	"productnavigator.order.title": "名稱"
 	"productnavigator.order.category": "類別"
 	"productnavigator.order.ascending": "小致大"
@@ -271,6 +272,7 @@ define ->
 	"product.edit.edit.title": "修改產品"
 	"product.edit.validation.title.required": "請輸入名稱"
 	"product.edit.validation.price.required": "請輸入價錢"
+	"product.edit.validation.price.required": "請輸入內裝"
 	"product.edit.validation.identifier.duplicate": "此產品貨號以被使用, 請輸入其他產品貨號"
 	"product.edit.validation.identifier.required": "請輸入產品貨號"
 

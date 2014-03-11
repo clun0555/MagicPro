@@ -104,7 +104,7 @@ define ->
 	"productnavigator.order.ascending": "ascending"
 	"productnavigator.order.descending": "descending"
 	"productnavigator.show.colors": "show all colors"
-	"productnavigator.product.itemcode": "Item code"
+	"productnavigator.product.itemcode": "Item Number"
 
 
 	### users ###
@@ -220,7 +220,7 @@ define ->
 	"cart.checkout": "Checkout"
 	"cart.edit": "Edit"
 	"cart.continue.shopping": "Continue shopping"
-	"cart.widget.add": "ADD"
+	"cart.widget.add": "Add Min Qty"
 
 	### Checkout ###
 	"checkout.title": "Checkout"
@@ -246,23 +246,25 @@ define ->
 	"product.edit.save": "Save"
 	"product.edit.cancel": "Cancel"
 	"product.edit.new.design": "Add design"
-	"product.edit.title": "Title"
+	"product.edit.title": "Description"
 	"product.edit.category": "Category"
-	"product.edit.identifier": "Identifier"
-	"product.edit.price": "price"
+	"product.edit.identifier": "Item Number"
+	"product.edit.price": "Unit Price"
+	"product.edit.inner": "Inner Qty"
 	"product.edit.header.variants": "Variants / Images"
 	"product.edit.featured": "Featured"
 	"product.edit.header.general": "General information"
-	"product.edit.design.title": "Title"
+	"product.edit.design.title": "Design Name"
 	"product.edit.design.identifier": "id"
 	"product.edit.design.default.title": "Default"
-	"product.edit.description": "Description"
+	"product.edit.description": "Product Information"
 	"product.edit.uploading": "Uploading..."
 	"product.edit.saving": "Saving..."
 	"product.edit.new.title": "New Product"
 	"product.edit.edit.title": "Edit Product"
 	"product.edit.validation.title.required": "Please provide a title"
 	"product.edit.validation.price.required": "Please provide a price"
+	"product.edit.validation.price.required": "Please provide a inner"
 	"product.edit.validation.identifier.duplicate": "This identifier is already used by another product"
 	"product.edit.validation.identifier.required": "Please provide an identifier"
 	
