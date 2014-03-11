@@ -3,9 +3,9 @@ define [
 	"../contact-states"	
 ], (_, contact) ->
 
-	contact.controller "ContactController", ($scope) ->		
+	contact.controller "ContactController", ($scope, MessageService) ->		
 
-		$scope.message = {}
+		$scope.message = {}		
 
 		# $scope.submiting = false
 
@@ -17,7 +17,10 @@ define [
 
 				$scope.submiting = true
 				console.log $scope.message
-				alert "comming soon..."
+				MessageService.send($scope.message).then ->
+					$scope.sent = true
+
+				
 
 		
 		

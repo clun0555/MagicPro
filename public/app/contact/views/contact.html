@@ -1,7 +1,11 @@
 <div class="contact-view">
 	
-
-		<form novalidate name="data" class="form-horizontal">
+		<div class="confirmation" ng-show="sent" >
+			<h1 translate>contact.sent</h1>
+			<p translate>contact.confirmation</p>	
+		</div>
+		
+		<form novalidate name="data" class="form-horizontal" ng-show="!sent">
 
 			<fieldset ng-disabled="submiting">
 
