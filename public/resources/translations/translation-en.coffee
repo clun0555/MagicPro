@@ -103,7 +103,7 @@ define ->
 	"productnavigator.order.category": "category"
 	"productnavigator.order.ascending": "ascending"
 	"productnavigator.order.descending": "descending"
-	"productnavigator.show.colors": "show all colors"
+	"productnavigator.show.colors": "show all"
 	"productnavigator.product.itemcode": "Item Number"
 
 
@@ -220,7 +220,7 @@ define ->
 	"cart.checkout": "Checkout"
 	"cart.edit": "Edit"
 	"cart.continue.shopping": "Continue shopping"
-	"cart.widget.add": "Add Min Qty"
+	"cart.widget.add": "ADD"
 
 	### Checkout ###
 	"checkout.title": "Checkout"
