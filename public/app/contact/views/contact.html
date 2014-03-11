@@ -1,7 +1,11 @@
 <div class="contact-view">
 	
-
-		<form novalidate name="data" class="form-horizontal">
+		<div class="confirmation" ng-show="sent" >
+			<h1 > {{ 'contact.sent' | translate}}</h1>
+			<p translate>contact.confirmation</p>	
+		</div>
+		
+		<form novalidate name="data" class="form-horizontal" ng-show="!sent">
 
 			<fieldset ng-disabled="submiting">
 
@@ -9,7 +13,7 @@
 				<div class="form-group">
 					<label class="col-lg-3 control-label"></label>
 					<div class="col-lg-9">
-						<h1 translate >contact.title</h1>					
+						<h1  > <i class="fa fa-envelope-o"></i> {{ 'contact.title' | translate }}</h1>					
 					</div>
 				</div>
 

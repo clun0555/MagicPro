@@ -57,6 +57,8 @@ app.resource('users')
 app.resource('categories')
 app.resource('carts')
 app.resource('articles')
+app.resource('messages')
+
 
 app.get "/api/users/:email/forgot", require("./controllers/users").forgot
 app.get "/api/users/:forgotKey/reset", require("./controllers/users").userByForgotKey
