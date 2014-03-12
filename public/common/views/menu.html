@@ -17,10 +17,10 @@
 
 					</li>
 
-					<li class="section-link hidden-xs"  ng-class="{ 'active': isCurrentMenu('shop') }">
+<!--					<li class="section-link hidden-xs"  ng-class="{ 'active': isCurrentMenu('shop') }">
 						<a ng-click="changeMenu('shop.products')" translate >menu.store</a>
 
-					</li>
+					</li>-->
 					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('blog') }" >
 						<a ng-click="changeMenu('blog')" translate>menu.blog</a>
 
@@ -31,13 +31,13 @@
 
 					</li>
 					
-					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" ng-if="isRole('admin')" >
+<!--					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" ng-if="isRole('admin')" >
 						<a ng-click="changeMenu('admin')" ui-sref="admin" translate >menu.admin</a>
 
-					</li>
+					</li>-->
 					<li class="divider hidden-sm  hidden-xs">&nbsp;</li>
 
-					<li class="dropdown hidden-sm hidden-xs">
+		<!--			<li class="dropdown hidden-sm hidden-xs">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-if="user">
 							<i class="fa fa-user "></i>
 							{{user.firstname}}
@@ -58,7 +58,7 @@
 
 
 
-					</li>		
+					</li>-->
 
 					<li ng-if="cart" ng-show="cart && cart.quantity() > 0" >
 						<a class="btn cart-toggle drawer-toggle" ng-click="toggleCart()" >

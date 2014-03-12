@@ -30,18 +30,30 @@
 
 	nav .nav.navbar-nav 
 		margin-top: 5px
-		li.section-link 
+		li.section-link
+			margin-left: 10px
+			margin-top: -10px
 			a
-				padding-left: 4px	
-				padding-right: 4px	
-				margin-left: 6px
-				margin-right: 6px
-				padding-bottom: 4px
-				border-bottom: 4px solid transparent
+				color: #fff
+				background-color: #FE4F00
+				border-radius: 5px
+				border: 3px solid #90D50A
+				text-align: center
+				text-decoration: none
+				transition-property: all
+				transition-duration: .2s
+				transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
+				padding: 14px 10px 13px 10px
+				font-family: 'agency_fbbold'
+				font-size: 22px
+				text-transform: uppercase
+				min-width: 130px
+				display: inline-block
 				// transition: border-color .3s ease
 			
 			+imt-hover("&.active")
 				a
+					padding: 25px 10px 15px 10px
 					background: none
 					border-color: $imt-primary-color
 
