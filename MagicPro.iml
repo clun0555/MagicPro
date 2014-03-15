@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/public/dist/styles/lib/fontello" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Node.js Dependencies for MagicPro" level="project" />
   </component>
 </module>
 
