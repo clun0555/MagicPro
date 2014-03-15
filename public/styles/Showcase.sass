@@ -7,6 +7,8 @@
 		overflow: hidden
 		min-height: 100%
 		width: 100%
+		@media (max-width: $screen-sm-min)
+			top: 130px
 
 		.big-caption
 			// position: absolute
@@ -20,7 +22,7 @@
 			transition-duration: .5s
 			transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
 			@media (max-width: $screen-lg)
-				margin-top: 300px
+				margin-top: 185px
 
 
 			.rediscover, .smooth
@@ -30,6 +32,8 @@
 				font-weight: 800
 				margin: 0
 				font-family: Ubuntu
+				@media (max-width: $screen-sm-min)
+					font-size: 3.5em
 
 			.caption
 				color: white
@@ -37,11 +41,15 @@
 				margin-left: -50px
 				margin-right: -50px
 				text-transform: uppercase
+				@media (max-width: $screen-sm-min)
+					font-size: 0.8em
 
 
 			.smooth
 				color: white
 				font-size: 7em
+				@media (max-width: $screen-sm-min)
+					font-size: 3.5em
 
 
 		.adult-left
@@ -72,7 +80,8 @@
 				bottom: 0px
 				right: 10px
 			.adult-left
-				display: none
+				top: -75%
+				left: 10px
 				
 	&.loaded .adult-view .adult-left
 		transform: translate3d(0px,500px,0px)
