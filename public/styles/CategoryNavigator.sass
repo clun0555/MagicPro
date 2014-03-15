@@ -1,34 +1,47 @@
 .category-navigator
-	width: auto
-	height: auto	
-	border-radius: 4px
+	margin: 0 auto
+	margin-top: 100px
+	max-width: 700px
 
-	.category-view
-		cursor: pointer
-		margin-top: 10px
-		margin-bottom: 10px
-		padding-left: 10px
-		padding-right: 10px
-		white-space: nowrap
+	.category
+	
+		h1
+			font-family: 'agency_fbbold'
+			text-transform: uppercase
+			color: white
+			text-align: center
+			font-size: 3.4em
+			padding: 20px
 
-		.thumbnail
-			border: 1px solid #ccc
-			background: none
-			border-radius: 0
+		&.adult .thumb .image
+			margin-top: -40px
 
-			h4
-				font-weight: 600
-				font-size: 20px
-		.type-img
-			display: block
-			margin: 5px
-			float: left
-		.type-img-region
-			display: table
 
-		a
+		.thumb
+
+			border: 8px solid white
+			padding: 10px
+			padding-top: 70px
+			max-width: 300px
+			cursor: pointer
+			height: 500px
+
+			.image
+				display: none
+
+			img
+				display: block
+				margin: 0 auto
+				width: 100%
+				max-width: 150px
+			
 			+imt-hover
-				text-decoration: none
-				h4
-					text-decoration: none
-					color: #045e9f
+				background: #FD4E15
+				.drawing
+					display: none
+
+				.image
+					display: block
+
+
+	

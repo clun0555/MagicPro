@@ -13,18 +13,15 @@ define [
 					template: "<div ui-view autoscroll='true'  ></div>"
 					abstract: true
 					# data: security: "validated"					
-					data: security: (user) -> 
-						# cant access if not logged in
-						return false unless user?
-						# show validating message if user is not validated yet (expect if admin)
-						return "validating" if user.role isnt "admin" and user.status isnt "validated"
-						# otherwise grant access
-						return true
+					# data: security: (user) -> 
+					# 	# cant access if not logged in
+					# 	return false unless user?
+					# 	# show validating message if user is not validated yet (expect if admin)
+					# 	return "validating" if user.role isnt "admin" and user.status isnt "validated"
+					# 	# otherwise grant access
+					# 	return true
 
 					parent: "layout"
-					resolve: 
-						cart: (CartService) ->
-							CartService.get()
 
 				# .state "home",
 				# 	url: "/home"
@@ -47,12 +44,12 @@ define [
 				.state "shop.navigator", 
 					abstract: true
 					views: 
-						"side@":
-							templateUrl: "app/shop/views/side_categories.html"
-							controller: "ShopSideCategoriesController"
-							resolve: 
-								data: ($stateParams, ShopService) ->
-									ShopService.getCategories()
+						# "side@":
+						# 	templateUrl: "app/shop/views/side_categories.html"
+						# 	controller: "ShopSideCategoriesController"
+						# 	resolve: 
+						# 		data: ($stateParams, ShopService) ->
+						# 			ShopService.getCategories()
 
 						"": 
 							template: "<div ui-view autoscroll='false'></div>"
@@ -97,18 +94,18 @@ define [
 					resolve: 
 						data: ($stateParams, ShopService) ->
 							ShopService.getAllProducts()											
-						cart: (CartService) ->	CartService.get()
+						# cart: (CartService) ->	CartService.get()
 						
-					templateUrl: "app/shop/views/products.html"
-					controller: "ShopProductsController"
+					# templateUrl: "app/shop/views/products.html"
+					templateUrl: "app/shop/views/categories.html"
+					controller: "ShopCategoriesController"
 						
 				.state "shop.productsbycategory",
 					parent: "shop.navigator"
 					url: "/:category"
 					resolve: 
 						data: ($stateParams, ShopService) ->
-							ShopService.getProductsByCategorySlug($stateParams.category)											
-						cart: (CartService) ->	CartService.get()
+							ShopService.getProductsByCategorySlug($stateParams.category)																	
 						
 					templateUrl: "app/shop/views/products.html"
 					controller: "ShopProductsController"

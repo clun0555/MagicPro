@@ -44,18 +44,20 @@
 				transition-duration: .2s
 				transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
 				padding: 14px 10px 13px 10px
+				// padding: 4px 10px 7px 10px
 				font-family: 'agency_fbbold'
-				font-size: 22px
+				font-size: 1.3em
 				text-transform: uppercase
-				min-width: 130px
+				min-width: 100px
 				display: inline-block
 				// transition: border-color .3s ease
 			
 			+imt-hover("&.active")
 				a
 					padding: 25px 10px 15px 10px
-					background: none
-					border-color: $imt-primary-color
+					// padding: 7px 10px 15px 10px
+					// background: none
+					// border-color: $imt-primary-color
 
 
 
@@ -105,8 +107,7 @@
 			.design
 				font-weight: 100
 			img
-				@media (max-width: $screen-sm-min)
-					width: 120px
+				height: 50px
 
 	.btn.cart-toggle, .btn.left-drawer-toggle
 		font-size: 1.2em
@@ -135,7 +136,8 @@
 	// 		.logo
 	// 			transform: scale(1.5, 1.5) translate3d(40px, 10px, 0px)
 
-	@media (min-width: $screen-sm-min)
+
+	@media (min-width: $screen-lg-min)
 
 		
 		

@@ -16,6 +16,7 @@ mongorestore -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f91
 
 mongorestore -h troup.mongohq.com:10043 -d app21905351 -u heroku -p f13d53de0d7cb682de87d4bef2a99a79 ./data/demo/imtstore --drop
 
+mongorestore -h oceanic.mongohq.com:10015 -d app22933730 -u heroku -p oUP6x4QkLjN27QCHWH9zcNDsMmVZnQDobcnZvMagdRcVRZgIrIX8BwcRTvEKCBk6S8Gz5li3Dlb59wNG3nxg8A ./data/demo/imtpawpaw --drop
 
 ##Export/Backup a database data to the file system
 

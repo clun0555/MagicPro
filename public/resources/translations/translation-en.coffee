@@ -97,6 +97,7 @@ define ->
 	"productnavigator.order.category": "category"
 	"productnavigator.order.ascending": "ascending"
 	"productnavigator.order.descending": "descending"
+	"productnavigator.back": "back"
 
 	### users ###
 	"admin.users.title": "Users"

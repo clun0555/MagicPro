@@ -4,15 +4,19 @@ define [
 	"common/utils/utils"
 ], (_, shop, utils) ->
 
-	shop.controller "ShopProductsController", ($scope, data, cart, ShopService, CartService, $state, SessionService) ->
+	shop.controller "ShopProductsController", ($scope, data, ShopService, CartService, $state, SessionService) ->
 		amount = 12
 		from = amount
-		allProducts = data.products
-		# $scope.products = allProducts		
-		$scope.products = allProducts.slice(0, amount)
+		
+		$scope.products = ({} for i in [0..8])
+
+		for product, index in data.products
+			$scope.products[index] = product
+
 		$scope.search = ShopService.search
-		$scope.cart = cart
+		# $scope.cart = cart
 		$scope.categories = data.categories
+		$scope.category = data.category
 
 		$scope.quantities = {}
 
@@ -37,30 +41,10 @@ define [
 		else
 			$scope.currentOrder =  $scope.orders[2]
 		
-		for product in data.products
-			$scope.quantities[product._id] = cart.quantities(product)		
+		# for product in data.products
+		# 	$scope.quantities[product._id] = cart.quantities(product)		
 
-		$scope.doPaging = ->
-			$scope.loading = true
-			if from < allProducts.length
-				for product in  allProducts.slice(from, from+amount)
-					$scope.products.push product  
-				from += amount
-				$scope.loading = false			
-
-		$scope.doSort = (order, asc) ->
-			if order.field is "price"
-				allProducts.sort utils.sortBySorter('price', order.asc, parseFloat)
-			else if order.field is "title"
-				allProducts.sort utils.sortBySorter('title', order.asc, (title) -> title.toUpperCase())
-			else if order.field is "category"
-				allProducts.sort utils.sortBySorter('type', order.asc, (type) -> type.category.title.toUpperCase())
-			
-			$scope.products = allProducts.slice(0, $scope.products.length)
-
-			$scope.currentOrder = order
-			SessionService.storeLocal "order", order
-
+		
 		$scope.updateQuantity = (product, design) ->
 			quantity = $scope.quantities[product._id][design._id]
 			CartService.update product, design, quantity
@@ -103,5 +87,5 @@ define [
 			$scope.$parent.files = $files
 			$state.go "shop.createproduct", { category: product.type.category.slug, type: product.type.slug, product: product.slug}
 
-		$scope.doSort($scope.currentOrder)
+		# $scope.doSort($scope.currentOrder)
 

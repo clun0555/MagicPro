@@ -26,31 +26,38 @@ define [
 			scope: true
 			# replace: true
 			controller: ($element, $scope, $attrs) ->
-				resize = ->
-					elementWidth = $element.width()
-					if elementWidth isnt $scope.elementWidth
-						$scope.elementWidth = elementWidth
-						image = $scope.$eval($attrs.imtSrc)
-						if image
-							$scope.size = $attrs.imtSize
-							sizeInfo = ImageSizeService.optimized(ImageSizeService.getResizeInput($scope.size, image), elementWidth)
-							
-							if $scope.sizeInfo?.width isnt sizeInfo.width
-								# console.log "new size " + elementWidth + "/" + sizeInfo.width
-								$scope.sizeInfo = sizeInfo 
-								imageQuery = ImageSizeService.generateResizeQuery(sizeInfo)
-								$scope.imageSrc = "#{path}/#{ image.path ? 'placeholder2.jpg' }?#{imageQuery}"
-								$scope.$$phase || $scope.$apply()
+				if $attrs.imtFixed
+					image = $scope.$eval($attrs.imtSrc)
+					size = $attrs.imtSize
+					$scope.imageSrc = "#{path}/#{ image.path ? 'placeholder2.jpg' }?#{size}"
+					$scope.$$phase || $scope.$apply()
+				else
 
-				throttledResize = _.throttle(resize, 100)
+					resize = ->
+						elementWidth = $element.width()
+						if elementWidth isnt $scope.elementWidth
+							$scope.elementWidth = elementWidth
+							image = $scope.$eval($attrs.imtSrc)
+							if image
+								$scope.size = $attrs.imtSize
+								sizeInfo = ImageSizeService.optimized(ImageSizeService.getResizeInput($scope.size, image), elementWidth)
+								
+								if $scope.sizeInfo?.width isnt sizeInfo.width
+									# console.log "new size " + elementWidth + "/" + sizeInfo.width
+									$scope.sizeInfo = sizeInfo 
+									imageQuery = ImageSizeService.generateResizeQuery(sizeInfo)
+									$scope.imageSrc = "#{path}/#{ image.path ? 'placeholder2.jpg' }?#{imageQuery}"
+									$scope.$$phase || $scope.$apply()
 
-				$(window).bind "resize", throttledResize
+					throttledResize = _.throttle(resize, 100)
 
-				$scope.$on '$destroy', ->
-					# cleanup to avoid memory leaks
-					$(window).unbind "resize", throttledResize	
+					$(window).bind "resize", throttledResize
 
-				resize()
+					$scope.$on '$destroy', ->
+						# cleanup to avoid memory leaks
+						$(window).unbind "resize", throttledResize	
+
+					resize()
 
 
 
@@ -59,6 +66,8 @@ define [
 				$(element).addClass "imt-image-wrapper"
 				image = scope.$eval(attrs.imtSrc)
 				scope.size = attrs.imtSize
+				scope.fixed = attrs.imtFixed
+
 
 				if image?
 					sizeInfo = ImageSizeService.getResizeInput(scope.size, image)
@@ -77,10 +86,7 @@ define [
 
 					$(element).find("img").bind "load", ->
 						this.style.opacity='1'
-						$(this).parent().addClass('loaded')
-
-					$(element).bind "show", ->
-						alert "show"
+						$(this).parent().addClass('loaded')					
 
 
 							

@@ -1,0 +1,1 @@
+{ "options" : { "create" : "users" }, "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "imtpawpaw.users", "name" : "_id_" }, { "v" : 1, "key" : { "email" : 1 }, "unique" : true, "ns" : "imtpawpaw.users", "name" : "email_1", "background" : true, "safe" : null } ] }

@@ -1,0 +1,26 @@
+{
+  "name": "ng-FitText.js",
+  "main": [
+    "ng-FitText.js"
+  ],
+  "keywords": [
+    "angular",
+    "javascript",
+    "typography"
+  ],
+  "ignore": [
+    "**/.*",
+    "styles"
+  ],
+  "homepage": "https://github.com/patrickmarabeas/ng-FitText.js",
+  "_release": "dbcbaf1ca3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "dbcbaf1ca3b00f1ed6fde3745348ebee797acca8"
+  },
+  "_source": "git://github.com/patrickmarabeas/ng-FitText.js.git",
+  "_target": "*",
+  "_originalSource": "ng-FitText.js",
+  "_direct": true
+}

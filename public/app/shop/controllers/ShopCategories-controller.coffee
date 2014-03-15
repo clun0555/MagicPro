@@ -3,6 +3,6 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller "ShopCategoriesController", ($scope, data, ShopService) ->						
-		$scope.categories = data.categories
+	shop.controller "ShopCategoriesController", ($scope, ShopService) ->						
+		# $scope.categories = data.categories
 		$scope.search = ShopService.search

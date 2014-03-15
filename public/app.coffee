@@ -14,6 +14,7 @@ define [
 	"angular-translate-storage-cookie"
 	"angular-translate-interpolation-messageformat"
 	"angular-bindonce"	
+	"ng-fittext"
 
 	"fastclick"
 
@@ -44,6 +45,7 @@ define [
 		"ngCookies"
 		"ui.router"
 		'pascalprecht.translate'
+		'ngFitText'
 
 		'angularFileUpload'
 		'infinite-scroll'

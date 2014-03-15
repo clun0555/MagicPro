@@ -1,137 +1,124 @@
-body.drag-over .product-title.create-product .thumbnail .image-wrapper
-	background: #555
+.product-navigator
+
+	margin-top: 50px
+
+	.category-info
+		// text-align: center
+		// width: 100%
+		// +clearfix()
+
+		text-align: center
+		margin-bottom: 20px
+		position: relative
+
+		.back-button
+			margin-bottom: 20px
+			position: absolute
+			left: 0
+			top: 50px
+
+		img
+			display: block
+			margin: 0 auto
+			// float: left
+			height: 70px
+			// height: 50px
+			display: inline-block
+			margin-top: -40px
+
+			
 
 
+		h1
+			font-family: 'agency_fbbold'
+			text-transform: uppercase
+			color: white
+			text-align: center
+			// font-size: 3.4em
+			font-size: 4.4em
+			padding: 20px
+			display: inline-block
 
 
-.no-products
-	margin-top: 30px
-	margin-left: 30px
+	.category-label
+		font-family: 'agency_fbbold'
+		text-transform: uppercase
+		font-size: 1.3em
+		color: white
 
-.sort-trigger
-	.dropdown-menu
 
-		a
-			padding-left: 10px
-			.order-field
-				margin-left: 5px
-				width: 70px
-				display: inline-block	
+	.products-wrapper
+		// margin: 0 auto
+		
+		.products
+			margin-top: 20px
 
-			.order-way
-				font-weight: 300
+			
 
-.categories-shortcut
-	display: none
-	
-	&.visible
-		display: block
+			.product
+				border: 3px solid white
+				padding: 0
+				margin-left: -3px
+				margin-top: -3px
+				cursor: pointer
 
+				&:nth-child(1)
+					border-top-left-radius: 8px
+
+				&:nth-child(3)
+					border-top-right-radius: 8px
+
+				&:nth-child(7)
+					border-bottom-left-radius: 8px
+
+				&:nth-child(9)
+					border-bottom-right-radius: 8px
+
+				+imt-hover
+					background: #FE4F00
+				
+				.imt-image-placeholder
+					padding-top: 0 !important
+					height: 100%
+
+
+				img
+					height: 100%
+
+				.imt-image-wrapper
+					height: 100%
+
+
+			
+			.thumbnail
+				// background: transparent
+				background: transparent
+				border: none
+				
+				height: 150px
 
 	@media (min-width: $screen-md-min)
-		&.visible
-			display: none
 
-.product-navigator
-	// width: auto
-	// height: auto
-	border-radius: 4px
+		.category-info
 
+			.back-button
+				// position: static
 
-	
-			
-	.product-title
-		// min-width: 250px
-		margin-top: 10px
-		margin-bottom: 10px
-		white-space: nowrap
-		cursor: pointer
-		// height: 350px
-		z-index: 10
-		padding: 10px
+			img	
+				display: block
+				height: auto
+				margin-top: 150px
 
-		&.hover
-			z-index: 11
-
-		.caption
-			padding: 0px	
-
-		.thumbnail
-			border: 0
-			background: white
-			border-radius: 0
-			padding: 0px
-			margin-bottom: 0px
-
-		.top-info	
-			padding: 0px
-			text-decoration: initial !important
-			color: #555
-
-			h4
-				font-weight: 400
-				text-overflow: ellipsis
-				overflow: hidden
-				white-space: nowrap
-				line-height: 1.3em
-				
-				a
-					color: #555
-					+imt-hover
-						text-decoration: initial !important
-
-				@media (min-width: $screen-sm-min)
-					font-size: 1.5em
-
-
-
-		.image-wrapper
-			position: relative
-			
-			.imt-image-wrapper
-				background-color: white
-				margin: 0 auto
-				margin-bottom: 10px
-				opacity: 1
+			h1
 				display: block
 
-				// position: absolute
-				// left: 0
-				+transition(opacity .5s ease-in-out)
-				
+	@media (min-width: $screen-lg-min)
 
-				// &.visible
-				// 	opacity: 1
-				// 	display: inherit				
-				
+		.products-wrapper
 
+			.products
 
-		.bottom-info
-			overflow: auto
-			padding-top: 10px
-			padding-bottom: 10px
-			
-			.cart-info
-				
-				.anim-wrapper
-					opacity: 0
-					max-height: 0px
-					overflow: hidden
-					+transition(300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) opacity, 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) max-height)
-					
+				.product
 
-				&.visible .anim-wrapper
-					max-height: 200px
-					opacity: 1
-
-
-
-		
-
-				
-
-
-
-
-	
-
+					.thumbnail
+						height: 200px

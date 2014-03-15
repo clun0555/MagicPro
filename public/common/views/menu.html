@@ -5,11 +5,11 @@
 		
 			<nav>
 				
-				<ul class="nav navbar-nav navbar-left visible-sm visible-xs" >
+				<!-- <ul class="nav navbar-nav navbar-left visible-sm visible-xs" >
 					<li>
 						<a  class="btn left-drawer-toggle drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
 					</li>
-				</ul>
+				</ul> -->
 				<ul class="nav navbar-nav navbar-right "  >
 					
 					<!-- <li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('home') }" >
@@ -18,22 +18,22 @@
 					</li>
  -->
 
-					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('about') }" >
+					<li class="section-link hidden-xs hidden-sm" ng-class="{ 'active': isCurrentMenu('about') }" >
 						<a ng-click="changeMenu('about')" translate>menu.about</a>
 
 					</li>
 
-					<li class="section-link hidden-xs"  ng-class="{ 'active': isCurrentMenu('shop') }">
+					<li class="section-link hidden-xs hidden-sm"  ng-class="{ 'active': isCurrentMenu('shop') }">
 						<a ng-click="changeMenu('shop.products')" translate >menu.store</a>
 					</li>
 					
-					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('blog') }" >
+					<li class="section-link hidden-xs hidden-sm" ng-class="{ 'active': isCurrentMenu('blog') }" >
 						<a ng-click="changeMenu('blog')" translate>menu.blog</a>
 
 					</li>
 
 
-					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('contact') }" >
+					<li class="section-link hidden-xs hidden-sm" ng-class="{ 'active': isCurrentMenu('contact') }" >
 						<a ng-click="changeMenu('contact')" translate>menu.contact</a>
 
 					</li>
@@ -44,7 +44,7 @@
 					</li>-->
 					<li class="divider hidden-sm  hidden-xs">&nbsp;</li>
 
-		<!--			<li class="dropdown hidden-sm hidden-xs">
+	<!-- 				<li class="dropdown hidden-sm hidden-xs">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-if="user">
 							<i class="fa fa-user "></i>
 							{{user.firstname}}
@@ -65,7 +65,7 @@
 
 
 
-					</li>-->
+					</li> -->
 
 					<li ng-if="cart" ng-show="cart && cart.quantity() > 0" >
 						<a class="btn cart-toggle drawer-toggle" ng-click="toggleCart()" >
@@ -73,7 +73,13 @@
 							<span ng-show="cart.quantity() == 0">Cart</span>
 							<span ng-show="cart.quantity() > 0">{{cart.quantity()}}</span>								
 						</a>
-					</li>		
+					</li>
+
+
+					<li class="visible-sm visible-xs">
+						<a  class="btn left-drawer-toggle drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
+					</li>
+				
 					
 				</ul>
 
