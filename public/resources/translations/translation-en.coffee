@@ -81,11 +81,11 @@ define ->
 	"menu.logout": "Log out"
 	"menu.admin": "Admin"
 	"menu.login": "Login"
-	"menu.store": "Store"
+	"menu.store": "Products"
 	"menu.about": "About"
 	"menu.contact": "Contact"
 	"menu.home": "Home"
-	"menu.blog": "Blog"
+	"menu.blog": "News"	
 	
 	### productnavigator ###
 	"productnavigator.buy": "Buy"

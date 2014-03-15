@@ -38,7 +38,7 @@
 			<div ui-view="side" autoscroll="false" class="affix content-slide visible-md visible-lg"></div>
 		</div>
 		<div 
-			class="content-wrapper content-slide"		
+			class="content-wrapper content-slide " ng-class="{'home-menu-active': $state.includes('home') }"	
 		>			
 
 			<div id="main-region" class="container-fluid" ui-view  autoscroll="false"  >						

@@ -28,17 +28,14 @@ define [
 					url: ""
 					abstract: true
 					views: 
-						"cart-drawer@": 
-							templateUrl: "app/shop/views/cart.html" 
-							controller: "CartController"							
+						# "cart-drawer@": 
+						# 	templateUrl: "app/shop/views/cart.html" 
+						# 	controller: "CartController"							
 
 
 						"left-drawer@": 
 							templateUrl: "app/shop/views/left_drawer.html"
-							controller: "ShopSideCategoriesController"
-							resolve: 
-								data: ($stateParams, ShopService) ->
-									ShopService.getCategories()
+							controller: "ShopSideCategoriesController"							
 
 						"":
 							template: "<div ui-view autoscroll='false' class='main-region-inner'></div>"
