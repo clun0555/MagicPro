@@ -26,15 +26,15 @@ define [
 						cart: (CartService) ->
 							CartService.get()
 
-				.state "home",
-					url: "/home"
-					templateUrl: "app/shop/views/home.html" 
-					# controller: "CartPreviewController"
-					parent: "layout"	
-					controller: "ShopHomeController"
-					resolve: 
-						data: (ShopService) ->
-							ShopService.getAllProducts()
+				# .state "home",
+				# 	url: "/home"
+				# 	templateUrl: "app/shop/views/home.html" 
+				# 	# controller: "CartPreviewController"
+				# 	parent: "layout"	
+				# 	controller: "ShopHomeController"
+				# 	resolve: 
+				# 		data: (ShopService) ->
+				# 			ShopService.getAllProducts()
 
 				.state "shop", 
 					url: "/products"
