@@ -16,7 +16,7 @@
 
 	</head>
  <!-- ng-init="this.className += ' loaded'"  -->
-	<body imt-scroll-position="scrollPosition" ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible, 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible, 'scroll-at-top': scrollPosition <= 0, 'home-state':  $state.includes('home')}" >
+	<body class="state-{{$state.current.name}}" imt-scroll-position="scrollPosition" ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible, 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible, 'scroll-at-top': scrollPosition <= 0, 'home-state':  $state.includes('home')}" >
 		<div class="content-slide-overlay content-slide" ng-click="hideDrawers()" ></div>
 
 		<div class="drawer right-drawer" >

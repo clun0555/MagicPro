@@ -1,103 +1,154 @@
 <div class="contact-view">
+
+	<div class="contact-view-inner">
+
 	
 		<div class="confirmation" ng-show="sent" >
 			<h1 translate>contact.sent</h1>
 			<p translate>contact.confirmation</p>	
 		</div>
+
+		<h1 ng-show="!sent" > {{ 'contact.title' | translate }}</h1>
+	
+		<div class="contact-info" ng-show="!sent">
+			
+			<div class="address">
+				<img src="/resources/img/address_icon.png" alt=""> 5 MINNA CLOSE, BELROSE, NSW, 2085, AUSTRALIA
+			</div>
+
+			<div class="phone">
+				<img src="/resources/img/phone_icon.png" alt=""> (02) 9485 8888
+			</div>
+
+
+		</div>
 		
 		<form novalidate name="data" class="form-horizontal" ng-show="!sent">
 
 			<fieldset ng-disabled="submiting">
+				
+				<div class="col-xs-12 col-md-6">
+					<!-- Name  -->
+					<div 
+						class="form-group name-group name-group "
+						ng-class="{ 'focused': (focused=='name'), 'has-error': (submited &&  data.firstname.$error.required) }" >
 
-
-				<div class="form-group">
-					<label class="col-lg-3 control-label"></label>
-					<div class="col-lg-9">
-						<h1  > <i class="fa fa-envelope-o"></i> {{ 'contact.title' | translate }}</h1>					
-					</div>
-				</div>
-
-				<!-- Name  -->
-				<div 
-					class="form-group name-group name-group "
-					ng-class="{ 'has-error': (submited &&  data.firstname.$error.required) }" >
-
-					<label class="col-lg-3 control-label" translate >contact.name</label>
-					<div class="col-lg-9 form-item">
 						
-							<input 
-								type="text" 
-								class="form-control" 
-								name="name" 
-								name="name" 
-								placeholder="{{ 'contact.name' | translate }}" 
-								autofocus="" 
-								ng-model="message.name"								
-							>
+						<div class="col-lg-12 form-item">
+							<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"></i></span>
+									<input 
+										type="text" 
+										class="form-control" 
+										name="name" 
+										name="name" 
+										placeholder="{{ 'contact.name' | translate }}" 
+										ng-model="message.name"	
+										ng-focus="focused='name'" 
+					 					ng-blur="focused=''" 							
+									>
 
-							<div 
-								class="error-tip" 
-								translate >
-								contact.name.required					
+							</div>
+						</div>
+
+					</div>
+
+					<div 
+						class="form-group email-group" 
+						ng-class="{ 'focused': (focused=='email'), 'has-error': (submited  && ( data.email.$invalid) || serverError) }" >
+
+						
+						<div class="col-lg-12 form-item">
+							<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+									<input 
+										type="email" 
+										class="form-control" 
+										name="email" 
+										placeholder="{{ 'contact.email' | translate }}"
+					 					ng-model="message.email"
+					 					required
+					 					ng-focus="focused='email'" 
+					 					ng-blur="focused=''" 
+					 				>
+
 							</div>
 
+
+							<div class="error-tip" >					
+								<span ng-show="data.email.$error.email" translate > contact.email.invalid</span>
+								<span ng-show="data.email.$error.required" translate > contact.email.required</span>								
+							</div>
+
+						</div>
+
 					</div>
-				</div>
 
-				<div 
-					class="form-group email-group" 
-					ng-class="{ 'has-error': (submited  && ( data.email.$invalid) || serverError) }" >
 
-					<label class="col-lg-3 control-label" translate >contact.email</label>
-					<div class="col-lg-9 form-item">
-						<input 
-							type="email" 
-							class="form-control" 
-							name="email" 
-							placeholder="{{ 'contact.email' | translate }}"
-		 					ng-model="message.email"
-		 					required >
+					<!-- Name  -->
+					<div 
+						class="form-group phone-group phone-group "
+						ng-class="{ 'focused': (focused=='phone'), 'has-error': (submited &&  data.phone.$error.required) }" >
 
-						<div class="error-tip" >					
-							<span ng-show="data.email.$error.email" translate > contact.email.invalid</span>
-							<span ng-show="data.email.$error.required" translate > contact.email.required</span>								
+						
+						<div class="col-lg-12 form-item">
+							<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+									<input 
+										type="text" 
+										class="form-control" 
+										name="phone" 
+										name="phone" 
+										placeholder="{{ 'contact.phone' | translate }}" 
+										ng-model="message.phone"
+										ng-focus="focused='phone'" 
+					 					ng-blur="focused=''" 								
+									>
+
+							</div>
 						</div>
 
 					</div>
 
 				</div>
 
+				
+				<div class="col-xs-12 col-md-6">
+					
+					<div 
+						class="form-group email-group" 
+						ng-class="{ 'has-error': (submited  && ( data.message.$invalid) || serverError) }" >
 
-				<div 
-					class="form-group email-group" 
-					ng-class="{ 'has-error': (submited  && ( data.message.$invalid) || serverError) }" >
+						
+						<div class="col-lg-12 form-item">
+							<textarea class="form-control" ng-model="message.message" name="message" required placeholder="{{'contact.message' | translate}}" ></textarea>
 
-					<label class="col-lg-3 control-label" translate >contact.message</label>
-					<div class="col-lg-9 form-item">
-						<textarea class="form-control" ng-model="message.message" name="message" required placeholder="{{'contact.message' | translate}}" ></textarea>
+							<div class="error-tip" >					
+								<span ng-show="data.message.$error.required" translate >contact.message.required</span>								
+							</div>
 
-						<div class="error-tip" >					
-							<span ng-show="data.message.$error.required" translate >contact.message.required</span>								
 						</div>
 
 					</div>
 
-				</div>
 
-
-				<div class="form-group buttons-group">
-					<div class="col-lg-offset-3 col-lg-9">
-						<div class="pull-right">
-							
-							<button class="btn btn-lg btn-imt-primary three-d send-button " translate ng-click="send()" >contact.send</button>
-							
+					<div class="form-group buttons-group">
+						<div class="col-lg-offset-3 col-lg-9">
+							<div class="pull-right">
+								
+								<button class="btn btn-lg btn-imt-primary  send-button " translate ng-click="send()" >contact.send</button>
+								
+							</div>
 						</div>
 					</div>
+
 				</div>
 
 
 			</fieldset>
 
 		</form>
+
+	</div>
 
 </div>

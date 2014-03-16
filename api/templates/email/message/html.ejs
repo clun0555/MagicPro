@@ -18,6 +18,12 @@ Message
 </h1>
 
 <p>
+	<% if(message.phone){ %>
+		phone: <%=message.phone%>
+	<% } %>
+</p>
+
+<p>
 	
 <%= message.message %>
 
