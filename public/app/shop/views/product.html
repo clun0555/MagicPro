@@ -2,10 +2,12 @@
 	
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 product-image">
+			<a ui-sref="shop.productsbycategory({category: product.type.category.slug})" class="btn btn-imt-dimmed  back-button" > <i class="fa fa-angle-left"></i> {{'productnavigator.back' | translate}}</a>
 			
+			<h1 class="product-title visible-xs" >{{ product.title}}</h1>
 			<div class="item-thumbnail" imt-src="design.image || product.image" imt-size="w=400" ng-repeat="design in product.designs" ng-class="{'visible': currentDesign == design}" ></div>
 			
-			<h1 class="product-title">{{ product.title}}</h1>
+			<h1 class="product-title hidden-xs" >{{ product.title}}</h1>
 
 			
 		</div>
