@@ -3,20 +3,22 @@
 
 <div class="product-navigator">
 	
+	<div class="hidden-xs col-md-1"></div>
 	<div class="category-info col-xs-12 col-md-4">
-		<a ui-sref="shop.products" class="btn btn-imt-dimmed btn-lg back-button" > <i class="fa fa-angle-left"></i> {{'productnavigator.back' | translate}}</a>
+		<a ui-sref="shop.products" class="btn btn-imt-dimmed back-button" > <i class="fa fa-angle-left"></i> {{'productnavigator.back' | translate}}</a>
 
 		<img src="/resources/img/drawing-{{category.slug}}.png" class="drawing">		
 		<h1 >{{category.title}}</h1>
 	</div>
 
-	<div class="products-wrapper col-xs-12 col-md-8">
+	
+	<div class="products-wrapper col-xs-12 col-md-6">
 
 		<div  ng-if="category"  >
 			
 			<div class="row">
 
-				<div class="col-xs-3 mini-block" bindonce="type" ng-repeat="type in category.types"  >
+				<div class="col-xs-3 category-block" bindonce="type" ng-repeat="type in category.types"  >
 					<div class="category-label" bo-text="type.title"></div>
 				</div>
 
@@ -40,6 +42,7 @@
 		</div>
 
 	</div>
+	<div class="hidden-xs col-md-1"></div>
 
 
 </div>
