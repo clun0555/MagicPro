@@ -277,12 +277,13 @@ define ->
 
 
 	### contact ###
-	"contact.title": "Contact"
+	"contact.title": "Contact Us"
 	"contact.name": "Name"
 	"contact.email": "Email"
 	"contact.message": "Message"
 	"contact.send": "Send"
 	"contact.sent": "Sent"
+	"contact.phone": "Phone Number"
 	"contact.confirmation": "Your message has been sent to our team."
 	"contact.email.required": "Please provide an email address"
 	"contact.message.required": "Oops, you forgot to write your message..."
