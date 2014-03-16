@@ -5,54 +5,37 @@
 			
 			<div class="item-thumbnail" imt-src="design.image || product.image" imt-size="w=400" ng-repeat="design in product.designs" ng-class="{'visible': currentDesign == design}" ></div>
 			
-			<!-- <div class="item-mini-thumbnails" ng-if="product.designs.length > 1">
-				<div class="item-mini-thumbnail" imt-src="design.image || product.image" imt-size="w=400" ng-repeat="design in product.designs" ng-click="selectDesign(design)" ng-class="{'active': currentDesign == design }"  ></div>
-			</div>			
- -->
+			<h1 class="product-title">{{ product.title}}</h1>
+
 			
 		</div>
 		<div class="col-xs-12 col-sm-6" >
 			<div class="bundle-container">
-				<h1>{{ product.title}}</h1>
-				<p class="product-ref-price">
-					<span class="product-ref" >{{ product.identifier }} | </span> 
-					<span class="product-price" >{{  product.price | currency:"$" }}</span> 
-					<span ng-show="isRole('admin')" >
-					| <a ui-sref="shop.editproduct({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" ng-if="isRole('admin') && isUserValidated()" translate>product.edit</a>
-					</span>
-				</p>
+				
+				<h1 class="product-headline">{{product.headline}}</h1>
+					
+				<div ng-show="isRole('admin')" >
+					<a ui-sref="shop.editproduct({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" ng-if="isRole('admin') && isUserValidated()" translate>product.edit</a>
+				</div>
+
 				<p class="product-description">{{ product.description}}</p>
 
-					
-				<!-- <div class="designs">
-					
-					<div ng-click="selectDesign(design)" ng-repeat="design in product.designs" class="design" ng-class="{'active': currentDesign == design, 'single-design': product.designs.length == 1}">
-						<span class="design-label">{{design.label}}</span>
-						<div class="btn-group cart-btn-group">
-							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
-							<span class="btn-content">
-								<a class="btn-clicker" ng-hide="quantities[design._id] > 0 || isFocused"   class="btn btn-default " ng-click="addToCart(design)" translate >
-									cart.widget.add
-								</a>
-								<input 
-									type="number"
-									class="form-control" 
-									ng-show="quantities[design._id] > 0 || isFocused" 
-									ng-model="quantities[design._id]" 
-									ng-change="updateQuantity(design)" 
-									ng-focus="isFocused = true; selectDesign(design)"
-									ng-blur="isFocused = false" 
-								>
+				<div class="logo-line-1">
+					<img src="/resources/img/natural_logo.png" >
+					<img src="/resources/img/petro.png" >
+				</div>
 
-								<span ng-click="removeFromCart(design)" class="btn btn-default cross" ng-show="quantities[design._id] > 0 || isFocused" >
-										<i>&times; </i>	
-								</span>
-							</span>
+				<h2 class="product-ingredients-title" translate>product.ingredients</h2>	
+				<p class="product-ingredients">{{ product.ingredients}}</p>
+				
 
-						</div>
-					</div>	
+			<div class="logo-line-2">
+				<img src="/resources/img/aus_logo2.png" >
+				<img src="/resources/img/aus_logo.png" >
+				<img src="/resources/img/eco_logo.png" >
+				<img src="/resources/img/australia_logo.png" >
+				<img src="/resources/img/cgmp_logo.png" >
 
-				</div> -->
 			</div>
 			
 

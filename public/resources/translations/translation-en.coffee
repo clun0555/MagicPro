@@ -232,6 +232,7 @@ define ->
 	"product.many": "HOW MANY?"
 	"product.inner": "INNER"
 	"product.edit": "edit"	
+	"product.ingredients": "Ingredients"	
 
 	### product edit ###
 
@@ -239,6 +240,7 @@ define ->
 	"product.edit.cancel": "Cancel"
 	"product.edit.new.design": "Add design"
 	"product.edit.title": "Title"
+	"product.edit.headline": "Headline"
 	"product.edit.category": "Category"
 	"product.edit.identifier": "Identifier"
 	"product.edit.price": "price"
@@ -248,6 +250,7 @@ define ->
 	"product.edit.design.title": "Title"
 	"product.edit.design.default.title": "Default"
 	"product.edit.description": "Description"
+	"product.edit.ingredients": "Ingredients"
 	"product.edit.uploading": "Uploading..."
 	"product.edit.saving": "Saving..."
 	"product.edit.new.title": "New Product"

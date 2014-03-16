@@ -7,6 +7,8 @@ Product = new mongoose.Schema
 	identifier: {type: String, required: true, unique: true }
 	title: { type: String, required: true }
 	description: { type: String }
+	ingredients: { type: String }
+	headline: { type: String }
 	type: {type: mongoose.Schema.ObjectId, ref: 'Type'}
 	designs: [ Design.schema ]
 	size: {type: String }

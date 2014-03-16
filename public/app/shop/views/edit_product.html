@@ -23,6 +23,14 @@
 
 			</div>
 
+			<div class="product-title form-group" ng-class="{ 'has-error': (submited && (productform.headline.$invalid) ) }" >
+				<label class="col-md-3 control-label" translate >product.edit.headline</label>
+				<div class="col-md-9 form-item">
+					<input class="form-control" type="text" ng-model="product.headline" placeholder="{{ 'product.edit.headline' | translate }}" name="headline" >
+				</div>    			
+
+			</div>
+
 			<div class="product-ref form-group" ng-class="{'has-error': submited && (serverError == 'duplicate.identifier' || productform.identifier.$invalid ) }" > 
 				<label class="col-md-3 control-label" translate >product.edit.identifier</label>
 				<div class="col-md-9  form-item">
@@ -64,10 +72,14 @@
 			<div class="form-group"  >
 				<label class="col-md-3 control-label" translate >product.edit.description</label>
 				<div class="col-md-9 form-item product-description"  >
-					<textarea class="form-control" ng-model="product.description" placeholder="{{ 'product.edit.description' | translate }}"></textarea>			
-					<!-- <div class="error-tip"  >						
-						<span  translate> product.edit.validation.price.required </span>	
-					</div> -->
+					<textarea class="form-control" ng-model="product.description" placeholder="{{ 'product.edit.description' | translate }}"></textarea>								
+				</div>
+			</div>
+
+			<div class="form-group"  >
+				<label class="col-md-3 control-label" translate >product.edit.ingredients</label>
+				<div class="col-md-9 form-item product-ingredients"  >
+					<textarea class="form-control" ng-model="product.ingredients" placeholder="{{ 'product.edit.ingredients' | translate }}"></textarea>
 				</div>
 			</div>
 
