@@ -8,7 +8,7 @@ define [
 		amount = 12
 		from = amount
 		
-		$scope.products = ({} for i in [0..8])
+		$scope.products = ({} for i in [0..9])
 
 		for product, index in data.products
 			$scope.products[index] = product
