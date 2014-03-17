@@ -19,7 +19,8 @@ define [
 			# 			$scope.cartVisible = false
 		
 			$scope.toggle = ->
-				$rootScope.info.leftDrawerVisible = !$rootScope.info.leftDrawerVisible
+				$rootScope.info.cartVisible = !$rootScope.info.cartVisible
+				# $rootScope.info.leftDrawerVisible = !$rootScope.info.leftDrawerVisible
 
 			$scope.toggleCart = ->
 				# alert "helo"
