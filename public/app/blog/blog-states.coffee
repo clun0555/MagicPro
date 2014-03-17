@@ -15,4 +15,12 @@ define [
 					controller: "BlogArticlesController"
 					parent: "layout"
 					resolve: 
-						articles: (BlogService) -> BlogService.getArticles() 					
+						articles: (BlogService) -> BlogService.getArticles() 
+
+				.state "article",
+					url: "/blog/:articleId"
+					templateUrl: "app/blog/views/article.html"
+					controller: "BlogArticleController"
+					parent: "layout"
+					resolve: 
+						article: (BlogService, $stateParams) -> BlogService.getArticle($stateParams.articleId) 					

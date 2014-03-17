@@ -24,6 +24,14 @@ define [
 
 			deferred.promise
 
+		getArticle: (articleId) ->
+			deferred = $q.defer()
+
+			@getArticles().then (articles) =>
+					deferred.resolve _.findWhere(articles, {'_id': articleId})
+
+			deferred.promise
+
 		save: (article) ->
 			if article._id?
 				Articles.update( { id: article._id }, article ).$promise.then (article) =>

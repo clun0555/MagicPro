@@ -274,6 +274,8 @@ define ->
 	"article.edit": "edit"
 	"article.remove": "remove"
 	"article.new": "New Article"
+	"article.readmore": "Read more"
+	"article.back": "Back"
 
 
 	### contact ###
