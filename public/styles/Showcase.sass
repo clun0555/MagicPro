@@ -14,6 +14,10 @@
 			top: 0px
 			min-height: 450px
 
+		.big-caption.col-xs-3
+			@media (max-width: 340px)
+				display: none
+
 		.big-caption
 			// position: absolute
 
@@ -24,6 +28,9 @@
 			transition-property: all
 			transition-duration: .5s
 			transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
+			@media (max-width: 340px)
+				width: 100%
+				margin-top: 180px
 
 
 
@@ -67,16 +74,22 @@
 			// top: -800px
 			transition: transform 3s ease
 			transform: translate3d(0px,0px,0px)
+			&:hover
+				-webkit-animation: shake 2.5s
+				animation: shake 2.5s
 
 
 		.adult-left
-			z-index: -1
-			position: absolute
-			left: 200px
-			width: 17%
-			top: -800px
-			transition: transform 3s ease
-			transform: translate3d(0px,0px,0px)
+			@media (max-width: 340px)
+				z-index: -1
+				position: absolute
+				width: 17%
+				top: -360px
+				left: 10px
+				transition: transform 3s ease
+				transform: translate3d(0px,0px,0px)
+			@media (min-width: 340px)
+				display: none
 
 		.adult-right
 			z-index: -1
@@ -94,9 +107,6 @@
 			.adult-right
 				top: 600px
 				right: 10px
-			.adult-left
-				top: -560px
-				left: 10px
 				
 	&.loaded .adult-view .adult-left
 		transform: translate3d(0px,500px,0px)
