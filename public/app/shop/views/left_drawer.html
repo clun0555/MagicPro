@@ -48,8 +48,12 @@
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
 			<a ui-sref="about" translate>menu.about</a>
 		</li>
+
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('blog') }" >
+			<a ui-sref="blog" translate>menu.blog</a>
+		</li>
 		
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" >
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" ng-if="isRole('admin')">
 			<a ui-sref="admin" translate>menu.admin</a>
 		</li>
 
