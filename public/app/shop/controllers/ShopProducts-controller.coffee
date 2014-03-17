@@ -108,7 +108,10 @@ define [
 			$state.go state, { category: product.type.category.slug, type: product.type.slug, product: product.slug}
 
 		$scope.selectType = (type) ->
-			$scope.currentType = type
+			if type is $scope.currentType
+				$scope.currentType = null
+			else
+				$scope.currentType = type
 			# $scope.filteredProducts = _.filter $scope.products, (p) -> p.type._id is type._id
 
 		$scope.$on "fileDrop", (event, $files) ->
