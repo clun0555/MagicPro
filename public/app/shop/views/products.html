@@ -2,16 +2,21 @@
 
 
 <div class="product-navigator">
+
+	<!-- <div class="buttons col-xs-12">
+		<a ui-sref="shop.createproduct" class="btn btn-imt-dimmed create-button" >  {{'productnavigator.add.product' | translate}}</a>
+
+	</div> -->
 	
 	<div class="hidden-xs col-md-1"></div>
 	<div class="category-info col-xs-12 col-md-4">
 		<a ui-sref="shop.products" class="btn btn-imt-dimmed back-button" > <i class="fa fa-angle-left"></i> {{'productnavigator.back' | translate}}</a>
-
+		<a ui-sref="shop.createproduct" class="btn btn-imt-dimmed create-button" ng-show="isRole('admin')" >  {{'productnavigator.add.product' | translate}}</a>
 		<img src="/resources/img/drawing-{{category.slug}}.png" class="drawing">		
 		<h1 >{{category.title}}</h1>
 	</div>
 
-	
+
 	<div class="products-wrapper col-xs-12 col-md-6">
 
 		<div  ng-if="category" class="hidden-xs"  >
@@ -29,10 +34,13 @@
 
 		<div  class="products row"  >
 			
-			<div bindonce class="slide product col-lg-4 col-sm-4 col-xs-6" ng-repeat="product in products" ui-sref="shop.product({product: product.slug})" >
+			<div bindonce 
+				ng-class="{empty: !product.title, last: productsCount -1 == index, 'hidden-xs': (visibleXs.indexOf(index) == -1), 'hidden-sm hidden-md hidden-lg': (visibleLg.indexOf(index) == -1), 'last-xs': (visibleXs[visibleXs.length - 1] == index), 'last-lg': (visibleLg[visibleLg.length - 1] == index), 'left-corner-xs': (visibleXs[visibleXs.length - 2] == index), 'left-corner-lg': (visibleLg[visibleLg.length - 3] == index)  }" 
+				class="product col-lg-4 col-sm-4 col-xs-6" 
+				ng-repeat="(index, product) in products" ui-sref="shop.product({product: product.slug})" >
 				
-					<div class="thumbnail" >
-
+					<div class="thumbnail"  >
+						<!-- {{product.title}}: {{index}} / {{offset}} / {{productsCount}} -->
 						<div ng-if="product.title" imt-src="product.designs[0].image" imt-size="h=200" imt-fixed="true" ng-class="{ 'visible': focusedDesign == null }" ></div>								
 
 					</div>

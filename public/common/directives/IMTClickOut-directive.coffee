@@ -16,7 +16,11 @@ define [
 
 
 
+
+
 			$document.bind "click", ->
 				
 				# magic here.
 				scope.$apply attr.imtClickOut
+
+				return true

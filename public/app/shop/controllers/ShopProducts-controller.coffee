@@ -8,10 +8,34 @@ define [
 		amount = 12
 		from = amount
 		
-		$scope.products = ({} for i in [0..9])
+		# $scope.products = ({} for i in [0..9])
+		$scope.products = []
+		$scope.visibleLg = []
+		$scope.visibleXs = []
+		
+		
+		productsCount = $scope.productsCount = data.products.length
 
 		for product, index in data.products
-			$scope.products[index] = product
+			# $scope.products[index] = product
+			$scope.visibleLg.push index
+			$scope.visibleXs.push index
+			$scope.products.push product
+
+		offset = 0
+
+		if productsCount % 3 isnt 0
+			offset = $scope.offset = (3-($scope.products.length%3))
+			for i in [0..offset-1]
+				$scope.products.push {}	
+				$scope.visibleLg.push ($scope.products.length - 1)
+				if $scope.products.length % 2 == 0
+					$scope.visibleXs.push ($scope.products.length - 1)
+
+
+		if $scope.products.length % 2 isnt 0 and offset in [1, 0]
+			$scope.products.push {}
+			$scope.visibleXs.push ($scope.products.length - 1)
 
 		$scope.search = ShopService.search
 		# $scope.cart = cart

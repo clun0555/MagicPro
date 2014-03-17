@@ -4,7 +4,7 @@ FilePlugin = require("../utils/FilePlugin")
 SlugPlugin = require("../utils/SlugPlugin")
 
 Product = new mongoose.Schema
-	identifier: {type: String, required: true, unique: true }
+	identifier: {type: String } #required: true, unique: true
 	title: { type: String, required: true }
 	description: { type: String }
 	ingredients: { type: String }
@@ -14,7 +14,7 @@ Product = new mongoose.Schema
 	size: {type: String }
 	inner: { type: Number, require: true }
 	modified: { type: Date, default: Date.now }
-	price: {type: Number, require: true}
+	price: {type: Number} #required: true
 	featured: {type: Boolean}
 
 Product.plugin(FilePlugin, {fields: ["image"]})

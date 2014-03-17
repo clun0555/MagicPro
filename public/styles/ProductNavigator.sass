@@ -17,6 +17,13 @@
 			left: 0
 			top: 10px
 
+		.create-button
+			margin-bottom: 20px
+			position: absolute
+			right: 10px
+			top: -40px
+
+
 		img
 			display: block
 			margin: 0 auto
@@ -80,10 +87,10 @@
 				&:nth-child(2)
 					border-top-right-radius: 8px
 
-				&:nth-child(9)
+				&.left-corner-xs
 					border-bottom-left-radius: 8px
 
-				&:nth-child(10)
+				&.last-xs
 					border-bottom-right-radius: 8px
 
 				// &:nth-child(10)
@@ -119,14 +126,18 @@
 
 			text-align: center
 			
-
-			img
+			.thumbnail
 				height: 70px
-				margin-top: -30px
+				img
+					height: 70px
+					margin-top: -30px
 
 			.back-button
 				margin-bottom: 20px
 				left: 0
+				top: 20px
+
+			.create-button
 				top: 20px
 		
 
@@ -145,6 +156,7 @@
 					margin-left: -3px
 					margin-top: -3px
 					cursor: pointer
+					border-radius: 0px
 
 					&:nth-child(1)
 						border-top-left-radius: 8px
@@ -152,20 +164,16 @@
 					&:nth-child(2)
 						border-radius: 0px
 						
-
 					&:nth-child(3)
 						border-top-right-radius: 8px
 						border-top-left-radius: 0px
 
-					&:nth-child(7)
+					&.left-corner-lg
 						border-bottom-left-radius: 8px
 
-					&:nth-child(9)
+					&.last-lg
 						border-bottom-right-radius: 8px
-						border-bottom-left-radius: 0px						
 
-					&:nth-child(10)
-						display: none
 
 	@media (min-width: $screen-md-min)
 
@@ -173,6 +181,10 @@
 
 			.back-button
 				// position: static
+
+			.create-button
+				right: inherit
+				left: 80px
 
 			img	
 				display: block
