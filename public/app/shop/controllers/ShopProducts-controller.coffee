@@ -107,6 +107,10 @@ define [
 		$scope.goToProduct = (product, state = "shop.product") ->
 			$state.go state, { category: product.type.category.slug, type: product.type.slug, product: product.slug}
 
+		$scope.selectType = (type) ->
+			$scope.currentType = type
+			# $scope.filteredProducts = _.filter $scope.products, (p) -> p.type._id is type._id
+
 		$scope.$on "fileDrop", (event, $files) ->
 			$scope.$parent.files = $files
 			$state.go "shop.createproduct", { category: product.type.category.slug, type: product.type.slug, product: product.slug}

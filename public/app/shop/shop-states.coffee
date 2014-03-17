@@ -110,6 +110,7 @@ define [
 					templateUrl: "app/shop/views/products.html"
 					controller: "ShopProductsController"
 
+
 				.state "shop.productsbytype",
 					parent: "shop.navigator"
 					url: "/:category/:type"

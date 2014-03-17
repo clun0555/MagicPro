@@ -57,11 +57,21 @@
 	.category-block
 		padding: 0
 
+		
+
 		.category-label
 			font-family: 'agency_fbbold'
 			text-transform: uppercase
 			font-size: 1em
 			color: white
+			cursor: pointer
+			border: 2px solid transparent
+			text-align: center
+			padding: 5px
+
+			&.active 
+				border: 2px solid white
+				background: $imt-primary-color
 
 
 	.products-wrapper
@@ -80,6 +90,14 @@
 				margin-left: -3px
 				margin-top: -3px
 				cursor: pointer
+				transition: all .5s ease
+
+				&.dimmed .thumbnail
+					opacity: .5
+
+
+				&.hilighted
+					background: $imt-primary-color !important
 
 				&:nth-child(1)
 					border-top-left-radius: 8px

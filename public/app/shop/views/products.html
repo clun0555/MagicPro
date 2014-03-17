@@ -23,8 +23,8 @@
 			
 			<div class="row">
 
-				<div class="col-xs-3 category-block" bindonce="type" ng-repeat="type in category.types"  >
-					<div class="category-label" bo-text="type.title"></div>
+				<div ng-click="selectType(type)" class="col-xs-3 category-block"  ng-repeat="type in category.types"  >
+					<div ng-class="{'active': currentType == type}" class="category-label" >{{type.title}}</div>
 				</div>
 
 			</div>
@@ -35,7 +35,7 @@
 		<div  class="products row"  >
 			
 			<div bindonce 
-				ng-class="{empty: !product.title, last: productsCount -1 == index, 'hidden-xs': (visibleXs.indexOf(index) == -1), 'hidden-sm hidden-md hidden-lg': (visibleLg.indexOf(index) == -1), 'last-xs': (visibleXs[visibleXs.length - 1] == index), 'last-lg': (visibleLg[visibleLg.length - 1] == index), 'left-corner-xs': (visibleXs[visibleXs.length - 2] == index), 'left-corner-lg': (visibleLg[visibleLg.length - 3] == index)  }" 
+				ng-class="{ 'dimmed': (currentType && currentType._id != product.type._id), 'hilighted': (currentType && currentType._id == product.type._id) , 'empty': !product.title, last: productsCount -1 == index, 'hidden-xs': (visibleXs.indexOf(index) == -1), 'hidden-sm hidden-md hidden-lg': (visibleLg.indexOf(index) == -1), 'last-xs': (visibleXs[visibleXs.length - 1] == index), 'last-lg': (visibleLg[visibleLg.length - 1] == index), 'left-corner-xs': (visibleXs[visibleXs.length - 2] == index), 'left-corner-lg': (visibleLg[visibleLg.length - 3] == index)  }" 
 				class="product col-lg-4 col-sm-4 col-xs-6" 
 				ng-repeat="(index, product) in products" ui-sref="shop.product({product: product.slug})" >
 				
