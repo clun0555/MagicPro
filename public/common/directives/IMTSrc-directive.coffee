@@ -17,7 +17,9 @@ define [
 					<div  class="imt-image-placeholder">
 						<img 
 							ng-src="{{imageSrc}}"
-							title="{{imageTitle}}"														
+							title="{{imageTitle}}"
+							description="{{imageDes}}"
+							alt="{{imageDes}}"
 						/>
 					</div>
 				"""
@@ -68,6 +70,7 @@ define [
 									
 				scope.size = attrs.imtSize
 				scope.imageTitle = image.name ? ''
+				scope.imageDes = image.description ? ''
 
 				if image?
 					sizeInfo = ImageSizeService.getResizeInput(scope.size, image)
