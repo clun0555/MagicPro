@@ -9,7 +9,7 @@
 
 
 	
-	<ul class="side-categories menus" ng-if="user" >
+	<!-- <ul class="side-categories menus" ng-if="user" >
 		<li class="header">
 			<a class="section-link" translate>menu.store</a>
 		</li>
@@ -32,15 +32,16 @@
 			</ul>		
 		</li>
 
-	</ul>
+	</ul> -->
 
 	<ul class="global-menus menus" ng-click="hideDrawers()" >
+
 		
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('home') }" >
 			<a ui-sref="home" translate>menu.home</a>
-		</li>
+		</li>		
 
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('shop') }" ng-if="!user" >
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('shop') }" >
 			<a ui-sref="shop.products" translate>menu.store</a>
 		</li>
 
