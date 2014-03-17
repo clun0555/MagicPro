@@ -291,6 +291,9 @@ define ->
 	"contact.message.required": "Oops, you forgot to write your message..."
 
 
+	"bottommenu.wheretobuy": "Where To Buy"
+	"bottommenu.subscribe": "Subscribe"
+
 	### footer ###
 	"footer.developed.by": "Developed by"
 

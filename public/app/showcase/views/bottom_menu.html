@@ -1,0 +1,106 @@
+<div class="navbar-inner" imt-click-out="fold()">
+
+	<div class="container-fluid">
+		<div class="imt-row">
+		
+			<nav>
+				
+				
+				<ul class="nav navbar-nav navbar-left tab-menu-wrapper" ng-class="{'toggled': toggled}"  >
+					
+					<li class="section-link hidden-xs hidden-sm" ng-class="{ 'active': toggled == 'wheretobuy' }" >
+						<a ng-click="toggleMenu('wheretobuy')" translate>bottommenu.wheretobuy</a>						
+					</li>
+
+					<li class="section-link hidden-xs hidden-sm"  ng-class="{ 'active':  toggled == 'subscribe' }">
+						<a ng-click="toggleMenu('subscribe')" translate >bottommenu.subscribe</a>
+					</li>
+
+
+					<li class="tab-menu">
+						<div class="where-to-buy-panel" ng-show="toggled == 'wheretobuy'">
+							
+							<a href="http://www.woolworths.com.au/wps/wcm/connect/website/tools/store+locator" target="_blank">
+								<img src="/resources/img/woolworths.png" alt="">
+
+
+							</a>
+							<a href="http://www.priceline.com.au/store-locator/" target="_blank">
+								<img src="/resources/img/priceline.png" alt="">
+
+							</a>
+
+						</div>
+
+						<div class="subscribe-panel" ng-show="toggled == 'subscribe'">
+							<div class="subscribe-label" >Keep up-to-date on Paw Paw</div>
+							<form novalidate name="data" class="form-horizontal">
+
+								<fieldset ng-disabled="submiting">
+									
+										<div 
+											class="form-group email-group" 
+											ng-class="{ 'focused': (focused=='email'), 'has-error': (submited  && ( data.email.$invalid) || serverError) }" >
+
+											
+											<div class="col-lg-12 form-item">
+												
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+													<input 
+														type="email" 
+														class="form-control" 
+														name="email" 
+														placeholder="{{ 'contact.email' | translate }}"
+									 					ng-model="message.email"
+									 					required
+									 					ng-focus="focused='email'" 
+									 					ng-blur="focused=''" 
+									 				>
+
+									 				<span class="input-group-addon">
+														<button  class=" btn btn-imt-primary  send-button "  ng-click="send()" >
+															<span ng-if="!sent">																
+																{{'contact.send' | translate}}
+															</span>
+
+															
+															<i ng-if="sent" class="fa fa-check"></i>
+															
+
+														</button>
+													</span>
+												</div>
+
+
+
+												<div class="error-tip" >					
+													<span ng-show="data.email.$error.email" translate > contact.email.invalid</span>
+													<span ng-show="data.email.$error.required" translate > contact.email.required</span>								
+												</div>
+
+											</div>
+
+										</div>
+
+
+								</fieldset>
+
+							</form>
+
+						</div>
+
+
+					</li>
+					
+				
+					
+				</ul>
+
+			</nav>
+
+		
+		</div>
+		
+	</div>
+</div>

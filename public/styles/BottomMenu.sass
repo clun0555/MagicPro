@@ -1,0 +1,144 @@
+
+
+.bottom-menu-region
+
+	display: none
+
+	&.navbar.navbar-default 
+		background: rgba(255, 255, 255, 0)
+		border-top: 0
+	
+	height: 50px
+	z-index: 1030
+	box-shadow: none
+	
+	.navbar-left
+		float: left !important
+
+	.navbar-right
+		float: right !important
+
+	.navbar li
+		float: left !important
+		
+
+	nav .nav.navbar-nav 
+		margin-top: 5px
+		li.section-link
+			margin-left: 10px
+			margin-bottom: -30px
+			a
+				color: #fff
+				background-color: #FE4F00
+				border-radius: 5px
+				border: 3px solid #90D50A
+				text-align: center
+				text-decoration: none
+				// transition-property: all
+				// transition-duration: .2s
+				// transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
+				padding: 14px 10px 13px 10px
+				font-family: 'agency_fbbold'
+				font-size: 1.3em
+				text-transform: uppercase
+				min-width: 100px
+				display: inline-block
+			
+
+
+
+	
+
+
+	// @media (min-width: $screen-md-min)
+
+	// 	body.scroll-at-top.home-state &.navbar.navbar-default 
+	// 		.logo
+	// 			transform: scale(1.5, 1.5) translate3d(40px, 10px, 0px)
+
+
+	@media (min-width: $screen-lg-min)
+
+
+		display: block
+
+		nav
+			ul
+				float: left
+
+		&.navbar
+			// min-height: 65px
+			padding-top: 7px
+			background-color: white
+
+	
+			
+
+		.nav-collapse
+			display: block
+
+
+		.navbar-right > .divider
+			width: 30px		
+
+		.btn.cart-toggle
+			padding: 10px
+			margin: 5px			
+
+
+		nav .nav.navbar-nav.tab-menu-wrapper
+			position: relative
+			margin-top: 0px
+			transition: margin-top .5s ease
+			
+			.section-link a
+				border-bottom-left-radius: 0
+				border-bottom-right-radius: 0
+				z-index: 8
+
+			.section-link.active a
+				border-bottom-width: 0
+				-webkit-box-shadow: 0px 6px 0px -3px #fe4f00
+
+			&.toggled
+				margin-top: -130px
+
+			.tab-menu
+				position: absolute
+				top: 50px
+				left: -10px
+				width: 400px
+				height: 130px
+				background: $imt-primary-color
+				border: 3px solid $imt-secondary-color
+
+
+			
+				.where-to-buy-panel
+					padding: 30px
+					text-align: center
+
+				.subscribe-panel
+					padding: 20px
+					button
+						display: inline-block
+
+					.subscribe-label
+						color: white
+						margin-bottom: 5px
+
+					.input-group
+						> span:last-child
+							padding: 0px
+							
+							button
+								color: white
+								background: $imt-third-color
+								padding: 12px 19px 13px 19px
+			
+			
+
+		
+
+
+

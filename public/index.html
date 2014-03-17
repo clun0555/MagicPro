@@ -34,6 +34,22 @@
 		>
 		</div>
 
+
+		<!-- <div 
+			class="bottom-menu-region navbar navbar-default navbar-fixed-bottom content-slide container" 
+			ng-include="'showcase/views/bottom_menu.html'" 
+			ng-controller="ShowCaseBottomMenuController"
+		>
+		</div> -->
+
+		<div 
+			class="bottom-menu-region navbar navbar-default navbar-fixed-bottom content-slide container" 
+			ng-include="'app/showcase/views/bottom_menu.html'" 
+			ng-controller="ShowCaseBottomMenuController"
+		>
+		</div>
+			
+
 		<div ng-show="$state.includes('shop')">
 			<div ui-view="side" autoscroll="false" class="affix content-slide visible-md visible-lg"></div>
 		</div>
