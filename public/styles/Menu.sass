@@ -1,16 +1,4 @@
 
-.menu-region.navbar.navbar-default 
-	background: rgba(255, 255, 255, 0)
-	border-bottom: 0
-		
-	// .logo
-	// 	transition: all .4s ease
-	// 	transform: scale(1) translate3d(0px, 0px, 0px)
-
-
-	// body.scroll-at-top &.navbar.navbar-default 
-	// 	background: rgba(255, 255, 255, 0)
-	
 
 .menu-region 
 	
@@ -18,6 +6,10 @@
 	z-index: 1030
 	box-shadow: none
 	
+	&.navbar.navbar-default 	
+		background: $imt-background-color
+		border-bottom: 2px solid white
+
 	.navbar-left
 		float: left !important
 
@@ -29,38 +21,26 @@
 		
 
 	nav .nav.navbar-nav 
-		margin-top: 5px
+		margin-top: 5px	
+
+
+
 		li.section-link
-			margin-left: 10px
-			margin-top: -10px
+			
 			a
-				color: #fff
-				background-color: #FE4F00
-				border-radius: 5px
-				border-top-left-radius: 0
-				border-top-right-radius: 0
-				border: 3px solid #90D50A
-				text-align: center
-				text-decoration: none
+				
 				transition-property: all
 				transition-duration: .2s
 				transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
-				padding: 14px 10px 13px 10px
-				// padding: 4px 10px 7px 10px
+				
+				color: $imt-text-color
 				font-family: 'agency_fbbold'
 				font-size: 1.3em
 				text-transform: uppercase
 				min-width: 100px
-				display: inline-block
-				// transition: border-color .3s ease
-			
-			+imt-hover("&.active")
-				a
-					padding: 25px 10px 15px 10px
-					// padding: 7px 10px 15px 10px
-					// background: none
-					// border-color: $imt-primary-color
-
+				display: inline-block	
+				text-align: center
+				text-decoration: none							
 
 
 	.nav-background
@@ -71,7 +51,7 @@
 
 	.navbar-left > li > a
 		background-color: transparent
-		padding-left: 20px
+		padding-left: 0px
 		padding-right: 20px
 		
 
@@ -86,10 +66,12 @@
 	.logo-nav
 		
 		ul
-			margin-left: 20px
+			margin-left: 0px
+			// margin-top: 5px
 
-			li a
-				padding-top: 11px
+		
+			li a 
+				padding-top: 0
 
 
 		.logo
@@ -97,19 +79,21 @@
 			color: #333
 			
 			font-size: 1.7em
-			
-			.chair
-				height: 30px
-				width: 21px
-				margin-top: -7px
-				
-			.imt
-				font-weight: 600
+						
+			&.big
+				display: none
 
-			.design
-				font-weight: 100
-			img
-				height: 50px
+			&.small
+				img.pawpaw
+					margin-top: 5px
+					height: 25px
+					display: inline-block
+
+				img.naturescare
+					margin-top: 8px
+					height: 25px
+					display: inline-block
+
 
 	.btn.cart-toggle, .btn.left-drawer-toggle
 		font-size: 1.4em
@@ -132,14 +116,67 @@
 			color: white
 
 
-	// @media (min-width: $screen-md-min)
+	@media (min-width: $screen-sm-min)
 
-	// 	body.scroll-at-top.home-state &.navbar.navbar-default 
-	// 		.logo
-	// 			transform: scale(1.5, 1.5) translate3d(40px, 10px, 0px)
+		.logo-nav
+			padding-top: 5px
+			margin-left: 20px
+
+			.logo
+				display: block				
+							
+				&.big
+					display: none
+
+				&.small
+					img.pawpaw
+						margin-top: 2px
+						height: 30px
+						display: inline-block
+
+					img.naturescare
+						margin-top: 8px
+						height: 30px
+						display: inline-block
+
+		nav .nav.navbar-nav 
+			margin-top: 0px
+			
+			li.section-link
+				// margin-left: 10px
+				// margin-top: -10px
+				margin-left: 5px
+				a
+					margin: 0
+					border: 0
+					background: transparent	
+					padding: 14px	
+					border-radius: 0
+					border-left: 2px solid transparent
+					border-right: 2px solid transparent	
+
+				// &.active a
+					
+				
+				+imt-hover("&.active")
+					a
+						border-left: 2px solid $imt-secondary-color
+						border-right: 2px solid $imt-secondary-color
+						padding: 14px
+						background: $imt-primary-color
+
+						// padding: 25px 10px 15px 10px	
+
+
+	
 
 
 	@media (min-width: $screen-lg-min)
+
+
+		&.navbar.navbar-default 	
+			background: transparent
+			border-bottom: 0
 
 		
 		
@@ -155,17 +192,52 @@
 		nav .nav.navbar-nav 
 			margin-top: 0px
 
-		.logo-nav
-			
-		
-			.logo img
-				height: 70px
-				// font-size: 2.5em
+			li.section-link
+				margin-left: 10px
+				margin-top: -10px
+				a
+					border-radius: 5px
+					border-top-left-radius: 0
+					border-top-right-radius: 0
+					border: 0
+					
+					border: 3px solid $imt-secondary-color
+					border-left: 3px solid $imt-secondary-color
+					border-right: 3px solid $imt-secondary-color
+					
+					padding: 14px 10px 13px 10px
+
+					transition-property: all
+					transition-duration: .2s
+					transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
+
+					background-color: #FE4F00
+					
+
 				
-				// .chair
-				// 	height: 50px
-				// 	width: 34px
-				// 	margin-top: -15px
+				+imt-hover("&.active")
+					a
+						padding: 25px 10px 15px 10px	
+						border: 3px solid $imt-secondary-color
+						border-left: 3px solid $imt-secondary-color
+						border-right: 3px solid $imt-secondary-color
+
+
+		.logo-nav
+
+			margin-left: 20px
+			
+			.logo.small
+				display: none
+		
+			.logo.big
+				display: block
+				
+				img
+					height: 70px
+
+
+			
 
 
 		.nav-collapse
