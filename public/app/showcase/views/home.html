@@ -1,26 +1,77 @@
-<div class="showcase-home-view" ng-class="{loaded: loaded}">
+<div class="showcase-home-view slide-default slide-{{currentSlide}}-active" ng-class="{loaded: loaded}" >
 		
-		<div class="adult-view col-xs-12">
-			<div class="big-caption col-xs-3">
-				<img src="/resources/img/adult_left.png" class="adult-left-static">
+	<div class="left-arrow" ng-hide="currentSlide <= 1" ng-click="previousSlide()">
+		<i class="fa fa-angle-left"></i>
+	</div>
 
+	<div class="right-arrow" ng-hide="currentSlide >= 3" ng-click="nextSlide()">
+		<i class="fa fa-angle-right"></i>
+	</div>
 
-			</div>
-			<div class="big-caption col-xs-9">
-				<h1 class="rediscover" fittext=".5" fittext-max="150">Rediscover</h1>
-				<h1 class="smooth" fittext=".34" fittext-max="220">Smooth</h1>
-				<div class="caption" fittext="3.0" fittext-max="30">
-					Nourshing, all natural shampoos, cleaners, Hydrating<br>
-					products and our famous balms and ointments.     
-				</div>	
-			</div>
-			
-			 <img class="adult-left" src="/resources/img/adult_left.png" alt="">
-			<img class="adult-right" src="/resources/img/adult_right.png" alt="">
+	
+	<div class="slide-view adult-view slide-1 " >
 		
-			
+		<div class="big-caption col-xs-3">
+			<img src="/resources/img/adult_left.png" class="adult-left-static">
 		</div>
+		<div class="big-caption col-xs-9">
+			<h1 class="rediscover" fittext=".5" fittext-max="150">Rediscover</h1>
+			<h1 class="smooth" fittext=".34" fittext-max="220">Smooth</h1>
+			<div class="caption" fittext="3.0" fittext-max="30">
+				Nourshing, all natural shampoos, cleaners, Hydrating<br>
+				products and our famous balms and ointments.     
+			</div>	
+		</div>
+		
+		<img class="adult-left" src="/resources/img/adult_left.png" alt="">
+		<img class="adult-right" src="/resources/img/adult_right.png" alt="">
 
+	</div>
+
+
+	<div class="slide-view slide-2 ">
+		<div class="big-caption col-xs-3">
+			<img src="/resources/img/baby_right.png" class="adult-left-static">
+
+
+		</div>
+		<div class="big-caption col-xs-9">
+			<h1 class="rediscover" fittext=".4" fittext-max="250">Baby Safe</h1>
+			<h1 class="smooth" fittext=".5" fittext-max="220">Smoothness</h1>
+			<div class="caption" fittext="3.0" fittext-max="30">
+				BABY SAFE, PETROCHEMICAL FREE NAPPY CREAMS, SHAMPOOS, <br>
+AND HYDRATING OILS AND BALMS.     
+			</div>	
+		</div>
+		
+		 <!-- <img class="adult-left" src="/resources/img/baby_right.png" alt=""> -->
+		<img class="adult-right" src="/resources/img/baby_left.png" alt="">
+	
+		
+	</div>
+
+	<div class="slide-view slide-3 ">
+		<div class="big-caption col-xs-3">
+			<img src="/resources/img/ing_right.png" class="adult-left-static">
+
+
+		</div>
+		<div class="big-caption col-xs-9">
+			<h1 class="rediscover" fittext=".62" fittext-max="200">100% NATURAL</h1>
+			<h1 class="smooth" fittext=".4" fittext-max="220">PAW PAW</h1>
+			<div class="caption" fittext="3.0" fittext-max="30">
+				WE USE REAL PAW PAW AND OTHER NATURAL INGREDIENTS <br>
+IN ALL OUR PRODUCTS
+			</div>	
+		</div>
+		
+		 <!-- <img class="adult-left" src="/resources/img/baby_right.png" alt=""> -->
+		<img class="adult-right" src="/resources/img/ing_left.png" alt="">
+	
+		
+	</div>
+
+	
 		
 	
 

@@ -11,6 +11,15 @@ define [
 			, 500
 			
 
+		$scope.currentSlide = 1
+
+
+		$scope.previousSlide = ->
+			$scope.currentSlide -= 1	
+
+		$scope.nextSlide = ->
+			$scope.currentSlide += 1			
+
 				
 
 		

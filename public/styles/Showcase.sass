@@ -1,12 +1,58 @@
 .showcase-home-view
 	height: 100%
-	// overflow: auto
+	width: 100%
+	position: relative	
+	overflow: hidden
+	
+	.left-arrow, .right-arrow
+		border: 3px solid white
+		border-radius: 40px
+		width: 50px
+		height: 50px
+		opacity: .5
+		position: absolute
+		top: 50%
+		margin-top: -15px
+		padding-top: 1px
+		cursor: pointer
+		z-index: 1000
+		
+		+imt-hover
+			opacity: 1
 
-	.adult-view
-		position: relative
-		overflow: hidden
-		min-height: 100%
+		i
+			font-size: 3em
+			color: white
+
+	.left-arrow		
+		left: 30px
+		padding-left: 12px
+		
+		
+	
+	.right-arrow		
+		right: 30px
+		padding-left: 17px
+
+	
+	
+	
+
+	.slide-view
+		// position: relative
+		// overflow: hidden
+		// min-height: 100%
+		// width: 100%
+
+		position: absolute
+		margin: 0
+		padding: 0
+		top: 0
+		bottom: 0
 		width: 100%
+		left: 0
+		transition: left 1s ease		
+
 		@media (max-width: $screen-md)
 			top: 130px
 			min-height: 450px
@@ -14,20 +60,24 @@
 			top: 0px
 			min-height: 450px
 
+	.slide-view
+
+		// left: 100%
+
 		.big-caption.col-xs-3
 			@media (max-width: 340px)
 				display: none
 
 		.big-caption
-			// position: absolute
+			
+
 
 			margin: 0 auto
 			margin-top: 100px
 			text-align: center
 			z-index: 100
-			transition-property: all
-			transition-duration: .5s
-			transition-timing-function: cubic-bezier(0, 0.5, 0.5, 0.5)
+			transition: all .5s  cubic-bezier(0, 0.5, 0.5, 0.5)
+			
 			@media (max-width: 340px)
 				width: 100%
 				margin-top: 180px
@@ -35,43 +85,36 @@
 
 
 			.rediscover, .smooth
+				font-family: 'agency_fbbold'
 				width: 100%
-				color: #faa21c
+				color: $imt-third-color
 				font-size: 5.2em
 				text-transform: uppercase
 				font-weight: 800
 				margin: 0
-				// background: red
-				display: inline-block
-				// font-family: Ubuntu
-				// font-family: "Ubuntu Condensed"
-				font-family: 'agency_fbbold'
-				// @media (max-width: $screen-sm-min)
-				// 	font-size: 2.3em
-
+				display: inline-block				
+				
+				
 			.caption
 				color: white
 				font-size: 1.1em
 				margin-left: -50px
 				margin-right: -50px
 				text-transform: uppercase
+
 				@media (max-width: $screen-sm-min)
 					font-size: 0.5em
 
 
 			.smooth
 				color: white
-				font-size: 8em
-				// @media (max-width: $screen-sm-min)
-				// 	font-size: 5.2em
+				font-size: 8em				
 
 		.adult-left-static
 			z-index: -1
-			// position: absolute
-			// left: 200px
 			width: 80%
 			margin-left: 20%
-			// top: -800px
+			
 			transition: transform 3s ease
 			transform: translate3d(0px,0px,0px)
 			&:hover
@@ -106,7 +149,31 @@
 		@media (max-width: $screen-md)
 			.adult-right
 				top: 600px
-				right: 10px
+				right: 10px	
+
+	&.slide-1-active, &.slide-default
+		.slide-1
+			left: 0
+		.slide-2
+			left: 100%
+		.slide-3
+			left: 200%
+
+	&.slide-2-active
+		.slide-1
+			left: -100%
+		.slide-2
+			left: 0
+		.slide-3
+			left: 100%
+
+	&.slide-3-active
+		.slide-1
+			left: -200%
+		.slide-2
+			left: -100%
+		.slide-3
+			left: 0
 				
 	&.loaded .adult-view .adult-left
 		transform: translate3d(0px,500px,0px)
@@ -115,8 +182,4 @@
 	&.loaded .adult-view .adult-right
 		transform: translate3d(0px,-300px,0px)
 
-		
-		// animation-duration: 3s
-
-// menu item
 
