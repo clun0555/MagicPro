@@ -9,20 +9,24 @@ define [
 
 		.config ( $stateProvider, $urlRouterProvider ) ->
 
-			$urlRouterProvider.when('/admin', '/admin/users')
+			# $urlRouterProvider.when('/admin', '/admin/users')
 				
 			$stateProvider
 
 				.state "admin",
 					url: "/admin"
-					data: security: "admin"
 					templateUrl: "app/admin/views/admin.html"
 					parent: "layout"
+					data: security: "admin"
+					controller: ($state) -> $state.go 'admin.users'
+
 
 				.state "admin.users",
 					url: "/users?status"
 					templateUrl: "app/admin/views/users.html"
 					controller: "UsersController"
+					
+					data: security: "admin"
 					resolve: 
 						users: (UserService, $stateParams) -> 
 							

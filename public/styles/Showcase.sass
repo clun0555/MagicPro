@@ -149,7 +149,28 @@
 		@media (max-width: $screen-md)
 			.adult-right
 				top: 600px
-				right: 10px	
+				right: 10px
+
+		
+	&.slide-1-active.loaded .adult-view .adult-left
+		transform: translate3d(0px,500px,0px)
+
+
+	&.slide-1-active.loaded .adult-view .adult-right
+		transform: translate3d(0px,-300px,0px)
+
+	
+	.slide-2
+		.adult-right
+			max-width: 100%
+
+	&.slide-2-active.loaded .slide-2 .adult-left
+		transform: translate3d(0px,500px,0px)
+
+
+	&.slide-2-active.loaded .slide-2 .adult-right
+		transform: translate3d(0px,-300px,0px)
+
 
 	&.slide-1-active, &.slide-default
 		.slide-1
@@ -175,11 +196,8 @@
 		.slide-3
 			left: 0
 				
-	&.loaded .adult-view .adult-left
-		transform: translate3d(0px,500px,0px)
+	
 
-
-	&.loaded .adult-view .adult-right
-		transform: translate3d(0px,-300px,0px)
+	
 
 

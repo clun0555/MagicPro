@@ -7,7 +7,7 @@ define [
 			user?
 
 		admin: (user) ->
-			user.role is "admin" and user.status is "validated"
+			user?.role is "admin" and user?.status is "validated"
 
 		validated: (user) ->
 			user?.status is "validated"
