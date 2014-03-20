@@ -10,5 +10,6 @@ define [
 	"./IMTFileChooser-directive"	
 	"./IMTSrc-directive"	
 	"./IMTScrollPosition-directive"	
+	"./IMTRichEditor-directive"	
 
 ], ->

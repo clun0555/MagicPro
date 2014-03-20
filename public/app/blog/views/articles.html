@@ -8,17 +8,23 @@
 		
 	</div>
 	
-	<div class="article col-xs-12 col-sm-6 col-lg-3 " ng-repeat="article in articles">
-		<h1 >{{article.title}}</h1>
+	<div class="article col-xs-12 col-sm-6 col-lg-3 {{article.status}} " ng-repeat="article in articles">
+		
+		<h1 ui-sref="article({articleId: article._id})" >{{article.title}}</h1>
+		
 		<div class="article-info">
-			<span class="published-date" >{{article.createdOn | date: 'MMM d, y'}}</span> &nbsp;&nbsp;
-			<span ng-show="isRole('admin')">				
+			<span ng-show="article.status == 'published'" class="published-date" >{{ 'article.published.on' | translate }} {{article.createdOn | date: 'MMM d, y'}}</span> &nbsp;&nbsp;
+			<span ng-show="article.status == 'draft'" class="published-date" translate>article.draft</span> &nbsp;&nbsp;
+			<span ng-show="isRole('admin')">								
 				<a ng-click="editArticle(article)" translate>article.edit</a> |
 				<a ng-click="removeArticle(article)" translate>article.remove</a>
 			</span>
 		</div>
-		
-		<p class="content" >{{article.content}}</p>
+		<div class="article-data">
+			<div ui-sref="article({articleId: article._id})" ng-if="article.image" imt-src="article.image" imt-size="w=100"></div>
+			<p class="content" ng-bind-html="article.content | imt_trust" ></p>					
+		</div>
+
 		<a class="read-more" ui-sref="article({articleId: article._id})" translate>article.readmore</a>
 	</div>
 

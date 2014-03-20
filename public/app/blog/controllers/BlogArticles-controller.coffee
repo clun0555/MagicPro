@@ -20,7 +20,7 @@ define [
 					# $scope.product.type = type	
 
 		$scope.createArticle = ->
-			$scope.editArticle({})		
+			$scope.editArticle({ status: "draft"})		
 
 		$scope.removeArticle = (article) ->
 			BlogService.remove article		

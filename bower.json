@@ -29,7 +29,8 @@
     "angular-mocks": "~1.2.11",
     "q": "~1.0.0",
     "angular-bindonce": "~0.3.0",
-    "ng-FitText.js": "*"
+    "ng-FitText.js": "*",
+    "medium-editor": "~1.6.7"
   },
   "resolutions": {
     "jquery": ">= 1.9.0",

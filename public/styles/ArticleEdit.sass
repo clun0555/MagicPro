@@ -1,18 +1,149 @@
 .article-edit-view
-	background: darken($imt-background-color, 2)
-	padding: 20px
+	background: $imt-background-color
+	padding: 20px 20px
+
+	// min-width: 700px
 
 
 	.title-group input
 		font-size: 3em
 		height: 70px
 		font-weight: 600
+		border: 0
+
+		+imt-placeholder
+			color: #fdfdfd
 		// color: #555
 
 	.content-group
-		textarea
+		
+		.form-item
+			padding-left: 30px
+
+		.article-content
 			width: 100%
-			height: 300px
-			padding: 8px
-			// color: #555
+			min-height: 300px
+			// padding: 8px
+			// border: 2px solid white
+			// border-radius: 5px
+			-webkit-appearance: none
+			&:focus
+				outline: none
+
+		.medium-editor-placeholder:after
+			color: white !important
+
+	.dropdown-toggle
+		background: transparent
+		border: 2px solid white !important
+		border-top-right-radius: 3px
+		border-bottom-right-radius: 3px
+		border-left: 0
+		margin-left: -2px !important
+
+		+imt-hover(".active")
+			background: $imt-primary-color !important
+
+	.open .dropdown-toggle
+		background: $imt-primary-color
+
+
+	.dropdown-menu
+		background: $imt-primary-color
+		border-radius: 3px
+		
+		border: 2px solid white
+
+		li 
+			a 
+				text-transform: uppercase
+				font-size: 1.5em
+				color: white
+			
+				+imt-hover
+					background: $imt-secondary-color !important
+
+
+
+
+	.article-file-chooser
+		
+		background: transparent
+		.image-chooser-wrapper
 			background: transparent
+			// height: 100px !important
+			margin-top: -25px 
+			margin-left: -55px
+			margin-right: -55px
+
+			.bottom-controls
+
+				position: absolute
+				top: 125px
+				right: -5px
+				z-index: 5000
+				i
+					font-size: 15px
+					background: rgba(0, 0, 0, .4)
+					padding: 5px
+					padding-left: 10px
+					padding-right: 10px
+				padding-right: 5px
+			
+
+
+			.image-chooser
+				max-height: 100px !important
+
+				&.has-image
+					max-height: 150px !important
+				
+				.uploader
+					background: transparent
+					text-align: left
+					padding-left: 55px
+					margin-top: 15px
+					i
+						color: white
+						font-size: 80px
+
+
+	.article-status
+		font-weight: 100
+		font-style: italic
+		vertical-align: bottom
+
+	.uploading-overlay
+		position: absolute
+		background: rgba(100, 100, 100, .7)
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		z-index: 5000
+
+		h1
+			margin: 0 auto
+			margin-top: 300px
+			display: table
+
+		.progress
+			background: transparent
+			width: 250px
+			height: 5px
+			margin: 0 auto
+			// position: relative
+			
+
+			.progress-bar
+				background: $imt-secondary-color
+				float: left
+
+
+
+
+
+
+	@media (min-width: $screen-sm-min)
+		padding: 20px 50px
+		

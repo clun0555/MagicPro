@@ -8,5 +8,6 @@
 			<a ng-click="removeArticle(article)" translate>article.remove</a>
 		</span>
 	</div>
-	<p>{{article.content}}</p>
+	<div ng-if="article.image" imt-src="article.image" imt-size="w=100"></div>
+	<p ng-bind-html="article.content | imt_trust" ></p>
 </div>

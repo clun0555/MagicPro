@@ -23,6 +23,7 @@ define [
 
 	"common/controllers/index"
 	"common/directives/index"
+	"common/filters/index"
 	"common/services/index"
 	"views/views"
 	"ng-infinite-scroll"
@@ -55,6 +56,7 @@ define [
 		"app.controllers"
 		"app.directives"
 		"app.services"
+		"app.filters"
 		# "ngMock"
 
 		# featues dependencies

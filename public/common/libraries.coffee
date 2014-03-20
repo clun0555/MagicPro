@@ -20,9 +20,11 @@ require.config
 		"angular-translate": "vendor/angular-translate/angular-translate" # translation
 		"angular-translate-storage-cookie": "vendor/angular-translate-storage-cookie/angular-translate-storage-cookie" # persiting translations
 		"angular-translate-interpolation-messageformat": "vendor/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat" # persiting translations
-		"angular-bindonce": "vendor/angular-bindonce/bindonce" # one way binding
+		"angular-bindonce": "vendor/angular-bindonce/bindonce" # one way binding		
 		
 		"ng-fittext": "vendor/ng-FitText.js/ng-FitText" # 
+		"medium-editor": "vendor/medium-editor/dist/js/medium-editor" # 
+		
 		
 		"messageformat": "vendor/messageformat/messageformat" # pluralization / genders
 		"messageformat-zh": "vendor/messageformat/locale/zh" # pluralization / genders
@@ -79,6 +81,9 @@ require.config
 		"angular-bindonce": ["angular"]
 
 		"ng-fittext": ["angular"]
+
+		"medium-editor":
+			exports: "MediumEditor"
 
 		"ng-infinite-scroll": ["angular", "jquery"]
 			

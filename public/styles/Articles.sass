@@ -13,13 +13,27 @@
 
 	.article
 
+		&.draft
+			h1:after
+				content: '*'
+				opacity: .5
+
+			.article-data, .read-more
+				opacity: .6
+
+			// opacity: .8
+
+			// +imt-desktop-hover
+			// 	opacity: 1
+
 		margin-bottom: 30px
 		height: 350px
 	
 		h1
 			font-size: 3em
 			margin-bottom: 3px			
-		
+			cursor: pointer
+
 		.article-info
 			margin-bottom: 10px
 
@@ -27,11 +41,19 @@
 				font-weight: 300
 				font-size: .9em
 
-		.content
-			max-height: 250px
+		.article-data	
+			max-height: 260px	
 			overflow: hidden
-			margin-bottom: 0px
-		
+
+			.content
+				margin-bottom: 0px
+			
+
+			.imt-image-wrapper
+				max-height: 100px	
+				cursor: pointer
+				margin-bottom: 10px	
+
 
 		p
 			padding-bottom: 10px
@@ -40,6 +62,8 @@
 		.read-more
 			font-weight: 600
 			// font-size: 1.2em
+
+		
 
 		// &:not(:last-child) p
 		// 	border-bottom: 4px solid whitesmoke
