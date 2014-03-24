@@ -10,6 +10,8 @@ define [
 		.config ( $stateProvider, $urlRouterProvider, $locationProvider) ->	
 
 			$locationProvider.html5Mode true
+			# This append a ! to the URL to be enable to recognised by the google crawler
+			$locationProvider.hashPrefix('!')
 
 			$urlRouterProvider.when "/",  ($match, $stateParams, SessionService, $state) ->
 				# alert "controller2"
