@@ -26,7 +26,7 @@ app.configure ->
 	app.use express.static( path.join(__dirname + "/../", "public")) 
 	app.use express.cookieParser()
 	app.use express.bodyParser()
-#	app.use require('prerender-node').set('prerenderToken', 'lc4ncOHT07HUYs6soidi')
+	app.use require('prerender-node').set('prerenderToken', 'lc4ncOHT07HUYs6soidi')
 
 	app.use express.session
 		secret: "test"
