@@ -12,13 +12,27 @@ define [
 			
 
 		$scope.currentSlide = 1
+		$scope.motion = ""
 
 
 		$scope.previousSlide = ->
-			$scope.currentSlide -= 1	
+			if $scope.motion == ""
+				$scope.currentSlide -= 1
+				$scope.currentSlide = 3 if $scope.currentSlide <1
+				$scope.motion = "motion-left-" + $scope.currentSlide
+				$timeout ->
+					$scope.motion = ""
+				, 500
+
 
 		$scope.nextSlide = ->
-			$scope.currentSlide += 1			
+			if $scope.motion == ""
+				$scope.currentSlide += 1
+				$scope.currentSlide = 1 if $scope.currentSlide >3
+				$scope.motion = "motion-right-" + $scope.currentSlide
+				$timeout ->
+					$scope.motion = ""
+				, 500
 
 				
 
