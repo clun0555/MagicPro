@@ -32,7 +32,7 @@ define [
 	"app/admin/index"
 	"app/blog/index"
 	"app/contact/index"
-	"app/shop/index"
+	"app/shop/index"	
 
 ], (angular) ->
 	

@@ -1,4 +1,4 @@
-<div class="navbar-inner">
+<div class="navbar-inner" >
 
 	<div class="container-fluid">
 		<div class="imt-row">
@@ -18,9 +18,8 @@
 					</li>
  -->
 
-					<li class="section-link hidden-xs hidden-sm" ng-class="{ 'active': isCurrentMenu('about') }" >
-						<a ng-click="changeMenu('about')" translate>menu.about</a>
-
+					<li class="section-link hidden-xs hidden-sm" imt-spy="about" ng-class="{ 'active': currentSpy == 'about' && isCurrentMenu('home') }" >						
+						<a ui-sref="home.about" translate>menu.about</a>
 					</li>
 
 					<li class="section-link hidden-xs hidden-sm"  ng-class="{ 'active': isCurrentMenu('shop') }">
@@ -33,8 +32,8 @@
 					</li>
 
 
-					<li class="section-link hidden-xs hidden-sm" ng-class="{ 'active': isCurrentMenu('contact') }" >
-						<a ng-click="changeMenu('contact')" translate>menu.contact</a>
+					<li class="section-link hidden-xs hidden-sm" imt-spy="contact" ng-class="{ 'active': currentSpy == 'contact' && isCurrentMenu('home') }" >
+						<a  ui-sref="home.contact" translate>menu.contact</a>
 
 					</li>
 					
@@ -88,9 +87,10 @@
 			<nav class="logo-nav" >
 				<ul class="nav navbar-nav navbar-left">
 					<li>
-						<a ng-click="changeMenu('home')" >
+						<a ng-click="changeMenu('home.showcase')" imt-spy="showcase" >
 							<span class="logo big">
-								<img  src="/resources/img/logo.png" >								
+								<img  src="/resources/img/logo.png" >
+								<!-- noScroll: {{noScroll}}, scrolling: {{scrolling}} -->
 							</span>
 
 							<span class="logo small">

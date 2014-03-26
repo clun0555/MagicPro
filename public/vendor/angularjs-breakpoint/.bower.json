@@ -1,14 +1,13 @@
 {
   "name": "angularjs-breakpoint",
   "_cacheHeaders": {
-    "ETag": "\"5c3c6080aa5a2497873edf0ea101d582\"",
-    "Content-Length": "40524",
+    "ETag": "\"94c73f88f56e3a3f5771aea3fa1e9107\"",
+    "Content-Length": "42149",
     "Content-Type": "text/html; charset=utf-8"
   },
-  "_release": "e-tag:5c3c6080a",
+  "_release": "e-tag:94c73f88f",
   "main": "index",
   "_source": "https://github.com/snapjay/angularjs-breakpoint",
   "_target": "*",
-  "_originalSource": "https://github.com/snapjay/angularjs-breakpoint",
-  "_direct": true
+  "_originalSource": "https://github.com/snapjay/angularjs-breakpoint"
 }

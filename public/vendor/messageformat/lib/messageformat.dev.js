@@ -1,13 +1,10 @@
-// This file does not contain the parser, so it can be easier to develop against
-// I don't know how hard it will be to maintain both sets of code, but I wanted to
-// store this away before I forgot about it.
 /**
  * messageformat.js
  *
  * ICU PluralFormat + SelectFormat for JavaScript
  *
  * @author Alex Sexton - @SlexAxton
- * @version 0.1.0
+ * @version 0.1.7
  * @license WTFPL
  * @contributor_license Dojo CLA
 */
@@ -15,24 +12,50 @@
 
   // Create the contructor function
   function MessageFormat ( locale, pluralFunc ) {
+    var fallbackLocale;
 
     if ( locale && pluralFunc ) {
       MessageFormat.locale[ locale ] = pluralFunc;
     }
 
     // Defaults
-    locale = locale || "en";
-    pluralFunc = pluralFunc || MessageFormat.locale[ locale ];
+    fallbackLocale = locale = locale || "en";
+    pluralFunc = pluralFunc || MessageFormat.locale[ fallbackLocale = MessageFormat.Utils.getFallbackLocale( locale ) ];
 
-    // Let's just be friends.
     if ( ! pluralFunc ) {
       throw new Error( "Plural Function not found for locale: " + locale );
     }
 
-
     // Own Properties
     this.pluralFunc = pluralFunc;
     this.locale = locale;
+    this.fallbackLocale = fallbackLocale;
+  }
+
+  // methods in common with the generated MessageFormat
+  // check d
+  c=function(d){
+    if(!d){throw new Error("MessageFormat: No data passed to function.")}
+  }
+  // require number
+  n=function(d,k,o){
+    if(isNaN(d[k])){throw new Error("MessageFormat: `"+k+"` isnt a number.")}
+    return d[k] - (o || 0);
+  }
+  // value
+  v=function(d,k){
+    c(d);
+    return d[k];
+  }
+  // plural
+  p=function(d,k,o,l,p){
+    c(d);
+    return d[k] in p ? p[d[k]] : (k = MessageFormat.locale[l](d[k]-o), k in p ? p[k] : p.other);
+  }
+  // select
+  s=function(d,k,p){
+    c(d);
+    return d[k] in p ? p[d[k]] : p.other;
   }
 
   // Set up the locales object. Add in english by default
@@ -42,9 +65,6 @@
         return "one";
       }
       return "other";
-    },
-    "en_us" : function () {
-      return this.en.apply( this, arguments );
     }
   };
 
@@ -59,20 +79,18 @@
   };
 
   MessageFormat.Utils = {
-    numSub : function ( string, key, depth ) {
+    numSub : function ( string, d, key, offset ) {
       // make sure that it's not an escaped octothorpe
-      return string.replace( /^#|[^\\]#/g, function (m) {
-        var prefix = m && m.length === 2 ? m.charAt(0) : '';
-        return prefix + '" + (function(){ var x = ' +
-        key+';\nif( isNaN(x) ){\nthrow new Error("MessageFormat: `"+lastkey_'+depth+'+"` isnt a number.");\n}\nreturn x;\n})() + "'
-      });
+      var s = string.replace( /(^|[^\\])#/g, '$1"+n(' + d + ',' + key + (offset ? ',' + offset : '') + ')+"' );
+      return s.replace( /^""\+/, '' ).replace( /\+""$/, '' );
     },
     escapeExpression : function (string) {
       var escape = {
-            "\n": "\\n"
+            "\n": "\\n",
+            "\"": '\\"'
           },
-          badChars = /(\n)|[\n]/g,
-          possible = /[\n]/,
+          badChars = /[\n"]/g,
+          possible = /[\n"]/,
           escapeChar = function(chr) {
             return escape[chr] || "&amp;";
           };
@@ -89,82 +107,82 @@
         return string;
       }
       return string.replace( badChars, escapeChar );
+    },
+    getFallbackLocale: function( locale ) {
+      var tagSeparator = locale.indexOf("-") >= 0 ? "-" : "_";
+
+      // Lets just be friends, fallback through the language tags
+      while ( ! MessageFormat.locale.hasOwnProperty( locale ) ) {
+        locale = locale.substring(0, locale.lastIndexOf( tagSeparator ));
+        if (locale.length === 0) {
+          return null;
+        }
+      }
+
+      return locale;
     }
   };
 
-  var mparser = require( './lib/message_parser' );
+  var mparser = require( './message_parser' );
 
   MessageFormat.prototype.parse = function () {
     // Bind to itself so error handling works
     return mparser.parse.apply( mparser, arguments );
   };
 
-  MessageFormat.prototype.precompile = function compile ( ast ) {
+  MessageFormat.prototype.precompile = function ( ast ) {
     var self = this,
-        needOther = false,
-        fp = {
-      begin: 'function(d){\nvar r = "";\n',
-      end  : "return r;\n}"
-    };
+        needOther = false;
 
+    function _next ( data ) {
+      var res = JSON.parse( JSON.stringify( data ) );
+      res.pf_count++;
+      return res;
+    }
     function interpMFP ( ast, data ) {
       // Set some default data
-      data = data || {};
-      var s = '', i, tmp, lastkeyname;
+      data = data || { keys: {}, offset: {} };
+      var r = [], i, tmp;
 
       switch ( ast.type ) {
         case 'program':
           return interpMFP( ast.program );
         case 'messageFormatPattern':
           for ( i = 0; i < ast.statements.length; ++i ) {
-            s += interpMFP( ast.statements[i], data );
+            r.push(interpMFP( ast.statements[i], data ));
           }
-          return fp.begin + s + fp.end;
+          tmp = r.join('+') || '""';
+          return data.pf_count ? tmp : 'function(d){return ' + tmp + '}';
         case 'messageFormatPatternRight':
           for ( i = 0; i < ast.statements.length; ++i ) {
-            s += interpMFP( ast.statements[i], data );
+            r.push(interpMFP( ast.statements[i], data ));
           }
-          return s;
+          return r.join('+');
         case 'messageFormatElement':
           data.pf_count = data.pf_count || 0;
-          s += 'if(!d){\nthrow new Error("MessageFormat: No data passed to function.");\n}\n';
           if ( ast.output ) {
-            s += 'r += d["' + ast.argumentIndex + '"];\n';
+            return 'v(d,"' + ast.argumentIndex + '")';
           }
           else {
-            lastkeyname = 'lastkey_'+(data.pf_count+1);
-            s += 'var '+lastkeyname+' = "'+ast.argumentIndex+'";\n';
-            s += 'var k_'+(data.pf_count+1)+'=d['+lastkeyname+'];\n';
-            s += interpMFP( ast.elementFormat, data );
+            data.keys[data.pf_count] = '"' + ast.argumentIndex + '"';
+            return interpMFP( ast.elementFormat, data );
           }
-          return s;
+          return '';
         case 'elementFormat':
           if ( ast.key === 'select' ) {
-            s += interpMFP( ast.val, data );
-            s += 'r += (pf_' +
-                 data.pf_count +
-                 '[ k_' + (data.pf_count+1) + ' ] || pf_'+data.pf_count+'[ "other" ])( d );\n';
+            return 's(d,' + data.keys[data.pf_count] + ',' + interpMFP( ast.val, data ) + ')';
           }
           else if ( ast.key === 'plural' ) {
-            s += interpMFP( ast.val, data );
-            s += 'if ( pf_'+(data.pf_count)+'[ k_'+(data.pf_count+1)+' + "" ] ) {\n';
-            s += 'r += pf_'+data.pf_count+'[ k_'+(data.pf_count+1)+' + "" ]( d ); \n';
-            s += '}\nelse {\n';
-            s += 'r += (pf_' +
-                 data.pf_count +
-                 '[ MessageFormat.locale["' +
-                 self.locale +
-                 '"]( k_'+(data.pf_count+1)+' - off_'+(data.pf_count)+' ) ] || pf_'+data.pf_count+'[ "other" ] )( d );\n';
-            s += '}\n';
+            data.offset[data.pf_count || 0] = ast.val.offset || 0;
+            return 'p(d,' + data.keys[data.pf_count] + ',' + (data.offset[data.pf_count] || 0)
+              + ',"' + self.fallbackLocale + '",' + interpMFP( ast.val, data ) + ')';
           }
-          return s;
+          return '';
         /* // Unreachable cases.
         case 'pluralStyle':
         case 'selectStyle':*/
         case 'pluralFormatPattern':
           data.pf_count = data.pf_count || 0;
-          s += 'var off_'+data.pf_count+' = '+ast.offset+';\n';
-          s += 'var pf_' + data.pf_count + ' = { \n';
           needOther = true;
           // We're going to simultaneously check to make sure we hit the required 'other' option.
 
@@ -172,59 +190,37 @@
             if ( ast.pluralForms[ i ].key === 'other' ) {
               needOther = false;
             }
-            if ( tmp ) {
-              s += ',\n';
-            }
-            else{
-              tmp = 1;
-            }
-            s += '"' + ast.pluralForms[ i ].key + '" : ' + interpMFP( ast.pluralForms[ i ].val,
-          (function(){ var res = JSON.parse(JSON.stringify(data)); res.pf_count++; return res; })() );
+            r.push('"' + ast.pluralForms[ i ].key + '":' + interpMFP( ast.pluralForms[ i ].val, _next(data) ));
           }
-          s += '\n};\n';
           if ( needOther ) {
             throw new Error("No 'other' form found in pluralFormatPattern " + data.pf_count);
           }
-          return s;
+          return '{' + r.join(',') + '}';
         case 'selectFormatPattern':
 
           data.pf_count = data.pf_count || 0;
-          s += 'var off_'+data.pf_count+' = 0;\n';
-          s += 'var pf_' + data.pf_count + ' = { \n';
+          data.offset[data.pf_count] = 0;
           needOther = true;
 
           for ( i = 0; i < ast.pluralForms.length; ++i ) {
             if ( ast.pluralForms[ i ].key === 'other' ) {
               needOther = false;
             }
-            if ( tmp ) {
-              s += ',\n';
-            }
-            else{
-              tmp = 1;
-            }
-            s += '"' + ast.pluralForms[ i ].key + '" : ' + interpMFP( ast.pluralForms[ i ].val,
-              (function(){
-                var res = JSON.parse( JSON.stringify( data ) );
-                res.pf_count++;
-                return res;
-              })()
-            );
+            r.push('"' + ast.pluralForms[ i ].key + '":' + interpMFP( ast.pluralForms[ i ].val, _next(data) ));
           }
-          s += '\n};\n';
           if ( needOther ) {
             throw new Error("No 'other' form found in selectFormatPattern " + data.pf_count);
           }
-          return s;
+          return '{' + r.join(',') + '}';
         /* // Unreachable
         case 'pluralForms':
         */
         case 'string':
-          return 'r += "' + MessageFormat.Utils.numSub(
-            MessageFormat.Utils.escapeExpression( ast.val ),
-            'k_' + data.pf_count + ' - off_' + ( data.pf_count - 1 ),
-            data.pf_count
-          ) + '";\n';
+          tmp = '"' + MessageFormat.Utils.escapeExpression( ast.val ) + '"';
+          if ( data.pf_count ) {
+            tmp = MessageFormat.Utils.numSub( tmp, 'd', data.keys[data.pf_count-1], data.offset[data.pf_count-1]);
+          }
+          return tmp;
         default:
           throw new Error( 'Bad AST type: ' + ast.type );
       }
@@ -247,6 +243,11 @@
       exports = module.exports = MessageFormat;
     }
     exports.MessageFormat = MessageFormat;
+  }
+  else if (typeof define === 'function' && define.amd) {
+    define(function() {
+      return MessageFormat;
+    });
   }
   else {
     root['MessageFormat'] = MessageFormat;

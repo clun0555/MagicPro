@@ -1,5 +1,6 @@
 {
   "name": "ng-FitText.js",
+  "version": "2.1.0",
   "main": [
     "ng-FitText.js"
   ],
@@ -13,14 +14,13 @@
     "styles"
   ],
   "homepage": "https://github.com/patrickmarabeas/ng-FitText.js",
-  "_release": "dbcbaf1ca3",
+  "_release": "2.1.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "dbcbaf1ca3b00f1ed6fde3745348ebee797acca8"
+    "type": "version",
+    "tag": "v2.1.0",
+    "commit": "08c5b19172717e1f6092521f383d0a49ed9b85c4"
   },
   "_source": "git://github.com/patrickmarabeas/ng-FitText.js.git",
   "_target": "*",
-  "_originalSource": "ng-FitText.js",
-  "_direct": true
+  "_originalSource": "ng-FitText.js"
 }

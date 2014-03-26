@@ -11,6 +11,7 @@ define [
 
 				.state "contact",
 					url: "/contact"
-					templateUrl: "app/contact/views/contact.html"
-					controller: "ContactController"
-					parent: "layout"					
+					views: "@":
+						templateUrl: "app/contact/views/contact.html"
+						controller: "ContactController"
+									

@@ -2,10 +2,22 @@
 // body.state-contact .content-wrapper
 // 	background: $imt-third-color
 
+.spy-contact .contact-view  .contact-view-inner
+	h1
+		opacity: 1
+		animation: fadeInLeft 1s
+
+	form, .contact-info
+		opacity: 1
+		animation: fadeInLeft 1s
+
+
+	// 	animation: shake 2.5s
+
 .contact-view
 
-	margin-top: 100px
-
+	padding-top: 100px
+	// opacity: 0
 	.contact-view-inner
 
 		max-width: 700px
@@ -32,9 +44,6 @@
 			img
 				margin-right: 10px
 
-		
-
-
 		.contact-info
 			margin-bottom: 20px
 			margin-top: 20px
@@ -44,6 +53,10 @@
 			text-transform: uppercase
 			color: white
 			font-size: 3em
+			opacity: 0
+
+		form, .contact-info
+			opacity: 0
 
 
 		.confirmation

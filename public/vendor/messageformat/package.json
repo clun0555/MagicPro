@@ -1,6 +1,6 @@
 {
   "name": "messageformat",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "author": "Alex Sexton <alexsexton@gmail.com>",
   "description": "PluralFormat and SelectFormat Message and i18n Tool - A JavaScript Implemenation of the ICU standards.",
   "repository": {
@@ -14,6 +14,9 @@
   "bin": {
     "messageformat": "./bin/messageformat.js"
   },
+  "contributors":[
+    "Eemeli Aro <eemeli@gmail.com>"
+  ],
   "keywords": [
     "i18n",
     "pluralformat",
@@ -25,12 +28,12 @@
     "internationalization"
   ],
   "dependencies": {
-    "nopt": "~2.0.0",
-    "coffee-script": "~1.2.0",
-    "watchr": "~1.0.0",
-    "underscore": "~1.3.1",
-    "async": "~0.1.18",
-    "glob": "~3.1.9"
+    "nopt": "~2.1.2",
+    "coffee-script": "~1.7.0",
+    "watchr": "~2.4.9",
+    "underscore": "~1.5.2",
+    "async": "~0.2.10",
+    "glob": "~3.2.8"
   },
   "devDependencies": {
     "mocha": "*",

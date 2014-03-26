@@ -1,130 +1,22 @@
 
 .home
+	width: 100%
+	min-height: 100%
+	height: 100%
+	
 
-	.main-block
-		margin-top: -70px
+	.screen		
+		margin: 0
 		padding: 0
-		img
-			width: 100%
-
-		position: relative
-
-
-		
-		.flexible-caption
-			// position: absolute
-			// bottom: 15%
-			// left: 7%
-			// top: 0
-
-			background: whitesmoke
-			padding: 10px 25px
-			// margin-bottom: 
-
-			
-			
-
-			h1, h2
-				display: table
-				font-weight: 300
-				padding: 5px
-				// background: rgba(255, 255, 255, .7)
-				color: #555
-				margin: 0
-				// background: rgba(0, 0, 0, .6)
-				// color: white
-
-			a
-				margin-top: 10px
-				margin-left: 5px
-				background: rgba(80, 80, 80, .6)
-				color: white
-
-			h1
-				font-weight: 400
-				font-size: 1.5em
-				background: transparent
-
-			h2
-				font-size: 1.2em
+		min-height: 100%
+		background: $imt-background-color
+		background: radial-gradient(at top, #FD637B , #FD637B , #FE3F5E )
 
 
+		&.first
+			height: 100%
+			// background: red
 
-			@media (min-width: $screen-sm-min)
-				position: absolute
-				bottom: 30%
-				left: 7%
-				background: transparent
-
-				h1, h2
-					background: rgba(255, 255, 255, .7)
-
-				h1
-					font-size: 2.4em
-					margin-bottom: 10px
-
-				h2
-					font-size: 2em
-
-	.featured-products
-		margin-left: 0
-		margin-right: 0
-		padding-left: 30px
-		padding-right: 30px
-
-		h1
-			font-weight: 300
-			border-bottom: 3px solid $imt-primary-color
-			margin-left: 0px
-			margin-right: 0px
-			text-transform: uppercase
-			font-size: 1.3em
-			padding-bottom: 5px
-
-	.categories
-		margin-top: 10px
-		// +clearfix()
-		// margin-left: 15px
-		// margin-right: 15px
-		padding: 30px
-
-		// overflow: hidden
-		
-		.mini-block
-			
-			padding-top: 10px
-			padding-left: 10px
-			padding-right: 0px
-			position: relative
-			cursor: pointer
-			&:last-child
-				padding-right: 10px
-
-			.img
-				background: whitesmoke
-				height: 200px
-				width: 100%
-
-			+imt-hover
-				.category-label
-					padding-left: 20px
-
-			.category-label
-				position: absolute
-				top: 20px
-				left: 10px
-				background: rgba(255, 255, 255, .5)
-				padding: 5px
-				padding-left: 10px
-				font-size: 1em
-				text-align: right
-				transition: padding-left .3s
-				
-
-			// margin-top: 10px
-			// padding: 10px
-			// overflow: hidden
-			
-
-	// background: url(
+		// &.second
+		// 	background: blue
 

@@ -2,7 +2,7 @@
 	"use strict";
 	/**
 	 * Bindonce - Zero watches binding for AngularJs
-	 * @version v0.3.0 - 2013-05-07
+	 * @version v0.3.1
 	 * @link https://github.com/Pasvaz/bindonce
 	 * @author Pasquale Vazzana <pasqualevazzana@gmail.com>
 	 * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -211,7 +211,19 @@
 				var value = (attrs.bindonce) ? scope.$eval(attrs.bindonce) : true;
 				if (value !== undefined)
 				{
-					bindonceController.runBinders();
+					// since Angular 1.2 promises are no longer 
+					// undefined until they don't get resolved
+					if (value.then && typeof value.then === 'function')
+					{
+						value.then(function ()
+						{
+							bindonceController.runBinders();
+						});
+					}
+					else
+					{
+						bindonceController.runBinders();
+					}
 				}
 				else
 				{
@@ -230,6 +242,7 @@
 		{ directiveName: 'boHide', attribute: 'hide' },
 		{ directiveName: 'boClass', attribute: 'class' },
 		{ directiveName: 'boText', attribute: 'text' },
+		{ directiveName: 'boBind', attribute: 'text' },
 		{ directiveName: 'boHtml', attribute: 'html' },
 		{ directiveName: 'boSrcI', attribute: 'src', interpolate: true },
 		{ directiveName: 'boSrc', attribute: 'src' },
@@ -245,7 +258,7 @@
 		{ directiveName: 'boIf', transclude: 'element', terminal: true, priority: 1000 },
 		{ directiveName: 'boSwitch', require: 'boSwitch', controller: function () { this.cases = {}; } },
 		{ directiveName: 'boSwitchWhen', transclude: 'element', priority: 800, require: '^boSwitch', },
-		{ directiveName: 'boSwitchDefault', transclude: 'element', priority: 800, require: '^boSwitch', },
+		{ directiveName: 'boSwitchDefault', transclude: 'element', priority: 800, require: '^boSwitch', }
 	],
 	function (boDirective)
 	{

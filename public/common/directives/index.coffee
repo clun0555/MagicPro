@@ -11,5 +11,7 @@ define [
 	"./IMTSrc-directive"	
 	"./IMTScrollPosition-directive"	
 	"./IMTRichEditor-directive"	
+	"./IMTSpy-directive"	
+	"./IMTScrollSpy-directive"	
 
 ], ->

@@ -1,3 +1,4 @@
+
 ###
 Defines the main routes in the application.
 The routes you see here will be anchors '#/' unless specifically configured otherwise.
@@ -16,9 +17,7 @@ define [
 				homeState = "home"
 					# if not SessionService.isAuthentificated()
 					# 	"login"
-					# else if SessionService.user()?.status is "validated"
-						
-					
+					# else if SessionService.user()?.status is "validated"					
 
 				$state.go homeState	
 
@@ -27,23 +26,22 @@ define [
 				.state "layout",
 					url: ""
 					abstract: true
-					views: 
+					# views: 
 						# "cart-drawer@": 
 						# 	templateUrl: "app/shop/views/cart.html" 
 						# 	controller: "CartController"							
 
 
-						"left-drawer@": 
-							templateUrl: "app/shop/views/left_drawer.html"
-							controller: "ShopSideCategoriesController"							
+						# "left-drawer@": 
+						# 	templateUrl: "app/shop/views/left_drawer.html"
+						# 	controller: "ShopSideCategoriesController"							
 
-						"":
-							template: "<div ui-view autoscroll='false' class='main-region-inner'></div>"
+						# "":
+						# 	template: "<div ui-view autoscroll='false' class='main-region-inner'></div>"
 						
 
 				.state "index",
 					url: ""
-					parent: "layout"
 					onEnter: ($state, SessionService) ->
 						homeState = 
 							if not SessionService.isAuthentificated()
@@ -76,67 +74,73 @@ define [
 						
 
 				.state "error",
-					parent: "layout"
 					url: "/error/:code"
-					templateUrl: "common/views/error.html" 
-					controller: ($scope, $stateParams) ->
-						$scope.code = $stateParams.code
+					views: "@":
+						templateUrl: "common/views/error.html" 
+						controller: ($scope, $stateParams) ->
+							$scope.code = $stateParams.code
 
 				.state "login",
-					parent: "layout"
 					url: "/login"
-					templateUrl: "common/views/login.html" 
-					controller: "LoginController" 
+					views: "@":
+						templateUrl: "common/views/login.html" 
+						controller: "LoginController" 
 
 				.state "forgot",	
-					parent: "layout"
 					url: "/forgot?email"
-					templateUrl: "common/views/forgot.html" 
-					controller: "ForgotController" 
+					views: "@":
+						templateUrl: "common/views/forgot.html" 
+						controller: "ForgotController" 
 
 				.state "reset",
-					parent: "layout"
 					url: "/reset/:forgotKey"
-					templateUrl: "common/views/reset.html" 
-					controller: "ResetController"
-					resolve: 
-						user: (UserService, $stateParams) ->
-							UserService.findByForgotKey $stateParams.forgotKey
+					views: "@":
+						templateUrl: "common/views/reset.html" 
+						controller: "ResetController"
+						resolve: 
+							user: (UserService, $stateParams) ->
+								UserService.findByForgotKey $stateParams.forgotKey
 
 				.state "register",
-					parent: "layout"
 					url: "/register?email"
-					templateUrl: "common/views/register.html" 
-					controller: "RegisterController" 
+					views: "@":
+						templateUrl: "common/views/register.html" 
+						controller: "RegisterController" 
 
 				.state "validating",
-					parent: "layout"
 					url: "/validating"
-					templateUrl: "common/views/validating.html"
+					views: "@":
+						templateUrl: "common/views/validating.html"
 
 				.state "account",
-					parent: "layout"
-					templateUrl: "common/views/account.html"
-					resolve:
-						user: (SessionService) -> SessionService.user()
+					views: "@":
+						templateUrl: "common/views/account.html"
+						resolve:
+							user: (SessionService) -> SessionService.user()
 
 				.state "account.profile",
 					parent: "account"
-					url: "/profile"
+					url: "/profile"				
 					templateUrl: "common/views/profile.html"
 					controller: "ProfileController"
+					resolve:
+						user: (SessionService) -> SessionService.user()
+
 				
 				.state "account.password",
 					parent: "account"
 					url: "/profile/password"
 					templateUrl: "common/views/change_password.html"
 					controller: "PasswordChangeController"
+					resolve:
+						user: (SessionService) -> SessionService.user()
 					
 
 				.state "otherwise",
 					url: "*path"
-					controller: ($scope, $stateParams, $state) ->
-						$state.go "error", {code: 404}, { location: false }
+					views: "@":
+						controller: ($scope, $stateParams, $state) ->
+							$state.go "error", {code: 404}, { location: false }
 						
 					
 						

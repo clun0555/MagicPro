@@ -15,10 +15,11 @@ define [
 
 				.state "admin",
 					url: "/admin"
-					templateUrl: "app/admin/views/admin.html"
 					parent: "layout"
 					data: security: "admin"
-					controller: ($state) -> $state.go 'admin.users'
+					views: "@":
+						templateUrl: "app/admin/views/admin.html"
+						controller: ($state) -> $state.go 'admin.users'
 
 
 				.state "admin.users",

@@ -1,7 +1,8 @@
 define [
 	"underscore"
-	"../shop-states"	
-], (_, shop) ->
+	"../shop-states"
+	"jquery"	
+], (_, shop, $) ->
 
 	shop.controller "ShopHomeController", ($scope, data, $state) ->
 
@@ -13,5 +14,10 @@ define [
 			'height': '3629'
 		}
 
+		screens = $('.home > *')
+
 		$scope.goToProduct = (product, state = "shop.product") ->
 			$state.go state, { category: product.type.category.slug, type: product.type.slug, product: product.slug}
+
+
+		

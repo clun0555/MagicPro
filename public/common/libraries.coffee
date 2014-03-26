@@ -32,7 +32,13 @@ require.config
 		
 		"domReady": "vendor/requirejs-domready/domReady"
 		
-		"jquery": "vendor/jquery/jquery" # twitter bootstrap dependency
+		"jquery": "vendor/jquery/jquery"
+		# "jquery.easing.min": "vendor/jquery-scrollsnap-plugin/src/jquery.easing.min"
+		# "jquery.event.special": "vendor/jquery-scrollsnap-plugin/src/jquery.event.special"
+		# "jquery.scrollsnap": "vendor/jquery-scrollsnap-plugin/src/jquery.scrollsnap"
+		
+		# "panelsnap": "vendor/panelsnap/jquery.panelSnap"
+		
 		
 		"angular-file-upload": "vendor/angular-file-upload/angular-file-upload"
 
@@ -86,6 +92,12 @@ require.config
 			exports: "MediumEditor"
 
 		"ng-infinite-scroll": ["angular", "jquery"]
+
+		# "jquery.scrollsnap": ["jquery", "jquery.easing.min", "jquery.event.special"]
+
+		# "jquery.easing.min": ["jquery"]
+		# "jquery.event.special": ["jquery"]
+		# "panelsnap": "jquery"
 			
 		# "bootstrap-dropdown": ["jquery"]
 

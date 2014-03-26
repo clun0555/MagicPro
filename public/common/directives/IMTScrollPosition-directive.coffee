@@ -1,6 +1,9 @@
 define [
 	"./directives"
-], (directives) ->
+	"jquery"
+], (directives, $) ->
+
+	
 
 	directives.directive "imtScrollPosition", ($window) ->
 		{
