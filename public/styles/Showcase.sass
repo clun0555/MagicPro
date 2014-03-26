@@ -10,7 +10,7 @@
 		width: 50px
 		height: 50px
 		opacity: .5
-		position: absolute
+		position: fixed
 		top: 50%
 		margin-top: -15px
 		padding-top: 1px
@@ -51,7 +51,7 @@
 		bottom: 0
 		width: 100%
 		left: 0
-		transition: left 1s ease		
+		transition: left 1s ease
 
 		@media (max-width: $screen-md)
 			top: 130px
@@ -151,7 +151,7 @@
 				top: 600px
 				right: 10px
 
-		
+	//Slide show css
 	&.slide-1-active.loaded .adult-view .adult-left
 		transform: translate3d(0px,500px,0px)
 
@@ -178,7 +178,7 @@
 		.slide-2
 			left: 100%
 		.slide-3
-			left: 200%
+			left: -100%
 
 	&.slide-2-active
 		.slide-1
@@ -190,13 +190,35 @@
 
 	&.slide-3-active
 		.slide-1
-			left: -200%
+			left: 100%
 		.slide-2
 			left: -100%
 		.slide-3
 			left: 0
-				
-	
+
+	&.motion-left-1
+		.slide-3
+			display: none
+
+	&.motion-left-2
+		.slide-1
+			display: none
+
+	&.motion-left-3
+		.slide-2
+			display: none
+
+	&.motion-right-1
+		.slide-2
+			display: none
+
+	&.motion-right-2
+		.slide-3
+			display: none
+
+	&.motion-right-3
+		.slide-1
+			display: none
 
 	
 

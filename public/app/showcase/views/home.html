@@ -1,10 +1,10 @@
-<div class="showcase-home-view slide-default slide-{{currentSlide}}-active" ng-class="{loaded: loaded}" >
+<div class="showcase-home-view slide-default slide-{{currentSlide}}-active {{motion}}" ng-class="{loaded: loaded}" >
 		
-	<div class="left-arrow" ng-hide="currentSlide <= 1" ng-click="previousSlide()">
+	<div class="left-arrow" ng-click="previousSlide()">
 		<i class="fa fa-angle-left"></i>
 	</div>
 
-	<div class="right-arrow" ng-hide="currentSlide >= 3" ng-click="nextSlide()">
+	<div class="right-arrow" ng-click="nextSlide()">
 		<i class="fa fa-angle-right"></i>
 	</div>
 
