@@ -37,8 +37,8 @@
 	<ul class="global-menus menus" ng-click="hideDrawers()" >
 
 		
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('home') }" >
-			<a ui-sref="home" translate>menu.home</a>
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('home.showcase') && currentSpy == 'showcase'}" >
+			<a ui-sref="home.showcase" translate>menu.home</a>
 		</li>		
 
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('shop') }" >
@@ -46,12 +46,16 @@
 		</li>
 
 
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
-			<a ui-sref="about" translate>menu.about</a>
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('home.about') && currentSpy == 'about' }" >
+			<a ui-sref="home.about" translate>menu.about</a>
 		</li>
 
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('blog') }" >
 			<a ui-sref="blog" translate>menu.blog</a>
+		</li>
+
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('home.contact') && currentSpy == 'contact' }" >
+			<a ui-sref="home.contact" translate>menu.contact</a>
 		</li>
 		
 		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" ng-if="isRole('admin')">
