@@ -31,7 +31,7 @@ require.config
 		
 		"domReady": "vendor/requirejs-domready/domReady"
 		
-		"jquery": "vendor/jquery/jquery" # twitter bootstrap dependency
+		"jquery": "vendor/jquery/dist/jquery" # twitter bootstrap dependency
 		
 		"angular-file-upload": "vendor/angular-file-upload/angular-file-upload"
 
