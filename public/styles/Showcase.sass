@@ -1,9 +1,4 @@
-.showcase-home-view
-	height: 100%
-	// width: 100%
-	position: relative	
-	overflow: hidden
-	
+.showcase
 	.left-arrow, .right-arrow
 		border: 3px solid white
 		border-radius: 40px
@@ -16,23 +11,29 @@
 		padding-top: 1px
 		cursor: pointer
 		z-index: 1000
-		
+
 		+imt-hover
 			opacity: 1
 
-		i
-			font-size: 3em
-			color: white
+	.fa-angle-left, .fa-angle-right
+		font-size: 3em
+		color: white
 
-	.left-arrow		
-		left: 30px
+	.left-arrow
+		left: 5%
 		padding-left: 12px
-		
-		
-	
-	.right-arrow		
-		right: 30px
+
+
+
+	.right-arrow
+		right: 5%
 		padding-left: 17px
+
+.showcase-home-view
+	height: 100%
+	// width: 100%
+	position: relative	
+	overflow: hidden
 
 	
 	
@@ -80,7 +81,7 @@
 			
 			@media (max-width: 340px)
 				width: 100%
-				margin-top: 180px
+				margin-top: 130px
 
 
 
@@ -127,7 +128,7 @@
 				
 				position: absolute
 				width: 17%
-				top: -360px
+				top: -460px
 				left: 10px
 				transition: transform 3s ease
 				transform: translate3d(0px,0px,0px)
@@ -148,7 +149,7 @@
 				top: 110%
 		@media (max-width: $screen-md)
 			.adult-right
-				top: 600px
+				top: 650px
 				right: 10px
 
 	//Slide show css
