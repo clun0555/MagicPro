@@ -1,8 +1,19 @@
 <div class="article-edit-view">
+
+	<div class="uploading-overlay" ng-show="waitingUpload" >
+		<h1 translate>article.upload.finishing</h1>
+		<div class="progress">
+			<div class="progress-bar" data-ng-style="{width: (uploader.progress) + '%'}"></div>
+		</div>
+	</div>
 	
 	<form novalidate name="data" class="form-horizontal">
 		<fieldset ng-disabled="submiting">
 
+			<div class="article-file-chooser">
+				<div imt-file-chooser="{ 'model': article, 'field': 'image', size: 'w=500', icon: 'fa-picture-o' }" class="small "></div>						
+			</div>
+			
 			<div 
 				class="form-group title-group "
 				ng-class="{ 'has-error': (submited &&  data.title.$error.required) }" >
@@ -15,7 +26,6 @@
 							class="form-control" 
 							name="title" 
 							placeholder="{{ 'article.title' | translate }}" 
-							autofocus="" 
 							ng-model="article.title"
 							required 									
 						>
@@ -29,6 +39,18 @@
 				</div>
 			</div>
 
+			<!-- <div 
+				class="form-group image-group ">
+
+				<label class="col-lg-8 control-label" translate >article.cover.image</label>
+				<div class="col-lg-4 form-item">
+					<div class="article-file-chooser">
+						<div imt-file-chooser="{ 'model': article, 'field': 'image', size: 's=70' }" class="small "></div>						
+					</div>
+						
+				</div>
+			</div> -->
+
 			<div 
 				class="form-group content-group "
 				ng-class="{ 'has-error': (submited &&  data.content.$error.required) }" >
@@ -36,8 +58,8 @@
 				<!-- <label class="col-lg-3 control-label" translate >article.content</label> -->
 				<div class="col-lg-12 form-item">
 					
-						<textarea ng-model="article.content" class="article-content" >
-		
+						<!-- <textarea ng-model="article.content" class="form-control article-content" > -->
+						<div class="article-content" ng-model="article.content" imt-rich-editor options='{ "placeholder": "Write your article..." }'></div>
 
 
 						</textarea>
@@ -54,15 +76,66 @@
 
 			<div class="form-group " > 
 
-				<div class="col-lg-12">
-					
+				<div class="col-lg-12 buttons-line">
+					<!-- <label class="article-status" for="">
+						<span ng-show="article.status == 'published'">{{ 'article.published.on' | translate }} {{article.createdOn | date: 'MMM d, y'}}</span>
+						<span ng-show="article.status == 'draft'">{{ 'article.draft' | translate }}</span>
+
+					</label> -->
+
+					<div class="pull-left">
+						<div class="btn-group" >
+							<button class="btn btn-lg btn-imt-dimmed btn-imt-dimmed-linked " ng-click="cancel()" >
+								{{ 'article.cancel' | translate}}
+							</button>
+						</div>
+					</div>					
 					<div class="pull-right">
 
-						<div class="btn-group">
-							<button class="btn btn-lg btn-imt-primary three-d" ng-click="save()" >
-							<i class="fa fa-check"></i>
-							{{ (article._id ? 'article.update' : 'article.publish') | translate}}
 
+						<div class="btn-group dropup" ng-if="article.status == 'published'">
+							
+							<button class="btn btn-lg btn-imt-dimmed" ng-click="publish()" >
+								<i class="fa fa-check"></i> {{ 'article.update' | translate}}
+							</button>
+						
+
+							<button data-toggle="dropdown" class="btn btn-lg btn-info dropdown-toggle">
+								&nbsp;<i class="fa fa-caret-down"></i>&nbsp;
+							</button>
+
+							<ul class="dropdown-menu dropup dropdown-info pull-right">
+								
+								<li >
+									<a ng-click="unpublish()" ><i class="fa fa-undo"></i> &nbsp;&nbsp; {{'article.unpublish' | translate}}</a>
+								</li>
+
+								<li >
+									<a ng-click="remove()" ><i class="fa fa-trash-o"></i> &nbsp;&nbsp; {{'article.remove' | translate}}</a>
+								</li>
+																
+
+							</ul>
+						</div>
+
+
+
+						<div class="btn-group" ng-if="article.status == 'draft'">
+							<button class="btn btn-lg btn-imt-dimmed " ng-click="save()" >
+								{{ 'article.save' | translate}}
+							</button>
+						</div>
+
+						<!-- <div class="btn-group" ng-if="article.status == 'published'">
+							<button class="btn btn-lg btn-imt-dimmed btn-imt-dimmed-linked " ng-click="unpublish()" >
+								{{ 'article.unpublish' | translate}}
+							</button>
+						</div> -->
+						
+						<div class="btn-group" ng-if="article.status == 'draft'">
+							<button class="btn btn-lg btn-imt-dimmed three-d" ng-click="publish()" >
+							<i class="fa fa-check"></i>
+								{{ 'article.publish' | translate}}
 							</button>
 						</div>
 

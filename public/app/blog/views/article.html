@@ -1,0 +1,13 @@
+<div class="article-view">
+	<a ui-sref="blog" class="btn btn-imt-dimmed  back-button" > <i class="fa fa-angle-left"></i> {{'article.back' | translate}}</a>
+	<h1>{{article.title}}</h1>
+	<div class="article-info">
+		<span class="published-date">{{article.createdOn | date: 'MMM d, y'}}</span> &nbsp;&nbsp;
+		<span ng-show="isRole('admin')">				
+			<a ng-click="editArticle(article)" translate>article.edit</a> |
+			<a ng-click="removeArticle(article)" translate>article.remove</a>
+		</span>
+	</div>
+	<div ng-if="article.image" imt-src="article.image" imt-size="w=100"></div>
+	<p ng-bind-html="article.content | imt_trust" ></p>
+</div>

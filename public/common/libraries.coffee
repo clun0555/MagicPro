@@ -24,7 +24,10 @@ require.config
 		
 		"messageformat": "vendor/messageformat/messageformat" # pluralization / genders
 		"messageformat-zh": "vendor/messageformat/locale/zh" # pluralization / genders
-		# "messageformat-en": "vendor/messageformat/locale/en" # persiting translations		
+		# "messageformat-en": "vendor/messageformat/locale/en" # persiting translations	
+
+		"medium-editor": "vendor/medium-editor/dist/js/medium-editor" # 
+	
 		
 		"domReady": "vendor/requirejs-domready/domReady"
 		
@@ -77,6 +80,8 @@ require.config
 		"angular-bindonce": ["angular"]
 
 		"ng-infinite-scroll": ["angular", "jquery"]
+
+		"medium-editor": exports: "MediumEditor"
 			
 		# "bootstrap-dropdown": ["jquery"]
 

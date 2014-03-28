@@ -2,21 +2,30 @@
 
 
 
-<div class="articles-view">
-
-	<a ng-click="createArticle()" class="btn btn-imt-dimmed" ng-show="isRole('admin')" translate >article.new</a>
+<div class="articles-view row">
+	<div ng-show="isRole('admin')" class="new-article-block col-xs-12 ">
+		<a ng-click="createArticle()" class="btn btn-imt-dimmed"  translate >article.new</a>
+		
+	</div>
 	
-	<div class="article" bindonce="article" ng-repeat="article in articles">
-		<h1 bo-text="article.title"></h1>
+	<div class="article col-xs-12 col-sm-12 col-lg-12 {{article.status}} " ng-repeat="article in articles">
+		
+		<h1 ui-sref="article({articleId: article._id})" >{{article.title}}</h1>
+		
 		<div class="article-info">
-			<span class="published-date" bo-text="article.createdOn | date: 'MMM d, y'"></span> &nbsp;&nbsp;
-			<span ng-show="isRole('admin')">
+			<span ng-show="article.status == 'published'" class="published-date" >{{ 'article.published.on' | translate }} {{article.createdOn | date: 'MMM d, y'}}</span> &nbsp;&nbsp;
+			<span ng-show="article.status == 'draft'" class="published-date" translate>article.draft</span> &nbsp;&nbsp;
+			<span ng-show="isRole('admin')">								
 				<a ng-click="editArticle(article)" translate>article.edit</a> |
 				<a ng-click="removeArticle(article)" translate>article.remove</a>
 			</span>
 		</div>
-		
-		<p bo-text="article.content"></p>
+		<div class="article-data">
+			<div ui-sref="article({articleId: article._id})" ng-if="article.image" imt-src="article.image" imt-size="w=100"></div>
+			<p class="content" ng-bind-html="article.content | imt_trust" ></p>					
+		</div>
+
+		<a class="read-more" ui-sref="article({articleId: article._id})" translate>article.readmore</a>
 	</div>
 
 

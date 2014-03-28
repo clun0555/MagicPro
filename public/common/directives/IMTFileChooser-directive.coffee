@@ -15,12 +15,17 @@ define [
 
 			uploader = params.uploader ? $scope.uploader
 
+			$scope.uploadIcon = params.icon ? 'fa-arrow-circle-o-up'
+
 			$scope.size = params.size ? "w=200"
 
 			$scope.fileItem = uploader.getFileItem params.model, params.field
 
 			$scope.getImage = ->
 				params.model[params.field]	
+
+			$scope.hasImage = ->
+				$scope.fileItem? or $scope.getImage()?
 
 			$scope.changeFile = ($files) ->
 				

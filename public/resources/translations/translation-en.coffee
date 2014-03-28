@@ -266,10 +266,18 @@ define ->
 	### article ###
 	"article.title": "Title"
 	"article.publish": "Publish"
-	"article.update": "Update"
+	"article.published.on": "published on"
+	"article.draft": "*draft"
+	"article.unpublish": "Unpublish"
+	"article.update": "Publish changes"
+	"article.save": "Save draft"
 	"article.edit": "edit"
 	"article.remove": "remove"
 	"article.new": "New Article"
+	"article.readmore": "Read more"
+	"article.back": "Back"
+	"article.cancel": "Cancel"
+	"article.upload.finishing": "Finishing upload..."
 
 
 	### contact ###

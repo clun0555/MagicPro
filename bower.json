@@ -28,10 +28,12 @@
     "ngInfiniteScroll": "~1.0.0",
     "angular-mocks": "~1.2.11",
     "q": "~1.0.0",
-    "angular-bindonce": "~0.3.0"
+    "angular-bindonce": "~0.3.0",
+    "medium-editor": "~1.6.7",
+    "jQuery": "~2.1.0"
+
   },
   "resolutions": {
-    "jquery": ">= 1.9.0",
-    "angular": "1.2.11"
+    "angular": "1.2.15"
   }
 }
