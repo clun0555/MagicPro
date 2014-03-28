@@ -57,7 +57,7 @@ define [
 							$rootScope.scrolling = true
 							setTimeout ->
 								# top = $('#contact').position().top
-								$('html, body').stop().animate {scrollTop: 	0}, 300, ->
+								$('html, body').stop().animate {scrollTop: 	0}, 800, ->
 									$rootScope.scrolling = false
 							,10
 						
@@ -72,7 +72,7 @@ define [
 							$rootScope.scrolling = true
 							setTimeout ->
 								top = $('#contact').position().top
-								$('html, body').stop().animate {scrollTop: 	top}, 300, ->
+								$('html, body').stop().animate {scrollTop: 	top}, 800, ->
 									$rootScope.scrolling = false
 							, 10
 
@@ -87,7 +87,7 @@ define [
 							$rootScope.scrolling = true
 							setTimeout ->
 								top = $('#about').position().top
-								$('html, body').stop().animate {scrollTop: 	top}, 300, ->
+								$('html, body').stop().animate {scrollTop: 	top}, 800, ->
 									$rootScope.scrolling = false
 								
 							, 10
