@@ -219,7 +219,7 @@ module.exports = (grunt) ->
 	grunt.registerTask "reset", ["clean", "coffee:all", "copy:dist", "styles", "replace:dist", "expose_environment_variables", "html2js:app"]
 
 	# default task when deploying to heroku
-	grunt.registerTask 'heroku', 'build'
+	grunt.registerTask 'heroku:development', 'build'
 	
 	# manualy deploy to heroku. ( NOTE: automatic deployement might be setup at each git push )
 	grunt.registerTask 'deploy', 'shell:deploy'
