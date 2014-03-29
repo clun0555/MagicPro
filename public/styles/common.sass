@@ -17,6 +17,11 @@ body
 	min-height: 500px
 	background: rgba(255, 255, 255, 1)
 
+
+// make sure bootstrap :hover effects are not applied on touch devices
+.touch *:hover
+	text-decoration: inherit
+
 // remove input placeholde when focused
 input.hide-placeholder-onblur
 	&:focus::-webkit-input-placeholder

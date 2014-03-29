@@ -15,6 +15,13 @@ module.exports = (grunt) ->
 					src: ["**"]
 					dest: "dist/public/vendor"
 				,
+					# rename vendor .css files to .scss to allow sass inline import
+					expand: true
+					cwd: "public/vendor"
+					src: ['**/*.css', '!**/*.min.css']
+					dest: "public/vendor"
+					ext: ".scss"
+				,
 					expand: true
 					cwd: "public/resources/"
 					src: ["**"]
@@ -211,7 +218,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-nodemon"
 	grunt.loadNpmTasks "grunt-node-inspector"
 	grunt.loadNpmTasks "grunt-html2js"
-	grunt.loadNpmTasks "grunt-sass-to-scss"
+	grunt.loadNpmTasks "grunt-sass-to-scss-expand"
 
 	###### CUSTOM TASKS #####
 
