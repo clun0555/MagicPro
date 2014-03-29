@@ -68,15 +68,15 @@ module.exports = (grunt) ->
 		sass:
 			dist:
 				loadPath: "public/styles/"
-				files: {"dist/public/styles/main.css": "public/styles/main.scss"}
+				files: {"dist/public/styles/main.css": "dist/public/styles/main.scss"}
 
 		sass_to_scss:
 			# options: {}
 			dist:
 				expand: true
-				files:
-					'dist/public/styles/**/*.scss': ['public/styles/*.sass', 'public/styles/lib/*.sass']
-					# 'dist/public/styles/*.scss': 'public/styles/*.sass'
+				dest: "dist/"
+				src: ['public/styles/*.sass', 'public/styles/lib/*.sass']
+				ext: ".scss"							
 			
 		
 						
@@ -211,7 +211,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-nodemon"
 	grunt.loadNpmTasks "grunt-node-inspector"
 	grunt.loadNpmTasks "grunt-html2js"
-	grunt.loadNpmTasks "grunt-sass-to-scss-expand"
+	grunt.loadNpmTasks "grunt-sass-to-scss"
 
 	###### CUSTOM TASKS #####
 
