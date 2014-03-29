@@ -2,7 +2,8 @@ node_modules
 .idea
 *sublime-workspace
 .sass-cache
-dist
 npm-debug.log
 environment.coffee
 newrelic_agent.log
+
+/dist/
