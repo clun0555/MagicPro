@@ -211,7 +211,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-nodemon"
 	grunt.loadNpmTasks "grunt-node-inspector"
 	grunt.loadNpmTasks "grunt-html2js"
-	grunt.loadNpmTasks "grunt-sass-to-scss"
+	grunt.loadNpmTasks "grunt-sass-to-scss-expand"
 
 	###### CUSTOM TASKS #####
 
