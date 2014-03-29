@@ -24,6 +24,10 @@ html, body
 	min-height: 100%
 	height: 100%
 
+// make sure bootstrap :hover effects are not applied on touch devices
+.touch *:hover
+	text-decoration: inherit
+
 
 // remove input placeholde when focused
 input.hide-placeholder-onblur
@@ -33,8 +37,7 @@ input.hide-placeholder-onblur
 		opacity: 0
 
 // remove spinner from type="number" inputs
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button 
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button 
 	-webkit-appearance: none
 	margin: 0
 
