@@ -1,0 +1,57 @@
+.left-drawer {
+	background: $imt-drawer-bg;
+	.left-drawer-content{
+		margin-top: 0px;
+		width: 100%;
+		.search-group{
+			margin: 10px;
+			span{
+				border-radius: 20px 0 0 20px;
+				background: lighten(#333, 10%);
+				color: #A4A4A4;
+				border: 0;
+				padding: 4px 3px 4px 9px;}
+			input{
+				border-radius: 0 20px 20px 0;
+				width: 100%;
+				background: lighten(#333, 10%);
+				border: 0;
+				color: white;
+				&:focus{
+					outline: 0;}}}
+		.side-categories{
+			background: $imt-drawer-bg-alternate;}
+		ul.menus{
+			padding: 10px;
+			margin: 0px;
+			> li.menu > ul.type-list{
+				max-height: 0px;
+				overflow: hidden;
+				@include transition(max-height .5s ease);}
+			> li.menu.colapsed > ul.type-list{
+				max-height: 400px;}
+			li.menu{
+				list-style: none;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				& > a{
+					padding-left: 7px;
+					display: block;
+					border-left: 5px solid transparent;
+					color: white;
+					font-size: 1.2em;
+					@include transition(.5s border-color ease);
+					@include imt-hover("&.active"){
+						text-decoration: none;
+						border-color: $imt-primary-color;}}}
+			li.header{
+				text-transform: uppercase;
+				padding-top: 0px;
+				margin-top: 0px;
+				a{
+					font-size: 1em;
+					color: #A4A4A4;}}}
+		ul.type-list{
+			padding-left: 25px;
+			li > a {
+				font-size: 1.1em;}}}}

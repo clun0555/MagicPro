@@ -1,0 +1,30 @@
+.category-navigator{
+	width: auto;
+	height: auto	;
+	border-radius: 4px;
+	.category-view{
+		cursor: pointer;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+		white-space: nowrap;
+		.thumbnail{
+			border: 1px solid #ccc;
+			background: none;
+			border-radius: 0;
+			h4{
+				font-weight: 600;
+				font-size: 20px;}}
+		.type-img{
+			display: block;
+			margin: 5px;
+			float: left;}
+		.type-img-region{
+			display: table;}
+		a{
+			@include imt-hover{
+				text-decoration: none;
+				h4{
+					text-decoration: none;
+					color: #045e9f;}}}}}

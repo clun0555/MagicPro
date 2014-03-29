@@ -1,0 +1,17 @@
+.slide{
+	position: relative;
+	display: block;
+	&.ng-move, &.ng-enter, &.ng-leave{
+		-webkit-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;}
+	&.ng-move{
+		opacity: 0;
+		&.ng-move-active{
+			opacity: 1;}}
+	&.ng-enter{
+		opacity: 0;
+		&.ng-enter-active{
+			opacity: 1;}}
+	&.ng-leave{
+		opacity: 1;
+		&.ng-leave-active{
+			opacity: 0;}}}

@@ -1,0 +1,148 @@
+.fileinput-button{
+	position: relative;
+	overflow: hidden;
+	input{
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: 0;
+		opacity: 0;
+		-ms-filter: 'alpha(opacity=0)';
+		font-size: 200px;
+		direction: ltr;
+		cursor: pointer;
+		z-index: 1000;}}
+.fader-animation.ng-enter, .fader-animation.ng-leave {
+	@include transition(all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s);}
+.image-chooser-wrapper{
+	&.large {
+		padding: 10px;
+		.image-chooser .uploader{
+			line-height: 225px;
+			i.upload-icon{
+				font-size: 130px;}}
+		.bottom-controls{
+			min-height: 20px;
+			i{
+				padding-top: 7px;
+				padding-right: 7px;
+				font-size: 1.3em;}}}
+	&.small {
+		padding: 5px;
+		.image-chooser .uploader{
+			line-height: 70px;
+			i.upload-icon{
+				font-size: 35px;}}
+		.bottom-controls{
+			min-height: 15px;
+			i{
+				padding-top: 2px;}}}}
+.image-chooser-wrapper{
+	background: whitesmoke;
+	.image-chooser{
+		position: relative				;
+		overflow: hidden;
+		width: 100%;
+		height: 250px;
+		@include transition(width .5s ease, height .5s ease);
+		.drop-place-holder{
+			z-index: 900;
+			background: #333333;
+			opacity: 0;
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			left: 0px;}
+		.item-thumbnail-wrapper{
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			.item-thumbnail{
+				img{
+					width: 100%;}}}
+		> .uploader{
+			text-align: center;
+			background: white;
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			i.upload-icon{
+				color: lightgray;
+				padding: 0;
+				margin: 0;
+				vertical-align: middle					;
+				@include transition(0.5s color ease);
+				font-size: 35px;}}
+		@include imt-hover{
+			& > .uploader > i.upload-icon{
+				color: #555 !important;}}
+		.thumb-preview{
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			canvas{
+				width: 100%;
+				position: absolute;}}
+		.pending-state{
+			z-index: 901;
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			left: 0px;
+			.progress{
+				height: 5px;
+				margin: 0px	;}}
+		input{
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: 0;
+			opacity: 0;
+			-ms-filter: 'alpha(opacity=0)';
+			font-size: 200px;
+			direction: ltr;
+			cursor: pointer;
+			z-index: 1000	;
+			height: 100%;}
+		&.drag-over .drop{
+			border: 1px solid lightgray;}
+		&.drag-over .drop-place-holder{
+			opacity: .9;}}
+	.bottom-controls{
+		width: 100%;
+		text-align: right;
+		i{
+			cursor: pointer;}}}
+.imt-image-wrapper{
+	overflow: hidden;
+	.imt-image-placeholder{
+		width: 100%;
+		position: relative;
+		height: 0;
+		overflow: hidden;
+		background: transparent;
+		&.loaded{
+			background: transparent;}
+		img{
+			position: absolute;
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			left: 0;
+			right: 0;
+			top: 0			;
+			bottom: 0;
+			opacity: 0;
+			@include transition(opacity .6s);
+			margin: auto;}}}

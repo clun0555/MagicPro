@@ -1,0 +1,295 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak{
+	display: none !important;}
+body{
+	background: white;
+	padding: 70px 0;
+	background-color: white;
+	overflow-x: hidden;
+	height: 100%;
+	margin: 70px 0;
+	-webkit-font-smoothing: antialiased	;}
+#main-region	{
+	padding-bottom: 30px;
+	min-height: 500px;
+	background: rgba(255, 255, 255, 1);}
+input.hide-placeholder-onblur{
+	&:focus::-webkit-input-placeholder{
+		opacity: 0;}
+	&:focus::-moz-placeholder{
+		opacity: 0;}}
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;}
+input[type=text], input[type=email], input[type=number], input[type=password]{
+	-webkit-appearance: none;}
+input, input.form-control:focus, .has-error input.form-control, .has-error input.form-control:focus{
+	box-shadow: none;}
+input{
+	height: 40px;}
+input, textarea, input.form-control, textarea.form-control{
+	background: whitesmoke;
+	border: 0;
+	box-shadow: none;
+	@include imt-placeholder{
+		color: darken(whitesmoke, 20%);
+		font-weight: 300;}}
+.has-error input.form-control{
+	color: #b94a48;}
+.form-group input[disabled], .form-group input:disabled{
+	background: #fcfcfc !important;
+	opacity: .8;}
+fieldset[disabled] .btn-link{
+	background: transparent !important;}
+.form-header{
+	text-transform: uppercase;
+	margin: 40px 15px 20px 15px;
+	border-bottom: 4px solid #af1f31;
+	padding-bottom: 4px;
+	font-weight: 600;
+	color: #555;}
+.control-label{
+	color: #777;
+	font-weight: 400;}
+a{
+	cursor: pointer;}
+ul.nav-tabs.right{
+	text-align: right;
+	li{
+		display: inline-block;
+		float: none;}}
+ul.nav-tabs {
+	li{
+		border-top: 3px solid transparent;
+		&.active{
+			a{
+				border-top: 0;
+				box-shadow: 0px -3px 0 $imt-primary-color;
+				padding-top: 7px;
+				@include imt-hover{
+					border-top: 0;}}}}}
+h1.imt-header{
+	padding-bottom: 10px;
+	border-bottom: 3px solid $imt-primary-color	;}
+ul.dropdown-menu.ticked{
+	margin-bottom: 10px;
+	a{
+		padding-left: 30px;}
+	i.icon-ok, i.fa-check{
+		margin-left: -22px;}}
+.ui-view-container{
+	position: relative;}
+body.drawer-active{
+	overflow: hidden	;}
+.drawer{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	width: $imt-right-drawer-width;
+	height: 100%;
+	color: white;
+	padding: 0px;
+	z-index: 0		;
+	@media (min-width: $screen-sm-min){
+		width: $imt-right-drawer-width-sm;}}
+.left-drawer	{
+	left: 0px;}
+body.left-drawer-open{
+	.left-drawer{
+		z-index: 1;}
+	.right-drawer{
+		z-index: 0;}}
+body.right-drawer-open{
+	.right-drawer{
+		z-index: 1;}
+	.left-drawer{
+		z-index: 0;}}
+.page{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px	;}
+.content-wrapper{
+	background: white;
+	overflow: hidden;
+	min-height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px	;
+	width: 100%;
+	padding-top: 65px;}
+.content-slide{
+	transition: all .3s ease;
+	transform: translate3d(0,0,0);
+	box-shadow: 2px -20px 17px 5px rgba(0, 0, 0, 0.5);
+	z-index: 2;}
+.content-slide-overlay{
+	position: absolute;
+	content: ' ';
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 5000;
+	background-color: transparent;
+	display: none;
+	box-shadow: none;
+	body.drawer-active &{
+		display: block;}}
+.right-drawer-open .content-slide{
+	transform: translate3d(-$imt-right-drawer-width,0,0);
+	@media (min-width: $screen-sm-min){
+		transform: translate3d(-$imt-right-drawer-width-sm,0,0);}}
+.left-drawer-open .content-slide{
+	transform: translate3d($imt-right-drawer-width,0,0);
+	@media (min-width: $screen-sm-min){
+		transform: translate3d($imt-right-drawer-width-sm,0,0);}}
+@mixin make-button($btn-bg, $btn-color){
+	position: relative;
+	text-decoration: none;
+	background-color: $btn-bg;
+	border-color: $btn-bg;
+	border-radius: 4px;
+	box-shadow: 0px 4px 0px rgba(lighten($btn-bg, 5%), 1), 0px 4px 6px rgba(0,0,0,.1);
+	transition: all .1s ease;
+	font-weight: 300;
+	text-transform: uppercase;
+	color: $btn-color;
+	letter-spacing: .2em;
+	@include imt-hover{
+		background-color: darken($btn-bg, 5%);
+		border-color: darken($btn-bg, 5%);
+		box-shadow: 0px 4px 0px rgba($btn-bg, 1), 0px 4px 6px rgba(0,0,0,.1);}
+	&:active{
+		box-shadow: 0px 3px 0px rgba(lighten($btn-bg, 5%), 1), 0px 3px 3px rgba(0,0,0,.1);
+		position: relative;
+		top: 2px;}}
+.btn.btn-primary.three-d{
+	@include make-button($btn-primary-bg, white);}
+.btn.btn-imt-primary.three-d{
+	@include make-button($imt-primary-color, white);}
+.btn.btn-imt-info.three-d{
+	@include make-button(lighten(#333, 2%), white);}
+.btn.btn-imt-dimmed{
+	background: whitesmoke;
+	color: #999999;
+	text-transform: uppercase;
+	transition: background .3s ease, color .3s ease;
+	@include imt-hover{
+		color: white;
+		background: $imt-primary-color;}
+	&.active{
+		box-shadow: none;}}
+.search-region{
+	margin-bottom: 15px;
+	.input-group {
+		> *{
+			border: 0;
+			outline: 0;
+			box-shadow: none;}
+		input{
+			background: whitesmoke;
+			width: 150px;
+			transition: width .3s ease;}}}
+.sort-region{
+	margin-top: 20px;
+	padding-right: 25px;
+	text-align: right;
+	.sorted-by{
+		color: #555;}
+	.dropdown-menu{
+		text-align: left;
+		right: 0;
+		left: inherit;}}
+.cart-btn-group{
+	$primary: $imt-primary-color;
+	$secondary: darken($imt-primary-color, 5%);
+	$raduis: 6px;
+	width: 95px;
+	overflow: hidden;
+	*{
+		border: none;}
+	.btn-icon{
+		background-color: $primary;
+		color: white;
+		padding: 8px 3px;
+		width: 30px;
+		float: left;
+		height: 35px;
+		border-radius: $raduis 0px 0px $raduis  !important;}
+	.btn-content{
+		width: 65px;
+		float: left;
+		position: relative;
+		background: $secondary;
+		height: 35px;
+		border-radius: 0px $raduis $raduis 0px !important;
+		overflow: hidden;
+		@include imt-hover{
+			background: $primary;}}
+	.btn-clicker{
+		background-color: darken($imt-primary-color, 3%);
+		width: 100%;
+		height: 100%;
+		padding: 8px 3px;
+		color: white;
+		border-radius: 0px $raduis $raduis 0px !important;
+		float: left;
+		display: block;
+		text-decoration: none;
+		text-align: center;
+		@include imt-hover{
+			background: $primary;}}
+	input.form-control{
+		padding: 6px 3px;
+		display: table-cell;
+		color: white;
+		width: 40px;
+		background: transparent;
+		border-radius: 0px;
+		height: 35px;
+		font-weight: 300;
+		float: left;
+		text-align: center;
+		transition: background .3s ease;}
+	.cross{
+		background: transparent;
+		color: +rgba(white, .3)						;
+		padding: 6px 1px;
+		height: 35px;
+		width: 25px;
+		font-weight: 400;
+		transition: background .3s ease;
+		i{
+			font-size: 17px;
+			border: 0;
+			border-radius: 30px;
+			padding: 0px;
+			line-height: 16px;
+			display: block;
+			width: 16px;
+			height: 16px;
+			margin-top: 4px;
+			transition: all .3s ease;
+			background: #E4C9CD;
+			color: $secondary;}
+		@include imt-hover{
+			i{
+				border-color: white;
+				background: white;
+				color: $secondary;
+				opacity: 1;}}}}
+.imt-row{
+	padding: 0 15px;}
+.affix{
+	top: 70px;
+	z-index: 10;
+	left: 15px;
+	width: 250px;
+	box-shadow: none;}
+.content-region, .breadcrumb-region	{
+	margin-right: 15px;
+	margin-left: 15px;
+	transition: margin .4s ease;
+	@media (min-width: $screen-md-min){
+		margin-left: 250px;}}

@@ -1,0 +1,79 @@
+body.drag-over .product-title.create-product .thumbnail .image-wrapper{
+	background: #555;}
+.no-products{
+	margin-top: 30px;
+	margin-left: 30px;}
+.sort-trigger{
+	.dropdown-menu{
+		a{
+			padding-left: 10px;
+			.order-field{
+				margin-left: 5px;
+				width: 70px;
+				display: inline-block	;}
+			.order-way{
+				font-weight: 300;}}}}
+.categories-shortcut{
+	display: none;
+	&.visible{
+		display: block;}
+	@media (min-width: $screen-md-min){
+		&.visible{
+			display: none;}}}
+.product-navigator{
+	border-radius: 4px;
+	.product-title{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		white-space: nowrap;
+		cursor: pointer;
+		z-index: 10;
+		padding: 10px;
+		&.hover{
+			z-index: 11;}
+		.caption{
+			padding: 0px	;}
+		.thumbnail{
+			border: 0;
+			background: white;
+			border-radius: 0;
+			padding: 0px;
+			margin-bottom: 0px;}
+		.top-info	{
+			padding: 0px;
+			text-decoration: initial !important;
+			color: #555;
+			h4{
+				font-weight: 400;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+				line-height: 1.3em;
+				a{
+					color: #555;
+					@include imt-hover{
+						text-decoration: initial !important;}}
+				@media (min-width: $screen-sm-min){
+					font-size: 1.5em;}}}
+		.image-wrapper{
+			position: relative;
+			.imt-image-wrapper{
+				background-color: white;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				opacity: 1;
+				display: block;
+				@include transition(opacity .5s ease-in-out);}}
+		.bottom-info{
+			overflow: auto;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			.cart-info{
+				.anim-wrapper{
+					opacity: 0;
+					max-height: 0px;
+					overflow: hidden;
+					@include transition(300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) opacity, 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) max-height);}
+				&.visible .anim-wrapper{
+					max-height: 200px;
+					opacity: 1;}}}}}

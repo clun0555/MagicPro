@@ -65,21 +65,20 @@ module.exports = (grunt) ->
 				ext: ".js"					
 			
 			
-		# compiles sass files unsing compass mixins
-		# compass:
-		# 	dist:
-		# 		options:
-		# 			# sourcemap: true
-		# 			sassDir: "public/styles/"
-		# 			cssDir: "dist/public/styles/"
-		# 			specify: [ "public/styles/main.sass"]
-		# 			# httpPath: "styles/"
-		# 			# environment: 'production'
-
 		sass:
 			dist:
 				loadPath: "public/styles/"
-				files: {"dist/public/styles/main.css": "public/styles/main.sass"}
+				files: {"dist/public/styles/main.css": "public/styles/main.scss"}
+
+		sass_to_scss:
+			# options: {}
+			dist:
+				expand: true
+				files:
+					'dist/public/styles/**/*.scss': ['public/styles/*.sass', 'public/styles/lib/*.sass']
+					# 'dist/public/styles/*.scss': 'public/styles/*.sass'
+			
+		
 						
 		autoprefixer:
 			dist:
@@ -202,7 +201,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-contrib-clean"
 	grunt.loadNpmTasks "grunt-contrib-copy"
 	# grunt.loadNpmTasks "grunt-contrib-compass"
-	grunt.loadNpmTasks "grunt-contrib-sass"
+	grunt.loadNpmTasks "grunt-sass"
 	grunt.loadNpmTasks "grunt-autoprefixer"
 	grunt.loadNpmTasks "grunt-shell"
 	grunt.loadNpmTasks "grunt-contrib-requirejs"
@@ -212,6 +211,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-nodemon"
 	grunt.loadNpmTasks "grunt-node-inspector"
 	grunt.loadNpmTasks "grunt-html2js"
+	grunt.loadNpmTasks "grunt-sass-to-scss"
 
 	###### CUSTOM TASKS #####
 
@@ -228,7 +228,7 @@ module.exports = (grunt) ->
 	grunt.registerTask 'build', ['reset', "requirejs:build"]
 
 	# compile sass files and add vendor prefixes
-	grunt.registerTask 'styles', ['sass', "autoprefixer:dist"]
+	grunt.registerTask 'styles', ['sass_to_scss', 'sass', "autoprefixer:dist"]
 
 
 
