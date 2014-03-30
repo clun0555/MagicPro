@@ -3,7 +3,7 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller "ShopProductController", ($scope, data, cart, CartService) ->
+	shop.controller "ShopProductController", ($scope, data, cart, CartService, ShopService, $translate, $state) ->
 		$scope.product = data.product					
 		$scope.cart = cart
 		$scope.quantities = cart.quantities(data.product)
@@ -35,3 +35,9 @@ define [
 		$scope.blurCartButton = (product, design, currentScope) ->
 			if $scope.quantities[design._id] == ''
 				$scope.quantities[design._id] = currentScope.value
+
+		$scope.removeProduct  = (product) ->
+			msg = $translate('product.remove.confirmation', {title: product.title})
+			if confirm(msg)
+				ShopService.removeProduct(product).then ->
+					$state.go "shop.products"		

@@ -240,6 +240,8 @@ define ->
 	"product.many": "HOW MANY?"
 	"product.inner": "INNER"
 	"product.edit": "edit"	
+	"product.remove": "remove"	
+	"product.remove.confirmation": "You are about to remove {title}, Are you sure ?"
 
 	### product edit ###
 
