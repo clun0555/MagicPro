@@ -86,6 +86,8 @@ define ->
 	"menu.contact": "Contact"
 	"menu.home": "Home"
 	"menu.blog": "News"	
+	"menu.twitter": "Twitter"	
+	"menu.facebook": "Facebook"	
 	
 	### productnavigator ###
 	"productnavigator.buy": "Buy"
