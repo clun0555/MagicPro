@@ -19,6 +19,7 @@
 					<span class="product-price" >{{  product.price | currency:"$" }}</span> 
 					<span ng-show="isRole('admin')" >
 					| <a ui-sref="shop.editproduct({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" ng-if="isRole('admin') && isUserValidated()" translate>product.edit</a>
+					 | <a ng-click="removeProduct(product)" translate>product.remove</a>
 					</span>
 				</p>
 				<p class="product-description">{{ product.description}}</p>

@@ -238,3 +238,7 @@ define [
 						deferred.resolve(product)
 
 			deferred.promise
+
+		removeProduct: (product) ->
+			Products.remove({ id: product._id }, product).$promise.then => @products.splice @products.indexOf(product), 1
+
