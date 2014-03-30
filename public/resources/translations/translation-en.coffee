@@ -236,6 +236,8 @@ define ->
 	"product.inner": "INNER"
 	"product.edit": "edit"	
 	"product.ingredients": "Ingredients"	
+	"product.remove": "remove"	
+	"product.remove.confirmation": "You are about to remove {title}, Are you sure ?"
 
 	### product edit ###
 
@@ -255,6 +257,7 @@ define ->
 	"product.edit.description": "Description"
 	"product.edit.ingredients": "Ingredients"
 	"product.edit.uploading": "Uploading..."
+	"product.edit.image": "Image"
 	"product.edit.saving": "Saving..."
 	"product.edit.new.title": "New Product"
 	"product.edit.edit.title": "Edit Product"
