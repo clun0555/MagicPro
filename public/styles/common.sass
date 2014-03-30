@@ -17,6 +17,10 @@ body
 	background-size: 900px 100%
 	background-repeat: repeat
 
+// make sure bootstrap :hover effects are not applied on touch devices
+.touch *:hover
+	text-decoration: inherit
+
 //ribon background
 .ribbon-vertical
 	@media (min-width: $screen-sm-min)
@@ -40,8 +44,7 @@ input.hide-placeholder-onblur
 		opacity: 0
 
 // remove spinner from type="number" inputs
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button 
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button 
 	-webkit-appearance: none
 	margin: 0
 

@@ -15,6 +15,13 @@ module.exports = (grunt) ->
 					src: ["**"]
 					dest: "dist/public/vendor"
 				,
+					# rename vendor .css files to .scss to allow sass inline import
+					expand: true
+					cwd: "public/vendor"
+					src: ['**/*.css', '!**/*.min.css']
+					dest: "public/vendor"
+					ext: ".scss"
+				,
 					expand: true
 					cwd: "public/resources/"
 					src: ["**"]
@@ -65,21 +72,20 @@ module.exports = (grunt) ->
 				ext: ".js"					
 			
 			
-		# compiles sass files unsing compass mixins
-		# compass:
-		# 	dist:
-		# 		options:
-		# 			# sourcemap: true
-		# 			sassDir: "public/styles/"
-		# 			cssDir: "dist/public/styles/"
-		# 			specify: [ "public/styles/main.sass"]
-		# 			# httpPath: "styles/"
-		# 			# environment: 'production'
-
 		sass:
 			dist:
 				loadPath: "public/styles/"
-				files: {"dist/public/styles/main.css": "public/styles/main.sass"}
+				files: {"dist/public/styles/main.css": "dist/public/styles/main.scss"}
+
+		sass_to_scss:
+			# options: {}
+			dist:
+				expand: true
+				dest: "dist/"
+				src: ['public/styles/*.sass', 'public/styles/lib/*.sass']
+				ext: ".scss"							
+			
+		
 						
 		autoprefixer:
 			dist:
@@ -202,7 +208,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-contrib-clean"
 	grunt.loadNpmTasks "grunt-contrib-copy"
 	# grunt.loadNpmTasks "grunt-contrib-compass"
-	grunt.loadNpmTasks "grunt-contrib-sass"
+	grunt.loadNpmTasks "grunt-sass"
 	grunt.loadNpmTasks "grunt-autoprefixer"
 	grunt.loadNpmTasks "grunt-shell"
 	grunt.loadNpmTasks "grunt-contrib-requirejs"
@@ -212,6 +218,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-nodemon"
 	grunt.loadNpmTasks "grunt-node-inspector"
 	grunt.loadNpmTasks "grunt-html2js"
+	grunt.loadNpmTasks "grunt-sass-to-scss-expand"
 
 	###### CUSTOM TASKS #####
 
@@ -219,7 +226,7 @@ module.exports = (grunt) ->
 	grunt.registerTask "reset", ["clean", "coffee:all", "copy:dist", "styles", "replace:dist", "expose_environment_variables", "html2js:app"]
 
 	# default task when deploying to heroku
-	grunt.registerTask 'heroku', 'build'
+	grunt.registerTask 'heroku:development', 'build'
 	
 	# manualy deploy to heroku. ( NOTE: automatic deployement might be setup at each git push )
 	grunt.registerTask 'deploy', 'shell:deploy'
@@ -228,7 +235,7 @@ module.exports = (grunt) ->
 	grunt.registerTask 'build', ['reset', "requirejs:build"]
 
 	# compile sass files and add vendor prefixes
-	grunt.registerTask 'styles', ['sass', "autoprefixer:dist"]
+	grunt.registerTask 'styles', ['sass_to_scss', 'sass', "autoprefixer:dist"]
 
 
 
