@@ -78,18 +78,29 @@
 				padding-top: 5px
 				border-radius: 3px
 
-			&.active:after, &.active:before
-				border-color: rgba(136, 183, 213, 0)
-				border-top-color: #88b7d5
-				border-width: 20px
-				left: 50%
-				margin-left: -20px
-				top: 100%
-				/* border: solid transparent; */
-				content: " "
-				height: 0
-				width: 0
-				position: absolute
+				&:before
+					content: ' '
+					height: 0
+					position: absolute
+					width: 0
+					border: 19px solid transparent
+					border-top-color: white
+					top: 100%
+					margin-left: auto
+					margin-right: auto
+					left: 35%
+
+				&:after
+					content: ' '
+					height: 0
+					position: absolute
+					width: 0
+					border: 16px solid transparent
+					border-top-color: #0094CB
+					top: 100%
+					margin-left: auto
+					margin-right: auto
+					left: 37%
 
 
 	.products-wrapper
