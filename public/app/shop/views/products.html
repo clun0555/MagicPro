@@ -34,10 +34,11 @@
 
 		<div  class="products row"  >
 			
-			<div bindonce 
-				ng-class="{ 'dimmed': (currentType && currentType._id != product.type._id), 'hilighted': (currentType && currentType._id == product.type._id) , 'empty': !product.title, last: productsCount -1 == index, 'hidden-xs': (visibleXs.indexOf(index) == -1), 'hidden-sm hidden-md hidden-lg': (visibleLg.indexOf(index) == -1), 'last-xs': (visibleXs[visibleXs.length - 1] == index), 'last-lg': (visibleLg[visibleLg.length - 1] == index), 'left-corner-xs': (visibleXs[visibleXs.length - 2] == index), 'left-corner-lg': (visibleLg[visibleLg.length - 3] == index)  }" 
-				class="product col-lg-4 col-sm-4 col-xs-6" 
-				ng-repeat="(index, product) in products" ui-sref="shop.product({product: product.slug})" >
+			<div
+				bindonce
+				ng-class="{ 'dimmed': (currentType && currentType._id != product.type._id), 'empty': !product.title, last: productsCount -1 == index, 'hidden-xs': (visibleXs.indexOf(index) == -1), 'hidden-sm hidden-md hidden-lg': (visibleLg.indexOf(index) == -1), 'last-xs': (visibleXs[visibleXs.length - 1] == index), 'last-lg': (visibleLg[visibleLg.length - 1] == index), 'left-corner-xs': (visibleXs[visibleXs.length - 2] == index), 'left-corner-lg': (visibleLg[visibleLg.length - 3] == index)  }"
+				class="product col-lg-4 col-sm-4 col-xs-6"
+				ng-repeat="(index, product) in products" ui-sref="shop.product({product: product.slug})" ng-show="(currentType && currentType._id == product.type._id) || !currentType">
 				
 					<div class="thumbnail"  >
 						<!-- {{product.title}}: {{index}} / {{offset}} / {{productsCount}} -->
