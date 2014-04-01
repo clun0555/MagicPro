@@ -26,6 +26,14 @@ define [
 
 			deferred.promise
 
+		getArticlesByCategory: (category) ->
+			deferred = $q.defer()
+			@getArticles().then (articles) ->
+				filteredArticles = _.filter articles, (a) -> a.category is category
+				deferred.resolve filteredArticles
+			deferred.promise
+
+
 		getArticle: (articleId) ->
 			deferred = $q.defer()
 

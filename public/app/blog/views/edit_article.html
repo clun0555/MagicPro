@@ -13,7 +13,7 @@
 			<div class="article-file-chooser">
 				<div imt-file-chooser="{ 'model': article, 'field': 'image', size: 'w=500', icon: 'fa-picture-o' }" class="small "></div>						
 			</div>
-			
+
 			<div 
 				class="form-group title-group "
 				ng-class="{ 'has-error': (submited &&  data.title.$error.required) }" >
@@ -29,6 +29,15 @@
 							ng-model="article.title"
 							required 									
 						>
+						<div class="btn-group btn-group-xs category" >
+							<i class="fa fa-tag"></i> <a href="" dropdown-toggle >{{ ('article.category.' + article.category) | translate }} <i class="fa fa-caret-down"></i> </a>
+
+							<ul class="dropdown-menu ticked">
+								<li ng-repeat="category in categories" >
+									<a ng-click="selectCategory(category)" > <i class="icon-ok" ng-show="category == article.category"></i>{{ ('article.category.' + category) | translate }}</a>
+								</li>    	
+							</ul>
+						</div>
 
 						<div 
 							class="error-tip" 
@@ -39,17 +48,7 @@
 				</div>
 			</div>
 
-			<!-- <div 
-				class="form-group image-group ">
-
-				<label class="col-lg-8 control-label" translate >article.cover.image</label>
-				<div class="col-lg-4 form-item">
-					<div class="article-file-chooser">
-						<div imt-file-chooser="{ 'model': article, 'field': 'image', size: 's=70' }" class="small "></div>						
-					</div>
-						
-				</div>
-			</div> -->
+			
 
 			<div 
 				class="form-group content-group "
@@ -57,13 +56,12 @@
 
 				<!-- <label class="col-lg-3 control-label" translate >article.content</label> -->
 				<div class="col-lg-12 form-item">
-					
-						<!-- <textarea ng-model="article.content" class="form-control article-content" > -->
-						<div class="article-content" ng-model="article.content" imt-rich-editor options='{ "placeholder": "Write your article..." }'></div>
+						
 
-
-						</textarea>
-
+						<div ng-show="article.category != 'media' " class="article-content" ng-model="article.content" imt-rich-editor options='{ "placeholder": "Write your article..." }' ></div>
+						
+						<input ng-show="article.category == 'media'" type="text" class="form-control" ng-model="article.content" placeholder="{{ 'article.category.media.placeholder' | translate }}"   >
+	
 						<div 
 							class="error-tip" 
 							translate >

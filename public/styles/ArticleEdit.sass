@@ -15,7 +15,27 @@
 			color: #fdfdfd
 		// color: #555
 
+	.category
+		margin-left: 20px
+		font-size: 1em
+		> a
+			color: white
+
+		.dropdown-menu
+			border-color: white
+			background: $imt-primary-color
+			a
+				color: white
+
+				+imt-hover
+					color: $imt-secondary-color
+
+
 	.content-group
+
+		input
+			background: transparent
+			padding: 10px
 		
 		.form-item
 			padding-left: 30px
@@ -33,35 +53,37 @@
 		.medium-editor-placeholder:after
 			color: white !important
 
-	.dropdown-toggle
-		background: transparent
-		border: 2px solid white !important
-		border-top-right-radius: 3px
-		border-bottom-right-radius: 3px
-		border-left: 0
-		margin-left: -2px !important
+	.buttons-line
 
-		+imt-hover(".active")
-			background: $imt-primary-color !important
+		.dropdown-toggle
+			background: transparent
+			border: 2px solid white !important
+			border-top-right-radius: 3px
+			border-bottom-right-radius: 3px
+			border-left: 0
+			margin-left: -2px !important
 
-	.open .dropdown-toggle
-		background: $imt-primary-color
+			+imt-hover(".active")
+				background: $imt-primary-color !important
+
+		.open .dropdown-toggle
+			background: $imt-primary-color
 
 
-	.dropdown-menu
-		background: $imt-primary-color
-		border-radius: 3px
-		
-		border: 2px solid white
-
-		li 
-			a 
-				text-transform: uppercase
-				font-size: 1.5em
-				color: white
+		.dropdown-menu
+			background: $imt-primary-color
+			border-radius: 3px
 			
-				+imt-hover
-					background: $imt-secondary-color !important
+			border: 2px solid white
+
+			li 
+				a 
+					text-transform: uppercase
+					font-size: 1.5em
+					color: white
+				
+					+imt-hover
+						background: $imt-secondary-color !important
 
 
 

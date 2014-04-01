@@ -1,5 +1,5 @@
 <div class="article-view">
-	<a ui-sref="blog" class="btn btn-imt-dimmed  back-button" > <i class="fa fa-angle-left"></i> {{'article.back' | translate}}</a>
+	<a ui-sref="blogbycategory({category: article.category})" class="btn btn-imt-dimmed  back-button" > <i class="fa fa-angle-left"></i> {{'article.back' | translate}}</a>
 	<h1>{{article.title}}</h1>
 	<div class="article-info">
 		<span class="published-date">{{article.createdOn | date: 'MMM d, y'}}</span> &nbsp;&nbsp;

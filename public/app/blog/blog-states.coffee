@@ -9,13 +9,30 @@ define [
 				
 			$stateProvider
 
-				.state "blog",
+				.state "blogcontainer",
 					url: "/blog"
+					abstract: true
 					views: "@":
-						templateUrl: "app/blog/views/articles.html"
-						controller: "BlogArticlesController"					
-						resolve: 
-							articles: (BlogService) -> BlogService.getArticles() 
+						templateUrl: "app/blog/views/blog.html"
+						controller: "BlogController"
+
+				.state "blog",
+					url: ""
+					parent: "blogcontainer"					
+					templateUrl: "app/blog/views/articles.html"
+					controller: "BlogArticlesController"					
+					resolve: 
+						articles: (BlogService) -> BlogService.getArticles()
+
+
+				.state "blogbycategory",
+					url: "/articles/:category"
+					parent: "blogcontainer"		
+					templateUrl: "app/blog/views/articles.html"
+					controller: "BlogArticlesController"					
+					resolve: 
+						articles: (BlogService, $stateParams) -> 
+							BlogService.getArticlesByCategory($stateParams.category)
 
 				.state "article",
 					url: "/blog/:articleId"

@@ -9,6 +9,16 @@ define [
 		uploader = $scope.uploader = FileUploadService.newUploader($scope)
 
 
+		$scope.categories = [
+			"news",
+			"media"
+			"testimonial"
+		]
+
+		$scope.selectCategory = (category) ->
+			$scope.article.category = category
+			$scope.placeholder = category
+
 		doWhenUploaded = (cb) ->
 			if uploader.isUploading
 				$scope.waitingUpload = true

@@ -2,12 +2,8 @@
 
 
 
-<div class="articles-view  container">
-	<div ng-show="isRole('admin')" class="new-article-block col-xs-12 ">
-		<a ng-click="createArticle()" class="btn btn-imt-dimmed"  translate >article.new</a>
-		
-	</div>
-	
+
+
 	<div class="article col-xs-12 col-sm-6 col-lg-3 {{article.status}} " ng-repeat="article in articles">
 		
 		<h1 ui-sref="article({articleId: article._id})" >{{article.title}}</h1>
@@ -22,12 +18,13 @@
 		</div>
 		<div class="article-data">
 			<div ui-sref="article({articleId: article._id})" ng-if="article.image" imt-src="article.image" imt-size="w=100"></div>
-			<p class="content" ng-bind-html="article.content | imt_trust" ></p>					
+			
+
+			<p ng-if="article.category != 'media' " class="content" ng-bind-html="article.content | imt_trust" ></p>					
+			<div ng-if="article.category == 'media' " imt-youtube="article.content" class="media-content content"></div>
 		</div>
 
 		<a class="read-more" ui-sref="article({articleId: article._id})" translate>article.readmore</a>
 	</div>
 
 
-
-</div>

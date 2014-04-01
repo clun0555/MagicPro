@@ -35,9 +35,9 @@ define [
 			$scope.isCurrentMenu = (state) ->
 				$rootScope.nextState?.name.indexOf(state) >= 0 or $rootScope.$state.includes(state)
 
-			$scope.changeMenu = (state) ->
+			$scope.changeMenu = (state, params) ->
 				$rootScope.nextState = $state.get(state)
-				$state.go state
+				$state.go state, params
 
 			$scope.$on "user:changed", -> 
 				if $scope.user?

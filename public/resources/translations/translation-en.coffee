@@ -288,6 +288,12 @@ define ->
 	"article.back": "Back"
 	"article.cancel": "Cancel"
 	"article.upload.finishing": "Finishing upload..."
+	"article.category.news": "Product news"
+	"article.category.news.placeholder": "Write your artcile..."
+	"article.category.media": "In the media"
+	"article.category.media.placeholder": "Paste your youtube video url here..."
+	"article.category.testimonial": "Testimonials"
+	"article.category.testimonial.placeholder": "Write your artcile..."
 
 
 	### contact ###

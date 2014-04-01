@@ -1,0 +1,26 @@
+
+
+
+
+<div class="articles-view  container">
+	<div ng-show="isRole('admin')" class="new-article-block col-xs-12 ">
+		<a ng-click="createArticle()" class="btn btn-imt-dimmed"  translate >article.new</a>
+		
+	</div>
+
+	<div class="col-xs-12">
+		<div class="articles-categories ">
+			<div ng-class="{'active': $stateParams.category == 'news'}" ui-sref="blogbycategory({category: 'news'})" class="category news"></div>
+			<div ng-class="{'active': $stateParams.category == 'media'}" ui-sref="blogbycategory({category: 'media'})" class="category media"></div>
+			<div ng-class="{'active': $stateParams.category == 'testimonial'}" ui-sref="blogbycategory({category: 'testimonial'})" class="category testimonial"></div>
+		</div>
+	</div>
+
+	<div ui-view class="row">
+		
+
+	</div>
+
+
+
+</div>

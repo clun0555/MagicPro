@@ -13,5 +13,6 @@ define [
 	"./IMTRichEditor-directive"	
 	"./IMTSpy-directive"	
 	"./IMTScrollSpy-directive"	
+	"./IMTYoutube-directive"	
 
 ], ->

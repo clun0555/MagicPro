@@ -11,6 +11,41 @@
 		a.btn
 			font-size: 1.3em
 	
+	.articles-categories
+
+		margin: 0 auto
+		+clearfix()
+		width: 500px
+
+
+		.category
+			height: 50px
+			width: 50px
+			background-size: contain
+			background-repeat:no-repeat
+			float: left
+			margin: 20px
+			cursor: pointer
+
+			&.news
+				background-image: url('/resources/img/product_news_normal.png')
+
+				+imt-hover("&.active")
+					background-image: url('/resources/img/product_news_over.png')
+
+			&.media
+				background-image: url('/resources/img/in_the_media_normal.png')
+
+				+imt-hover("&.active")
+					background-image: url('/resources/img/in_the_media_over.png')
+
+			&.testimonial
+				background-image: url('/resources/img/testimonial_normal.png')
+
+				+imt-hover("&.active")
+					background-image: url('/resources/img/testimonial_over.png')
+
+
 
 	.article
 
@@ -49,7 +84,16 @@
 
 			.content
 				margin-bottom: 0px
-			
+
+			.media-content
+				position: relative
+				height: 195px
+				width: 100%
+				// padding-bottom: 56.25%
+				// padding-top: 30px
+				// height: 0
+				overflow: hidden
+
 
 			.imt-image-wrapper
 				max-height: 100px	
@@ -71,8 +115,23 @@
 			font-weight: 600
 			// font-size: 1.2em
 
+
+	@media (min-width: $screen-xs-min)
+		.articles-categories
+
+			width: 500px
+
+
+			.category
+				height: 100px
+				width: 100px
+				background-size: 100px 100px
+				background-repeat:no-repeat
+				float: left
+				margin: 20px
+				cursor: pointer
+
 		
 
-		// &:not(:last-child) p
-		// 	border-bottom: 4px solid whitesmoke
+		
 

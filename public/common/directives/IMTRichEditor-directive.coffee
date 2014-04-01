@@ -15,6 +15,7 @@ define [
 			opts = angular.fromJson(iAttrs.options)  if iAttrs.options
 			opts.targetBlank = true unless opts.targetBlank?
 			placeholder = opts.placeholder or "Type your text"
+
 			onChange = ->
 				scope.$apply ->
 					
