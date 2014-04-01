@@ -14,7 +14,7 @@ define [
 							
 				).result.then ->
 					$state.reload()
-					alert "r"
+					# alert "r"
 
 		$scope.createArticle = ->
 			$scope.editArticle({ status: "draft", category: "news" })		
