@@ -50,8 +50,8 @@ define [
 					@getArticles().then (articles) ->
 						oldArticle = _.findWhere articles, { '_id': article._id }
 						index = articles.indexOf oldArticle
-						articles[index] = article
-						deferred.resolve(article)
+						_.extend articles[index], article
+						deferred.resolve(articles[index])
 						# todo replace article in  @articles with new one
 
 			else

@@ -3,7 +3,7 @@ define [
 	"../blog-states"	
 ], (_, blog) ->
 
-	blog.controller "BlogController", ($scope, $modal, BlogService, $state) ->		
+	blog.controller "BlogController", ($scope, $modal, BlogService, $state, $stateParams) ->		
 
 		$scope.editArticle = (article) ->
 			$modal.open(
@@ -13,8 +13,9 @@ define [
 						article: -> article						
 							
 				).result.then ->
-					$state.reload()
-					# alert "r"
+					# reloads the currentState
+					$state.transitionTo($state.current, $stateParams, { reload: true, inherit: true, notify: true })
+					
 
 		$scope.createArticle = ->
 			$scope.editArticle({ status: "draft", category: "news" })		

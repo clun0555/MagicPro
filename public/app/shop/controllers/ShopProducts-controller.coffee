@@ -27,14 +27,14 @@ define [
 		if productsCount % 3 isnt 0
 			offset = $scope.offset = (3-($scope.products.length%3))
 			for i in [0..offset-1]
-#				$scope.products.push {}
+				# $scope.products.push {}
 				$scope.visibleLg.push ($scope.products.length - 1)
 				if $scope.products.length % 2 == 0
 					$scope.visibleXs.push ($scope.products.length - 1)
 
 
 		if $scope.products.length % 2 isnt 0 and offset in [1, 0]
-#			$scope.products.push {}
+			# $scope.products.push {}
 			$scope.visibleXs.push ($scope.products.length - 1)
 
 		$scope.search = ShopService.search

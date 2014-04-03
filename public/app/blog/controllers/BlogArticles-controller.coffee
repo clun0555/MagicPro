@@ -3,7 +3,7 @@ define [
 	"../blog-states"	
 ], (_, blog) ->
 
-	blog.controller "BlogArticlesController", ($scope, $modal, articles, BlogService) ->		
+	blog.controller "BlogArticlesController", ($scope, $modal, articles, BlogService, $state, $stateParams, $translate) ->		
 
 		$scope.articles = articles
 
@@ -22,5 +22,10 @@ define [
 	
 
 		$scope.removeArticle = (article) ->
-			BlogService.remove article		
+			msg = $translate('article.remove.confirmation', {title: article.title})
+			if confirm(msg)
+				BlogService.remove(article).then ->
+					$scope.articles.splice($scope.articles.indexOf(article), 1)
+				# reloads the currentState
+				# $state.transitionTo($state.current, $stateParams, { reload: true, inherit: true, notify: true })
 				

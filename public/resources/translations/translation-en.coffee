@@ -294,6 +294,7 @@ define ->
 	"article.category.media.placeholder": "Paste your youtube video url here..."
 	"article.category.testimonial": "Testimonials"
 	"article.category.testimonial.placeholder": "Write your artcile..."
+	"article.remove.confirmation": "You are about to remove the article {title}, Are you sure ?"
 
 
 	### contact ###
