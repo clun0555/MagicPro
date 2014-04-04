@@ -73,6 +73,8 @@ define ->
 	"register.password.forgot": "forgot your password ?"
 	"register.register": "Sign Up"
 	"register.back": "Back"
+	"register.warning": "* We do not sell directly to public, we only trade with wholesalers and retailers that holds a valid ABN"
+	"preview.delivery-info": "*Minimum order value is $300"
 
 	### validating ###
 	"validating.title": "Thank you"

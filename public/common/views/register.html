@@ -1,5 +1,6 @@
 <div class="register-view">
-	
+
+
 		<form novalidate name="credentials" class="form-horizontal">
 			<fieldset ng-disabled="submiting">
 				
@@ -213,6 +214,13 @@
 						<div class="error-tip"  >													
 							<span ng-show="credentials.password.$error.required" translate > register.password.required</span>
 						</div>					
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-3 control-label"></label>
+					<div class="col-lg-9">
+						<label translate >register.warning</label>
 					</div>
 				</div>
 

@@ -72,6 +72,7 @@ define ->
 	"register.password.forgot": "忘了您的密碼嗎 ?"
 	"register.register": "註冊"
 	"register.back": "返回"
+	"register.warning": "* 網頁用戶只限於批發商與店家"
 
 	### validating ###
 	"validating.title": "謝謝您"
@@ -245,6 +246,7 @@ define ->
 	"preview.continue.shopping": "繼續下單..."
 	"preview.deliver": "送貨"
 	"preview.pickup": "拿貨"
+	"preview.delivery-info": "* 最低訂貨金額為$300"
 
 	### product ###
 	"product.many": "數量"
