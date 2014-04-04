@@ -5,8 +5,13 @@ define [
 
 	shop.controller  "CartPreviewController", ($scope, cart, CartService) ->
 
-		$scope.cart = cart.clone()			
-		
+		$scope.cart = cart.clone()
+
+		$scope.cart.method = if cart.method then cart.method else "Delivery"
+
+		$scope.changeMethod = ->
+			CartService.updateMethod $scope.cart.method
+
 		$scope.submit = ->
 			CartService.save().then ->
 				$scope.saved = true	

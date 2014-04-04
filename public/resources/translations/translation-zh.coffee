@@ -243,6 +243,8 @@ define ->
 	"preview.delete": "刪除"
 	"preview.empty.message": "您沒有產品購物車裡"
 	"preview.continue.shopping": "繼續下單..."
+	"preview.deliver": "送貨"
+	"preview.pickup": "拿貨"
 
 	### product ###
 	"product.many": "數量"

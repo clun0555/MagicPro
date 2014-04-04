@@ -1,4 +1,4 @@
-<h1>Order Confirmation</h1>
+<h1>Order Confirmation (<%= cart.method %>)</h1>
 
 <table class="customer-info"><tr><td>
 	
@@ -17,9 +17,8 @@
 		<% cart.bundles.forEach(function(bundle){ %>
 		<tr class="bundle">
 			<td class="product-info" >
-				<h3><%= bundle.product.title %></h3>
-				<span class="ref"><%= bundle.product.identifier %></span>	| 
-				<span class="price"><%= helpers.currency(bundle.product.price) %></span>	
+				<h3><%= bundle.product.identifier %></h3>
+				<span class="ref"><%= bundle.product.title %></span>
 			</td>
 
 			<td class="compositions">

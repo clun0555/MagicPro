@@ -1,7 +1,7 @@
 <div class="product-detail-view " ng-class="{'single-design':  product.designs.length == 1 }"  >
 	
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 product-image">
+		<div class="col-xs-12 col-sm-4 product-image">
 			
 			<div class="item-thumbnail" imt-src="design.image || product.image" imt-size="w=50" ng-repeat="design in product.designs" ng-class="{'visible': currentDesign == design}" ></div>
 			
@@ -34,7 +34,10 @@
 						
 						<div ng-if="product.designs.length > 1" class="design-image" imt-src="design.image || product.image" imt-size="s=50"></div>	
 
-						<span class="design-label">{{design.label}}</span>
+						<div class="design-info">
+							<span class="design-label">{{design.label}}</span>
+							<span class="design-identifier">{{design.identifier}}</span>
+						</div>
 						<div class="btn-group cart-btn-group display-inner">
 							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
 							<span class="btn-content">

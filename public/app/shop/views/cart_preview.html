@@ -80,7 +80,13 @@
 		</div>
 
 		<div class="cart-price">
-			{{cart.price() | currency:'$'}}				
+			{{cart.price() | currency:'$'}}
+		</div>
+		<div class="delivery-form">
+			<form>
+				<label> <input type="radio" ng-model="cart.method" value='Delivery' ng-change='changeMethod()'>  <span translate>preview.deliver</span> </label>
+				<label> <input type="radio" ng-model="cart.method" value='Pickup' ng-change='changeMethod()'> <span translate>preview.pickup</span> <label>
+			</form>
 		</div>
 		<div class="buttons">
 			<a class="btn btn-lg btn-imt-primary three-d checkout" ng-click="submit()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a> 

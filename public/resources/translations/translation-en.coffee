@@ -219,7 +219,7 @@ define ->
 	"cart.preview": "Preview"
 	"cart.checkout": "Checkout"
 	"cart.edit": "Edit"
-	"cart.continue.shopping": "Continue shopping"
+	"cart.continue.shopping": "Continue Ordering"
 	"cart.widget.add": "ADD"
 
 	### Checkout ###
@@ -234,7 +234,9 @@ define ->
 	"preview.submit": "Submit"
 	"preview.delete": "delete"
 	"preview.empty.message": "Looks like your cart is empty"
-	"preview.continue.shopping": "Continue shopping..."
+	"preview.continue.shopping": "Continue Ordering..."
+	"preview.deliver": "Delivery"
+	"preview.pickup": "Pick Up"
 
 	### product ###
 	"product.many": "HOW MANY?"

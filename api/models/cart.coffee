@@ -6,6 +6,7 @@ Cart = new mongoose.Schema
 	price: { type: Number }
 	quantity: { type: Number }
 	user: {type: mongoose.Schema.ObjectId, ref: 'User'}
+	method: { type: String}
 	bundles: [{
 		product: { type: mongoose.Schema.ObjectId, ref: 'Product' }
 		compositions: [{

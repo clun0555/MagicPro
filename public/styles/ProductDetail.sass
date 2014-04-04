@@ -74,10 +74,9 @@
 			// background: rgba(255, 255, 255, .7)
 
 			.design:not(.single-design)
-				height: 50px
 				padding: 10px
 				width: 100%
-				max-width: 290px
+				max-width: 420px
 				margin-top: 3px
 				+clearfix()
 				border-left: 4px solid transparent
@@ -101,21 +100,34 @@
 					left: 0
 
 
-				.design-label
-					width: 126px
-					height: 35px
-					// text-transform: uppercase
-					display: block
-					margin-top: auto
-					margin-bottom: auto
+				.design-info
+					width: 60%
+					height: 100%
+					.design-label
+						width: 126px
+						height: 35px
+						// text-transform: uppercase
+						display: block
+						margin-top: auto
+						margin-bottom: auto
+						float: left
+
+					.design-identifier
+						width: 100px
+						height: 35px
+						// text-transform: uppercase
+						display: block
+						margin-top: auto
+						margin-bottom: auto
+						float: left
+						font-weight: 600
 
 
 
 				.cart-btn-group
-					position: absolute
-					top: 7px
-					right: 10px
-					// float: right
+					position: relative
+					top: -3px
+					float: right
 
 			.design.single-design
 				.design-label

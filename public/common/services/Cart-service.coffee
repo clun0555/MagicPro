@@ -76,6 +76,10 @@ define [
 					cart().updateBundle product, design, quantity
 					@store()
 
+				updateMethod: (method) ->
+					cart().updateMethod method
+					@store()
+
 				get:  ->
 					return @deferred.promise if @deferred?
 					

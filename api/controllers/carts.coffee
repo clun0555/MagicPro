@@ -66,12 +66,13 @@ sendConfirmationEmail = (cart, user) ->
 					"itemId": bundle.product.identifier 
 					"designId": design.identifier
 					"quantity": composition.quantity
+					"inner": bundle.product.inner
 					"unitPrice": bundle.product.price
 
 		
 		# send mail to customer
 		email.send 
-			subject: "MagicPro Order Confirmation",
+			subject: "MagicPro Order Confirmation (" + cartJSON.method + ")",
 			data: 
 				cart: cartJSON
 				user: user
@@ -79,11 +80,13 @@ sendConfirmationEmail = (cart, user) ->
 			to:  user.email
 			cc: null
 
-		json2csv { data: designs, fields: ['itemId', 'designId', 'quantity', 'unitPrice'], fieldNames: ['Item Id', 'Design Id', 'Quantity', 'Unit Price'] } , (err, csv) ->
+		companyName = if user.company then user.company else ''
+		userName = (if user.firstname then user.firstname else '') + ' ' + (if user.lastname then user.lastname else '')
+		json2csv { data: designs, fields: ['', '', 'itemId', 'designId', 'inner', 'quantity'], fieldNames: [companyName, userName,'Item Id', 'Design Id', 'Inner', 'Quantity'] } , (err, csv) ->
 			
 			# send mail to magicpro 
 			email.send 
-				subject: "Order Confirmation",
+				subject: "Order Confirmation (" + cartJSON.method + ")",
 				data: 
 					cart: cartJSON
 					user: user

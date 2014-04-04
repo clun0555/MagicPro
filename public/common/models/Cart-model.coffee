@@ -7,6 +7,7 @@ define [
 
 		constructor: ->
 			@bundles = []
+			@method = 'Delivery'
 
 		updateBundle: ( product, design, quantity ) ->
 			bundle = @getBundle product._id
@@ -21,7 +22,10 @@ define [
 				@removeBundle bundle					
 			else if isNew 
 				@bundles.push bundle
-			
+
+		updateMethod: ( method ) ->
+			@method = method
+
 		getBundle: (productId) ->
 			_.find @bundles, (bundle) -> bundle.product._id is productId
 
@@ -58,6 +62,7 @@ define [
 
 		reset: ->
 			@bundles = []
+			@method = 'Delivery'
 
 		# check if cart has any un-existing designs for this product (may have been deleted)
 		removeUnexistingCompositions: (product) ->
@@ -85,10 +90,12 @@ define [
 
 		toJSON: ->
 			bundles: @bundles
+			method: @method
 
 		toObject: ->
 			obj = 
 				bundles: []
+				method: @method
 				
 			for bundle in @bundles
 				obj.bundles.push bundle.toObject()
@@ -99,6 +106,8 @@ define [
 		fromJSON: (json) ->
 			for jsonBundle in json.bundles ? []
 				@bundles.push new Bundle(jsonBundle).fromJSON(jsonBundle)
+
+			@method = 'Delivery'
 
 			this
 
