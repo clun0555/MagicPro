@@ -7,7 +7,7 @@ define ->
 
 	## Home ##
 	"home.title1": "Party, Giftware and Household products"
-	"home.title2": "Australia's finest Giftware/Partyware supplier. we trade in large quantities so we only deal with wholesalers, distributors and retailers"
+	"home.title2": "MagicPro Australia is one of Australia's finest Partyware/Giftware supplier. We trade with wholesalers, distributors and retailers only."
 	"home.apply": "Apply Now"
 	"home.order": "Order Now"
 
@@ -74,7 +74,7 @@ define ->
 	"register.register": "Sign Up"
 	"register.back": "Back"
 	"register.warning": "* We do not sell directly to public, we only trade with wholesalers and retailers that holds a valid ABN"
-	"preview.delivery-info": "*Minimum order value is $300"
+	"preview.delivery-info": "*Minimum order value is $300 (For Sydney local delivery)"
 
 	### validating ###
 	"validating.title": "Thank you"
@@ -239,6 +239,7 @@ define ->
 	"preview.continue.shopping": "Continue Ordering..."
 	"preview.deliver": "Delivery"
 	"preview.pickup": "Pick Up"
+	"preview.total": "Total:"
 
 	### product ###
 	"product.many": "HOW MANY?"

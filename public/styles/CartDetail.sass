@@ -27,6 +27,9 @@
 			border-top: 3px solid lightgray
 			font-weight: 600
 			color: #555
+			@media (max-width: $screen-xs)
+				.cart-total
+					display: none
 		.delivery-form
 			height: 30px
 			float: right
@@ -34,16 +37,22 @@
 			label
 				margin-left: 10px
 		.delivery-info
-			height: 30px
 			float: left
 			margin-top: 5px
-			margin-right: 10px
+			margin-right: 15px
+			max-width: 250px
 			@media (max-width: $screen-xs)
 				float: right
+				label
+					text-align: right
 
 		.buttons
 			margin-top: 40px
 			text-align: right
+			.btn
+				min-width: 125px
+
+
 
 
 
@@ -104,6 +113,7 @@
 
 			.btn
 				font-size: 1.5em
+				min-width: 125px
 
 			.cart-price
 				margin-bottom: 20px

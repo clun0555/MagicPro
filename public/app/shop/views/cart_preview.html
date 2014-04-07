@@ -80,8 +80,15 @@
 		</div>
 
 		<div class="cart-price">
-			{{cart.price() | currency:'$'}}
+			<span class="cart-total" translate>
+				preview.total
+			</span>
+				{{cart.price() | currency:'$'}}
+			<span style="font-size: 0.7em">
+				(excl. GST)
+			</span>
 		</div>
+
 		<div class="delivery-form">
 			<form>
 				<label> <input type="radio" ng-model="cart.method" value='Delivery' ng-change='changeMethod()'>  <span translate>preview.deliver</span> </label>

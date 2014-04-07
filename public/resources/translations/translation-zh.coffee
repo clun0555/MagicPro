@@ -5,10 +5,10 @@ define ->
 	"locale.label": "中文"
 
 	## Home ##
-	"home.title1": "派對用品, 禮品包裝, 家庭用品"
-	"home.title2": "澳洲悉尼大型的禮品用品供應商. 我們以大量出貨, 合作對象只限於商店和批發商"
+	"home.title1": "派對用品, 禮品包裝, 家庭用品批發"
+	"home.title2": "MagicPro Australia 為澳洲悉尼大型的禮品用品供應商, 合作對象限於商店和批發商"
 	"home.apply": "申請會員"
-	"home.order": "下單"
+	"home.order": "開始訂貨"
 
 	## general ##
 	"general.unit.pieces": "{amount, plural, one{個} other{個}}"
@@ -76,25 +76,25 @@ define ->
 
 	### validating ###
 	"validating.title": "謝謝您"
-	"validating.message": "我們正在審批您的註冊資料, 如合乎我們的要求您將可以使用此系統下單."
+	"validating.message": "我們正在審批您的註冊資料, 如合乎我們的要求您將可以使用此系統訂貨."
 
 	### menu ###
 	"menu.title": "MagicPro"		
 	"menu.home": "主頁"
-	"menu.order": "下單"
+	"menu.order": "訂貨"
 	"menu.loggedin": "登入　${name}"
 	"menu.account": "帳號"
 	"menu.logout": "登出"
 	"menu.login": "登入"
 	"menu.admin": "管理"
 	"menu.about": "關於我們"
-	"menu.contact": "聯絡方法"
-	"menu.store": "下單"
+	"menu.contact": "聯繫方式"
+	"menu.store": "訂貨"
 	"menu.home": "主頁"
 	"menu.blog": "部落格"
 
 	### productnavigator ###
-	"productnavigator.buy": "下單"
+	"productnavigator.buy": "訂貨"
 	"productnavigator.featured": "新產品"
 	"productnavigator.product.edit": "編輯"
 	"productnavigator.edit.delete": "刪除"
@@ -225,14 +225,14 @@ define ->
 	"cart.title": "訂單"
 	"cart.quantity": "數量"
 	"cart.price": "價錢"
-	"cart.preview": "預覽／下單"
-	"cart.checkout": "下單"
+	"cart.preview": "預覽／訂貨"
+	"cart.checkout": "訂貨"
 	"cart.edit": "修改"
-	"cart.continue.shopping": "返回下單"
-	"cart.widget.add": "下單"
+	"cart.continue.shopping": "返回訂貨"
+	"cart.widget.add": "訂貨"
 
 	### Checkout ###
-	"checkout.title": "下單"
+	"checkout.title": "訂貨"
 	"checkout.disabled": "抱歉, 買單系統不能在deFmo版本中使用"
 	"checkout.back.cart": "返回"
 
@@ -240,13 +240,14 @@ define ->
 	"preview.thank": "謝謝您"
 	"preview.message":"您的訂單已發送到本公司"
 	"preview.back": "返回"
-	"preview.submit": "下單"
+	"preview.submit": "訂貨"
 	"preview.delete": "刪除"
 	"preview.empty.message": "您沒有產品購物車裡"
-	"preview.continue.shopping": "繼續下單..."
+	"preview.continue.shopping": "繼續訂貨..."
 	"preview.deliver": "送貨"
-	"preview.pickup": "拿貨"
-	"preview.delivery-info": "* 最低訂貨金額為$300"
+	"preview.pickup": "取貨"
+	"preview.delivery-info": "* 最低送貨總額為$300 (只限悉尼地區)"
+	"preview.total": "總計:"
 
 	### product ###
 	"product.many": "數量"
@@ -293,7 +294,7 @@ define ->
 	"products.search.noproducts": "抱歉, 找不到您要收尋的產品"
 
 	### contact ###
-	"contact.title": "聯絡資料"
+	"contact.title": "聯繫方式"
 
 	### footer ###
 	"footer.developed.by": "Developed by"
