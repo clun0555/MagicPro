@@ -22,7 +22,7 @@ define [
 				UserService.save($scope.user).then(
 					->
 						$scope.submiting = false
-						$scope.flash  = options.flash ? "profile.saved"					
+						$scope.flash  = options.flash ? "profile.saved"
 
 					->
 						# only server error currently

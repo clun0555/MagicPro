@@ -7,7 +7,7 @@ define ->
 
 	## Home ##
 	"home.title1": "Party, Giftware and Household products"
-	"home.title2": "MagicPro Australia is one of Australia's finest Partyware/Giftware supplier. We trade with wholesalers, distributors and retailers only."
+	"home.title2": "MagicPro Australia is one of Australia's finest Partyware supplier. We are dedicated to providing outstanding products. If you're a wholesaler, distributor or retailer and would like to sell our party product range, apply now."
 	"home.apply": "Apply Now"
 	"home.order": "Order Now"
 
@@ -24,7 +24,7 @@ define ->
 	"login.password.incorect": "Incorect password"	
 	"login.email.notfound": "Email not found"
 	"login.email.notfound.signup": "Would you like to sign up?"
-	"login.register": "Sign Up"
+	"login.register": "Apply Now"
 	"login.login": "Login"
 	"login.password.forgot": "forgot your password ?"
 
@@ -48,7 +48,7 @@ define ->
 
 
 	### register ###
-	"register.title": "Sign Up"
+	"register.title": "Application Form"
 	"register.name": "Name"
 	"register.firstname": "First Name"
 	"register.lastname": "Last Name"
@@ -71,7 +71,7 @@ define ->
 	"register.lastname.required": "Please enter your last name"
 	"register.password.required": "Please enter a password"
 	"register.password.forgot": "forgot your password ?"
-	"register.register": "Sign Up"
+	"register.register": "Apply"
 	"register.back": "Back"
 	"register.warning": "* We do not sell directly to public, we only trade with wholesalers and retailers that holds a valid ABN"
 	"preview.delivery-info": "*Minimum order value is $300 (For Sydney local delivery)"
@@ -103,10 +103,12 @@ define ->
 	"productnavigator.order.price": "price"
 	"productnavigator.order.title": "title"
 	"productnavigator.order.category": "category"
+	"productnavigator.order.identifier": "product code"
 	"productnavigator.order.ascending": "ascending"
 	"productnavigator.order.descending": "descending"
 	"productnavigator.show.colors": "show all"
 	"productnavigator.product.itemcode": "Item Number"
+
 
 
 	### users ###
@@ -127,6 +129,8 @@ define ->
 	"admin.user.firstname": "First Name"
 	"admin.user.lastname": "Last Name"
 	"admin.user.email": "Email"
+	"admin.user.phone": "Phone"
+	"admin.user.mobile": "Mobile"
 	"admin.user.role": "Role"
 	"admin.user.password": "Password"
 	"admin.user.password-repeat": "Repeat password"
@@ -215,17 +219,17 @@ define ->
 	"breadcrumb.product.edit": "Edit"
 
 	### cart ###
-	"cart.title": "Cart"
+	"cart.title": "My Order"
 	"cart.quantity": "Quantity"
 	"cart.price": "Price"
-	"cart.preview": "Preview"
-	"cart.checkout": "Checkout"
+	"cart.preview": "Checkout"
+	"cart.checkout": "Comfirm Order"
 	"cart.edit": "Edit"
 	"cart.continue.shopping": "Continue Ordering"
 	"cart.widget.add": "ADD"
 
 	### Checkout ###
-	"checkout.title": "Checkout"
+	"checkout.title": "Comfirm Order"
 	"checkout.disabled": "Sorry, checkout has been disabled for this demo."
 	"checkout.back.cart": "Back to cart"
 
@@ -235,7 +239,7 @@ define ->
 	"preview.back": "Back"
 	"preview.submit": "Submit"
 	"preview.delete": "delete"
-	"preview.empty.message": "Looks like your cart is empty"
+	"preview.empty.message": "Looks like your order list is empty"
 	"preview.continue.shopping": "Continue Ordering..."
 	"preview.deliver": "Delivery"
 	"preview.pickup": "Pick Up"

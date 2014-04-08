@@ -102,6 +102,7 @@ define ->
 	"product.edit.inner": "內裝"
 	"productnavigator.order.title": "名稱"
 	"productnavigator.order.category": "類別"
+	"productnavigator.order.identifier": "貨號"
 	"productnavigator.order.ascending": "小致大"
 	"productnavigator.order.descending": "大致小"
 	"productnavigator.show.colors": "顯示所有顏色"

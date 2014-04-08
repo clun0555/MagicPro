@@ -15,6 +15,8 @@ User = new mongoose.Schema
 	cart: { type: mongoose.Schema.Types.Mixed }
 	company: { type: String }
 	abn: { type: String }
+	phone: {type: String}
+	mobile: {type: String}
 	street: { type: String }
 	suburb: { type: String }
 	state: { type: String }

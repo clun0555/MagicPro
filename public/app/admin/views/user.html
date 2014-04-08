@@ -104,7 +104,7 @@
 
 			<div class="form-group abn-group" >
 
-				<label class="col-lg-3 control-label" ></label>
+				<label class="col-lg-3 control-label" translate >admin.user.abn</label>
 				<div class="col-lg-9 form-item">
 					
 						<input 
@@ -184,6 +184,47 @@
 				</div>
 			</div>
 
+			<!--Contact Number-->
+			<div
+					class="form-group phone-group">
+
+				<label class="col-lg-3 control-label" translate >admin.user.phone</label>
+				<div class="col-lg-9 form-item">
+
+					<input
+							type="text"
+							class="form-control"
+							name="phone"
+							name="phone"
+							placeholder="{{ 'admin.user.phone' | translate }}"
+							ng-model="user.phone"
+							>
+
+
+
+				</div>
+			</div>
+
+			<div class="form-group" >
+
+				<label class="col-lg-3 control-label" translate >admin.user.mobile</label>
+				<div class="col-lg-9 form-item">
+
+					<input
+							type="text"
+							class="form-control"
+							name="mobile"
+							name="mobile"
+							placeholder="{{ 'admin.user.mobile' | translate }}"
+							ng-model="user.mobile"
+							>
+
+
+
+				</div>
+			</div>
+
+			<!--Contact Email-->
 			<div 
 				class="form-group email-group" 
 				ng-class="{ 'has-error': (submited  && ( credentials.email.$invalid) || serverError) }" >

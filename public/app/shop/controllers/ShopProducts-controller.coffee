@@ -18,18 +18,21 @@ define [
 
 
 		$scope.orders =  [
-			{ field: 'price', asc: true }
-			{ field: 'price', asc: false }
-			{ field: 'title', asc: true }
-			{ field: 'title', asc: false }
+			{ field: 'identifier', asc: true }
+			{ field: 'identifier', asc: false }
 			{ field: 'category', asc: true }
 			{ field: 'category', asc: false }
+			{ field: 'title', asc: true }
+			{ field: 'title', asc: false }
+			{ field: 'price', asc: true }
+			{ field: 'price', asc: false }
 		]
 
-		$scope.orderLabels = 
-			'price' : 'productnavigator.order.price'
-			'title' : 'productnavigator.order.title'
+		$scope.orderLabels =
+			'identifier' : 'productnavigator.order.identifier'
 			'category' : 'productnavigator.order.category'
+			'title' : 'productnavigator.order.title'
+			'price' : 'productnavigator.order.price'
 
 		localOrder = SessionService.retrieveLocal("order")
 		if localOrder? 
@@ -49,12 +52,14 @@ define [
 				$scope.loading = false			
 
 		$scope.doSort = (order, asc) ->
-			if order.field is "price"
+			if order.field is "identifier"
+				allProducts.sort utils.sortBySorter('identifier', order.asc, (identifier) -> identifier.toUpperCase())
+			else if order.field is "price"
 				allProducts.sort utils.sortBySorter('price', order.asc, parseFloat)
 			else if order.field is "title"
 				allProducts.sort utils.sortBySorter('title', order.asc, (title) -> title.toUpperCase())
 			else if order.field is "category"
-				allProducts.sort utils.sortBySorter('type', order.asc, (type) -> type.category.title.toUpperCase())
+				allProducts.sort utils.sortBySorter('type', order.asc, (type) -> type?.category?.order)
 			
 			$scope.products = allProducts.slice(0, $scope.products.length)
 

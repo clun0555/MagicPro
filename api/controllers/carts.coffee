@@ -5,6 +5,7 @@ email = require("../utils/email")
 json2csv = require('json2csv')
 user = require("connect-roles")
 environment = require("../config/environment")
+dateFormat = require('dateformat');
 
 module.exports = 
 
@@ -49,7 +50,7 @@ module.exports =
 
 sendConfirmationEmail = (cart, user) ->
 	designs = []
-
+	createdDate = "Date: " + dateFormat(cart.created, "dd-mm-yyyy")
 
 	cart.populate "bundles.product", =>
 
@@ -63,11 +64,14 @@ sendConfirmationEmail = (cart, user) ->
 				design = _.find bundle.product.designs, (design) -> design._id.toJSON() is composition.design.toJSON()
 				composition.design = design
 				designs.push 
-					"itemId": bundle.product.identifier 
+					"itemId": bundle.product.identifier
 					"designId": design.identifier
-					"quantity": composition.quantity
+					"designLabel": design.label
+					"quantity": '(' + composition.quantity + ')'
 					"inner": bundle.product.inner
+					"total_quantity": composition.quantity*bundle.product.inner
 					"unitPrice": bundle.product.price
+					"createdDate": createdDate
 
 		
 		# send mail to customer
@@ -82,7 +86,7 @@ sendConfirmationEmail = (cart, user) ->
 
 		companyName = if user.company then user.company else ''
 		userName = (if user.firstname then user.firstname else '') + ' ' + (if user.lastname then user.lastname else '')
-		json2csv { data: designs, fields: ['', '', 'itemId', 'designId', 'inner', 'quantity'], fieldNames: [companyName, userName,'Item Id', 'Design Id', 'Inner', 'Quantity'] } , (err, csv) ->
+		json2csv { data: designs, fields: ['', '', 'itemId', 'designId', 'designLabel', 'quantity', 'total_quantity', ''], fieldNames: [companyName, userName,'Item #', 'Design #', 'Design', 'Inner', 'Total', createdDate] } , (err, csv) ->
 			
 			# send mail to magicpro 
 			email.send 
