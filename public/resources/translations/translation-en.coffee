@@ -54,6 +54,8 @@ define ->
 	"register.lastname": "Last Name"
 	"register.address": "Address"
 	"register.abn": "ABN"
+	"register.about": "About"
+	"register.about.placeholder": "About your business"
 	"register.company": "Company"
 	"register.company.name": "Company name"
 	"register.suburb": "Suburb"

@@ -18,6 +18,7 @@ User = new mongoose.Schema
 	phone: {type: String}
 	mobile: {type: String}
 	street: { type: String }
+	about: { type: String }
 	suburb: { type: String }
 	state: { type: String }
 	postalcode: { type: String }
