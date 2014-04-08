@@ -9,8 +9,16 @@ define [
 
 		$scope.cart.method = if cart.method then cart.method else "Delivery"
 
-		$scope.changeMethod = ->
+		$scope.$watch 'cart.note', ->
+			CartService.updateNote $scope.cart.note
+
+		$scope.changeMethod = (method) ->
+			$scope.cart.method = method
 			CartService.updateMethod $scope.cart.method
+
+		# $scope.updateNote = ->
+		# 	# $scope.cart.method = method
+		# 	CartService.store()
 
 		$scope.submit = ->
 			CartService.save().then ->
@@ -39,3 +47,4 @@ define [
 		$scope.blurCartButton = (composition, currentScope) ->
 			if composition.quantity == ''
 				composition.quantity = currentScope.value
+

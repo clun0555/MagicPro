@@ -86,18 +86,28 @@
 				{{cart.price() | currency:'$'}}
 			<span style="font-size: 0.7em">
 				(excl. GST)
-			</span>
+			</span> 
 		</div>
 
-		<div class="delivery-form">
-			<form>
-				<label> <input type="radio" ng-model="cart.method" value='Delivery' ng-change='changeMethod()'>  <span translate>preview.deliver</span> </label>
-				<label> <input type="radio" ng-model="cart.method" value='Pickup' ng-change='changeMethod()'> <span translate>preview.pickup</span> <label>
-			</form>
+		<div class="delivery">
+
+			<div class="delivery-form">
+				<div class="btn-group">			
+					<button type="button" class="btn btn-default" ng-click="changeMethod('Delivery')" ng-class="{'active': cart.method == 'Delivery'}" > <i class="fa fa-check" ></i>  {{ 'preview.deliver' | translate }}</button>			
+					<button type="button" class="btn btn-default" ng-click="changeMethod('Pickup')" ng-class="{'active': cart.method == 'Pickup'}" ><i class="fa fa-check" ></i> {{ 'preview.pickup' | translate }}</button>			
+				</div>
+				<!-- <form> -->
+					<!-- <label> <input type="radio" ng-model="cart.method" name="deliveryMethod" value='Delivery' ng-change='changeMethod()'>  <span translate>preview.deliver</span> </label>
+					<label> <input type="radio" ng-model="cart.method" name="deliveryMethod" value='Pickup' ng-change='changeMethod()'> <span translate>preview.pickup</span> <label> -->
+				<!-- </form> -->
+			</div>
+			<div class="delivery-info">
+				<label translate> preview.delivery-info </label>
+			</div>
 		</div>
-		<div class="delivery-info">
-			<label translate> preview.delivery-info </label>
-		</div>
+
+		<textarea class="delivery-note" ng-show="cart.method == 'Delivery'" ng-model="cart.note" placeholder="{{ 'preview.placeholder.note' | translate }}" ></textarea>
+
 		<div class="buttons">
 			<a class="btn btn-lg btn-imt-primary three-d checkout" ng-click="submit()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a> 
 		</div>

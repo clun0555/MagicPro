@@ -7,6 +7,10 @@
 	<% if (user.street){ %><%= user.street || '' %> <br /><% } %>
 	<% if (user.suburb || user.state || user.postalcode){ %><%= user.suburb || '' %> <%= user.state || '' %> <%= user.postalcode || '' %><br /><% } %>
 	<%= user.email || '' %>
+	
+	<% if ( cart.note && cart.method == 'Delivery' ){ %>
+		<p><strong>Note on delivery:</strong> <%= cart.note || '' %></p>
+	<% } %>
 
 </td></tr></table>
 	

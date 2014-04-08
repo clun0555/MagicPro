@@ -24,7 +24,7 @@ define [
 				deferred = $q.defer()
 
 				localCartJSON = SessionService.retrieveLocal("cart")
-				populatedCart = { bundles: [] }
+				populatedCart = { bundles: [], method: localCartJSON.method, note: localCartJSON.note }
 
 				unless localCartJSON?
 					deferred.resolve({})
@@ -78,6 +78,10 @@ define [
 
 				updateMethod: (method) ->
 					cart().updateMethod method
+					@store()
+
+				updateNote: (method) ->
+					cart().updateNote method
 					@store()
 
 				get:  ->

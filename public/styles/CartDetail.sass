@@ -30,21 +30,45 @@
 			@media (max-width: $screen-xs)
 				.cart-total
 					display: none
-		.delivery-form
-			height: 30px
-			float: right
-			margin-top: 5px
-			label
-				margin-left: 10px
-		.delivery-info
-			float: left
-			margin-top: 5px
-			margin-right: 15px
-			max-width: 250px
-			@media (max-width: $screen-xs)
+
+
+		
+		.delivery
+			margin-bottom: 20px
+			margin-top: 20px
+			+clearfix()
+
+			.delivery-form 
 				float: right
-				label
-					text-align: right
+				
+				.btn-group
+
+					button
+						box-shadow: 0
+						text-align: center
+				
+				
+					i.fa-check
+						display: none
+					
+					.active i.fa-check
+						display: inline
+			
+			.delivery-info
+				float: left
+				margin-top: 5px
+				margin-right: 15px
+				max-width: 250px
+				@media (max-width: $screen-xs)
+					float: right
+					label
+						text-align: right
+		
+		.delivery-note
+			width: 100%
+			height: 100px
+			padding: 10px
+
 
 		.buttons
 			margin-top: 40px

@@ -26,6 +26,9 @@ define [
 		updateMethod: ( method ) ->
 			@method = method
 
+		updateNote: ( note ) ->
+			@note = note
+
 		getBundle: (productId) ->
 			_.find @bundles, (bundle) -> bundle.product._id is productId
 
@@ -63,6 +66,7 @@ define [
 		reset: ->
 			@bundles = []
 			@method = 'Delivery'
+			@note = ''
 
 		# check if cart has any un-existing designs for this product (may have been deleted)
 		removeUnexistingCompositions: (product) ->
@@ -86,16 +90,18 @@ define [
 					compositions.push composition
 
 			compositions
-
+			
 
 		toJSON: ->
 			bundles: @bundles
 			method: @method
+			note: @note
 
 		toObject: ->
 			obj = 
 				bundles: []
 				method: @method
+				note: @note
 				
 			for bundle in @bundles
 				obj.bundles.push bundle.toObject()
@@ -107,7 +113,8 @@ define [
 			for jsonBundle in json.bundles ? []
 				@bundles.push new Bundle(jsonBundle).fromJSON(jsonBundle)
 
-			@method = 'Delivery'
+			@method = json.method || 'Delivery'
+			@note = json.note
 
 			this
 
