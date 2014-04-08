@@ -8,7 +8,7 @@ environment = require("../config/environment")
 
 
 isOwner = (req, res, next) ->
-	if req.user.is("admin") or req.params.user is req.user.email
+	if req.user.is("admin") or req.params.user is req.user.email or req.params.user is req.user.id
 		next()
 	else
 		res.status(403).send("")
@@ -53,7 +53,9 @@ module.exports =
 				
 			
 	update: (req, res) ->
+
 		User.findById req.params.user,  (err, user) ->
+			
 			oldStatus = user.status
 			if err 
 				res.status(400).send err
