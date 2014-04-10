@@ -106,7 +106,8 @@
 			</div>
 		</div>
 
-		<textarea class="delivery-note" ng-show="cart.method == 'Delivery'" ng-model="cart.note" placeholder="{{ 'preview.placeholder.note' | translate }}" ></textarea>
+		<textarea class="delivery-note" ng-show="cart.method == 'Delivery'" ng-model="cart.note" placeholder="{{ 'preview.placeholder.note-delivery' | translate }}" ></textarea>
+		<textarea class="delivery-note" ng-show="cart.method == 'Pickup'" ng-model="cart.note" placeholder="{{ 'preview.placeholder.note-pickup' | translate }}" ></textarea>
 
 		<div class="buttons">
 			<a class="btn btn-lg btn-imt-primary three-d checkout" ng-click="submit()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a> 

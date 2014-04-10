@@ -77,7 +77,8 @@ define ->
 	"register.back": "Back"
 	"register.warning": "* We do not sell directly to public, we only trade with wholesalers and retailers that holds a valid ABN"
 	"preview.delivery-info": "*Minimum order value is $300 (For Sydney local delivery)"
-	"preview.placeholder.note": "Note on delivery"
+	"preview.placeholder.note-delivery": "Note on delivery"
+	"preview.placeholder.note-pickup": "Note on pickup"
 
 	### validating ###
 	"validating.title": "Thank you"

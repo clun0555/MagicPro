@@ -67,7 +67,7 @@ sendConfirmationEmail = (cart, user) ->
 					"itemId": bundle.product.identifier
 					"designId": design.identifier
 					"designLabel": design.label
-					"quantity": '(' + composition.quantity + ')'
+					"quantity": '[' + composition.quantity + ']'
 					"inner": bundle.product.inner
 					"total_quantity": composition.quantity*bundle.product.inner
 					"unitPrice": bundle.product.price
