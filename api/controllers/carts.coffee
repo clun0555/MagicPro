@@ -58,6 +58,10 @@ sendConfirmationEmail = (cart, user) ->
 
 		cartJSON.price = cart.totalPrice()
 
+		cart.sortBy("identifier");
+
+		cartJSON.bundles = cart.bundles
+
 		for bundle in cartJSON.bundles
 			bundle.product.formatedPrice = "$" + bundle.product.price
 			for composition in bundle.compositions

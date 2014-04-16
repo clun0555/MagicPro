@@ -20,7 +20,7 @@ define [
 
 		$scope.slides = [
 			{
-				title: "Hello"
+				title: "MagicPro Funtime Smiley Face: Party disposal Supplies"
 				image:
 					'name': 'MagicPro Funtime Smiley Face: Party disposal Supplies'
 					'description': 'Funtime Smiley Face brand, wide range of party disposal supplies includes cutleries, tablecloths and containers'
@@ -29,7 +29,7 @@ define [
 					'height': '360'
 			},
 			{
-				title: "Hello2"
+				title: "MagicPro Funtime Smiley Face: Party Coloured Cultery"
 				image:
 					'name': 'MagicPro Funtime Smiley Face: Party Coloured Cultery'
 					'description': 'Funtime Smiley Face brand, wide range of colour choice for partyware cultery'
@@ -38,7 +38,7 @@ define [
 					'height': '360'
 			},
 			{
-				title: "Hello3"
+				title: "MagicPro Funtime Smiley Face: Party Giftwrapping paper"
 				image:
 					'name': 'MagicPro Funtime Smiley Face: Party Giftwrapping paper'
 					'description': 'Funtime Smiley Face brand, partyware multi-colour giftwrapping paper and selection of multiple design pattern'
