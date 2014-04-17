@@ -1,9 +1,8 @@
 define ->
-	
+
 	# include text applicable to all languages here
 
-	"application.copyright": "© Magic Pro"	
+	"application.copyright": "© Copyright 2014 Magic Pro"
 
-	
-	
-	
+
+
