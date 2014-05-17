@@ -156,7 +156,7 @@ body.drawer-active
 	height: 100%
 	color: white
 	padding: 0px
-	z-index: 0		
+	z-index: 0
 
 	@media (min-width: $screen-sm-min)
 		width: $imt-right-drawer-width-sm
@@ -164,17 +164,31 @@ body.drawer-active
 .left-drawer	
 	left: 0px
 	overflow: auto
+	transition: all 0.3s ease
+	transform: translate3d(-260px,0,0)
+	@media (min-width: 768px)
+		transform: translate3d(-360px,0,0)
+
+.right-drawer
+	-webkit-transition: all 0.3s ease
+	transition: all 0.3s ease
+	transform: translate3d(260px,0,0)
+	@media (min-width: 768px)
+		transform: translate3d(360px,0,0)
 
 body.left-drawer-open
 	.left-drawer
 		z-index: 1
+		transform: translate3d(0,0,0)
 
 	.right-drawer
 		z-index: 0
 
+
 body.right-drawer-open
 	.right-drawer
 		z-index: 1
+		transform: translate3d(0,0,0)
 
 	.left-drawer
 		z-index: 0
