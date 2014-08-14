@@ -173,9 +173,9 @@ define [
 
 				.state "cart",
 					url: "/cart"
-					templateUrl: "app/shop/views/cart_preview.html" 
+					templateUrl: "app/shop/views/cart_preview.html"
 					controller: "CartPreviewController"
-					parent: "order"	
+					parent: "order"
 
 				.state "checkout",
 					url: "/checkout"

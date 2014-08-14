@@ -7,10 +7,16 @@ define [
 
 		constructor: ->
 			@bundles = []
+			@lastItem = {}
+			@active = false
 			@method = 'Delivery'
 
+		getLastItem: () ->
+			@lastItem
 		updateBundle: ( product, design, quantity ) ->
 			bundle = @getBundle product._id
+
+			@lastItem = product
 
 			unless bundle?
 				isNew = true
@@ -18,9 +24,11 @@ define [
 
 			bundle.updateComposition design, quantity
 
-			if bundle.isEmpty() 
+			if bundle.isEmpty()
+				@active = "removed"
 				@removeBundle bundle					
-			else if isNew 
+			else if isNew
+				@active = "added"
 				@bundles.push bundle
 
 		updateMethod: ( method ) ->

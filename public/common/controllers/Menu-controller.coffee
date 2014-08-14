@@ -4,7 +4,7 @@ define [
 ], (controllers, translations) ->
 	
 	controllers
-		.controller "MenuController", ($scope, $rootScope, $translate, SessionService, $state, CartService) ->
+		.controller "MenuController", ($scope, $rootScope, $translate, SessionService, $state, CartService, $timeout) ->
 
 			$scope.isCollapsed = true
 			# $scope.isCollapsed = true
@@ -44,7 +44,13 @@ define [
 				else
 					$scope.cart = null
 
-			# $scope.showCart = ->
+			$scope.$on "cart:changed", ->
+				$scope.update = true
+				$timeout.cancel($scope.cartTimeout)
+				$scope.cartTimeout = $timeout ->
+					$scope.update = false
+				, 2000
+				# $scope.showCart = ->
 			# 	snapRemote.toggle("right")	
 			# 	console.log $scope.cartVisible
 

@@ -72,9 +72,10 @@ define [
 						@get()
 
 				update: (product, design, quantity) ->
-					
+
 					cart().updateBundle product, design, quantity
 					@store()
+					$rootScope.$broadcast("cart:changed")
 
 				updateMethod: (method) ->
 					cart().updateMethod method

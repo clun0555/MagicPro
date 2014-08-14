@@ -93,6 +93,38 @@
 
 			.design
 				font-weight: 100
+	.add-item-panel
+		width: 300px
+		padding: 15px
+		background-color: #393c3f
+		border-radius: 15px
+		right: 5px
+		top: 65px
+		position: absolute
+		box-shadow: 0 10px 30px 10px rgba(0,0,0,.2)
+		z-index: 100
+		transition: 0.5s opacity ease
+		opacity: 0
+		&:after
+			content: " "
+			width: 0
+			height: 0
+			border-left: 12px solid transparent
+			border-right: 12px solid transparent
+			border-bottom: 12px solid  #393c3f
+			position: fixed
+			right: 36px
+			top: 54px
+			@media (max-width: $screen-sm)
+				top: 44px
+		@media (max-width: $screen-sm)
+			top: 50px
+		&.active
+			opacity: 1
+		.imt-responsive-image
+			margin-bottom: 10px
+			img
+				width: 100%
 
 	.btn.cart-toggle, .btn.left-drawer-toggle
 		font-size: 1.2em
@@ -100,7 +132,7 @@
 		padding: 8px
 		margin: 2px 15px
 		border-radius: 10px
-		box-shadow: none
+		border: 1px solid darkgrey
 		transition: background .3s ease
 		// background: whitesmoke !important			
 	

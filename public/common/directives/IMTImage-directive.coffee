@@ -8,13 +8,20 @@ define [
 	# this directive is deprecated, please use imtSrc
 	directives.directive "imtImage", () ->
 		{
-			restrict: "E"
-			template: "<img class=\"imt-image\" onload=\"this.style.opacity='1'\" ng-src=\"#{path}/{{ src || 'placeholder2.jpg'}}?{{size}}\" />"
-			require: '^ngSrc'
-			scope: 
-				src: '@'
-				size: '@'
-				class: '@'
-			# replace: true			
-						
+			restrict: "A"
+			template:
+				"""
+					<div class="imt-responsive-image" >
+						<img
+							src="#{path}/{{image.path}}?{{size}}"
+						/>
+					</div>
+				"""
+			scope: true
+			# replace: true
+			link: (scope, element, attrs) ->
+				scope.image = scope.$eval(attrs.imtImage)
+				scope.size = attrs.imtSize
+				scope.$watchCollection attrs.imtImage, ->
+					scope.image = scope.$eval(attrs.imtImage)
 		}

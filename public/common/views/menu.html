@@ -58,12 +58,27 @@
 						<a class="btn cart-toggle drawer-toggle" ng-click="toggleCart()" >
 							<i class="icon icon-cart"></i>
 							<span ng-show="cart.quantity() == 0">Cart</span>
-							<span ng-show="cart.quantity() > 0">{{cart.quantity()}}</span>								
+							<span ng-show="cart.quantity() > 0">{{cart.quantity()}}</span>
 						</a>
 					</li>		
 					
 				</ul>
+				<div class="container add-item-panel" ng-class="{'active': update}">
 
+					<div class="image-wrapper col-xs-6" >
+						<div imt-image="cart.getLastItem().image" imt-size="s=400" ng-class="{ 'visible': true }" ></div>
+					</div>
+					<div class="col-xs-6">
+						<h4 class="col-xs-12" style="color: white">Product: {{cart.getLastItem().identifier}}</h4>
+						<h5 class="col-xs-12" style="color: white">{{cart.getLastItem().title}}</h5>
+					</div>
+					<div class="col-xs-12">
+						<i ng-if="cart.active=='added'" class="fa fa-check" style="color: green"> Item {{cart.active}} to the cart</i>
+						<i ng-if="cart.active=='removed'" class="fa fa-times" style="color: red"> Item {{cart.active}} from the cart</i>
+					</div>
+
+
+				</div>
 			</nav>
 
 			<nav class="logo-nav" >
