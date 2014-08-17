@@ -39,12 +39,12 @@ define [
 
 
 	# Handle states authentification / authorization
-	app.run ($rootScope, $state,  $stateParams, $injector, SessionService, $urlRouter ) ->
+	app.run ($rootScope, $state,  $stateParams, $injector, SessionService, $urlRouter, $location ) ->
 
 		$rootScope.info = cartVisible: false
 		$rootScope.scrollPosition = 0
 
-		
+
 		$rootScope.$state = $state		
 		$rootScope.$stateParams = $stateParams		
 
@@ -141,7 +141,8 @@ define [
 
 		$rootScope.$on '$stateChangeSuccess', (ev, to, toParams, from, fromParams) ->
 			$rootScope.fromState = from
-			$rootScope.fromStateParams = fromParams			
+			$rootScope.fromStateParams = fromParams
+			ga 'send', 'pageview', $location.path()
 
 
 		# handle global file drop

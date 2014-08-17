@@ -119,6 +119,7 @@ define [
 					
 					# new Carts(jsonCart).$save jsonCart, ->
 
+					cart().addTransectiontoGA()
 					Carts.save {}, jsonCart, =>
 						cart().reset()
 						@store()

@@ -1,19 +1,7 @@
 
 <div class="cart-detail">
-
-	<div class="thanks" ng-show="saved"  >
-		<h1 translate>preview.thank</h1>
-		<p translate>preview.message</p>
-		<a class="btn btn-imt-dimmed home btn-lg " ui-sref="index" translate>breadcrumb.home</a>
-	</div>
-
-	<div class="empty" ng-show="!saved && cart.isEmpty()"  >
-		<h1 translate>cart.title</h1>
-		<p translate>preview.empty.message</p>
-		<a class="btn btn-imt-dimmed home btn-lg " ui-sref="index" translate>preview.continue.shopping</a>
-	</div>
 	
-	<div ng-show="!saved && !cart.isEmpty()" class="cart-items row">
+	<div ng-show="!cart.isEmpty()" class="cart-items row">
 
 		<h1 ><i class="icon icon-cart"></i> {{ 'cart.title' | translate }}</h1>
 

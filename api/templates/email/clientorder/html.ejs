@@ -2,14 +2,16 @@
 
 <table class="customer-info"><tr><td>
 	
-	<% if ( user.company || user.abn ){ %><%= user.company || '' %> <% if (user.abn){ %>(ABN: <%= user.abn %>)<% } %><br /><% } %>
+	<h2><% if ( user.company || user.abn ){ %><%= user.company || '' %> <% if (user.abn){ %>(ABN: <%= user.abn %>)<% } %><br /><% } %></h2>
 	<%=user.firstname%> <%=user.lastname%> <br />
 	<% if (user.street){ %><%= user.street || '' %> <br /><% } %>
 	<% if (user.suburb || user.state || user.postalcode){ %><%= user.suburb || '' %> <%= user.state || '' %> <%= user.postalcode || '' %><br /><% } %>
-	<%= user.email || '' %>
+	<%= user.email || '' %> <br />
+	<%= user.phone || '' %> <br />
+	<%= user.mobile || '' %> <br />
 	
 	<% if ( cart.note ){ %>
-		<p><strong>Note:</strong> <%= cart.note || '' %></p>
+		<p style="color: red"><strong>Note:</strong> <%= cart.note || '' %></p>
 	<% } %>
 
 </td></tr></table>

@@ -13,7 +13,7 @@ define [
 	"angular-translate"
 	"angular-translate-storage-cookie"
 	"angular-translate-interpolation-messageformat"
-	"angular-bindonce"	
+	"angular-bindonce"
 
 	"fastclick"
 

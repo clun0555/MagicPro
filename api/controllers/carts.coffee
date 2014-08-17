@@ -58,7 +58,7 @@ sendConfirmationEmail = (cart, user) ->
 
 		cartJSON.price = cart.totalPrice()
 
-		cart.sortBy("identifier");
+		cart.sortBy("type", "identifier");
 
 		cartJSON.bundles = cart.bundles
 
@@ -77,6 +77,9 @@ sendConfirmationEmail = (cart, user) ->
 					"unitPrice": bundle.product.price
 					"createdDate": createdDate
 
+		# sort by category
+
+
 		
 		# send mail to customer
 		email.send 
@@ -94,7 +97,7 @@ sendConfirmationEmail = (cart, user) ->
 			
 			# send mail to magicpro 
 			email.send 
-				subject: "Order Confirmation (" + cartJSON.method + ")",
+				subject: "Order (" + cartJSON.method + ") "+user.company,
 				data: 
 					cart: cartJSON
 					user: user

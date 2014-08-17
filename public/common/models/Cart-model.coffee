@@ -128,3 +128,22 @@ define [
 
 		clone: ->
 			new Cart().fromJSON(@toObject())
+
+		addTransectiontoGA: ->
+			ga 'ecommerce:addTransaction',
+				'id': '1234',
+				'affiliation': 'MagicPro Online Order',
+				'revenue': @price()
+			_.map @compositions(), (composition) =>
+				@addItemGA('1234', composition)
+			ga 'ecommerce:send'
+
+		addItemGA: (tranID, composition)->
+			ga 'ecommerce:addItem',
+				'id': tranID,
+				'name': composition.product?.title,
+				'sku': composition.product?.identifier,
+				'category': composition.product.type?.title,
+				'price': composition.product?.price,
+				'quantity': composition.quantity
+			ga 'ecommerce:send'

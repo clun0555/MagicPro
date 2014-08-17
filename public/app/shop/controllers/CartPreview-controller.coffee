@@ -3,7 +3,7 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller  "CartPreviewController", ($scope, cart, CartService) ->
+	shop.controller  "CartPreviewController", ($scope, cart, CartService, $state) ->
 
 		$scope.cart = cart.clone()
 
@@ -22,7 +22,8 @@ define [
 
 		$scope.submit = ->
 			CartService.save().then ->
-				$scope.saved = true	
+				$scope.saved = true
+			$state.go 'checkout', ''
 
 		$scope.reAdd = (composition) ->
 			composition.quantity = 1
