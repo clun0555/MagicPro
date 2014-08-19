@@ -66,7 +66,7 @@
 				<div class="container add-item-panel" ng-class="{'active': update}">
 
 					<div class="image-wrapper col-xs-6" >
-						<div imt-image="cart.getLastItem().image" imt-size="s=400" ng-class="{ 'visible': true }" ></div>
+						<div ng-if="cart.getLastItem()" imt-image="cart.getLastItem().image" imt-size="s=400" ng-class="{ 'visible': true }" ></div>
 					</div>
 					<div class="col-xs-6">
 						<h4 class="col-xs-12" style="color: white">Product: {{cart.getLastItem().identifier}}</h4>

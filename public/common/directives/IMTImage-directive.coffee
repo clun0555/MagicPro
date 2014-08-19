@@ -13,7 +13,7 @@ define [
 				"""
 					<div class="imt-responsive-image" >
 						<img
-							src="#{path}/{{image.path}}?{{size}}"
+							ng-src="#{path}/{{image.path}}?{{size}}"
 						/>
 					</div>
 				"""

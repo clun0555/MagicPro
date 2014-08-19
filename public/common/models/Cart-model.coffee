@@ -7,7 +7,7 @@ define [
 
 		constructor: ->
 			@bundles = []
-			@lastItem = {}
+			@lastItem = false
 			@active = false
 			@method = 'Delivery'
 
@@ -26,7 +26,7 @@ define [
 
 			if bundle.isEmpty()
 				@active = "removed"
-				@removeBundle bundle					
+				@removeBundle bundle
 			else if isNew
 				@active = "added"
 				@bundles.push bundle
