@@ -94,8 +94,9 @@
 			.design
 				font-weight: 100
 	.add-item-panel
-		width: 300px
-		padding: 15px
+		width: 0
+		height: 0
+		overflow: hidden
 		background-color: #393c3f
 		border-radius: 15px
 		right: 5px
@@ -120,6 +121,9 @@
 		@media (max-width: $screen-sm)
 			top: 50px
 		&.active
+			height: auto
+			width: 300px
+			padding: 15px
 			opacity: 1
 		.imt-responsive-image
 			margin-bottom: 10px
