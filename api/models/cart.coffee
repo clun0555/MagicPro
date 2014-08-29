@@ -25,9 +25,12 @@ Cart.methods.totalPrice = ->
 			price += bundle.product.price * bundle.product.inner * composition.quantity
 	price
 
-Cart.methods.sortBy = (field)->
+Cart.methods.sortBy = (field1, field2)->
 	@bundles.sort (a, b)->
-		(a.product[field] > b.product[field]) - (a.product[field] < b.product[field])
+		if a.product[field1]!=b.product[field1]
+			(a.product[field2] > b.product[field2]) - (a.product[field2] < b.product[field2])
+		else
+			(a.product[field1] > b.product[field1]) - (a.product[field1] < b.product[field1])
 
 
 module.exports = mongoose.model("Cart", Cart)
