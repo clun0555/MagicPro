@@ -16,7 +16,7 @@ define [
 		updateBundle: ( product, design, quantity ) ->
 			bundle = @getBundle product._id
 
-			@lastItem = product
+			@lastItem = {product: product, design: design}
 
 			unless bundle?
 				isNew = true
