@@ -25,6 +25,7 @@
 		</div>
 
 		<a class="read-more" ui-sref="article({articleId: article._id})" translate>article.readmore</a>
+		<div ng-show="article.category != 'media' " class="article-content" ng-model="article.content" imt-rich-editor options='{ "placeholder": "Write your article..." }' ></div>
 	</div>
 
 
