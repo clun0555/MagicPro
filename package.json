@@ -43,6 +43,7 @@
     "grunt-sass-to-scss-expand": "~0.1.10",
     "prerender-node": "~0.1.18",
     "dateformat": "~1.0.7"
+    "load-grunt-tasks": "latest"
   },
   "devDependencies": {
     "grunt-notify": "~0.2.16",
