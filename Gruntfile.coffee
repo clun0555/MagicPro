@@ -86,11 +86,7 @@ module.exports = (grunt) ->
 				ext: ".scss"							
 			
 		
-						
-		autoprefixer:
-			dist:
-				src: "dist/public/styles/main.css"
-				dest: "dist/public/styles/main.css"				
+
 						
 
 		# default watch configuration
@@ -235,7 +231,7 @@ module.exports = (grunt) ->
 	grunt.registerTask 'build', ['reset', "requirejs:build"]
 
 	# compile sass files and add vendor prefixes
-	grunt.registerTask 'styles', ['sass_to_scss', 'sass', "autoprefixer:dist"]
+	grunt.registerTask 'styles', ['sass_to_scss', 'sass']
 
 
 
