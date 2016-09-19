@@ -3,31 +3,34 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
 	display: none !important
 
-html
-	height: 100%
-
 body
 	background: white
-	padding: 0
+	padding: 70px 0
 	background-color: white
-	-webkit-font-smoothing: antialiased		
-	background: $imt-background-color
-	// background: radial-gradient(at top, #FD637B , #FD637B , #FE3F5E )
-
-html, body
-	// overflow-x: hidden
 	height: 100%
-	margin: 0
+	margin: 70px 0
+	-webkit-font-smoothing: antialiased	
+	// overflow-x: hidden
+	overflow-y: scroll /* has to be scroll, not auto */
+	// -webkit-overflow-scrolling: touch
+	background: url(../resources/img/magic_bg.jpg)
+	background-size: 900px 100%
+	background-repeat: repeat
+
+//ribon background
+.ribbon-vertical
+	@media (min-width: $screen-sm-min)
+		background: url(../resources/img/ribbon3.png)
+		height: 80%
+		position: absolute
+		margin-left: 150px
+		width: 250px
+		z-index: -1
 
 #main-region	
-	width: 100%
-	min-height: 100%
-	height: 100%
-
-// make sure bootstrap :hover effects are not applied on touch devices
-.touch *:hover
-	text-decoration: inherit
-
+	padding-bottom: 30px
+	min-height: 500px
+//	background: rgba(255, 255, 255, 1)
 
 // remove input placeholde when focused
 input.hide-placeholder-onblur
@@ -37,7 +40,8 @@ input.hide-placeholder-onblur
 		opacity: 0
 
 // remove spinner from type="number" inputs
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button 
 	-webkit-appearance: none
 	margin: 0
 
@@ -46,6 +50,7 @@ input[type=text], input[type=email], input[type=number], input[type=password]
 
 input, input.form-control:focus, .has-error input.form-control, .has-error input.form-control:focus
 	box-shadow: none
+
 
 
 input, textarea, input.form-control, textarea.form-control
@@ -66,57 +71,6 @@ input, textarea, input.form-control, textarea.form-control
 	background: #fcfcfc !important
 	opacity: .8
 
-
-
-.input-group
-	> span:first-child
-		background: transparent
-		border: 2px solid white
-		border-right: 0
-		border-top-left-radius: 4px
-		border-bottom-left-radius: 4px
-		color: white
-		font-size: 1.5em
-		padding-right: 0
-
-	> span:last-child
-		border-top-right-radius: 4px
-		border-bottom-right-radius: 4px
-		border: 2px solid white
-		color: white
-		font-size: 1.5em
-		border-left: 0
-
-	> input.form-control
-		border-left: 0
-
-
-
-
-.focused .input-group > span, .focused .input-group input, textarea:focus
-	background: $imt-secondary-color
-
-
-
-textarea.form-control
-	height: 250px
-
-input.form-control
-	height: 50px
-
-
-input.form-control, textarea.form-control
-	border: 2px solid white
-	border-radius: 4px
-	color: white
-	background: transparent
-	font-weight: 600
-	border-color: white !important
-
-	+imt-placeholder
-		color: white
-		font-weight: 600
-
 // remove gray backgound on disabled link buttnons
 fieldset[disabled] .btn-link
 	background: transparent !important
@@ -127,7 +81,7 @@ fieldset[disabled] .btn-link
 	border-bottom: 4px solid $imt-primary-color
 	padding-bottom: 4px
 	font-weight: 600
-	// color: #555
+	color: #555
 
 .control-label
 	color: #777
@@ -150,7 +104,8 @@ ul.nav-tabs
 	li
 		border-top: 3px solid transparent
 
-		
+	a
+		background-color: wheat
 			
 		&.active
 			// border-top: 3px solid $imt-primary-color !important
@@ -170,8 +125,7 @@ h1.imt-header
 	border-bottom: 3px solid $imt-primary-color	
 						
 
-h1
-	text-transform: uppercase
+
 
 // custom drop down with a left tick
 ul.dropdown-menu.ticked
@@ -206,12 +160,7 @@ body.drawer-active
 
 .left-drawer	
 	left: 0px
-
-.right-drawer
-	transition: all .3s ease
-	transform: translate3d($imt-right-drawer-width,0,0)
-	@media (min-width: $screen-sm-min)
-		transform: translate3d($imt-right-drawer-width-sm,0,0)
+	overflow: auto
 
 body.left-drawer-open
 	.left-drawer
@@ -223,11 +172,9 @@ body.left-drawer-open
 body.right-drawer-open
 	.right-drawer
 		z-index: 1
-		transform: translate3d(0,0,0)
 
 	.left-drawer
 		z-index: 0
-
 
 .page
 	width: 100%
@@ -237,34 +184,18 @@ body.right-drawer-open
 	top: 0px	
 
 .content-wrapper
-	width: 100%
-	min-height: 100%
-	height: 100%
-	top: 0
-	left: 0
-	position: absolute
-	// overflow-x: hidden
-
-	// background: white
-	// overflow: hidden
+	background: white
+	overflow: hidden
 	// padding: 5px
 	min-height: 100%
-	// height: 100%
 	position: absolute
 	top: 0px
 	left: 0px	
 	width: 100%
-	// width: 100%
-	min-height: 100%
-	height: 100%
-
-
-	// padding-top: 65px
-	// background: $imt-background-color
-	// background: radial-gradient(at top, #FD637B , #FD637B , #FE3F5E )
-
-// body.state-home .content-wrapper, body.state-home.views .content-wrapper
-// 	height: 100%
+	padding-top: 65px
+	background: url(../resources/img/magic_bg.jpg)
+	background-size: 900px 100%
+	background-repeat: repeat
 
 .content-slide
 	transition: all .3s ease
@@ -337,13 +268,9 @@ body.right-drawer-open
 	+make-button(lighten(#333, 2%), white)
 
 .btn.btn-imt-dimmed
-	// background: whitesmoke
+	background: whitesmoke
 	// color: white
-	// color: #999999
-	background: transparent
-	border: 2px solid white
-	color: white
-	border-radius: 4px
+	color: #999999
 	text-transform: uppercase
 	transition: background .3s ease, color .3s ease
 
@@ -353,12 +280,6 @@ body.right-drawer-open
 
 	&.active
 		box-shadow: none
-
-.btn.btn-imt-dimmed-linked
-	border-color: transparent
-
-	+imt-hover
-		border-color: white
 
 
 
@@ -405,6 +326,23 @@ body.right-drawer-open
 	width: 95px
 	overflow: hidden
 
+	&.display-inner
+		width: 130px
+
+		.btn-content
+			width: 100px
+
+		.cart-inner
+			display: table-cell
+			width: 30px
+			padding-top: 8px
+			letter-spacing: nowrap
+			color: white
+			font-size: 1em
+
+		.cross
+			padding-left: 6px
+			padding-top: 3px
 	*
 		border: none
 
@@ -462,12 +400,13 @@ body.right-drawer-open
 
 	.cross
 		background: transparent
-		color: +rgba(white, .3)						
+		color: +rgba(white, .5)						
 		padding: 6px 1px
 		height: 35px
-		width: 25px
+		width: 30px
 		font-weight: 400
 		transition: background .3s ease
+		display: table-cell
 		
 		i
 			font-size: 17px
@@ -480,7 +419,7 @@ body.right-drawer-open
 			height: 16px
 			margin-top: 4px
 			transition: all .3s ease
-			background: #E4C9CD
+			background: rgba(255, 255, 255, .7)
 			color: $secondary
 
 		+imt-hover
@@ -497,7 +436,7 @@ body.right-drawer-open
 	top: 70px
 	z-index: 10
 	left: 15px
-	width: 250px
+	width: 220px
 	box-shadow: none
 
 
@@ -507,17 +446,13 @@ body.right-drawer-open
 // 	left: 20px
 
 .content-region, .breadcrumb-region	
-	margin-top: 100px
 	margin-right: 15px
 	margin-left: 15px
 	transition: margin .4s ease
 	// transform: translate3d(0,0,0)
-	// @media (min-width: $screen-md-min)
-	// 	// transform: translate3d(250px,0,0)
-	// 	margin-left: 250px
-
-
-
+	@media (min-width: $screen-md-min)
+		// transform: translate3d(250px,0,0)
+		margin-left: 250px
 
 
 

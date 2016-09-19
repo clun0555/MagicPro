@@ -64,10 +64,20 @@ define [
 		$rootScope.isUserValidated = ->
 			SessionService.user().status is "validated"
 
+		FastClick.attach(document.body)
+
 		# add no-touch class to allow hover pseudo class to only apply on non touch devices
 		isTouch = ("ontouchstart" of document.documentElement)
 		touchClass = if isTouch then "touch" else "no-touch"
 		document.documentElement.className += " " + touchClass		
+
+
+		# document.addEventListener 'touchmove', ((e) -> 
+		# 	if $('body').hasClass("drawer-active")
+		# 		e.preventDefault()
+		# ), false					
+
+	
 
 		# Enforce security when state changes
 		$rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, $urlRouter) ->

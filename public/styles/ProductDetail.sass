@@ -1,93 +1,148 @@
 .product-detail-view
-	color: white
-	margin-top: 100px
-
-	
-	.back-button
-		margin-top: 20px
-
+	color: #555555
+	margin-top: 20px
+	background: rgba(255, 255, 255, .7)
+	padding: 5px
 
 	h1
-		font-family: 'agency_fbbold'
-		text-transform: uppercase
-		color: white
-		font-size: 3em
-		display: inline-block
-		width: 100%
+		font-weight: 200
 
-
-	
 	.product-image
 		position: relative
 
-		.imt-image-placeholder
-			padding-top: 0 !important
-			height: 350px
+		.item-thumbnail
+			width: 100%
+			display: none
+			// height: 100%
+			// opacity: 0
+			// // position: absolute
+			// // top: 0
+			// // left: 0
+			// // bottom: 0
+			// // right: 0
 		
-			img
+			&.visible
 				display: block
-				margin: 0 auto
-				height: 350px
-			
-
-	.product-title
-		font-size: 2.5em
-		text-align: center
-
-	.logo-line-1, .logo-line-2
-		img
-			display: inline-block
-			margin: 5px 10px
-			
+			// float: left
 	
-	.logo-line-1
-		img
-			width: 60px
+	.item-mini-thumbnails
+		width: 100%
+		display: none
+		+clearfix()
+
+		.item-mini-thumbnail
+			margin: 4px
+			float: left
+			// background: whitesmoke
+			width: 50px
+			height: 50px
+			opacity: .4
+			+transition(opacity .5s ease)
+			cursor: pointer
+
+			+imt-hover("&.active")
+				opacity: 1
 
 
-	.product-headline
-		font-size: 3em
-			
-	.product-ingredients-title
-		font-family: 'agency_fbbold'
-		text-transform: uppercase
-		font-size: 1.6em
+	.product-ref
+		font-style: italic
+		font-weight: 200
 
-	.product-description, .product-ingredients
-		font-family: 'Ubuntu Condensed', sans-serif
-		font-size: 1.1em
+	.product-price
+		font-size: 15px
+
+	.product-description
 		margin-top: 10px
+		font-size: 12px
+
+	&.single-design .bundle-container table
+		margin-top: 40px	
+
+	.btn.two-d
+		border: 1px solid $imt-primary-color
 
 
-	// @media (min-width: $screen-lg-min)
 
-		// .product-title
-		// 	font-size: 4.4em
+	.bundle-container
 
-
-		// .logo-line-1
-		// 	img
-		// 		width: initial
-
-		// .logo-line-1, .logo-line-2
-		// 	img
-		// 		display: inline-block
-		// 		margin: 20px
-				
-
-		// .product-image
-		// 	position: relative
-
-		// 	.imt-image-placeholder
-		// 		height: 600px
-			
-		// 		img
-		// 			height: 600px
-
+		margin: 0
+		// display: table
 	
+		.designs
+			// padding-top: 5px
 
-	
+			// background: rgba(255, 255, 255, .7)
 
+			.design:not(.single-design)
+				height: 50px
+				padding: 10px
+				width: 100%
+				max-width: 290px
+				margin-top: 3px
+				+clearfix()
+				border-left: 4px solid transparent
+				+transition(all .5s ease)
+				cursor: pointer
+				position: relative
+				padding-left: 55px
+				// display: table
+
+				// &:nth-child(even)
+
+				&.active, +imt-hover
+					border-color: $imt-primary-color
+					background: white
+
+				.design-image
+					width: 50px
+					height: 50px
+					position: absolute
+					top: 0
+					left: 0
+
+
+				.design-label
+					width: 126px
+					height: 35px
+					// text-transform: uppercase
+					display: block
+					margin-top: auto
+					margin-bottom: auto
+
+
+
+				.cart-btn-group
+					position: absolute
+					top: 7px
+					right: 10px
+					// float: right
+
+			.design.single-design
+				.design-label
+					display: none
+
+	@media (min-width: $screen-xs-min)
+
+		.bundle-container
+
+			margin: 0 25px
+		
+			.designs
+
+				.design:not(.single-design)
+					padding-left: 10px
+
+					.design-image
+						display: none
+
+		.item-mini-thumbnails
+			display: block
+
+
+
+
+
+							
 
 						
 

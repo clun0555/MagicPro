@@ -48,6 +48,7 @@ define [
 				# when upload is done, attach file metadata to datamodel
 				@uploader.bind "success", (event, xhr, fileItem ) =>
 					@_setFileInfo fileItem, {
+						name: fileItem.file.name
 						path: fileItem.fileId
 						width:  fileItem.dim.width
 						height:  fileItem.dim.height

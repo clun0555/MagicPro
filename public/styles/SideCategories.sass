@@ -1,11 +1,16 @@
 
 .side-categories-wrapper
 	margin-top: 25px
+
+	.category-title
+		& > a
+			font-weight: 600
 	
 	li
 		list-style: none
 		padding-top: 5px
 		padding-bottom: 5px
+		border-top: 1px dotted #000
 		
 		& > a
 			padding-left: 7px
@@ -21,7 +26,8 @@
 
 	ul.side-categories
 		padding-left: 0px
-
+		li:last-child
+			border-bottom: 1px dotted #000
 		> li > ul.type-list
 			max-height: 0px
 			overflow: hidden
@@ -35,5 +41,9 @@
 	ul.type-list
 		padding-left: 25px
 
-		li > a 
-			font-size: 1.1em
+		li
+			padding: 2px
+			& > a 
+				font-size: 1em
+			&:last-child
+				border-bottom: none

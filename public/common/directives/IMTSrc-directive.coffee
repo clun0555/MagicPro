@@ -16,8 +16,9 @@ define [
 				"""
 					<div  class="imt-image-placeholder">
 						<img 
-							ng-src="{{imageSrc}}"														
-						/>						
+							ng-src="{{imageSrc}}"
+							title="{{imageTitle}}"														
+						/>
 					</div>
 				"""
 				# can help debug image size breakpoints
@@ -26,38 +27,31 @@ define [
 			scope: true
 			# replace: true
 			controller: ($element, $scope, $attrs) ->
-				if $attrs.imtFixed
-					image = $scope.$eval($attrs.imtSrc)
-					size = $attrs.imtSize
-					$scope.imageSrc = "#{path}/#{ image.path ? 'placeholder2.jpg' }?#{size}"
-					$scope.$$phase || $scope.$apply()
-				else
+				resize = ->
+					elementWidth = $element.width()
+					if elementWidth isnt $scope.elementWidth
+						$scope.elementWidth = elementWidth
+						image = $scope.$eval($attrs.imtSrc)
+						if image
+							$scope.size = $attrs.imtSize
+							sizeInfo = ImageSizeService.optimized(ImageSizeService.getResizeInput($scope.size, image), elementWidth)
+							
+							if $scope.sizeInfo?.width isnt sizeInfo.width
+								# console.log "new size " + elementWidth + "/" + sizeInfo.width
+								$scope.sizeInfo = sizeInfo 
+								imageQuery = ImageSizeService.generateResizeQuery(sizeInfo)
+								$scope.imageSrc = "#{path}/#{ image.path ? 'placeholder2.jpg' }?#{imageQuery}"
+								$scope.$$phase || $scope.$apply()
 
-					resize = ->
-						elementWidth = $element.width()
-						if elementWidth isnt $scope.elementWidth
-							$scope.elementWidth = elementWidth
-							image = $scope.$eval($attrs.imtSrc)
-							if image
-								$scope.size = $attrs.imtSize
-								sizeInfo = ImageSizeService.optimized(ImageSizeService.getResizeInput($scope.size, image), elementWidth)
-								
-								if $scope.sizeInfo?.width isnt sizeInfo.width
-									# console.log "new size " + elementWidth + "/" + sizeInfo.width
-									$scope.sizeInfo = sizeInfo 
-									imageQuery = ImageSizeService.generateResizeQuery(sizeInfo)
-									$scope.imageSrc = "#{path}/#{ image.path ? 'placeholder2.jpg' }?#{imageQuery}"
-									$scope.$$phase || $scope.$apply()
+				throttledResize = _.throttle(resize, 100)
 
-					throttledResize = _.throttle(resize, 100)
+				$(window).bind "resize", throttledResize
 
-					$(window).bind "resize", throttledResize
+				$scope.$on '$destroy', ->
+					# cleanup to avoid memory leaks
+					$(window).unbind "resize", throttledResize	
 
-					$scope.$on '$destroy', ->
-						# cleanup to avoid memory leaks
-						$(window).unbind "resize", throttledResize	
-
-					resize()
+				resize()
 
 
 
@@ -65,9 +59,15 @@ define [
 			link: (scope, element, attrs) ->
 				$(element).addClass "imt-image-wrapper"
 				image = scope.$eval(attrs.imtSrc)
-				scope.size = attrs.imtSize
-				scope.fixed = attrs.imtFixed
+				if !image
+					image = 
+						path: "placeholder2.jpg"
+						width: 1000
+						height: 1000
 
+									
+				scope.size = attrs.imtSize
+				scope.imageTitle = image.name ? ''
 
 				if image?
 					sizeInfo = ImageSizeService.getResizeInput(scope.size, image)
@@ -86,7 +86,8 @@ define [
 
 					$(element).find("img").bind "load", ->
 						this.style.opacity='1'
-						$(this).parent().addClass('loaded')					
+						$(this).parent().addClass('loaded')
+						# alert image.path					
 
 
 							

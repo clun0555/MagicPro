@@ -22,7 +22,7 @@ define [
 											
 			addDesign: (file) ->
 				design = {}
-				design.identifier = ProductService.getNextDesignIdentifier($scope.product)
+				# design.identifier = ProductService.getNextDesignIdentifier($scope.product)
 				uploader.addFile(file, design, "image") if file?
 				$scope.product.designs.push design
 

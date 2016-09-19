@@ -16,7 +16,8 @@ mongorestore -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f91
 
 mongorestore -h troup.mongohq.com:10043 -d app21905351 -u heroku -p f13d53de0d7cb682de87d4bef2a99a79 ./data/demo/imtstore --drop
 
-mongorestore -h oceanic.mongohq.com:10015 -d app22933730 -u heroku -p oUP6x4QkLjN27QCHWH9zcNDsMmVZnQDobcnZvMagdRcVRZgIrIX8BwcRTvEKCBk6S8Gz5li3Dlb59wNG3nxg8A ./data/demo/imtpawpaw --drop
+mongorestore -h troup.mongohq.com:10090 -d app22326609 -u heroku -p b0945bc2a65e157d6cad18f5b442abe9 ./data/test2/magicpro --drop
+
 
 ##Export/Backup a database data to the file system
 
@@ -32,7 +33,12 @@ Use `mongodump -d <db-name> -o data/test` to export database data.
 
 `mongodump -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f912a0a3438fdb06914c2f96 -o ./data/prod/magicpro`
 
-`mongodump -h troup.mongohq.com:10043 -d app21905351 -u heroku -p f13d53de0d7cb682de87d4bef2a99a79 -o ./data/prod/imtstore2`
+`mongodump -h troup.mongohq.com:10043 -d app21905351 -u heroku -p f13d53de0d7cb682de87d4bef2a99a79 -o ./data/prod/imtstore`
+
+// magicpro2
+`mongodump -h troup.mongohq.com:10090 -d app22326609 -u heroku -p b0945bc2a65e157d6cad18f5b442abe9 -o ./data/prod/imtstore2`
+
+
 
 
 mongo paulo.mongohq.com:10036/app19587030 -u heroku -p 200f0e8e5aefadc9e467a7a32d118167

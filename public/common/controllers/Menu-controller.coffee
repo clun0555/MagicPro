@@ -19,8 +19,7 @@ define [
 			# 			$scope.cartVisible = false
 		
 			$scope.toggle = ->
-				$rootScope.info.cartVisible = !$rootScope.info.cartVisible
-				# $rootScope.info.leftDrawerVisible = !$rootScope.info.leftDrawerVisible
+				$rootScope.info.leftDrawerVisible = !$rootScope.info.leftDrawerVisible
 
 			$scope.toggleCart = ->
 				# alert "helo"
@@ -35,16 +34,15 @@ define [
 			$scope.isCurrentMenu = (state) ->
 				$rootScope.nextState?.name.indexOf(state) >= 0 or $rootScope.$state.includes(state)
 
-			$scope.changeMenu = (state, params) ->
+			$scope.changeMenu = (state) ->
 				$rootScope.nextState = $state.get(state)
-				$state.go state, params
+				$state.go state
 
 			$scope.$on "user:changed", -> 
 				if $scope.user?
 					CartService.get().then (cart) -> $scope.cart = cart
 				else
 					$scope.cart = null
-
 
 			# $scope.showCart = ->
 			# 	snapRemote.toggle("right")	

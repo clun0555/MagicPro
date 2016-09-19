@@ -11,9 +11,9 @@ module.exports =
 		name: 'api/products'
 		id: 'product'
 		before: 
-			destroy: user.is("admin")
-			create: user.is("admin")			
-			update: user.is("admin")
+			destroy: user.is("registered")
+			create: user.is("registered")			
+			update: user.is("registered")
 
 	# all: (req, res, next) ->
 	# 	user.is("registered")(req, res, next)

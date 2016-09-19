@@ -30,17 +30,22 @@
 							<span class="design-title" >/ {{ composition.design.label }}</span>
 						</div>
 
-						<!-- <div>
+						<div>
 							<h4>
-								{{ composition.product.identifier }}
+								<span>
+									{{ composition.product.identifier }}
+								</span>
+								<span ng-show="composition.design.identifier">
+									({{ composition.design.identifier}})
+								</span>
 							<h4>
 						</div>
- -->
+
 						<div class="price">
 							{{ composition.product.price | currency:'$' }}
 						</div>
 
-						<div class="btn-group cart-btn-group">
+						<div class="btn-group cart-btn-group display-inner">
 							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
 							<span class="btn-content">
 								<!-- <a class="btn-clicker" ng-hide="composition.quantity > 0 || isFocused"   class="btn btn-default " ng-click="reAdd(composition)" >
@@ -53,9 +58,14 @@
 									
 									ng-model="composition.quantity"
 									ng-change="updateQuantity(composition)"
-									ng-focus="isFocused = true; selectDesign(design)"
-									ng-blur="isFocused = false" 
+									ng-focus="isFocused = true; focusCartButton(composition, this); selectDesign(design)"
+									ng-blur="isFocused = false; blurCartButton(composition, this)" 
+									onClick="this.select()"
 								>
+
+								<span class="cart-inner">
+									&times; {{composition.product.inner}}
+								</span>
 								<!-- ng-show="composition.quantity > 0 || isFocused" -->
 								<span ng-click="remove(composition)" class="btn btn-default cross"  >
 										<i>&times; </i>	
@@ -64,7 +74,6 @@
 
 						</div>
 
-						
 					</div>					
 					
 			</div>
@@ -74,7 +83,7 @@
 			{{cart.price() | currency:'$'}}				
 		</div>
 		<div class="buttons">
-			<a class="btn btn-lg btn-imt-primary three-d checkout"  ui-sref="checkout" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a> 
+			<a class="btn btn-lg btn-imt-primary three-d checkout" ng-click="submit()" > <i class="fa fa-check"></i> {{'cart.checkout' | translate}}</a> 
 		</div>
 	</div>
 	

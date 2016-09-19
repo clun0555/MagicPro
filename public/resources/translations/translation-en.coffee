@@ -5,6 +5,12 @@ define ->
 	"locale.label": "English"
 
 
+	## Home ##
+	"home.title1": "Party, Giftware and Household products"
+	"home.title2": "Australia's finest Giftware/Partyware supplier. we trade in large quantities so we only deal with wholesalers, distributors and retailers"
+	"home.apply": "Apply Now"
+	"home.order": "Order Now"
+
 	## general ##
 	"general.unit.pieces": "{amount, plural, one{piece} other{pieces}}"
 	
@@ -79,15 +85,13 @@ define ->
 	"menu.loggedin": "Logged in as ${name}"
 	"menu.account": "Account"
 	"menu.logout": "Log out"
-	"menu.admin": "Admin"
 	"menu.login": "Login"
-	"menu.store": "Products"
+	"menu.admin": "Admin"
 	"menu.about": "About"
 	"menu.contact": "Contact"
+	"menu.store": "Store"
 	"menu.home": "Home"
-	"menu.blog": "News"	
-	"menu.twitter": "Twitter"	
-	"menu.facebook": "Facebook"	
+	"menu.blog": "Blog"
 	
 	### productnavigator ###
 	"productnavigator.buy": "Buy"
@@ -99,8 +103,9 @@ define ->
 	"productnavigator.order.category": "category"
 	"productnavigator.order.ascending": "ascending"
 	"productnavigator.order.descending": "descending"
-	"productnavigator.back": "back"
-	"productnavigator.add.product": "Add Product"
+	"productnavigator.show.colors": "show all"
+	"productnavigator.product.itemcode": "Item Number"
+
 
 	### users ###
 	"admin.users.title": "Users"
@@ -235,34 +240,31 @@ define ->
 	"product.many": "HOW MANY?"
 	"product.inner": "INNER"
 	"product.edit": "edit"	
-	"product.ingredients": "Ingredients"	
-	"product.remove": "remove"	
-	"product.remove.confirmation": "You are about to remove {title}, Are you sure ?"
 
 	### product edit ###
 
 	"product.edit.save": "Save"
 	"product.edit.cancel": "Cancel"
 	"product.edit.new.design": "Add design"
-	"product.edit.title": "Title"
-	"product.edit.headline": "Headline"
+	"product.edit.title": "Description"
 	"product.edit.category": "Category"
-	"product.edit.identifier": "Identifier"
-	"product.edit.price": "price"
+	"product.edit.identifier": "Item Number"
+	"product.edit.price": "Unit Price"
+	"product.edit.inner": "Inner Qty"
 	"product.edit.header.variants": "Variants / Images"
 	"product.edit.featured": "Featured"
 	"product.edit.header.general": "General information"
-	"product.edit.design.title": "Title"
+	"product.edit.design.title": "Design Name"
+	"product.edit.design.identifier": "id"
 	"product.edit.design.default.title": "Default"
-	"product.edit.description": "Description"
-	"product.edit.ingredients": "Ingredients"
+	"product.edit.description": "Product Information"
 	"product.edit.uploading": "Uploading..."
-	"product.edit.image": "Image"
 	"product.edit.saving": "Saving..."
 	"product.edit.new.title": "New Product"
 	"product.edit.edit.title": "Edit Product"
 	"product.edit.validation.title.required": "Please provide a title"
 	"product.edit.validation.price.required": "Please provide a price"
+	"product.edit.validation.price.required": "Please provide a inner"
 	"product.edit.validation.identifier.duplicate": "This identifier is already used by another product"
 	"product.edit.validation.identifier.required": "Please provide an identifier"
 	
@@ -273,45 +275,8 @@ define ->
 	"search.home": "Search"
 	"products.search.noproducts": "Sorry, we could't find any products matching"
 
-	### article ###
-	"article.title": "Title"
-	"article.publish": "Publish"
-	"article.published.on": "published on"
-	"article.draft": "*draft"
-	"article.unpublish": "Unpublish"
-	"article.update": "Publish changes"
-	"article.save": "Save draft"
-	"article.edit": "edit"
-	"article.remove": "remove"
-	"article.new": "New Article"
-	"article.readmore": "Read more"
-	"article.back": "Back"
-	"article.cancel": "Cancel"
-	"article.upload.finishing": "Finishing upload..."
-	"article.category.news": "Product news"
-	"article.category.news.placeholder": "Write your artcile..."
-	"article.category.media": "In the media"
-	"article.category.media.placeholder": "Paste your youtube video url here..."
-	"article.category.testimonial": "Testimonials"
-	"article.category.testimonial.placeholder": "Write your artcile..."
-	"article.remove.confirmation": "You are about to remove the article {title}, Are you sure ?"
-
-
 	### contact ###
-	"contact.title": "Contact Us"
-	"contact.name": "Name"
-	"contact.email": "Email"
-	"contact.message": "Message"
-	"contact.send": "Send"
-	"contact.sent": "Sent"
-	"contact.phone": "Phone Number"
-	"contact.confirmation": "Your message has been sent to our team."
-	"contact.email.required": "Please provide an email address"
-	"contact.message.required": "Oops, you forgot to write your message..."
-
-
-	"bottommenu.wheretobuy": "Where To Buy"
-	"bottommenu.subscribe": "Subscribe"
+	"contact.title": "Get in Touch"
 
 	### footer ###
 	"footer.developed.by": "Developed by"

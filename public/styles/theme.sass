@@ -1,10 +1,8 @@
 
-$imt-background-color: #fd637b
-$imt-text-color: white
-
-$imt-primary-color: #FE4F00
-$imt-secondary-color: #90D50A
-$imt-third-color: #FB8F2A
+// $imt-primary-color: #3a4a59
+// $imt-primary-color: #af1f31
+// $imt-primary-color: #e2c810
+$imt-primary-color: #e43158
 
 $imt-drawer-bg: #333
 $imt-drawer-bg-alternate: darken(#333, 2%)
@@ -18,16 +16,17 @@ $imt-drawer-width: 260px
 $imt-right-drawer-width: $imt-drawer-width
 $imt-left-drawer-width: $imt-drawer-width
 
+
+
+
 // Boostrap variables
-$link-color: $imt-secondary-color
-$font-family-sans-serif: 'Ubuntu Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif
-$headings-font-family: 'agency_fbbold'
+$link-color: $imt-primary-color
+$font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
 $border-radius-base: 0
 $border-radius-large: 0
 $border-radius-small: 0
-$text-color: $imt-text-color
 
-// smart hover for desktops only
+
 @mixin imt-desktop-hover($others:"")
 	
 	@if $others != ""
@@ -38,6 +37,7 @@ $text-color: $imt-text-color
 	&:hover
 		.no-touch &
 			@content
+	
 
 // smart hover mixin handling touch devices
 // to apply styles to other rules 
@@ -56,6 +56,10 @@ $text-color: $imt-text-color
 	&:active
 		.touch &
 			@content
+
+// make sure bootstrap :hover effects are not applied on touch devices
+.touch *:hover
+	text-decoration: inherit
 
 @mixin imt-placeholder
 	&::-webkit-input-placeholder

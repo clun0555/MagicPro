@@ -1,0 +1,27 @@
+<div class="btn-group cart-btn-group display-inner" bo-if="product.designs.length == 1">
+	<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
+	<span class="btn-content">
+		<a class="btn-clicker" ng-hide="quantities[product._id][product.designs[0]._id] > 0 || isFocused"   class="btn btn-default " ng-click="addToCart(product, product.designs[0])" translate >
+			cart.widget.add
+		</a>
+		<input 
+			type="number"
+			class="form-control" 
+			ng-show="quantities[product._id][product.designs[0]._id] > 0 || isFocused" 
+			ng-model="quantities[product._id][product.designs[0]._id]" 
+			ng-change="updateQuantity(product, product.designs[0])" 
+			ng-focus="isFocused = true; selectDesign(product.designs[0])"
+			ng-blur="isFocused = false; "			 			
+			ng-click="focusOnInput()"
+		>
+
+		<span class="cart-inner" ng-click="focusOnInput()">
+			&times; {{product.inner}}
+		</span>
+
+		<span ng-click="removeFromCart(product, product.designs[0])" class="btn btn-default cross" ng-show="quantities[product._id][product.designs[0]._id] > 0 || isFocused" >
+				<i>&times; </i>	
+		</span>
+	</span>
+
+</div>

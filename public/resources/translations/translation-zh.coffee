@@ -4,6 +4,11 @@ define ->
 	"locale.code": "zh"
 	"locale.label": "中文"
 
+	## Home ##
+	"home.title1": "派對用品, 禮品包裝, 家庭用品"
+	"home.title2": "澳洲悉尼大型的禮品用品供應商. 我們以大量出貨, 合作對象只限於商店和批發商"
+	"home.apply": "申請會員"
+	"home.order": "下單"
 
 	## general ##
 	"general.unit.pieces": "{amount, plural, one{個} other{個}}"
@@ -73,7 +78,7 @@ define ->
 	"validating.message": "我們正在審批您的註冊資料, 如合乎我們的要求您將可以使用此系統下單."
 
 	### menu ###
-	"menu.title": "MagicPro"
+	"menu.title": "MagicPro"		
 	"menu.home": "主頁"
 	"menu.order": "下單"
 	"menu.loggedin": "登入　${name}"
@@ -93,6 +98,7 @@ define ->
 	"productnavigator.product.edit": "編輯"
 	"productnavigator.edit.delete": "刪除"
 	"productnavigator.order.price": "價錢"
+	"product.edit.inner": "內裝"
 	"productnavigator.order.title": "名稱"
 	"productnavigator.order.category": "類別"
 	"productnavigator.order.ascending": "小致大"
@@ -266,6 +272,7 @@ define ->
 	"product.edit.edit.title": "修改產品"
 	"product.edit.validation.title.required": "請輸入名稱"
 	"product.edit.validation.price.required": "請輸入價錢"
+	"product.edit.validation.price.required": "請輸入內裝"
 	"product.edit.validation.identifier.duplicate": "此產品貨號以被使用, 請輸入其他產品貨號"
 	"product.edit.validation.identifier.required": "請輸入產品貨號"
 

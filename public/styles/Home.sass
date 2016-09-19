@@ -1,22 +1,269 @@
 
 .home
-	width: 100%
-	min-height: 100%
-	height: 100%
 	
+	.car
 
-	.screen		
-		margin: 0
+		padding-top: #{((376/941) * 100) + "%"}
+		// background: red
+		// position: relative
+
+	.flexible-caption
+
+		background: whitesmoke
+		padding: 10px 25px
+		// margin-bottom:
+
+
+
+
+		h1, h2
+			display: table
+			font-weight: 300
+			padding: 5px
+			// background: rgba(255, 255, 255, .7)
+			color: #555
+			margin: 0
+		// background: rgba(0, 0, 0, .6)
+		// color: white
+
+		a
+			margin-top: 10px
+			margin-left: 5px
+			background: rgba(80, 80, 80, .6)
+			color: white
+
+		h1
+			font-weight: 400
+			font-size: 1.5em
+			background: transparent
+
+		h2
+			font-size: 1.2em
+			max-width: 85%
+
+
+
+		@media (min-width: $screen-sm-min)
+			position: absolute
+			top: 20%
+
+			left: 12%
+			background: transparent
+
+			h1, h2
+				background: rgba(255, 255, 255, .7)
+
+			h1
+				font-size: 2.4em
+				margin-bottom: 10px
+
+			h2
+				font-size: 2em
+
+	.main-block-carousel
+		
+		position: relative
+		max-width: 1100px
+		margin: 0 auto
+		margin-top: 30px
+
+		@media (max-width: $screen-xs)
+			margin-top: -15px
+
+		.car-slide
+			display: none
+			width: 100%
+			position: absolute
+			top: 0
+			left: 0
+			opacity: 0
+			transition: opacity .1s ease
+
+			&.active
+				opacity: 1
+
+		.car-image
+			width: 100%	
+			// display: none
+			width: 100%
+			position: absolute
+			top: 0
+			left: 0
+			opacity: 0
+			transition: opacity 1s ease
+
+			&.active
+				opacity: 1
+				// display: block
+			.imt-image-placeholder
+				max-width: 1100px
+
+
+
+		.carousel
+			width: 100%
+
+		.carousel-inner > .item
+			position: relative
+			width: 100%
+			overflow: hidden
+			// display: block
+			// opacity: 0
+			// position: absolute
+			// top: 0
+			// width: 100%
+			// height: 100%
+
+
+			// &.active
+			// 	opacity: 1
+			// 	left: 0
+
+
+
+
+	.main-block
+		margin-top: -70px
 		padding: 0
-		min-height: 100%
-		background: $imt-background-color
-		background: radial-gradient(at top, #FD637B , #FD637B , #FE3F5E )
+		img
+			width: 100%
+
+		position: relative
+
+		border-bottom: 5px solid $imt-primary-color
 
 
-		&.first
-			height: 100%
-			// background: red
+		
+		.flexible-caption
+			// position: absolute
+			// bottom: 15%
+			// left: 7%
+			// top: 0
 
-		// &.second
-		// 	background: blue
+			// background: whitesmoke
+			padding: 10px 25px
+			// margin-bottom: 
+
+			
+			
+
+			h1, h2
+				display: table
+				font-weight: 300
+				padding: 8px
+				
+				// color: #555
+				color: white
+				margin: 0
+				// background: rgba(10, 10, 10, .2)
+				
+			a
+				margin-top: 10px
+				margin-left: 5px
+				background: $imt-primary-color
+				border: 3px solid darken($imt-primary-color, 10%)
+				color: white
+				border-radius: 2px
+
+				+imt-hover
+					background: darken($imt-primary-color, 10%)
+					border-color: rgba($imt-primary-color, .5)
+
+			h1
+				font-weight: 400
+				font-size: 1.5em
+				margin-bottom: 10px
+				// background: transparent !important
+
+			h2
+				font-size: 1.2em
+				margin-bottom: 10px
+				// background: transparent !important
+
+
+
+			@media (min-width: $screen-sm-min)
+				position: absolute
+				bottom: 25%
+				left: 7%
+				max-width: 1100px
+				// background: transparent
+
+				// h1, h2
+				// 	background: rgba(255, 255, 255, .7)
+
+				h1
+					font-size: 2.4em
+					margin-bottom: 10px
+
+				h2
+					font-size: 2em
+
+	.featured-products
+		margin-left: 0
+		margin-right: 0
+		padding-left: 30px
+		padding-right: 30px
+
+		h1
+			font-weight: 300
+			border-bottom: 3px solid $imt-primary-color
+			margin-left: 0px
+			margin-right: 0px
+			text-transform: uppercase
+			font-size: 1.3em
+			padding-bottom: 5px
+
+	.categories
+		margin-top: 10px
+		// +clearfix()
+		// margin-left: 15px
+		// margin-right: 15px
+		padding: 30px
+
+		// overflow: hidden
+		
+		.mini-block
+			
+			padding-top: 10px
+			padding-left: 10px
+			padding-right: 0px
+			position: relative
+			cursor: pointer
+			
+			@media (min-width: $screen-sm-min)
+				width: 25%
+			@media (max-width: $screen-sm-min)
+				padding-right: 10px
+
+			&:last-child
+				padding-right: 10px
+
+			.img
+				background: whitesmoke
+				height: 200px
+				width: 100%
+
+			+imt-hover
+				.category-label
+					padding-left: 20px
+
+			.category-label
+				position: absolute
+				top: 20px
+				left: 10px
+				background: rgba(210, 210, 210, .5)
+				padding: 5px
+				padding-left: 10px
+				font-size: 1em
+				text-align: right
+				transition: padding-left .3s
+				
+
+			// margin-top: 10px
+			// padding: 10px
+			// overflow: hidden
+			
+
+	// background: url(
 

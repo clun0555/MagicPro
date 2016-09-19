@@ -1,55 +1,46 @@
-<div class="navbar-inner" >
+<div class="navbar-inner">
 
 	<div class="container-fluid">
 		<div class="imt-row">
 		
 			<nav>
 				
-				<!-- <ul class="nav navbar-nav navbar-left visible-sm visible-xs" >
+				<ul class="nav navbar-nav navbar-left visible-sm visible-xs" >
 					<li>
 						<a  class="btn left-drawer-toggle drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
 					</li>
-				</ul> -->
+				</ul>
 				<ul class="nav navbar-nav navbar-right "  >
 					
-					<!-- <li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('home') }" >
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('home') }" >
 						<a ng-click="changeMenu('home')" translate>menu.home</a>
 
 					</li>
- -->
 
-					<li class="section-link hidden-xs hidden-sm" imt-spy="about" ng-class="{ 'active': currentSpy == 'about' && isCurrentMenu('home') }" >						
-						<a ui-sref="home.about" translate>menu.about</a>
-					</li>
-
-					<li class="section-link hidden-xs hidden-sm"  ng-class="{ 'active': isCurrentMenu('shop') }">
+					<li class="section-link hidden-xs"  ng-class="{ 'active': isCurrentMenu('shop') }">
 						<a ng-click="changeMenu('shop.products')" translate >menu.store</a>
 					</li>
-					
-					<li class="section-link hidden-xs hidden-sm" ng-class="{ 'active': isCurrentMenu('blog') }" >
-						<a ng-click="changeMenu('blogbycategory', {category: 'news'})" translate>menu.blog</a>
 
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('about') }" >
+						<a ng-click="changeMenu('about')" translate>menu.about</a>
 					</li>
 
-
-					<li class="section-link hidden-xs hidden-sm" imt-spy="contact" ng-class="{ 'active': currentSpy == 'contact' && isCurrentMenu('home') }" >
-						<a  ui-sref="home.contact" translate>menu.contact</a>
-
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('contact') }" >
+						<a ng-click="changeMenu('contact')" translate>menu.contact</a>
 					</li>
 					
-<!--					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" ng-if="isRole('admin')" >
+					<li class="section-link hidden-xs" ng-class="{ 'active': isCurrentMenu('admin') }" ng-if="isRole('admin')" >
 						<a ng-click="changeMenu('admin')" ui-sref="admin" translate >menu.admin</a>
 
-					</li>-->
+					</li>
 					<li class="divider hidden-sm  hidden-xs">&nbsp;</li>
 
-	<!-- 				<li class="dropdown hidden-sm hidden-xs">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-if="user">
+					<li class="dropdown hidden-sm hidden-xs" >
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-if="user" >
 							<i class="fa fa-user "></i>
 							{{user.firstname}}
 							<i class="fa fa-caret-down"></i>
 						</a>
-
 						<a ui-sref="login" data-toggle="dropdown" ng-if="!user" >
 							<i class="fa fa-user "></i>
 							{{ 'menu.login' | translate }}							
@@ -61,10 +52,7 @@
 							<li><a class="dropdown "  ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a></li>
 
 						</ul>
-
-
-
-					</li> -->
+					</li>		
 
 					<li ng-if="cart" ng-show="cart && cart.quantity() > 0" >
 						<a class="btn cart-toggle drawer-toggle" ng-click="toggleCart()" >
@@ -72,13 +60,7 @@
 							<span ng-show="cart.quantity() == 0">Cart</span>
 							<span ng-show="cart.quantity() > 0">{{cart.quantity()}}</span>								
 						</a>
-					</li>
-
-
-					<li class="visible-sm visible-xs">
-						<a  class="btn left-drawer-toggle drawer-toggle" ng-click="toggle()"> <i class="fa fa-bars"></i></a>
-					</li>
-				
+					</li>		
 					
 				</ul>
 
@@ -87,15 +69,11 @@
 			<nav class="logo-nav" >
 				<ul class="nav navbar-nav navbar-left">
 					<li>
-						<a ng-click="changeMenu('home.showcase')" imt-spy="showcase" >
-							<span class="logo big">
-								<img  src="/resources/img/logo.png" >
-								<!-- noScroll: {{noScroll}}, scrolling: {{scrolling}} -->
-							</span>
-
-							<span class="logo small">
-								<img class="pawpaw"  src="/resources/img/pawpaw_logo.png" >								
-								<img class="naturescare" src="/resources/img/naturescare_logo.png" >								
+						<a href="/" >
+							<span class="logo">
+								<!-- <img class="chair" src="/resources/img/chair.svg" > -->
+								<img class="img-logo" src="/resources/img/magic_logo.png" >
+								<span class="design">MagicPro</span>
 							</span>
 						</a>
 					</li>

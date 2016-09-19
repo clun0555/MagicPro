@@ -4,43 +4,15 @@ define [
 	"common/utils/utils"
 ], (_, shop, utils) ->
 
-	shop.controller "ShopProductsController", ($scope, data, ShopService, CartService, $state, SessionService) ->
+	shop.controller "ShopProductsController", ($scope, data, cart, ShopService, CartService, $state, SessionService) ->
 		amount = 12
 		from = amount
-		
-		# $scope.products = ({} for i in [0..9])
-		$scope.products = []
-		$scope.visibleLg = []
-		$scope.visibleXs = []
-		
-		
-		productsCount = $scope.productsCount = data.products.length
-
-		for product, index in data.products
-			# $scope.products[index] = product
-			$scope.visibleLg.push index
-			$scope.visibleXs.push index
-			$scope.products.push product
-
-		offset = 0
-
-		if productsCount % 3 isnt 0
-			offset = $scope.offset = (3-($scope.products.length%3))
-			for i in [0..offset-1]
-				# $scope.products.push {}
-				$scope.visibleLg.push ($scope.products.length - 1)
-				if $scope.products.length % 2 == 0
-					$scope.visibleXs.push ($scope.products.length - 1)
-
-
-		if $scope.products.length % 2 isnt 0 and offset in [1, 0]
-			# $scope.products.push {}
-			$scope.visibleXs.push ($scope.products.length - 1)
-
+		allProducts = data.products
+		# $scope.products = allProducts		
+		$scope.products = allProducts.slice(0, amount)
 		$scope.search = ShopService.search
-		# $scope.cart = cart
+		$scope.cart = cart
 		$scope.categories = data.categories
-		$scope.category = data.category
 
 		$scope.quantities = {}
 
@@ -65,12 +37,49 @@ define [
 		else
 			$scope.currentOrder =  $scope.orders[2]
 		
-		# for product in data.products
-		# 	$scope.quantities[product._id] = cart.quantities(product)		
+		for product in data.products
+			$scope.quantities[product._id] = cart.quantities(product)		
 
-		
-		$scope.updateQuantity = (product, design) ->
+		$scope.doPaging = ->
+			$scope.loading = true
+			if from < allProducts.length
+				for product in  allProducts.slice(from, from+amount)
+					$scope.products.push product  
+				from += amount
+				$scope.loading = false			
+
+		$scope.doSort = (order, asc) ->
+			if order.field is "price"
+				allProducts.sort utils.sortBySorter('price', order.asc, parseFloat)
+			else if order.field is "title"
+				allProducts.sort utils.sortBySorter('title', order.asc, (title) -> title.toUpperCase())
+			else if order.field is "category"
+				allProducts.sort utils.sortBySorter('type', order.asc, (type) -> type.category.title.toUpperCase())
+			
+			$scope.products = allProducts.slice(0, $scope.products.length)
+
+			$scope.currentOrder = order
+			SessionService.storeLocal "order", order
+
+		$scope.focusCartButton = (product, design, currentScope) ->
+			currentScope.value = $scope.quantities[product._id][design._id]
+			$scope.quantities[product._id][design._id] = ''
+
+		$scope.blurCartButton = (product, design, currentScope) ->
+			if $scope.quantities[product._id][design._id] == ''
+				$scope.quantities[product._id][design._id] = currentScope.value
+
+
+		$scope.updateQuantity = (product, design, value, currentScope) ->
 			quantity = $scope.quantities[product._id][design._id]
+			CartService.update product, design, quantity
+
+		$scope.addToCart = (product, design) ->
+			quantity = $scope.quantities[product._id][design._id] = 1
+			CartService.update product, design, quantity
+
+		$scope.removeFromCart = (product, design) ->
+			quantity = $scope.quantities[product._id][design._id] = 0
 			CartService.update product, design, quantity
 
 		$scope.navigateToProduct = (product) ->
@@ -107,16 +116,22 @@ define [
 		$scope.goToProduct = (product, state = "shop.product") ->
 			$state.go state, { category: product.type.category.slug, type: product.type.slug, product: product.slug}
 
-		$scope.selectType = (type) ->
-			if type is $scope.currentType
-				$scope.currentType = null
-			else
-				$scope.currentType = type
-			# $scope.filteredProducts = _.filter $scope.products, (p) -> p.type._id is type._id
 
+		# $scope.updateQuantity = (design) ->			
+		# 	quantity = $scope.quantities[design._id]
+		# 	CartService.update $scope.product, design, quantity
+
+		# $scope.addToCart  = (product, design) ->
+		# 	$scope.quantities[design._id] = 1
+		# 	$scope.updateQuantity design
+
+		# $scope.removeFromCart  = (design) ->
+		# 	$scope.quantities[design._id] = 0
+		# 	$scope.updateQuantity design
+		
 		$scope.$on "fileDrop", (event, $files) ->
 			$scope.$parent.files = $files
 			$state.go "shop.createproduct", { category: product.type.category.slug, type: product.type.slug, product: product.slug}
 
-		# $scope.doSort($scope.currentOrder)
+		$scope.doSort($scope.currentOrder)
 

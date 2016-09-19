@@ -1,100 +1,71 @@
-<div class="product-detail-view container" ng-class="{'single-design':  product.designs.length == 1 }"  >
+<div class="product-detail-view " ng-class="{'single-design':  product.designs.length == 1 }"  >
 	
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 product-image">
-			<a ui-sref="shop.productsbycategory({category: product.type.category.slug})" class="btn btn-imt-dimmed  back-button" > <i class="fa fa-angle-left"></i> {{'productnavigator.back' | translate}}</a>
 			
-			<h1 class="product-title visible-xs" >{{ product.title}}</h1>
-			<div class="item-thumbnail" imt-src="design.image || product.image" imt-size="w=400" ng-repeat="design in product.designs" ng-class="{'visible': currentDesign == design}" ></div>
+			<div class="item-thumbnail" imt-src="design.image || product.image" imt-size="w=50" ng-repeat="design in product.designs" ng-class="{'visible': currentDesign == design}" ></div>
 			
-			<h1 class="product-title hidden-xs" >{{ product.title}}</h1>
+			<div class="item-mini-thumbnails" ng-if="product.designs.length > 1">
+				<div class="item-mini-thumbnail" imt-src="design.image || product.image" imt-size="w=70" ng-repeat="design in product.designs" ng-click="selectDesign(design)" ng-class="{'active': currentDesign == design }"  ></div>
+			</div>			
 
 			
 		</div>
 		<div class="col-xs-12 col-sm-6" >
 			<div class="bundle-container">
-				
-				<h1 class="product-headline">{{product.headline}}</h1>
+				<h1>{{ product.title}}</h1>
+				<h3>{{ product.identifier}}</h3>
+				<p class="product-ref-price">
+					<span class="product-ref" >inner: {{  product.inner }} | </span>
 					
-				<div ng-show="isRole('admin')" >
-					<a ui-sref="shop.editproduct({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" ng-if="isRole('admin') && isUserValidated()" translate>product.edit</a> |
-					<a ng-click="removeProduct(product)" translate>product.remove</a>
-				</div>
-
+					<span class="product-price" >{{  product.price | currency:"$" }}</span> 
+					<span ng-show="isRole('admin')" >
+					| <a ui-sref="shop.editproduct({ category: product.type.category.slug, type: product.type.slug, product: product.slug})" ng-if="isRole('admin') && isUserValidated()" translate>product.edit</a>
+					</span>
+				</p>
 				<p class="product-description">{{ product.description}}</p>
 
-				<div class="logo-line-1">
-					<img src="/resources/img/natural_logo.png" >
-					<img src="/resources/img/petro.png" >
+					
+				<div class="designs">
+					
+					<div ng-click="selectDesign(design)" ng-repeat="design in product.designs" class="design" ng-class="{'active': currentDesign == design, 'single-design': product.designs.length == 1}">
+						
+						<div ng-if="product.designs.length > 1" class="design-image" imt-src="design.image || product.image" imt-size="s=50"></div>	
+
+						<span class="design-label">{{design.label}}</span>
+						<div class="btn-group cart-btn-group display-inner">
+							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
+							<span class="btn-content">
+								<a class="btn-clicker" ng-hide="quantities[design._id] > 0 || isFocused"   class="btn btn-default " ng-click="addToCart(design)" translate >
+									cart.widget.add
+								</a>
+								<input 
+									type="number"
+									class="form-control" 
+									ng-show="quantities[design._id] > 0 || isFocused" 
+									ng-model="quantities[design._id]" 
+									ng-change="updateQuantity(design)" 
+									ng-focus="isFocused = true; focusCartButton(product, design, this); selectDesign(design)"
+									ng-blur="isFocused = false; blurCartButton(product, design, this)" 									
+								>
+
+								<span class="cart-inner">
+									&times; {{product.inner}}
+								</span>
+
+								<span ng-click="removeFromCart(design)" class="btn btn-default cross" ng-show="quantities[design._id] > 0 || isFocused" >
+										<i>&times; </i>	
+								</span>
+							</span>
+
+						</div>
+					</div>	
+
 				</div>
-
-				<h2 class="product-ingredients-title" translate>product.ingredients</h2>	
-				<p class="product-ingredients">{{ product.ingredients}}</p>
-				
-
-			<div class="logo-line-2">
-				<img src="/resources/img/aus_logo2.png" >
-				<img src="/resources/img/aus_logo.png" >
-				<img src="/resources/img/eco_logo.png" >
-				<img src="/resources/img/australia_logo.png" >
-				<img src="/resources/img/cgmp_logo.png" >
-
 			</div>
 			
 
-		<!-- 	<table>
-				<thead>
-					<tr>
-						<th colspan="2"></th>
-						<th class="design-count" translate>product.many</th>
-						<th class="design-count" translate>product.inner</th>
-					</tr>
-				</thead>
-				<tbody  >
-					
-					<tr ng-repeat="design in product.designs">
-						<td class="design-thumbnail">
-							<div imt-src="design.image || product.image" imt-size="s=75" />
-						</td>
-						<td class="design-info">
-							<span class="design-label">{{  design.label || product.title }}</span>
-							<span class="design-id" >({{  design.identifier || product.identifier }})</span> 
-							
-						</td>
-						<td class="design-count">
-							<input
-								type="number"
-								min="0"
-								max="9999"
-								ng-maxlength="4"
-								class="hide-placeholder-onblur"
-								placeholder="0" ng-change="updateQuantity(design)" ng-model="quantities[design._id]" >
-						</td>
-						<td class="inner" >
-							<span>&times; {{  product.inner }}</span>
-						</td>
-					</tr>
-					
-				</tbody>
-				<tfoot>
-						<tr>
-							<td colspan="2"></td>
-							<td class="bundle-summary-region" colspan="2" >
-								<div class="slide product-detail-bundle-summary">
-									<span class="total-quantity" > {{ cart.pieces(product) }}
-										<span class="piece-unit" translate translate-values="{ amount: {{cart.pieces(product)}} }" > 
-											general.unit.pieces
-										</span> |
-									</span>
-									<span class="total-price">{{cart.price(product) | currency:"$" }}</span>
-									
-								</div>
-
-							</td>
-						</tr>
-				</tfoot>
-			</table> -->
-			
+		
 		</div>
 	</div>
 </div>

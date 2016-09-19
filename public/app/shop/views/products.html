@@ -1,59 +1,162 @@
 
+<div ng-show="products.length == 0" >
+	<p class="no-products" >
+		{{'products.search.noproducts' | translate}} <b>{{searchQuery}}</b>
+	</p>
 
-
-<div class="product-navigator container">
-
-	<!-- <div class="buttons col-xs-12">
-		<a ui-sref="shop.createproduct" class="btn btn-imt-dimmed create-button" >  {{'productnavigator.add.product' | translate}}</a>
-
-	</div> -->
+</div>
+<!-- 
+<div ng-class="{ 'visible': $state.includes('shop.products') }" class="categories-shortcut" >
 	
-	<div class="hidden-xs col-md-1"></div>
-	<div class="category-info col-xs-12 col-md-4">
-		<a ui-sref="shop.products" class="btn btn-imt-dimmed back-button" > <i class="fa fa-angle-left"></i> {{'productnavigator.back' | translate}}</a>
-		<a ui-sref="shop.createproduct" class="btn btn-imt-dimmed create-button" ng-show="isRole('admin')" >  {{'productnavigator.add.product' | translate}}</a>
-		<img src="/resources/img/drawing-{{category.slug}}.png" class="drawing">		
-		<h1 >{{category.title}}</h1>
+	<div class="row">
+
+		<div class="col-xs-6 col-md-3 mini-block" bindonce="category" ng-repeat="category in categories" ui-sref="shop.productsbycategory({category: category.slug})" >
+			<div imt-src="category.image" imt-size="s=400"></div>
+			<div class="category-label" bo-text="category.title"></div>
+		</div>
+
 	</div>
 
+</div> -->
 
-	<div class="products-wrapper col-xs-12 col-md-6">
 
-		<div  ng-if="category" class="hidden-xs"  >
-			
-			<div class="row">
 
-				<div ng-click="selectType(type)" class="col-xs-3 category-block"  ng-repeat="type in category.types"  >
-					<div ng-class="{'active': currentType == type}" class="category-label" >{{type.title}}</div>
+<div class="col-sm-offset-4 sort-region" >
+							
+	<div class="btn-group btn-group-xs sort-trigger" >
+		<a href="" dropdown-toggle > <i class="fa fa-caret-down"></i>  sort by <span class="sorted-by" >{{ orderLabels[currentOrder.field] | translate }} | {{ (currentOrder.asc ? 'productnavigator.order.ascending' : 'productnavigator.order.descending') | translate }}</span> </a>
+
+		<ul class="dropdown-menu">
+			<li ng-class="{'active': currentOrder == order }" ng-repeat=" order in orders" >				
+				<a ng-click="doSort(order)" >						
+				  <i class="fa fa-angle-{{  order.asc ? 'down' : 'up' }}"></i>	<span class="order-field">{{ orderLabels[order.field] | translate }}</span> <span class="order-way">| {{ (order.asc ? 'productnavigator.order.ascending' : 'productnavigator.order.descending') | translate }}</span>				   			
+				</a>
+			</li>					
+		</ul>
+	</div>
+
+	&nbsp;&nbsp; <a ng-if="isRole('admin') && $state.includes('shop.products')" ui-sref="shop.createproduct" class="btn btn-imt-dimmed">New Product</a>
+
+</div>	
+
+<div infinite-scroll="doPaging()" infinite-scroll-distance="2" infinite-scroll-disabled="loading" class="product-navigator row"  ng-show="products.length > 0">
+	
+	<div bindonce class="slide product-title col-lg-2 col-sm-4 col-xs-6" ng-repeat="product in products" ng-class="{ 'in-cart': quantities[product._id][product.designs[0]._id] > 0, 'hover': hover == product }" >
+		
+			<div class="thumbnail" >
+
+				<div class="caption" >
+
+					<div class="top-info" >
+						<h4  ><a  ng-click="goToProduct(product)" bo-text="product.title" ></a></h4>
+						<p>
+							<span class="identifier">{{product.identifier}}</span>
+						</p>
+
+						<p>
+							<span class="price" bo-text="product.price | currency:'$'" ></span>	
+							<span bo-show="isRole('admin')">
+							
+							| <a  ng-click="goToProduct(product, 'shop.editproduct')" translate>productnavigator.product.edit</a>
+
+							</span>
+
+						</p>
+							<div class="image-wrapper" >
+								<a ng-click="goToProduct(product)" >									
+									<div imt-src="product.image" imt-size="s=300" ng-class="{ 'visible': focusedDesign == null }" ></div>								
+								</a>	
+							</div>
+					
+					</div>
+
+					<div  class="buttons" >
+						
+						<a ng-click="goToProduct(product)" class="btn multiple-design-button" bo-if="product.designs.length > 1" translate >
+							productnavigator.show.colors
+						</a>
+
+						<div class="btn-group cart-btn-group display-inner" bo-if="product.designs.length == 1">
+							<span class="btn btn-default btn-icon"><i class="icon icon-cart"></i></span>
+							<span class="btn-content">
+								<a class="btn-clicker" ng-hide="quantities[product._id][product.designs[0]._id] > 0 || isFocused"   class="btn btn-default " ng-click="addToCart(product, product.designs[0])" translate >
+									cart.widget.add
+								</a>
+								<input 
+									type="number"
+									class="form-control" 
+									ng-show="quantities[product._id][product.designs[0]._id] > 0 || isFocused" 
+									ng-model="quantities[product._id][product.designs[0]._id]" 
+									ng-change="updateQuantity(product, product.designs[0], value, this)"
+									ng-focus="isFocused = true; focusCartButton(product, product.designs[0], this); selectDesign(product.designs[0])"
+									ng-blur="isFocused = false; blurCartButton(product, product.designs[0], this);"									
+
+								>
+								<!--   -->
+									<!-- onClick="setTimeout(function() { setSelectionRange(0, 9999) }, 0)" -->
+									<!-- onClick="this.select()" -->
+
+								<span class="cart-inner">
+									&times; {{product.inner}}
+								</span>
+
+								<span ng-click="removeFromCart(product, product.designs[0])" class="btn btn-default cross" ng-show="quantities[product._id][product.designs[0]._id] > 0 || isFocused" >
+										<i>&times; </i>	
+								</span>
+							</span>
+
+						</div>
+
+						
+					</div>
+
+					<!-- <div class="bottom-info" ng-click="activateProductClick(product)">
+						
+						<div class="cart-info" ng-class="{'visible' : (hover == product && product.designs.length > 1)}"  >
+
+							<div class="anim-wrapper">
+								<div ng-repeat="(index, design) in product.designs" class="input-group design" ng-class="{ 'active-design': focusedDesign == design }">
+								  <span class="input-group-addon design-label" ng-click="focusDesign(design, $parent)"> {{ design.label }} </span>
+								  <input  type="number" ng-change="updateQuantity(product, design)" ng-model="quantities[product._id][design._id]" ng-focus="focusDesign(design, $parent)" ng-blur="blurDesign($parent)" placeholder="0" class="form-control hide-placeholder-onblur design_quantity_{{index}}" >
+								  <span class="input-group-addon inner"> &times; {{product.inner}}</span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="cart-simple-info multiple-design" ng-show="product.designs.length > 1">								
+							 <i class="icon icon-cart"></i> 
+							 <span class="quantity ">								
+								<span class="readable-quantity">{{ cart.getBundle(product._id).quantity() || 0 }}</span>
+							 </span>
+							 
+							<span class="inner">
+								&times; {{product.inner}}		
+							</span>	
+
+						</div>
+
+						<div class="cart-simple-info single-design"  ng-show="product.designs.length == 1" >
+							 <i class="icon icon-cart"></i> 
+							 <span class="quantity">
+							  	<span ng-show="hover != product" class="readable-quantity">{{quantities[product._id][product.designs[0]._id] || 0}} </span>
+								<span ng-show="hover == product" class="writable-quantity"><input  type="number" ng-change="updateQuantity(product, product.designs[0])" ng-model="quantities[product._id][product.designs[0]._id]" placeholder="0" class="form-control hide-placeholder-onblur design_quantity_0" ></span>
+							 </span>
+							 
+							<span class="inner" >
+								&times; {{product.inner}}	
+							</span>	
+						</div>
+
+					</div> -->
+
+					
+
 				</div>
 
 			</div>
-
-		</div>
-
-
-		<div  class="products row"  >
-			
-			<div
-				bindonce
-				ng-class="{ 'dimmed': (currentType && currentType._id != product.type._id), 'empty': !product.title, last: productsCount -1 == index, 'hidden-xs': (visibleXs.indexOf(index) == -1), 'hidden-sm hidden-md hidden-lg': (visibleLg.indexOf(index) == -1), 'last-xs': (visibleXs[visibleXs.length - 1] == index), 'last-lg': (visibleLg[visibleLg.length - 1] == index), 'left-corner-xs': (visibleXs[visibleXs.length - 2] == index), 'left-corner-lg': (visibleLg[visibleLg.length - 3] == index)  }"
-				class="product col-lg-4 col-sm-4 col-xs-6"
-				ng-repeat="(index, product) in products" ui-sref="shop.product({product: product.slug})" ng-show="(currentType && currentType._id == product.type._id) || !currentType">
-				
-					<div class="thumbnail"  >
-						<!-- {{product.title}}: {{index}} / {{offset}} / {{productsCount}} -->
-						<div ng-if="product.title" imt-src="product.designs[0].image" imt-size="h=200" imt-fixed="true" ng-class="{ 'visible': focusedDesign == null }" ></div>								
-
-					</div>
-				
-
-			</div>
-		</div>
+		
 
 	</div>
-	<div class="hidden-xs col-md-1"></div>
-
-
 </div>
 
 

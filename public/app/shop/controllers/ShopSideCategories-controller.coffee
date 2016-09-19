@@ -3,7 +3,7 @@ define [
 	"../shop-states"	
 ], (_, shop) ->
 
-	shop.controller "ShopSideCategoriesController", ($scope, ShopService, $state, SessionService) ->						
+	shop.controller "ShopSideCategoriesController", ($scope, data, ShopService, $state, SessionService, CartService) ->						
 		
 		$scope.isCategoryActive = (category) ->
 			# return true if $scope.selectedCategory is category and $scope.selectedType == null
@@ -27,5 +27,12 @@ define [
 		$scope.logout = ->
 			SessionService.logout().then -> $state.go "index"
 
-		# $scope.categories = data.categories
+		$scope.categories = data.categories
 		$scope.search = ShopService.search
+
+
+		$scope.$on "user:changed", -> 
+			if $scope.user?
+				CartService.get().then (cart) -> $scope.cart = cart
+			else
+				$scope.cart = null

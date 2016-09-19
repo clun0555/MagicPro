@@ -1,15 +1,15 @@
 <div class="left-drawer-content" >
 	
-	<!-- <form class="form-	arch" ng-submit="searchProduct(); hideDrawers()" ng-if="user">
+	<form class="form-search" ng-submit="searchProduct(); hideDrawers()" ng-if="user">
 		<div class="input-group margin-bottom-sm search-group">
 			<span class="input-group-addon" > <i class="fa fa-search fa-fw"></i> </span>
 			<input class="form-control" type="text" placeholder="Search..." ng-model="search.title">
 		</div>
 	</form>
- -->
+
 
 	
-	<!-- <ul class="side-categories menus" ng-if="user" >
+	<ul class="side-categories menus"  ng-if="user" >
 		<li class="header">
 			<a class="section-link" translate>menu.store</a>
 		</li>
@@ -32,44 +32,37 @@
 			</ul>		
 		</li>
 
-	</ul> -->
+	</ul>
 
 	<ul class="global-menus menus" ng-click="hideDrawers()" >
-
 		
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('home.showcase') && currentSpy == 'showcase'}" >
-			<a ui-sref="home.showcase" translate>menu.home</a>
-		</li>		
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('home') }" >
+			<a ui-sref="home" translate>menu.home</a>
+		</li>
 
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('shop') }" >
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('shop') }" ng-if="!user" >
 			<a ui-sref="shop.products" translate>menu.store</a>
 		</li>
 
-
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('home.about') && currentSpy == 'about' }" >
-			<a ui-sref="home.about" translate>menu.about</a>
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('about') }" >
+			<a ui-sref="about" translate>menu.about</a>
 		</li>
 
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('blog') }" >
-			<a ui-sref="blog" translate>menu.blog</a>
-		</li>
-
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('home.contact') && currentSpy == 'contact' }" >
-			<a ui-sref="home.contact" translate>menu.contact</a>
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('contact') }" >
+			<a ui-sref="contact" translate>menu.contact</a>
 		</li>
 		
-		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" ng-if="isRole('admin')">
+		<li class="menu section-link" ng-class="{ 'active': $state.includes('admin') }" ng-if="isRole('admin')" >
 			<a ui-sref="admin" translate>menu.admin</a>
 		</li>
 
 	
-		<li class="menu"  ng-if="user">
+		<li class="menu" ng-if="user" >
 			<a ui-sref="account.profile" > 
 				<i class="fa fa-user"></i> &nbsp;&nbsp;{{ 'menu.account' | translate }} 
 			</a>
 		</li>
-		
-		<li class="menu"  ng-if="user">
+		<li class="menu" ng-if="user">
 			<a ng-click="logout()" > <i class="fa fa-power-off"></i> &nbsp;&nbsp;{{'menu.logout' | translate}}</a>
 		</li>
 
@@ -77,16 +70,6 @@
 			<a ui-sref="login" > </i>{{'menu.login' | translate}}</a>
 		</li>
 
-
-	</ul>
-
-	<ul class="global-menus menus social-menus">
-		<li class="menu section-link" >
-			<a class="social-link twitter" target="_blank" href="https://twitter.com/NCPawPaw"><i class="fa fa-twitter"></i> {{'menu.twitter' | translate}}</a>												
-		</li>
-		<li class="menu section-link" >
-			<a class="social-link facebook" target="_blank" href="https://www.facebook.com/pages/Natures-Care-Paw-Paw/1385305888367573?ref=tn_tnmn"><i class="fa fa-facebook"></i> {{'menu.facebook' | translate}}</a>						
-		</li>
 	</ul>
 
 </div>

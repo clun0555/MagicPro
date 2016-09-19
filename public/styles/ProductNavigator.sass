@@ -1,254 +1,382 @@
-.product-navigator
-
-	margin-top: 100px
-
-	.category-info
-		// text-align: center
-		// width: 100%
-		// +clearfix()
-
-		text-align: right
-		margin-bottom: 20px
-		position: relative
-
-		.back-button
-			margin-bottom: 20px
-			position: absolute
-			left: 0
-			top: 10px
-
-		.create-button
-			margin-bottom: 20px
-			position: absolute
-			right: 10px
-			top: -40px
-
-
-		img
-			display: block
-			margin: 0 auto
-			// float: left
-			height: 40px
-			// height: 50px
-			display: inline-block
-			margin-top: -20px
-
-			
-
-
-		h1
-			font-family: 'agency_fbbold'
-			text-transform: uppercase
-			color: white
-			text-align: right
-			// font-size: 3.4em
-			font-size: 3em
-			// padding: 20px
-			display: inline-block
-			margin-top: 0
-			margin-bottom: 0
+body.drag-over .product-title.create-product .thumbnail .image-wrapper
+	background: #555
 
 
 
-	.category-block
-		padding: 0
 
+.no-products
+	margin-top: 30px
+	margin-left: 30px
 
-	.category-block
-		padding: 0
+.sort-trigger
+	.dropdown-menu
 
-		
+		a
+			padding-left: 10px
+			.order-field
+				margin-left: 5px
+				width: 70px
+				display: inline-block	
 
-		.category-label
-			font-family: 'agency_fbbold'
-			text-transform: uppercase
-			font-size: 1em
-			color: white
-			cursor: pointer
-			border: 2px solid transparent
-			text-align: center
-			padding: 5px
+			.order-way
+				font-weight: 300
 
-			&.active 
-				border: 2px solid white
-				background: #0094CB
-				position: relative
-				padding-left: 10px
-				padding-right: 10px
-				padding-top: 5px
-				border-radius: 3px
-
-				&:before
-					content: ' '
-					height: 0
-					position: absolute
-					width: 0
-					border: 19px solid transparent
-					border-top-color: white
-					top: 100%
-					margin-left: auto
-					margin-right: auto
-					left: 35%
-
-				&:after
-					content: ' '
-					height: 0
-					position: absolute
-					width: 0
-					border: 16px solid transparent
-					border-top-color: #0094CB
-					top: 100%
-					margin-left: auto
-					margin-right: auto
-					left: 37%
-
-
-	.products-wrapper
-		// margin: 0 auto
-		
-		padding-bottom: 20px
-
-		.products
-			margin-top: 20px
-
-			
-
-			.product
-				border: 3px solid white
-				padding: 0
-				margin-left: -3px
-				margin-top: -3px
-				cursor: pointer
-				transition: all .5s ease
-
-				&.dimmed .thumbnail
-					opacity: .5
-
-
-				&.hilighted
-					background: $imt-primary-color !important
-
-				&:nth-child(1)
-					border-top-left-radius: 8px
-
-				&:nth-child(2)
-					border-top-right-radius: 8px
-
-				&.left-corner-xs
-					border-bottom-left-radius: 8px
-
-				&.last-xs
-					border-bottom-right-radius: 8px
-
-				// &:nth-child(10)
-				// 	border-bottom-right-radius: 8px
-
-				+imt-hover
-					background: #FE4F00
-				
-				.imt-image-placeholder
-					padding-top: 0 !important
-					height: 100%
-
-
-				img
-					height: 100%
-
-				.imt-image-wrapper
-					height: 100%
-
-
-			
-			.thumbnail
-				// background: transparent
-				background: transparent
-				border: none
-				
-				height: 150px
-
-
-	@media (min-width: $screen-sm-min)
-
-		.category-info
-
-			text-align: center
-			
-			.thumbnail
-				height: 70px
-				img
-					height: 70px
-					margin-top: -30px
-
-			.back-button
-				margin-bottom: 20px
-				left: 0
-				top: 20px
-
-			.create-button
-				top: 20px
-		
-
-			h1
-				font-size: 4.4em
-				margin-left: 10px
-
-		.products-wrapper
-		
-		
-			.products
-				
-				.product
-					border: 3px solid white
-					padding: 0
-					margin-left: -3px
-					margin-top: -3px
-					cursor: pointer
-					border-radius: 0px
-
-					&:nth-child(1)
-						border-top-left-radius: 8px
-
-					&:nth-child(2)
-						border-radius: 0px
-						
-					&:nth-child(3)
-						border-top-right-radius: 8px
-						border-top-left-radius: 0px
-
-					&.left-corner-lg
-						border-bottom-left-radius: 8px
-
-					&.last-lg
-						border-bottom-right-radius: 8px
+.categories-shortcut
+	display: none
+	
+	&.visible
+		display: block
 
 
 	@media (min-width: $screen-md-min)
+		&.visible
+			display: none
 
-		.category-info
+.product-navigator
+	// width: auto
+	// height: auto
+	border-radius: 4px
 
-			// .back-button
-				// position: static
 
-			.create-button
-				right: inherit
-				left: 80px
+			
+	.product-title
+		// min-width: 250px
+		// margin: 10px
+		// margin: 10px
+		white-space: nowrap
+		cursor: pointer
+		// height: 350px
+		z-index: 10
+		padding: 3px 
+		@media (min-width: $screen-sm-min)
+			padding: 15px
 
-			img	
+
+
+		&.hover
+			z-index: 11
+
+		.caption
+			padding: 0px	
+			position: relative
+
+		.thumbnail
+			border: 0
+			background: white
+			border-radius: 0
+			padding: 0px
+			margin-bottom: 30px
+			border: 3px solid whitesmoke
+
+			+imt-desktop-hover
+				border-color: $imt-primary-color	
+
+				.bottom-info
+					border-color: $imt-primary-color					
+
+		.top-info	
+			padding: 0px
+			padding-left: 10px
+			padding-right: 10px
+			text-decoration: initial !important
+			color: #555
+
+			.identifier
+				font-weight: 600
+
+
+			h4
+				font-weight: 400
+				text-overflow: ellipsis
+				overflow: hidden
+				white-space: nowrap
+				line-height: 1.3em
+				font-size: 1.3em
+
+				
+				a
+					color: #555
+					font-size: 1em
+					+imt-hover
+						text-decoration: initial !important
+
+				@media (min-width: $screen-sm-min)
+					font-size: 1.2em
+
+		.buttons
+			text-align: right
+			margin: 10px
+			height: 30px
+
+			.multiple-design-button
+				background-color: $imt-primary-color
+				border-radius: 5px
+				color: white
+				text-transform: uppercase
 				display: block
-				height: auto
-				margin-top: 150px
 
-			h1
+				+imt-desktop-hover
+					background-color: lighten($imt-primary-color, .5)
+
+			.btn-group
+				margin-left: auto
+				margin-right: auto
 				display: block
-				text-align: center
 
-	// @media (min-width: $screen-lg-min)
 
-	// 	.products-wrapper
 
-	// 		.products
+		.image-wrapper
+			position: relative
+			
+			.imt-image-wrapper
+				background-color: white
+				margin: 0 auto
+				margin-bottom: 10px
+				opacity: 1
+				display: block
 
-	// 			.product
+				// position: absolute
+				// left: 0
+				+transition(opacity .5s ease-in-out)
+				
 
-	// 				.thumbnail
-	// 					height: 200px
+				// &.visible
+				// 	opacity: 1
+				// 	display: inherit				
+				
+
+
+		// .bottom-info
+		// 	overflow: auto
+		// 	padding-top: 10px
+		// 	padding-bottom: 10px
+			
+		// 	.cart-info
+				
+		// 		.anim-wrapper
+		// 			opacity: 0
+		// 			max-height: 0px
+		// 			overflow: hidden
+		// 			+transition(300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) opacity, 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) max-height)
+					
+
+		// 		&.visible .anim-wrapper
+		// 			max-height: 200px
+		// 			opacity: 1
+
+
+		.bottom-info
+			border: 3px solid whitesmoke
+		
+
+			border-top: 0
+			position: absolute
+			top: 100%
+			left: -3px
+			right: -3px
+			background: white
+
+			// .cart-info
+
+			// 	.design
+
+			// 		background: white
+					
+			// 		.design-label
+			// 			width: 150px
+			// 			background: white
+				
+			// 	.anim-wrapper
+			// 		opacity: 0
+			// 		max-height: 0px
+			// 		overflow: hidden
+			// 		+transition(300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) opacity, 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) max-height)
+					
+
+			// 	&.visible .anim-wrapper
+			// 		max-height: 200px
+			// 		opacity: 1
+
+
+
+			overflow: auto
+			padding-top: 10px
+			padding-bottom: 10px
+			
+			.cart-info
+				
+				.anim-wrapper
+					opacity: 0
+					max-height: 0px
+					overflow: hidden
+					+transition(300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) opacity, 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750) max-height)
+					
+
+				&.visible .anim-wrapper
+					max-height: 200px
+					overflow: auto
+					opacity: 1		
+
+
+
+
+			.cart-info
+
+				margin-left: 5px
+				margin-right: 0px
+				margin-bottom: 5px
+
+
+				.design
+					border: 1px solid transparent
+					margin-bottom: 2px
+					// +transition(border-color .3s ease)
+
+					&.active-design
+						border-color: lightgray
+						.design-label
+							background: whitesmoke
+
+
+					.input-group-addon
+						background: none
+				
+					.input-group:first-child > .design-label
+						border-top: 0px
+
+					.form-control
+						padding-left: 10px
+						border-right: 0px
+						margin-bottom: 0px
+						outline: 0
+						display: inline-block
+						width: 60px
+						vertical-align: top
+						// text-align: center
+						border: 0px
+						border-left: 1px solid lightgray
+						color: #555555
+						
+
+							
+					.design-label
+						width: 87px
+						max-width: 87px
+						font-size: .9em
+						border-left: 0
+						border-top: 0
+						border-bottom: 0
+						text-align: right
+						padding-left: 0px
+						overflow: hidden
+						text-overflow: ellipsis
+						display: inline-block
+						padding-top: 5px
+						padding-bottom: 5px
+						line-height: 24px
+						+transition(background .3s ease)
+						
+					.inner
+						border: 0px
+
+		&.hover .cart-simple-info
+			
+			.quantity
+				width: auto
+				min-width: 65px
+
+
+
+		&.hover .cart-simple-info.single-design, .cart-simple-info:hover
+			border: 1px solid lightgray
+
+			.icon-cart
+				background: whitesmoke				
+
+		&.hover .cart-simple-info.multiple-design
+			border: 1px solid transparent
+
+			.icon-cart
+				background: transparent				
+
+		.cart-simple-info
+			font-size: 1.1em
+			text-align: right
+			display: block
+			float: right
+			padding-right: 5px
+			border: 1px solid lightgray
+			+transition(border .3s ease)
+			
+			> .icon-cart, > .quantity, > .inner
+				display: inline-block
+				vertical-align: middle
+				padding: 8px 3px
+				height: 32px
+				line-height: 13px
+
+			.quantity > *
+				display: inline-block
+				vertical-align: top
+				height: 32px
+
+			.icon-cart
+				padding-left: 4px
+				padding-right: 4px
+				border-right: 1px solid lightgray
+				+transition(background .3s ease)
+
+
+			.readable-quantity
+				text-align: left
+				width: 100%				
+
+
+			.quantity
+
+				position: relative
+				display: inline-block
+				width: auto
+				+transition(min-width .3s ease)
+				
+				// min-width: 40px
+				> *
+					display: inline-block
+					padding: 0
+					overflow: hidden
+					border: 1px solid transparent
+
+			input
+				
+				padding: 0px
+				display: inline-block				
+				height: 20px
+				border: 0
+				border-color: transparent
+				margin: 0
+				width: 100%
+				color: #555555
+				position: absolute
+				top: 5px
+				left: 0px
+				bottom: 0px
+				right: 0px
+
+				&[readonly]
+					background-color: white !important
+					cursor: pointer !important
+				
+				&:focus
+					border-color: transparent
+
+
+
+		
+
+				
+
+
+
+
+	
+

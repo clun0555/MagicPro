@@ -15,45 +15,43 @@
 		
 
 	</head>
- <!-- ng-init="this.className += ' loaded'"  -->
-	<body imt-scroll-spy class="state-{{$state.current.name}}" imt-scroll-position="scrollPosition" ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible, 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible, 'scroll-at-top': scrollPosition <= 0, 'home-state':  $state.includes('home')}" >
+
+	<body imt-scroll-position="scrollPosition" ng-class="{ 'drawer-active': info.cartVisible || info.leftDrawerVisible, 'right-drawer-open': info.cartVisible, 'left-drawer-open': info.leftDrawerVisible, 'scroll-at-top': scrollPosition <= 0, 'home-state':  $state.includes('home')}" >
 		<div class="content-slide-overlay content-slide" ng-click="hideDrawers()" ></div>
 
 		<div class="drawer right-drawer" >
-			 <!-- ui-view="left-drawer" autoscroll="false"  -->
-			<div ng-include="'app/shop/views/left_drawer.html'"
-				ng-controller="ShopSideCategoriesController" ></div>
+			<div ui-view="cart-drawer" autoscroll="false" class="cart-drawer" ></div>
 		</div>
 		
-		<!-- <div class="drawer left-drawer"  >
-			<div ui-view="cart-drawer"  autoscroll="false" class="cart-drawer" ></div>
-		</div> -->
+		<div class="drawer left-drawer" >
+			<div ui-view="left-drawer" autoscroll="false" ></div>
+		</div>
 
 		<div 
-			class="menu-region navbar navbar-default navbar-fixed-top content-slide " 
+			class="menu-region navbar navbar-default navbar-fixed-top content-slide" 
 			ng-include="'common/views/menu.html'" 
 			ng-controller="MenuController"
 		>
 		</div>
 
-		<div 
-			class="bottom-menu-region navbar navbar-default navbar-fixed-bottom content-slide container" 
-			ng-include="'app/showcase/views/bottom_menu.html'" 
-			ng-controller="ShowCaseBottomMenuController"
-		>
-
-		</div>
-			
-
 		<div ng-show="$state.includes('shop')">
 			<div ui-view="side" autoscroll="false" class="affix content-slide visible-md visible-lg"></div>
 		</div>
-		
-		<div class="content-wrapper content-slide " >
-		<!-- class="container" -->
-			<div id="main-region"  ui-view  autoscroll="false" >
+		<div 
+			class="content-wrapper content-slide"		
+		>
+<!--			<div class="ribbon-vertical"></div>-->
+
+			<div id="main-region" class="container-fluid" ui-view  autoscroll="false"  >						
 				
 			</div>		
+			<footer  class="footer-region container-fluid"  >
+				<div class="row">
+					<div class="imt-row" ng-include="'common/views/footer.html'" ng-controller="FooterController"></div>
+				</div>
+
+			</footer>
+
 		</div>
 
 	</body>
