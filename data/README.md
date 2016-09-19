@@ -6,7 +6,7 @@
 
 ###Local database
 
-Use `mongorestore --drop ./data/test/magicpro` to create database with sample data.
+Use `mongorestore --drop ./data/test/magicpro -d magicpro --host 127.0.0.1:27017` to create database with sample data.
 
 ###Remote
 
@@ -38,7 +38,7 @@ Use `mongodump -d <db-name> -o data/test` to export database data.
 // magicpro2
 `mongodump -h troup.mongohq.com:10090 -d app22326609 -u heroku -p b0945bc2a65e157d6cad18f5b442abe9 -o ./data/prod/imtstore2`
 
-
+'mongodump -h dharma.mongohq.com:10004 -d app21438617 -u heroku -p 3226d322f912a0a3438fdb06914c2f96 -o ./data/test/magicpro'
 
 
 mongo paulo.mongohq.com:10036/app19587030 -u heroku -p 200f0e8e5aefadc9e467a7a32d118167
