@@ -6,6 +6,7 @@ define [
 	shop.controller "ShopHomeController", ($scope, data, $state, $interval) ->
 
 		$scope.categories = data.categories
+		$scope.slides = data.sliders
 		$scope.featured = _.filter data.products, (product) -> product.featured
 		$scope.homeImage = { 
 			# 'path': 'home5.jpg'
@@ -18,36 +19,6 @@ define [
 
 		}
 
-		$scope.slides = [
-			{
-				title: "MagicPro Funtime Smiley Face: Party disposal Supplies"
-				image:
-					'name': 'MagicPro Funtime Smiley Face: Party disposal Supplies'
-					'description': 'Funtime Smiley Face brand, wide range of party disposal supplies includes cutleries, tablecloths and containers'
-					'path': 'MagicPro-Slide1.jpg'
-					'width': '900'
-					'height': '360'
-			},
-			{
-				title: "MagicPro Funtime Smiley Face: Party Coloured Cultery"
-				image:
-					'name': 'MagicPro Funtime Smiley Face: Party Coloured Cultery'
-					'description': 'Funtime Smiley Face brand, wide range of colour choice for partyware cultery'
-					'path': 'MagicPro-Slide2.jpg'
-					'width': '900'
-					'height': '360'
-			},
-			{
-				title: "MagicPro Funtime Smiley Face: Party Giftwrapping paper"
-				image:
-					'name': 'MagicPro Funtime Smiley Face: Party Giftwrapping paper'
-					'description': 'Funtime Smiley Face brand, partyware multi-colour giftwrapping paper and selection of multiple design pattern'
-					'path': 'MagicPro-Slide3.jpg'
-					'width': '900'
-					'height': '360'
-			}
-
-		]
 
 		$scope.currentSlide = $scope.slides[0]
 

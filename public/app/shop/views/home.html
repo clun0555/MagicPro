@@ -10,7 +10,7 @@
 				<h1 translate>home.title1</h1>
 				<h2 translate>home.title2</h2>
 				<a ui-sref="shop.products" class="btn btn-lg btn-imt-dimmed three-d" ng-show="!user" translate>home.apply<i class="fa fa-caret-right"></i> </a>
-				<a ui-sref="shop.products" class="btn btn-lg btn-imt-dimmed three-d" ng-show="user" translate>home.order<i class="fa fa-caret-right"></i> </a>
+				<a ui-sref="shop.productsbytype({category: 'part-dis', type: 'dessert-cups'})" class="btn btn-lg btn-imt-dimmed three-d" ng-show="user" translate>home.order<i class="fa fa-caret-right"></i> </a>
 			</div>
 		</div>
 

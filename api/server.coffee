@@ -56,6 +56,7 @@ authentification.setup app
 app.resource('products')
 app.resource('users')
 app.resource('categories')
+app.resource('sliders')
 app.resource('carts')
 app.resource('articles')
 

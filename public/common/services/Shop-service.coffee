@@ -31,6 +31,20 @@ define [
 
 			deferred.promise
 
+		getSliders: ->
+			deferred = $q.defer()
+
+			if @sliders?
+				deferred.resolve sliders: @sliders
+			else
+				sliders = $resource("api/sliders").query =>
+# @categories = categories
+					@sliders = _.sortBy(sliders, "order")
+
+					deferred.resolve sliders: @sliders
+
+			deferred.promise
+
 		getCategoryBySlug: (categorySlug) ->
 			deferred = $q.defer()
 			
@@ -209,6 +223,8 @@ define [
 					jobs.push @getCategories().then (data2) ->
 						data.categories = data2.categories
 
+					jobs.push @getSliders().then (data2) ->
+						data.sliders = data2.sliders
 
 					$q.all(jobs).then(
 						=>
