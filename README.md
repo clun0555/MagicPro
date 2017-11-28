@@ -12,4 +12,4 @@ Expiry Date on Image file is set to 10 years please check s3Utils.coffee
 
 Run grunt dev to start the application
 
-To deploy run
+To deploy run: git push heroku magicpro2:master
