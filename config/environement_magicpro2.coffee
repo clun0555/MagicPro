@@ -21,7 +21,7 @@ module.exports =
 
 	##### MongoDB
 	## path to mongo database
-	MONGO_URL: "mongodb://localhost/magicpro"
+	MONGO_URL: "mongodb://magicpro:arimt2013@ds111798.mlab.com:11798/heroku_qfd85m0h"
 	## or
 	# MONGO_HOSTNAME: "localhost"
 	# MONGO_DATABASE: "/projecttemplate"

@@ -18,8 +18,9 @@ mongorestore -h troup.mongohq.com:10043 -d app21905351 -u heroku -p f13d53de0d7c
 
 mongorestore -h troup.mongohq.com:10090 -d app22326609 -u heroku -p b0945bc2a65e157d6cad18f5b442abe9 ./data/test2/magicpro --drop
 
+## CURRENT Database Instance
+mongorestore -h candidate.45.mongolayer.com:11106 -d app21438617 -u magicpro -p arimt2013 ./data/test/magicpro --drop
 
-##Export/Backup a database data to the file system
 
 
 ###Localy
