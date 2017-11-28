@@ -231,9 +231,7 @@ module.exports = (grunt) ->
 	grunt.registerTask 'build', ['reset', "requirejs:build"]
 
 	# compile sass files and add vendor prefixes
-	grunt.registerTask 'styles', ['sass_to_scss']
-
-	grunt.registerTask 'styles-2', ['sass']
+	grunt.registerTask 'styles', ['sass_to_scss', 'sass']
 
 
 
