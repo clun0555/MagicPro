@@ -12,7 +12,7 @@ config =
 	S3_SECRET: process.env.S3_SECRET
 	S3_BUCKET: process.env.S3_BUCKET
 
-	MONGO_URL: "mongodb://magicpro:arimt2013@ds111798.mlab.com:11798/heroku_qfd85m0h"
+	MONGO_URL: process.env.MONGO_URL or process.env.MONGOHQ_URL
 	MONGO_LOGIN: process.env.MONGO_LOGIN
 	MONGO_PASSWORD: process.env.MONGO_PASSWORD
 	MONGO_HOSTNAME: process.env.MONGO_HOSTNAME
