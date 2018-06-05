@@ -7,8 +7,8 @@
     "start": "node ./dist/app/server.js"
   },
   "engines": {
-    "node": "6.9.1",
-    "npm": "3.10.8"
+    "node": "6.11.1",
+    "npm": "3.10.10"
   },
   "dependencies": {
     "connect-mongo": "~0.4.0",
