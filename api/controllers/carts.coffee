@@ -26,7 +26,8 @@ module.exports =
 
 		cart = new Cart _.extend({}, req.body)
 
-		cart.save (err, cart) -> 
+		cart.save (err, cart) ->
+			console.log err
 			return res.send err if err?
 
 			sendConfirmationEmail(cart, req.user)
@@ -49,6 +50,7 @@ module.exports =
 
 
 sendConfirmationEmail = (cart, user) ->
+	console.log 'hello'
 	designs = []
 	createdDate = "Date: " + dateFormat(cart.created, "dd-mm-yyyy")
 
@@ -79,7 +81,8 @@ sendConfirmationEmail = (cart, user) ->
 
 		# sort by category
 
-
+		console.log 'hello'
+		console.log email
 		
 		# send mail to customer
 		email.send 
