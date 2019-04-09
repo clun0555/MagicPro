@@ -150,18 +150,19 @@ body.drawer-active
 
 .drawer
 	position: fixed
+	width: 100%
 	top: 0px
 	right: 0px
 	width: $imt-right-drawer-width
 	height: 100%
 	color: white
 	padding: 0px
-	z-index: 0
+	z-index: 1
 
 	@media (min-width: $screen-sm-min)
 		width: $imt-right-drawer-width-sm
 
-.left-drawer	
+.left-drawer
 	left: 0px
 	overflow: auto
 	transition: all 0.3s ease

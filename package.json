@@ -29,7 +29,7 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "grunt-html2js": "~0.2.3",
     "grunt-replace": "~0.5.1",
-    "grunt-sass": "latest",
+    "grunt-sass": "3.0.2",
     "grunt-sass-to-scss-expand": "~0.1.10",
     "grunt-shell": "~0.5.0",
     "json2csv": "~2.2.1",
@@ -46,11 +46,12 @@
     "underscore": "~1.5.2 "
   },
   "devDependencies": {
-    "grunt-notify": "~0.2.16",
-    "grunt-newer": "~0.5.4",
-    "grunt-contrib-watch": "~0.5.3",
     "grunt-concurrent": "~0.4.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-newer": "~0.5.4",
+    "grunt-node-inspector": "latest",
     "grunt-nodemon": "~0.1.2",
-    "grunt-node-inspector": "latest"
+    "grunt-notify": "~0.2.16"
   }
 }
