@@ -46,12 +46,11 @@
     "underscore": "~1.5.2 "
   },
   "devDependencies": {
-    "grunt-concurrent": "~0.4.1",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "~0.5.3",
+    "grunt-notify": "~0.2.16",
     "grunt-newer": "~0.5.4",
-    "grunt-node-inspector": "latest",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-concurrent": "~0.4.1",
     "grunt-nodemon": "~0.1.2",
-    "grunt-notify": "~0.2.16"
+    "grunt-node-inspector": "latest"
   }
 }

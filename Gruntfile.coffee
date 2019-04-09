@@ -204,7 +204,7 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks "grunt-contrib-clean"
 	grunt.loadNpmTasks "grunt-contrib-copy"
 	# grunt.loadNpmTasks "grunt-contrib-compass"
-	grunt.loadNpmTasks "grunt-contrib-sass"
+	grunt.loadNpmTasks "grunt-sass"
 	grunt.loadNpmTasks "grunt-autoprefixer"
 	grunt.loadNpmTasks "grunt-shell"
 	grunt.loadNpmTasks "grunt-contrib-requirejs"
