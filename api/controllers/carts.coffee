@@ -27,7 +27,9 @@ module.exports =
 		cart = new Cart _.extend({}, req.body)
 
 		cart.save (err, cart) ->
-			console.log err
+			if err
+				console.log
+				sendConfirmationEmail(cart, req.user)
 			return res.send err if err?
 
 			sendConfirmationEmail(cart, req.user)
