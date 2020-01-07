@@ -29,7 +29,7 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "grunt-html2js": "~0.2.3",
     "grunt-replace": "~0.5.1",
-    "grunt-sass": "latest",
+    "grunt-sass": "1.2.0-beta",
     "grunt-sass-to-scss-expand": "~0.1.10",
     "grunt-shell": "~0.5.0",
     "json2csv": "~2.2.1",
